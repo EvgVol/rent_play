@@ -4,7 +4,7 @@ from django.db import models
 User = get_user_model()
 
 
-class Rental_rate(models.Model):
+class RentalRate(models.Model):
     """Модель арендной платы."""
 
     time = models.CharField('Срок аренды', max_length=50)
@@ -36,7 +36,7 @@ class Order(models.Model):
     """Модель заказа приставки."""
 
     period = models.ForeignKey(
-        Rental_rate,
+        RentalRate,
         verbose_name='Срок аренды',
         on_delete=models.SET_NULL,
         blank=True,
