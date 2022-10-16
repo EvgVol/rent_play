@@ -4,15 +4,8 @@ from django.db import models
 User = get_user_model()
 
 
-class RentalRate(models.Model):
-    """Модель арендной платы."""
-
-    time = models.CharField('Срок аренды', max_length=50)
-    cost = models.PositiveIntegerField()
-
-
 class Console(models.Model):
-    """Модель игровых приставок."""
+    """Модель игровых консолей."""
 
     title = models.CharField('Название', max_length=200)
     slug = models.SlugField('URL', unique=True)
@@ -25,16 +18,37 @@ class Console(models.Model):
     )
 
     class Meta:
-        verbose_name_plural = 'Приставки'
-        verbose_name = 'Приставка'
+        verbose_name_plural = 'Консоли'
+        verbose_name = 'Консоль'
 
     def __str__(self):
         return self.text[:15]
 
 
+class RentalRate(models.Model):
+    """Модель арендной платы."""
+
+    time = models.CharField('Срок аренды', max_length=50)
+    cost = models.PositiveIntegerField('Стоимость')
+    console = models.ForeignKey(
+        Console,
+        on_delete=models.CASCADE,
+        verbose_name='Консоль'
+    )
+
+    class Meta:
+        verbose_name = 'Аренда'
+        verbose_name_plural = 'Аренды'
+
+
 class Order(models.Model):
     """Модель заказа приставки."""
 
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='client'
+    )
     period = models.ForeignKey(
         RentalRate,
         verbose_name='Срок аренды',
@@ -59,3 +73,6 @@ class Order(models.Model):
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+
+    def __str__(self):
+        return (f"Клиент: '{self.user}' - дата заказа: '{self.pub_date}'- приставка: '{self.console}' - срок аренды '{self.period}'")

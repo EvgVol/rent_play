@@ -18,7 +18,8 @@ class OrderModelTest(TestCase):
         )
         cls.rental_rate = RentalRate.objects.create(
             time='Неделя',
-            cost=3000
+            cost=3000,
+            console=cls.console
         )
         cls.order = Order.objects.create(
             period=cls.rental_rate,
@@ -35,3 +36,4 @@ class OrderModelTest(TestCase):
                 self.assertEqual(
                     self.order._meta.get_field(field)
                         .help_text, expected_value)
+
