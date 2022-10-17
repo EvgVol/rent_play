@@ -3,6 +3,10 @@ from django.db import models
 
 User = get_user_model()
 
+STATUS_CHOICES = [
+    ('F', 'Свободно'),
+    ('R', 'Арендовано'),
+]
 
 class Console(models.Model):
     """Модель игровых консолей."""
@@ -16,19 +20,36 @@ class Console(models.Model):
         null=True,
         blank=True
     )
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
 
     class Meta:
         verbose_name_plural = 'Консоли'
         verbose_name = 'Консоль'
 
     def __str__(self):
-        return self.text[:15]
+        return self.title[:30]
 
 
 class RentalRate(models.Model):
-    """Модель арендной платы."""
+    """Модель срока аренды."""
 
     time = models.CharField('Срок аренды', max_length=50)
+
+    class Meta:
+        verbose_name = 'Срок'
+        verbose_name_plural = 'Сроки'
+    
+    def __str__(self):
+        return self.time
+
+
+class Cost(models.Model):
+    """Модель стоимости аренды."""
+    time = models.ForeignKey(
+        RentalRate,
+        verbose_name='Срок арендной платы',
+        on_delete=models.CASCADE
+    )
     cost = models.PositiveIntegerField('Стоимость')
     console = models.ForeignKey(
         Console,
@@ -37,9 +58,11 @@ class RentalRate(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Аренда'
-        verbose_name_plural = 'Аренды'
-
+        verbose_name = 'Цена'
+        verbose_name_plural = 'Цены'
+    
+    def __int__(self):
+        return self.cost
 
 class Order(models.Model):
     """Модель заказа приставки."""
@@ -60,7 +83,7 @@ class Order(models.Model):
     console = models.ForeignKey(
         Console,
         verbose_name='Приставка',
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         blank=True,
         null=True,
         help_text='Выберите приставку'
@@ -68,6 +91,11 @@ class Order(models.Model):
     pub_date = models.DateTimeField(
         'Дата заказа',
         auto_now_add=True
+    )
+    cost = models.ForeignKey(
+        Cost,
+        verbose_name='Стоимость',
+        on_delete=models.CASCADE,
     )
 
     class Meta:
