@@ -1,7 +1,7 @@
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 
-from rent.models import Console, Cost, RentalRate, Order, User
+from rent.models import Console, Order, User
 
 
 class ConsoleSerializer(serializers.ModelSerializer):
@@ -9,20 +9,6 @@ class ConsoleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Console
-        fields = '__all__'
-
-
-class RentalRateSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = RentalRate
-        fields = '__all__'
-
-
-class CostSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Cost
         fields = '__all__'
 
 

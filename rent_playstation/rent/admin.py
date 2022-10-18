@@ -1,9 +1,8 @@
 from django.contrib import admin
+from django.shortcuts import get_object_or_404
 
-from .models import Console, Cost, RentalRate, Order
+from .models import Console, Order
 
-def view_cost_rent(self):
-    return Cost.cost.filter('consol__period')
 
 @admin.register(Console)
 class ConsoleAdmin(admin.ModelAdmin):
@@ -36,46 +35,19 @@ class ConsoleAdmin(admin.ModelAdmin):
     def make_rented(modeladmin, request, queryset):
         queryset.update(status='R')
 
-    
-
-
-@admin.register(RentalRate)
-class RentalRateAdmin(admin.ModelAdmin):
-    """Админка срока аренды."""
-
-    list_display = (
-        'pk',
-        'time',
-    )
-    empty_value_display = '-пусто-'
-
-
-@admin.register(Cost)
-class CostAdmin(admin.ModelAdmin):
-    """Админка стоимости арендной платы."""
-
-    list_display = (
-        'pk',
-        'time',
-        'console',
-        'cost',
-    )
-    empty_value_display = '-пусто-'
-
-
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     """Админка текущих заказов."""
-
-    cost = view_cost_rent
+    
     list_display = (
         'pk',
-        'pub_date',
         'user',
+        'pub_date',
         'console',
-        'period',
-        'cost',
+        'created_at',
+        'updated_at'
     )
     ordering = ['-pub_date']
-    readonly_fields = ('cost',)
+    # readonly_fields = ('user',)
+

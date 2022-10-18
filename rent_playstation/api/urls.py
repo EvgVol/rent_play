@@ -4,16 +4,15 @@ from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenVerifyView,
                                             TokenRefreshView)
 
-from .views import ConsoleViewSet, CostViewSet, RentalRateViewSet, OrderViewSet
+from .views import ConsoleViewSet, OrderViewSet
 
 v1_router = routers.DefaultRouter()
 v1_router.register(r'consoles', ConsoleViewSet, basename='consoles')
-v1_router.register(
-    r'rental-rate',
-    RentalRateViewSet,
-    basename='rental_rate'
-)
-v1_router.register(r'costs', CostViewSet, basename='costs')
+# v1_router.register(
+#     r'rental-rate',
+#     RentalRateViewSet,
+#     basename='rental_rate'
+# )
 v1_router.register(r'orders', OrderViewSet, basename='orders')
 
 jwt_patterns = [
