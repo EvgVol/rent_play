@@ -21,16 +21,11 @@ class ConsoleAdmin(admin.ModelAdmin):
     actions = ['make_rented', 'make_free']
     list_filter = ('title', )
     search_fields = ("title__startswith", )
-    
-    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
-    #     if db_field.status == 'Свободно':
-    #         kwargs['empty_label'] = '-пусто-'
-    #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
     @admin.action(description='Свободно')
     def make_free(self, request, queryset):
         queryset.update(status='F')
-    
+
     @admin.action(description='В аренде')
     def make_rented(modeladmin, request, queryset):
         queryset.update(status='R')
@@ -39,7 +34,6 @@ class ConsoleAdmin(admin.ModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     """Админка текущих заказов."""
-    
     list_display = (
         'pk',
         'user',

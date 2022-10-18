@@ -59,13 +59,13 @@ class Order(models.Model):
         'Дата начало аренды',
         blank=True,
         help_text='Укажите начало даты аренды',
-        default=datetime.date.today
+        default=datetime.date.today()
     )
     updated_at = models.DateField(
         'Дата окончание аренды',
         blank=True,
         help_text='Укажите окончание даты аренды',
-        default=datetime.date.today
+        default=datetime.date.today()
     )
 
     class Meta:
@@ -74,9 +74,9 @@ class Order(models.Model):
 
     def time_rent(self):
         if self.created_at == self.updated_at:
-            return self.created_at
+            return f'{1} сутки'
         else:
-            return self.updated_at - self.created_at
+            return f'{(self.updated_at - self.created_at).days} суток'
 
     def __str__(self):
-        return (f"Заказ №'{self.id}' от клиента '{self.user}' на аренду приставки '{self.console}' на время '{self.time_rent()}'")
+        return (f"Заказ №{self.id} от клиента {self.user} на аренду приставки {self.console} на {self.time_rent()}")
