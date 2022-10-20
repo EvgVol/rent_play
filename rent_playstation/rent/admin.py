@@ -17,7 +17,6 @@ class ConsoleAdmin(admin.ModelAdmin):
         'status'
     )
     list_editable = ['status']
-    # empty_value_display = '-пусто-'
     actions = ['make_rented', 'make_free']
     list_filter = ('title', )
     search_fields = ("title__startswith", )
@@ -34,6 +33,7 @@ class ConsoleAdmin(admin.ModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     """Админка текущих заказов."""
+
     list_display = (
         'pk',
         'user',

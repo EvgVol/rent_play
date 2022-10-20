@@ -1,5 +1,5 @@
 import datetime
-from email import message
+
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -14,16 +14,26 @@ class Console(models.Model):
         ('R', 'Арендовано'),
     ]
 
-    title = models.CharField('Название', max_length=200)
+    title = models.CharField(
+        'Название',
+        max_length=200,
+    )
     slug = models.SlugField('URL', unique=True)
     description = models.TextField('Описание')
     image = models.ImageField(
         'Изображение',
         upload_to='rent/',
         null=True,
-        blank=True
+        blank=True,
     )
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+    status = models.CharField(
+        'Статус',
+        max_length=1,
+        choices=STATUS_CHOICES,
+        default='F',
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         verbose_name_plural = 'Консоли'
@@ -47,9 +57,9 @@ class Order(models.Model):
         Console,
         verbose_name='Приставка',
         on_delete=models.CASCADE,
-        blank=True,
         null=True,
-        help_text='Выберите приставку'
+        help_text='Выберите приставку',
+
     )
     pub_date = models.DateTimeField(
         'Дата заказа',
@@ -57,15 +67,13 @@ class Order(models.Model):
     )
     created_at = models.DateField(
         'Дата начало аренды',
-        blank=True,
         help_text='Укажите начало даты аренды',
-        default=datetime.date.today()
+        default=datetime.date.today(),
     )
     updated_at = models.DateField(
         'Дата окончание аренды',
-        blank=True,
         help_text='Укажите окончание даты аренды',
-        default=datetime.date.today()
+        default=datetime.date.today(),
     )
 
     class Meta:
