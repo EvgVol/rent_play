@@ -19,12 +19,52 @@ class Console(models.Model):
         max_length=200,
     )
     slug = models.SlugField('URL', unique=True)
-    description = models.TextField('Описание')
+    description = models.TextField('Штрих-код')
     image = models.ImageField(
         'Изображение',
         upload_to='rent/',
         null=True,
         blank=True,
+    )
+    price_one_day = models.DecimalField(
+        max_digits = 6,
+        decimal_places = 2,
+        verbose_name='Стоимость за 1 день'
+    )
+    price_two_day = models.DecimalField(
+        max_digits = 6,
+        decimal_places = 2,
+        verbose_name='Стоимость за 2 дня'
+    )
+    price_three_day = models.DecimalField(
+        max_digits = 6,
+        decimal_places = 2,
+        verbose_name='Стоимость за 3 дня'
+    )
+    price_four_day = models.DecimalField(
+        max_digits = 6,
+        decimal_places = 2,
+        verbose_name='Стоимость за 4 дня'
+    )
+    price_five_day = models.DecimalField(
+        max_digits = 6,
+        decimal_places = 2,
+        verbose_name='Стоимость за 5 дней'
+    )
+    price_six_day = models.DecimalField(
+        max_digits = 6,
+        decimal_places = 2,
+        verbose_name='Стоимость за 6 дней'
+    )
+    price_week_day = models.DecimalField(
+        max_digits = 6,
+        decimal_places = 2,
+        verbose_name='Стоимость за неделю'
+    )
+    price_prolongation = models.DecimalField(
+        max_digits = 6,
+        decimal_places = 2,
+        verbose_name='Стоимость за продление'
     )
     status = models.CharField(
         'Статус',
@@ -58,8 +98,8 @@ class Order(models.Model):
         verbose_name='Приставка',
         on_delete=models.CASCADE,
         null=True,
+        related_name='consoles',
         help_text='Выберите приставку',
-
     )
     pub_date = models.DateTimeField(
         'Дата заказа',
@@ -82,9 +122,24 @@ class Order(models.Model):
 
     def time_rent(self):
         if self.created_at == self.updated_at:
-            return f'{1} сутки'
+            return 1
         else:
-            return f'{(self.updated_at - self.created_at).days} суток'
+            return (self.updated_at - self.created_at).days
+    
+    def time(self):
+        if self.time_rent() != 1:
+            return 'суток'
+        else:
+            return 'сутки'
 
     def __str__(self):
-        return (f"Заказ №{self.id} от клиента {self.user} на аренду приставки {self.console} на {self.time_rent()}")
+        return (f"Заказ №{self.id} от клиента {self.user} на аренду приставки {self.console} на {self.time_rent()} {self.time()}")
+
+
+# def get_time():
+#     days = (Order().time_rent())
+#     # console_client = (Order().)
+#     return Order().objects.get().all
+
+
+# get_time() 
