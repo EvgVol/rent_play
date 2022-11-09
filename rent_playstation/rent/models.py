@@ -2,6 +2,10 @@ import datetime
 
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.conf import settings
+from django.core.validators import (MaxValueValidator,
+                                    MinValueValidator,
+                                    validate_slug)
 
 User = get_user_model()
 
@@ -9,79 +13,62 @@ User = get_user_model()
 class Console(models.Model):
     """Модель игровых консолей."""
 
+    FREE = 'Свободно'
+    RENT = 'Занято'
+
     STATUS_CHOICES = [
-        ('F', 'Свободно'),
-        ('R', 'Арендовано'),
+        (FREE, 'Свободно'),
+        (RENT, 'Арендовано'),
     ]
 
-    title = models.CharField(
-        'Название',
-        max_length=200,
+    console = models.CharField(
+        'Наименовение консоли',
+        max_length=settings.LIMIT_LONG = 200,
     )
     slug = models.SlugField('URL', unique=True)
-    description = models.TextField('Штрих-код')
+    barcode = models.TextField('Штрих-код')
     image = models.ImageField(
         'Изображение',
         upload_to='rent/',
         null=True,
         blank=True,
     )
-    price_one_day = models.DecimalField(
-        max_digits = 6,
-        decimal_places = 2,
-        verbose_name='Стоимость за 1 день'
-    )
-    price_two_day = models.DecimalField(
-        max_digits = 6,
-        decimal_places = 2,
-        verbose_name='Стоимость за 2 дня'
-    )
-    price_three_day = models.DecimalField(
-        max_digits = 6,
-        decimal_places = 2,
-        verbose_name='Стоимость за 3 дня'
-    )
-    price_four_day = models.DecimalField(
-        max_digits = 6,
-        decimal_places = 2,
-        verbose_name='Стоимость за 4 дня'
-    )
-    price_five_day = models.DecimalField(
-        max_digits = 6,
-        decimal_places = 2,
-        verbose_name='Стоимость за 5 дней'
-    )
-    price_six_day = models.DecimalField(
-        max_digits = 6,
-        decimal_places = 2,
-        verbose_name='Стоимость за 6 дней'
-    )
-    price_week_day = models.DecimalField(
-        max_digits = 6,
-        decimal_places = 2,
-        verbose_name='Стоимость за неделю'
-    )
-    price_prolongation = models.DecimalField(
-        max_digits = 6,
-        decimal_places = 2,
-        verbose_name='Стоимость за продление'
-    )
     status = models.CharField(
         'Статус',
-        max_length=1,
+        max_length=max(len(status) for status, _ in STATUS_CHOICES)
         choices=STATUS_CHOICES,
-        default='F',
-        blank=True,
-        null=True,
+        default=FREE,
+        blank=True
     )
 
     class Meta:
         verbose_name_plural = 'Консоли'
         verbose_name = 'Консоль'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['console', 'barcode'],
+                name='unique_console_barcode',
+            )
+        ]
+
+    @property
+    def is_free(self):
+        return self.status == self.FREE
+
+    @property
+    def is_rent(self):
+        return self.status == self.RENT
 
     def __str__(self):
-        return self.title[:20]
+        return f'Консоль {self.console}, штрих код: {self.barcode}'
 
+
+class Game(models.Model):
+    title = models.CharField(
+        'Наименовение игры',
+        max_length=settings.LIMIT_LONG = 200
+    )
+    description = 
 
 class Order(models.Model):
     """Модель заказа приставки."""
