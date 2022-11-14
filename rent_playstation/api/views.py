@@ -3,13 +3,14 @@ from django.db import IntegrityError
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import (filters, permissions, response, status, views,
-                            viewsets)
+from rest_framework import (filters, permissions, response,
+                            status, views, viewsets)
 from rest_framework.decorators import action, api_view
 from rest_framework.generics import get_object_or_404
 from rest_framework_simplejwt.tokens import AccessToken
 
-from .serializers import SignUpSerializer, GetTokenSerializer, UsersSerializer, PersSerializer
+from .serializers import (SignUpSerializer, GetTokenSerializer,
+                          UsersSerializer, PersSerializer,)
 from .permissions import IsAdmin
 from user.models import User
 
@@ -68,6 +69,8 @@ def get_token(request):
 
 
 class UsersViewSet(viewsets.ModelViewSet):
+    """UsersViewSet работа с пользователями."""
+
     queryset = User.objects.all()
     serializer_class = UsersSerializer
     permission_classes = (IsAdmin,)
@@ -96,4 +99,3 @@ class UsersViewSet(viewsets.ModelViewSet):
         return response.Response(
             serializer.data, status=status.HTTP_200_OK
         )
-
