@@ -110,3 +110,17 @@ SIMPLE_JWT = {
 }
 
 LIMIT_LONG = 200
+LENG_DATA_USER = 150
+LENG_SLUG = 50
+LENG_MAX = 256
+LENG_EMAIL = 254
+LENG_CUT = 30
+
+
+USERNAME_REGEX = r'[\w\.@+-]+'
+
+NOT_ALLOWED_ME = ('Нельзя создать пользователя с '
+                  'именем: << {username} >> - это имя запрещено!')
+
+NOT_ALLOWED_CHAR_MSG = ('{chars} недопустимые символы '
+                        'в имени пользователя {username}.')

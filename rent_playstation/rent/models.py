@@ -23,7 +23,7 @@ class Console(models.Model):
 
     console = models.CharField(
         'Наименовение консоли',
-        max_length=settings.LIMIT_LONG = 200,
+        max_length=settings.LIMIT_LONG,
     )
     slug = models.SlugField('URL', unique=True)
     barcode = models.TextField('Штрих-код')
@@ -35,7 +35,7 @@ class Console(models.Model):
     )
     status = models.CharField(
         'Статус',
-        max_length=max(len(status) for status, _ in STATUS_CHOICES)
+        max_length=max(len(status) for status, _ in STATUS_CHOICES),
         choices=STATUS_CHOICES,
         default=FREE,
         blank=True
@@ -64,11 +64,12 @@ class Console(models.Model):
 
 
 class Game(models.Model):
+    """Модель игр."""
     title = models.CharField(
         'Наименовение игры',
-        max_length=settings.LIMIT_LONG = 200
+        max_length=settings.LIMIT_LONG,
     )
-    description = 
+    description = models.TextField('Описание')
 
 class Order(models.Model):
     """Модель заказа приставки."""
@@ -121,12 +122,3 @@ class Order(models.Model):
 
     def __str__(self):
         return (f"Заказ №{self.id} от клиента {self.user} на аренду приставки {self.console} на {self.time_rent()} {self.time()}")
-
-
-# def get_time():
-#     days = (Order().time_rent())
-#     # console_client = (Order().)
-#     return Order().objects.get().all
-
-
-# get_time() 
