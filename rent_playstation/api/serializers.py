@@ -3,11 +3,11 @@ from django.conf import settings
 from rest_framework import serializers
 
 from user.validators import validate_username
-from rent.models import Console, Order
+from rent.models import Console
 from user.models import User
 
 
-class SingUpSerializer(serializers.Serializer):
+class SignUpSerializer(serializers.Serializer):
     """Сериализатор для регистрации."""
 
     email = serializers.EmailField(required=True)
