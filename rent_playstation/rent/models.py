@@ -1,38 +1,46 @@
 import datetime
 
-from django.contrib.auth import get_user_model
 from django.db import models
 from django.conf import settings
-from django.core.validators import (MaxValueValidator,
-                                    MinValueValidator,
-                                    validate_slug)
 
-User = get_user_model()
+from user.models import User
 
 
-class Console(models.Model):
-    """Модель игровых консолей."""
+class AbstractConsoleAndGame(models.Model):
+    """Абстрактный класс для консоли и игр."""
 
-    FREE = 'Свободно'
-    RENT = 'Занято'
-
-    STATUS_CHOICES = [
-        (FREE, 'Свободно'),
-        (RENT, 'Арендовано'),
-    ]
-
-    console = models.CharField(
-        'Наименовение консоли',
+    title = models.CharField(
+        'Наименовение',
         max_length=settings.LIMIT_LONG,
     )
-    slug = models.SlugField('URL', unique=True)
-    barcode = models.TextField('Штрих-код')
     image = models.ImageField(
         'Изображение',
         upload_to='rent/',
         null=True,
         blank=True,
     )
+    description = models.TextField('Описание')
+    slug = models.SlugField('URL', unique=True)
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return self.title[:settings.LENG_CUT]
+
+
+class Console(AbstractConsoleAndGame):
+    """Модель игровых консолей."""
+
+    FREE = 'free'
+    RENT = 'rent'
+
+    STATUS_CHOICES = [
+        (FREE, 'Свободно'),
+        (RENT, 'Арендовано'),
+    ]
+
+    barcode = models.TextField('Штрих-код')
     status = models.CharField(
         'Статус',
         max_length=max(len(status) for status, _ in STATUS_CHOICES),
@@ -41,13 +49,13 @@ class Console(models.Model):
         blank=True
     )
 
-    class Meta:
+    class Meta(AbstractConsoleAndGame.Meta):
         verbose_name_plural = 'Консоли'
         verbose_name = 'Консоль'
         constraints = [
             models.UniqueConstraint(
-                fields=['console', 'barcode'],
-                name='unique_console_barcode',
+                fields=['title', 'barcode'],
+                name='unique_title_barcode',
             )
         ]
 
@@ -59,66 +67,88 @@ class Console(models.Model):
     def is_rent(self):
         return self.status == self.RENT
 
-    def __str__(self):
-        return f'Консоль {self.console}, штрих код: {self.barcode}'
-
 
 class Game(models.Model):
     """Модель игр."""
-    title = models.CharField(
-        'Наименовение игры',
-        max_length=settings.LIMIT_LONG,
-    )
-    description = models.TextField('Описание')
 
-class Order(models.Model):
-    """Модель заказа приставки."""
-
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='client',
-        default=User,
-        verbose_name='Клиент'
+    multu_user = models.BooleanField(
+        'Многопользовательская',
+        default=False
     )
+
+    class Meta(AbstractConsoleAndGame.Meta):
+        verbose_name_plural = 'Игры'
+        verbose_name = 'Игра'
+
+
+class RentPay(models.Model):
+    """Модель арендной платы."""
+
     console = models.ForeignKey(
         Console,
         verbose_name='Приставка',
         on_delete=models.CASCADE,
-        null=True,
         related_name='consoles',
         help_text='Выберите приставку',
     )
-    pub_date = models.DateTimeField(
-        'Дата заказа',
-        auto_now_add=True
-    )
-    created_at = models.DateField(
-        'Дата начало аренды',
-        help_text='Укажите начало даты аренды',
-        default=datetime.date.today(),
-    )
-    updated_at = models.DateField(
-        'Дата окончание аренды',
-        help_text='Укажите окончание даты аренды',
-        default=datetime.date.today(),
-    )
 
-    class Meta:
-        verbose_name = 'Заказ'
-        verbose_name_plural = 'Заказы'
 
-    def time_rent(self):
-        if self.created_at == self.updated_at:
-            return 1
-        else:
-            return (self.updated_at - self.created_at).days
+
+
+
+
+
+
+
+
+
+
+
+
+    # user = models.ForeignKey(
+    #     User,
+    #     on_delete=models.CASCADE,
+    #     related_name='client',
+    #     default=User,
+    #     verbose_name='Клиент'
+    # )
+    # console = models.ForeignKey(
+    #     Console,
+    #     verbose_name='Приставка',
+    #     on_delete=models.CASCADE,
+    #     related_name='consoles',
+    #     help_text='Выберите приставку',
+    # )
+    # pub_date = models.DateTimeField(
+    #     'Дата заказа',
+    #     auto_now_add=True
+    # )
+    # created_at = models.DateField(
+    #     'Дата начало аренды',
+    #     help_text='Укажите начало даты аренды',
+    #     default=datetime.date.today(),
+    # )
+    # updated_at = models.DateField(
+    #     'Дата окончание аренды',
+    #     help_text='Укажите окончание даты аренды',
+    #     default=datetime.date.today(),
+    # )
+
+    # class Meta:
+    #     verbose_name = 'Заказ'
+    #     verbose_name_plural = 'Заказы'
+
+    # def time_rent(self):
+    #     if self.created_at == self.updated_at:
+    #         return 1
+    #     else:
+    #         return (self.updated_at - self.created_at).days
     
-    def time(self):
-        if self.time_rent() != 1:
-            return 'суток'
-        else:
-            return 'сутки'
+    # def time(self):
+    #     if self.time_rent() != 1:
+    #         return 'суток'
+    #     else:
+    #         return 'сутки'
 
-    def __str__(self):
-        return (f"Заказ №{self.id} от клиента {self.user} на аренду приставки {self.console} на {self.time_rent()} {self.time()}")
+    # def __str__(self):
+    #     return (f"Заказ №{self.id} от клиента {self.user} на аренду приставки {self.console} на {self.time_rent()} {self.time()}")
