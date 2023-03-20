@@ -2,10 +2,18 @@ from django.db import models
 from django.core import validators
 
 
-class AbstractConsoleAndGame(models.Model):
-    """Абстрактный класс для консоли и игр."""
+class Console(models.Model):
+    """Модель игровых консолей."""
 
-    title = models.CharField(
+    FREE = 'free'
+    RENT = 'rent'
+
+    STATUS_CHOICES = [
+        (FREE, 'Свободно'),
+        (RENT, 'Арендовано'),
+    ]
+
+    name = models.CharField(
         'Наименовение',
         max_length=50,
     )
@@ -17,25 +25,6 @@ class AbstractConsoleAndGame(models.Model):
     )
     description = models.TextField('Описание')
     slug = models.SlugField('URL', unique=True, validators=[validators.validate_slug],)
-
-    class Meta:
-        abstract = True
-
-    def __str__(self):
-        return self.title
-
-
-class Console(AbstractConsoleAndGame):
-    """Модель игровых консолей."""
-
-    FREE = 'free'
-    RENT = 'rent'
-
-    STATUS_CHOICES = [
-        (FREE, 'Свободно'),
-        (RENT, 'Арендовано'),
-    ]
-
     barcode = models.TextField('Штрих-код')
     status = models.CharField(
         'Статус',
@@ -45,13 +34,13 @@ class Console(AbstractConsoleAndGame):
         blank=True
     )
 
-    class Meta(AbstractConsoleAndGame.Meta):
+    class Meta:
         verbose_name_plural = 'Консоли'
         verbose_name = 'Консоль'
         constraints = [
             models.UniqueConstraint(
-                fields=['title', 'barcode'],
-                name='unique_title_barcode',
+                fields=['name', 'barcode'],
+                name='unique_name_barcode',
             )
         ]
 
@@ -63,29 +52,5 @@ class Console(AbstractConsoleAndGame):
     def is_rent(self):
         return self.status == self.RENT
 
-
-class Game(AbstractConsoleAndGame):
-    """Модель игр."""
-
-    multu_user = models.BooleanField(
-        'Многопользовательская',
-        default=False
-    )
-
-    class Meta(AbstractConsoleAndGame.Meta):
-        verbose_name_plural = 'Игры'
-        verbose_name = 'Игра'
-
-
-class GamesInConsole(models.Model):
-    """Модель связывает Game и Console"""
-
-    console = models.ForeignKey(
-        Console,
-        verbose_name='Консоль',
-        on_delete=models.CASCADE,
-        related_name='game_list',
-    )
-    games = models.ManyToManyField(
-        Game, verbose_name='Игры'
-    )
+    def __str__(self):
+        return self.name

@@ -30,3 +30,11 @@ NOT_ALLOWED_CHAR_MSG = (
 )
 
 UNIQUE_USERNAME = 'Пользователь с таким именем уже существует!'
+
+WARNING_LIMIT_CHAR = f'Ограничение {Limits.MAX_LEN_TAG} символов!'
+
+NOT_COLOR_HEX = 'Введенное значение не является цветом в формате HEX'
+
+COLOR_NO_UNIQUE = 'Такой цвет уже существует!'
+
+HELP_CHOISE_COLOR = 'Для выбора цвета воспользуйтесь цветовой панелью.'

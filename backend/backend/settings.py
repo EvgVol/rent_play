@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'users',
     'consoles',
+    'games',
+    'colorfield',
 ]
 
 MIDDLEWARE = [
