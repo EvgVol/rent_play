@@ -1,4 +1,5 @@
 from django.db import models
+from django.core import validators
 
 
 class AbstractConsoleAndGame(models.Model):
@@ -15,7 +16,7 @@ class AbstractConsoleAndGame(models.Model):
         blank=True,
     )
     description = models.TextField('Описание')
-    slug = models.SlugField('URL', unique=True)
+    slug = models.SlugField('URL', unique=True, validators=[validators.validate_slug],)
 
     class Meta:
         abstract = True
@@ -74,3 +75,17 @@ class Game(AbstractConsoleAndGame):
     class Meta(AbstractConsoleAndGame.Meta):
         verbose_name_plural = 'Игры'
         verbose_name = 'Игра'
+
+
+class GamesInConsole(models.Model):
+    """Модель связывает Game и Console"""
+
+    console = models.ForeignKey(
+        Console,
+        verbose_name='Консоль',
+        on_delete=models.CASCADE,
+        related_name='game_list',
+    )
+    games = models.ManyToManyField(
+        Game, verbose_name='Игры'
+    )
