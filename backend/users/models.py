@@ -12,18 +12,7 @@ from core import texts, validators
 
 class User(AbstractUser):
     """Модель пользователя."""
-
-    
-    GAMER = 'gamer'
-    ADMIN = 'admin'
-    MODERATOR = 'moderator'
-
-    ROLE_CHOICES = (
-        (GAMER, 'Геймер'),
-        (ADMIN, 'Администратор'),
-        (MODERATOR, 'Модератор'),
-    )
-        
+  
     username = models.CharField(
         'Уникальный юзернейм',
         validators=(validators.validate_username,),
@@ -60,16 +49,6 @@ class User(AbstractUser):
         help_text=texts.USERS_HELP_EMAIL
     )
 
-    role = models.CharField(
-        'Роль',
-        max_length=max(len(role) for role, _ in ROLE_CHOICES),
-        choices=ROLE_CHOICES,
-        default=GAMER,
-        blank=True
-    )
-
-    avatar = models.ImageField('Аватар', upload_to='profile_images', default='programmer.svg')
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ('username', 'first_name', 'last_name',)
 
@@ -83,14 +62,6 @@ class User(AbstractUser):
                 name='unique_username_email',
             )
         ]
-
-    @property
-    def is_moderator(self):
-        return self.role == self.MODERATOR
-
-    @property
-    def is_admin(self):
-        return self.role == self.ADMIN or self.is_superuser or self.is_staff
 
     def __str__(self):
         return f'{self.username}: {self.email}'
