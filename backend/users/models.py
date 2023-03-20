@@ -44,6 +44,7 @@ class User(AbstractUser):
         blank=True,
         help_text=texts.USERS_HELP_EMAIL
     )
+    
 
     class Meta:
         ordering = ('username',)

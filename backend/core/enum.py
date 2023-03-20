@@ -8,4 +8,3 @@ class Limits(IntEnum):
     MAX_LEN_USERS_CHARFIELD = 32
     # Минимальная длина юзернейма (User)
     MIN_LEN_USERNAME = 3
-
