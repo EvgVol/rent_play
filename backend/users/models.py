@@ -6,19 +6,31 @@ AbstractUser из Django для переопределения полей обя
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-from core.enums import Limits
+from core.enum import Limits
 from core import texts, validators
 
 
 class User(AbstractUser):
     """Модель пользователя."""
 
+    
+    GAMER = 'gamer'
+    ADMIN = 'admin'
+    MODERATOR = 'moderator'
+
+    ROLE_CHOICES = (
+        (GAMER, 'Геймер'),
+        (ADMIN, 'Администратор'),
+        (MODERATOR, 'Модератор'),
+    )
+        
     username = models.CharField(
         'Уникальный юзернейм',
         validators=(validators.validate_username,),
         max_length=Limits.MAX_LEN_USERS_CHARFIELD.value,
         unique=True,
-        blank=True,
+        blank=False,
+        null=False,
         help_text=texts.USERS_HELP_UNAME,
         error_messages={'unique': texts.UNIQUE_USERNAME},
     )
@@ -26,14 +38,16 @@ class User(AbstractUser):
     first_name = models.CharField(
         'Имя',
         max_length=Limits.MAX_LEN_USERS_CHARFIELD.value,
-        blank=True,
+        blank=False,
+        null=False,
         help_text=texts.USERS_HELP_FNAME,
     )
 
     last_name = models.CharField(
         'Фамилия',
         max_length=Limits.MAX_LEN_USERS_CHARFIELD.value,
-        blank=True,
+        blank=False,
+        null=False,
         help_text=texts.USERS_HELP_FNAME,
     )
 
@@ -41,15 +55,42 @@ class User(AbstractUser):
         'Электронная почта',
         max_length=Limits.MAX_LEN_EMAIL_FIELD.value,
         unique=True,
-        blank=True,
+        blank=False,
+        null=False,
         help_text=texts.USERS_HELP_EMAIL
     )
-    
+
+    role = models.CharField(
+        'Роль',
+        max_length=max(len(role) for role, _ in ROLE_CHOICES),
+        choices=ROLE_CHOICES,
+        default=GAMER,
+        blank=True
+    )
+
+    avatar = models.ImageField('Аватар', upload_to='profile_images', default='programmer.svg')
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ('username', 'first_name', 'last_name',)
 
     class Meta:
         ordering = ('username',)
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['username', 'email'],
+                name='unique_username_email',
+            )
+        ]
+
+    @property
+    def is_moderator(self):
+        return self.role == self.MODERATOR
+
+    @property
+    def is_admin(self):
+        return self.role == self.ADMIN or self.is_superuser or self.is_staff
 
     def __str__(self):
         return f'{self.username}: {self.email}'
