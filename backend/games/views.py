@@ -1,6 +1,6 @@
 from rest_framework import permissions, viewsets
 
-from api.serializers import GameSerializer, TagSerializer
+from .serializers import GameSerializer, TagSerializer
 from .models import Game, Tag
 
 
