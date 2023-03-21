@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Game, Tag
+from games.models import Game, Tag
 
 
 class GameSerializer(serializers.ModelSerializer):
