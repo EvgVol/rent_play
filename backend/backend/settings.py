@@ -21,8 +21,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'users',
     'consoles',
-    'games',
-    'colorfield',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +52,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.wsgi.application'
+WSGI_APPLICATION = 'rent_play.wsgi.application'
 
 DATABASES = {
     'default': {

@@ -1,18 +1,11 @@
 from django.contrib import admin
 
-from .models import Console, Game
+from .models import Console
 
 
 @admin.register(Console)
 class ConsoleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image', 'description', 'slug', 'barcode', 'status', )
+    list_display = ('name', 'image', 'description', 'slug', 'barcode', 'status', )
     readonly_fields = ('status',)
-    list_filter = ('title', )
-    search_fields = ('title__startswith', )
-    
-
-@admin.register(Game)
-class GameAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image', 'description', 'slug', 'multu_user', )
-    list_filter = ('title', )
-    search_fields = ('title__startswith', )
+    list_filter = ('name', )
+    search_fields = ('name__startswith', )

@@ -7,7 +7,7 @@ from core import texts
 
 
 class Tag(models.Model):
-    """Модель тегов к играми"""
+    """Модель тегов к играми."""
 
     name = models.CharField(
         'Наименовение',
@@ -15,6 +15,7 @@ class Tag(models.Model):
         unique=True,
         help_text=texts.WARNING_LIMIT_CHAR,
     )
+
     color = ColorField(
         'Цветовой HEX-код',
         unique=True,
@@ -29,6 +30,8 @@ class Tag(models.Model):
         error_messages={'unique': texts.COLOR_NO_UNIQUE},
         help_text=texts.HELP_CHOISE_COLOR
     )
+    slug = models.SlugField('URL', unique=True,
+                            validators=[validators.validate_slug],)
 
     class Meta:
         verbose_name_plural = 'Теги'
@@ -43,12 +46,12 @@ class Game(models.Model):
 
     name = models.CharField('Наименовение',
                             max_length=Limits.MAX_LEN_TAG.value,)
-    image = models.ImageField('Изображение', upload_to='rent/',
+    image = models.ImageField('Изображение', upload_to='games/',
                               null=True, blank=True,)
     description = models.TextField('Описание')
     slug = models.SlugField('URL', unique=True,
                             validators=[validators.validate_slug],)
-    tags = models.ForeignKey(verbose_name='Тег', blank=True,)
+    tags = models.ManyToManyField(Tag, verbose_name='Теги')
 
     class Meta:
         verbose_name_plural = 'Игры'

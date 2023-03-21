@@ -19,7 +19,7 @@ class Console(models.Model):
     )
     image = models.ImageField(
         'Изображение',
-        upload_to='rent/',
+        upload_to='consoles/',
         null=True,
         blank=True,
     )
