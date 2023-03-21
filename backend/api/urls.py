@@ -3,13 +3,17 @@ from rest_framework import routers
 
 from users.views import CustomUserViewSet
 from consoles.views import ConsoleViewSet 
-from games.views import GameViewSet, TagViewSet
+from games.views import GameViewSet, TagViewSet, ReviewViewSet, CommentViewSet
 
 
 router = routers.DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename='users')
 router.register(r'consoles', ConsoleViewSet, basename='consoles')
 router.register(r'games', GameViewSet, basename='games')
+router.register(r'games/(?P<game_id>\d+)/reviews',
+                ReviewViewSet, basename='reviews')
+router.register(r'games/(?P<game_id>\d+)/reviews/(?P<review_id>\d+)/comments',
+                CommentViewSet, basename='comments')
 router.register(r'tags', TagViewSet, basename='tags')
 
 urlpatterns = [

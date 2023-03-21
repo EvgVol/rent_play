@@ -1,11 +1,14 @@
 from urllib.parse import unquote
 
 from rest_framework import permissions, viewsets
+from rest_framework.generics import get_object_or_404
 
 from api.pagination import LimitPageNumberPagination
 from .filters import GameFilter
-from .serializers import GameSerializer, TagSerializer
-from .models import Game, Tag
+from .serializers import (GameSerializer, TagSerializer,
+                          ReviewCreateSerializer, CommentSerializer)
+from .permissions import IsAuthorOrAdminOrReadOnly
+from .models import Game, Tag, Review
 from core.enum import Regex
 
 
@@ -45,4 +48,45 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = TagSerializer
     permission_classes = (permissions.AllowAny,)
     pagination_class = None
-    
+
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    """Отображение действий с отзывами."""
+
+    serializer_class = ReviewCreateSerializer
+    permission_classes = (IsAuthorOrAdminOrReadOnly,)
+
+    def get_game(self):
+        return get_object_or_404(
+            Game,
+            id=self.kwargs.get('game_id')
+        )
+
+    def get_queryset(self):
+        return self.get_game().reviews.all()
+
+    def perform_create(self, serializer):
+        serializer.save(
+            author=self.request.user, game=self.get_game()
+        )
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    """Отображение действий с комментариями."""
+
+    serializer_class = CommentSerializer
+    permission_classes = (IsAuthorOrAdminOrReadOnly,)
+
+    def get_review(self):
+        return get_object_or_404(
+            Review,
+            id=self.kwargs.get('review_id'),
+        )
+
+    def get_queryset(self):
+        return self.get_review().comments.all()
+
+    def perform_create(self, serializer):
+        serializer.save(
+            author=self.request.user, review=self.get_review()
+        )
