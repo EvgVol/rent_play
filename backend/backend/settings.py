@@ -20,7 +20,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'users',
+    'games',
     'consoles',
+    'colorfield',
+    'core'
 ]
 
 MIDDLEWARE = [
@@ -52,7 +55,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'rent_play.wsgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {

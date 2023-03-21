@@ -20,7 +20,12 @@ class GameAdmin(admin.ModelAdmin):
         'image',
         'description',
         'slug',
-        'tags'
+        'get_tags'
     )
     list_filter = ('name', 'tags',)
     search_fields = ('name', 'tags')
+
+    @admin.display(description='Тэги')
+    def get_tags(self, obj):
+        """Получаем теги."""
+        return ', '.join(_.name for _ in obj.tags.all())

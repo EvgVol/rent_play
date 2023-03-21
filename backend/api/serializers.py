@@ -1,7 +1,8 @@
 from rest_framework import serializers
 
 from users.models import User
-from consoles.models import Console, Game
+from consoles.models import Console
+from games.models import Game, Tag
 
 
 class UsersSerializer(serializers.ModelSerializer):
@@ -25,4 +26,12 @@ class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
+        fields = '__all__'
+
+
+class TagSerializer(serializers.ModelSerializer):
+    """Сериализатор для игр."""
+
+    class Meta:
+        model = Tag
         fields = '__all__'
