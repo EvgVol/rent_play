@@ -4,6 +4,7 @@ from colorfield.fields import ColorField
 
 from core.enum import Limits, Regex
 from core import texts
+from users.models import User
 
 
 class Tag(models.Model):
@@ -59,3 +60,76 @@ class Game(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ReviewAndCommentModel(models.Model):
+    """Абстрактная модель. Добавляет текст, автора и дату публикации."""
+
+    text = models.CharField(
+        'Текст отзыва',
+        max_length=Limits.LENG_MAX_REVIEW.value,
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='Пользователь'
+    )
+    pub_date = models.DateTimeField(
+        'Дата публикации отзыва',
+        auto_now_add=True,
+    )
+
+    class Meta:
+        abstract = True
+        ordering = ('-pub_date',)
+
+    def __str__(self):
+        return self.text[:Limits.LENG_CUT.value]
+
+
+class Review(ReviewAndCommentModel):
+    """Модель отзыва к игре."""
+
+    game = models.ForeignKey(
+        Game,
+        on_delete=models.CASCADE,
+        verbose_name='Игра'
+    )
+    score = models.PositiveSmallIntegerField(
+        'Оценка',
+        db_index=True,
+        validators=(
+            validators.MinValueValidator(1),
+            validators.MaxValueValidator(10)
+        ),
+        error_messages={
+            'validators': 'Оценка от 1 до 10!'
+        },
+        default=1
+    )
+
+    class Meta(ReviewAndCommentModel.Meta):
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+        default_related_name = 'reviews'
+        constraints = [
+            models.UniqueConstraint(
+                fields=('game', 'author',),
+                name='unique_review',
+            )
+        ]
+
+
+class Comment(ReviewAndCommentModel):
+    """Модель комментария к отзыву."""
+
+    review = models.ForeignKey(
+        Review,
+        on_delete=models.CASCADE,
+        verbose_name='Отзыв'
+    )
+
+    class Meta(ReviewAndCommentModel.Meta):
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+        default_related_name = 'comments'

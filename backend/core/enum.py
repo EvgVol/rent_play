@@ -12,6 +12,10 @@ class Limits(IntEnum):
     MAX_LEN_TAG = 50
     # Максимальная длина цвета
     LENG_COLOR = 7
+    # Максимальная длина отзыва
+    LENG_MAX_REVIEW = 256
+    # Ограничение длины отзыва в админке.
+    LENG_CUT = 30
 
 class Regex:
     # Регулярное выражение для цвета тэга
