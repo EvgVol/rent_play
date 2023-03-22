@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class RentConfig(AppConfig):
+class RentsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'rent'
-    verbose_name = 'Аренда'
+    name = 'rents'
+    verbose_name = 'Заказы'

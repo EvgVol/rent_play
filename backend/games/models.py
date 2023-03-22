@@ -48,7 +48,7 @@ class Game(models.Model):
     name = models.CharField('Наименовение',
                             max_length=Limits.MAX_LEN_TAG.value,)
     image = models.ImageField('Изображение', upload_to='games/',
-                              null=True, blank=True,)
+                               blank=False,)
     description = models.TextField('Описание')
     slug = models.SlugField('URL', unique=True,
                             validators=[validators.validate_slug],)

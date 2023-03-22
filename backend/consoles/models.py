@@ -14,16 +14,15 @@ class Console(models.Model):
     image = models.ImageField(
         'Изображение',
         upload_to='consoles/',
-        null=True,
-        blank=True,
+        blank=False,
     )
     description = models.TextField('Описание')
     slug = models.SlugField('URL', unique=True, validators=[validators.validate_slug],)
     barcode = models.TextField('Штрих-код')
 
     class Meta:
-        verbose_name_plural = 'Консоли'
-        verbose_name = 'Консоль'
+        verbose_name_plural = 'Игровые приставки'
+        verbose_name = 'Игровая приставка'
         constraints = [
             models.UniqueConstraint(
                 fields=['name', 'barcode'],
