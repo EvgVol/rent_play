@@ -54,17 +54,17 @@ class Rent(models.Model):
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
-        default_related_name = 'recipes'
+        # default_related_name = 'recipes'
         ordering = ('-pub_date',)
-        constraints = (
-            models.UniqueConstraint(
-                fields=('name', 'author'),
-                name='unique_for_author',
-            ),
-        )
+        # constraints = (
+        #     models.UniqueConstraint(
+        #         fields=('name', 'author'),
+        #         name='unique_for_author',
+        #     ),
+        # )
 
     def __str__(self):
-        return f'Пользователь {self.user.username} забронировал {self.console.name} на {self.time} дней'
+        return f'Пользователь {self.user.username} забронировал {self.console} на {self.time} дней'
     
 
 class GamesInRent(models.Model):
