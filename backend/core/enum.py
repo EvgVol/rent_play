@@ -16,6 +16,8 @@ class Limits(IntEnum):
     LENG_MAX_REVIEW = 256
     # Ограничение длины отзыва в админке.
     LENG_CUT = 30
+    # Минимальное время аренды
+    TIME_MIN_AMOUNT = 1
 
 class Regex:
     # Регулярное выражение для цвета тэга

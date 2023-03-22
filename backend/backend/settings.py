@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'api',
     'users',
     'games',
+    'rent',
     'consoles',
     'colorfield',
     'core',
