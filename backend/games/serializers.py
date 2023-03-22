@@ -7,9 +7,12 @@ from games.models import Game, Tag, Review, Comment
 class GameSerializer(serializers.ModelSerializer):
     """Сериализатор для игр."""
 
+    rating = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Game
-        fields = '__all__'
+        fields = ('id', 'name', 'image', 'description',
+                  'slug', 'tags', 'rating')
 
 
 class TagSerializer(serializers.ModelSerializer):

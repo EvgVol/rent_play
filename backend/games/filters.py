@@ -6,8 +6,10 @@ from .models import Game
 class GameFilter(FilterSet):
     """Фильтр для игр."""
 
+    name = filters.CharFilter(field_name='name',
+                              lookup_expr='contains')
     tags = filters.AllValuesMultipleFilter(field_name='tags__slug')
 
     class Meta:
         model = Game
-        fields = ('tags',)
+        fields = ('name', 'tags',)

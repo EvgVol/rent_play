@@ -1,5 +1,6 @@
 from urllib.parse import unquote
 
+from django.db.models import Avg
 from rest_framework import permissions, viewsets
 from rest_framework.generics import get_object_or_404
 
@@ -15,7 +16,9 @@ from core.enum import Regex
 class GameViewSet(viewsets.ReadOnlyModelViewSet):
     """Вьюсет для отображения игр."""
 
-    queryset = Game.objects.all().order_by('name')
+    queryset = Game.objects.all().annotate(
+        rating=Avg('reviews__score')
+    )
     serializer_class = GameSerializer
     permission_classes = (permissions.AllowAny,)
     pagination_class = LimitPageNumberPagination
