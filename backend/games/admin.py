@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Game, Tag, Comment, Review
+from .models import Game, Tag, Comment, Review, FavoriteGame, ShoppingList
 
 
 @admin.register(Tag)
@@ -31,6 +31,19 @@ class GameAdmin(admin.ModelAdmin):
     def get_tags(self, obj):
         """Получаем теги."""
         return ', '.join(_.name for _ in obj.tags.all())
+
+
+@admin.register(FavoriteGame)
+class FavoriteAdmin(admin.ModelAdmin):
+    list_display = ('user', 'game',)
+    list_filter = ('user', 'game',)
+    empty_value_display = '-пусто-'
+
+
+@admin.register(ShoppingList)
+class ShoppingCartAdmin(admin.ModelAdmin):
+    list_display = ('user', 'game', )
+    empty_value_display = '-пусто-'
 
 
 @admin.register(Review)

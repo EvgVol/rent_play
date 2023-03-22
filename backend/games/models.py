@@ -62,6 +62,59 @@ class Game(models.Model):
         return self.name
 
 
+class FavoriteAndShoppingListModel(models.Model):
+    """Абстрактная модель. Добавляет юзера и консоль."""
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        verbose_name='Пользователь',
+    )
+
+    game = models.ForeignKey(
+        Game,
+        on_delete=models.CASCADE,
+        verbose_name='Игра',
+    )
+
+    class Meta:
+        abstract = True
+
+
+class FavoriteGame(FavoriteAndShoppingListModel):
+    """Модель игры в избранном."""
+
+    class Meta(FavoriteAndShoppingListModel.Meta):
+        verbose_name = 'Избранная игра'
+        verbose_name_plural = 'Избранные игры'
+        default_related_name = 'favorites_games'
+        constraints = (
+            models.UniqueConstraint(
+                fields=('user', 'game',),
+                name='unique_user_game',
+            ),
+        )
+
+    def __str__(self):
+        return f'Пользователь:{self.user} добавил {self.game} в избранное'
+
+
+class ShoppingList(FavoriteAndShoppingListModel):
+    """Модель добавление в корзину."""
+
+    class Meta(FavoriteAndShoppingListModel.Meta):
+        verbose_name = 'Аренда'
+        verbose_name_plural = 'Аренды'
+        default_related_name = 'shopping_list_games'
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'game'],
+                                    name='unique_shopping_list_games')
+        ]
+
+    def __str__(self):
+        return f'Пользователь:{self.user} добавил {self.game} в корзину'
+
+
 class ReviewAndCommentModel(models.Model):
     """Абстрактная модель. Добавляет текст, автора и дату публикации."""
 
