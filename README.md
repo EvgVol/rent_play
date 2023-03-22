@@ -1,2 +1,1 @@
-# rent_play
-Проект по аренде игровых приставок PlayStation
+# RENT&PLAY - проект по аренде игровых приставок PlayStation

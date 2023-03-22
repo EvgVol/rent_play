@@ -112,7 +112,7 @@ class ShoppingList(FavoriteAndShoppingListModel):
         ]
 
     def __str__(self):
-        return f'Пользователь:{self.user} добавил {self.game} в корзину'
+        return f'Пользователь:{self.user} добавил {self.game} в бронь.'
 
 
 class ReviewAndCommentModel(models.Model):
