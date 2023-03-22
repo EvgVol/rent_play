@@ -99,8 +99,8 @@ class ShoppingCart(FavoriteAndShoppingCartModel):
     """Модель приставки в корзине."""
 
     class Meta(FavoriteAndShoppingCartModel.Meta):
-        verbose_name = 'Аренда'
-        verbose_name_plural = 'Аренды'
+        verbose_name = 'Бронь'
+        verbose_name_plural = 'Бронь'
         default_related_name = 'shopping_list'
         constraints = [
             models.UniqueConstraint(fields=['user', 'console'],

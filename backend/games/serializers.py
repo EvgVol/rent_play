@@ -1,7 +1,9 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import serializers
+from drf_extra_fields.fields import Base64ImageField
+from rest_framework import serializers, validators
 
-from games.models import Game, Tag, Review, Comment
+from core import texts
+from games.models import Game, Tag, Review, Comment, FavoriteGame, ShoppingList
 
 
 class GameSerializer(serializers.ModelSerializer):
@@ -13,6 +15,60 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = ('id', 'name', 'image', 'description',
                   'slug', 'tags', 'rating')
+
+
+class ShowGameAddedSerializer(serializers.ModelSerializer):
+    """Сериализатор для модели Game.
+    Определён укороченный набор полей для некоторых эндпоинтов."""
+
+    image = Base64ImageField()
+
+    class Meta:
+        model = Game
+        fields = ('id', 'name', 'image', 'tags')
+
+
+class AddFavoriteGameSerializer(serializers.ModelSerializer):
+    """Сериализатор добавления игр в избранное."""
+
+    class Meta:
+        model = FavoriteGame
+        fields = ('user', 'game')
+        validators = [
+            validators.UniqueTogetherValidator(
+                queryset=FavoriteGame.objects.all(),
+                fields=['user', 'game'],
+                message=texts.CONSOLE_IN_FAVORITE
+            )
+        ]
+
+    def to_representation(self, instance):
+        request = self.context.get('request')
+        return ShowGameAddedSerializer(
+            instance.game,
+            context={'request': request}
+        ).data
+
+
+class AddShoppingListGameSerializer(AddFavoriteGameSerializer):
+    """Сериализатор добавления игр в список покупок."""
+
+    class Meta(AddFavoriteGameSerializer.Meta):
+        model = ShoppingList
+        validators = [
+            validators.UniqueTogetherValidator(
+                queryset=ShoppingList.objects.all(),
+                fields=['user', 'game'],
+                message=texts.ALREADY_BUY
+            )
+        ]
+
+    def to_representation(self, instance):
+        request = self.context.get('request')
+        return ShowGameAddedSerializer(
+            instance.game,
+            context={'request': request}
+        ).data
 
 
 class TagSerializer(serializers.ModelSerializer):

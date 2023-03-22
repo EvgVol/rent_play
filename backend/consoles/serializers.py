@@ -47,7 +47,7 @@ class AddFavoriteConsoleSerializer(serializers.ModelSerializer):
 
 
 class AddShoppingListConsoleSerializer(AddFavoriteConsoleSerializer):
-    """Сериализатор добавления рецептов в список покупок."""
+    """Сериализатор добавления приставок в список покупок."""
 
     class Meta(AddFavoriteConsoleSerializer.Meta):
         model = ShoppingCart

@@ -41,7 +41,7 @@ class FavoriteAdmin(admin.ModelAdmin):
 
 
 @admin.register(ShoppingList)
-class ShoppingCartAdmin(admin.ModelAdmin):
+class ShoppingListAdmin(admin.ModelAdmin):
     list_display = ('user', 'game', )
     empty_value_display = '-пусто-'
 

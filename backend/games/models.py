@@ -103,8 +103,8 @@ class ShoppingList(FavoriteAndShoppingListModel):
     """Модель добавление в корзину."""
 
     class Meta(FavoriteAndShoppingListModel.Meta):
-        verbose_name = 'Аренда'
-        verbose_name_plural = 'Аренды'
+        verbose_name = 'Бронь'
+        verbose_name_plural = 'Брони'
         default_related_name = 'shopping_list_games'
         constraints = [
             models.UniqueConstraint(fields=['user', 'game'],

@@ -1,7 +1,7 @@
 from rest_framework import permissions, viewsets, decorators
 
 from .serializers import ConsoleSerializer, AddShoppingListConsoleSerializer, AddFavoriteConsoleSerializer
-from core.utils import add_and_del
+from core.utils import add_and_del_console
 from .models import Console, Favorite, ShoppingCart
 
 
@@ -20,7 +20,7 @@ class ConsoleViewSet(viewsets.ReadOnlyModelViewSet):
     )
     def favorite(self, request, pk):
         """Добавляем/удаляем консоль в 'избранное'"""
-        return add_and_del(
+        return add_and_del_console(
             AddFavoriteConsoleSerializer, Favorite, request, pk
         )
 
@@ -31,6 +31,6 @@ class ConsoleViewSet(viewsets.ReadOnlyModelViewSet):
     )
     def shopping_cart(self, request, pk):
         """Добавляем/удаляем консоль в 'список покупок'"""
-        return add_and_del(
+        return add_and_del_console(
             AddShoppingListConsoleSerializer, ShoppingCart, request, pk
         )

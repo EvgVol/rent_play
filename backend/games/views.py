@@ -1,16 +1,18 @@
 from urllib.parse import unquote
 
 from django.db.models import Avg
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, viewsets, decorators
 from rest_framework.generics import get_object_or_404
 
 from api.pagination import LimitPageNumberPagination
 from .filters import GameFilter
 from .serializers import (GameSerializer, TagSerializer,
-                          ReviewCreateSerializer, CommentSerializer)
+                          ReviewCreateSerializer, CommentSerializer,
+                          AddFavoriteGameSerializer, AddShoppingListGameSerializer)
 from .permissions import IsAuthorOrAdminOrReadOnly
-from .models import Game, Tag, Review
+from .models import Game, Tag, Review, FavoriteGame, ShoppingList
 from core.enum import Regex
+from core.utils import add_and_del_game
 
 
 class GameViewSet(viewsets.ReadOnlyModelViewSet):
@@ -42,6 +44,28 @@ class GameViewSet(viewsets.ReadOnlyModelViewSet):
             )
             queryset = start_queryset
         return queryset
+
+    @decorators.action(
+    detail=True,
+    methods=['POST', 'DELETE'],
+    permission_classes=[permissions.IsAuthenticated]
+    )
+    def favorite(self, request, pk):
+        """Добавляем/удаляем игру в 'избранное'"""
+        return add_and_del_game(
+            AddFavoriteGameSerializer, FavoriteGame, request, pk
+        )
+
+    @decorators.action(
+        detail=True,
+        methods=['POST', 'DELETE'],
+        permission_classes=[permissions.IsAuthenticated]
+    )
+    def shopping_cart(self, request, pk):
+        """Добавляем/удаляем игру в 'бронь'"""
+        return add_and_del_game(
+            AddShoppingListGameSerializer, ShoppingList, request, pk
+        )
 
 
 class TagViewSet(viewsets.ReadOnlyModelViewSet):
