@@ -18,8 +18,9 @@ class RentAdmin(admin.ModelAdmin):
 
     @admin.display(description='Игры')
     def get_games(self, obj):
-        """Получаем ингредиенты."""
+        """Получаем игры."""
         return '\n '.join([
             f'{game["game__name"]}'
             for game in obj.game_list.values('game__name')
         ])
+
