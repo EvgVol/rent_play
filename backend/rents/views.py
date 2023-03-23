@@ -15,6 +15,6 @@ class RentViewSet(viewsets.ModelViewSet):
     serializer_class = RentReadSerializers
 
     def get_serializer_class(self):
-        if self.request.method == 'POST':
+        if self.request.method in ('POST', 'PUT'):
             return RentCreateSerializers
         return RentReadSerializers

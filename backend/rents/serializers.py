@@ -32,7 +32,7 @@ class GameInRentWriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GameInRent
-        fields = ('id')
+        fields = '__all__'
 
 
 class RentReadSerializers(serializers.ModelSerializer):
