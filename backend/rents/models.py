@@ -53,7 +53,7 @@ class Rent(models.Model):
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
-        ordering = ('-pub_date',)
+        ordering = [models.F('user').asc(nulls_last=True)]
 
     def __str__(self):
         return f'Пользователь {self.user.username} забронировал {self.console} на {self.time} дней.'

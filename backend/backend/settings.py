@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-51ydgsn!flww^)=p+m5rkp=bpan@q*em8#u^40s^4ug94l6_j(
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -17,7 +17,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'djoser',
-    'social_django',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -52,8 +51,6 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -136,24 +133,6 @@ DJOSER = {
         'user': ['djoser.permissions.CurrentUserOrAdminOrReadOnly'],
     },
 }
-
-SOCIAL_AUTH_USER_MODEL = 'users.User'
-
-AUTHENTICATION_BACKENDS = (
-    # 'social_auth.backends.contrib.vkontakte.VKontakteOAuth2Backend',
-    'social_core.backends.google.GoogleOpenId',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.google.GoogleOAuth',
-    # 'social_auth.backends.contrib.yandex.YandexOAuth2Backend',
-    # 'social_auth.backends.contrib.mailru.MailruBackend',
-    # 'social_auth.backends.contrib.odnoklassniki.OdnoklassnikiBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
-
-# SOCIAL_AUTH_POSTGRES_JSONFIELD = True # Для использования базы данных postgreSQL
-
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 
