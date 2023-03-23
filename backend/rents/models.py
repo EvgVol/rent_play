@@ -2,6 +2,7 @@ from django.db import models
 from django.core import validators
 
 from users.models import User
+from games.models import Game
 from consoles.models import Console
 from core.enum import Limits
 from core import texts
@@ -24,6 +25,12 @@ class Rent(models.Model):
         on_delete=models.CASCADE,
         null=False,
         related_name='rent_item'
+    )
+
+    games = models.ManyToManyField(
+        Game,
+        through='GameInRent',
+        verbose_name='Игры',
     )
 
     time = models.PositiveSmallIntegerField(
@@ -50,3 +57,34 @@ class Rent(models.Model):
 
     def __str__(self):
         return f'Пользователь {self.user.username} забронировал {self.console} на {self.time} дней.'
+    
+    
+class GameInRent(models.Model):
+    """Игры в заказе."""
+
+    rent = models.ForeignKey(
+        Rent,
+        verbose_name='Заказ',
+        on_delete=models.CASCADE,
+        related_name='game_list'
+    )
+    game = models.ForeignKey(
+        Game,
+        verbose_name='Игра',
+        on_delete=models.CASCADE,
+        related_name='game_list'
+    )
+
+    class Meta:
+        ordering = ('-id',)
+        verbose_name = 'Игра'
+        verbose_name_plural = 'Игры'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['game', 'rent'],
+                name='unique_game_rent'
+            )
+        ]
+
+    def __str__(self):
+        return self.game.name
