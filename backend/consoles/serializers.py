@@ -8,9 +8,15 @@ from .models import Console, Favorite, ShoppingCart
 class ConsoleSerializer(serializers.ModelSerializer):
     """Сериализатор для консолей."""
 
+    is_rent = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = Console
-        fields = '__all__'
+        fields = ('id', 'name', 'image', 'description', 'slug', 'barcode', 'is_rent')
+
+    def get_is_rent(self,  obj):
+        """Проверка - находится ли консоль в списке аренды."""
+        return obj.rent_item.exists()
 
 
 class ShowConsoleAddedSerializer(serializers.ModelSerializer):
@@ -18,17 +24,11 @@ class ShowConsoleAddedSerializer(serializers.ModelSerializer):
     Определён укороченный набор полей для некоторых эндпоинтов."""
 
     image = Base64ImageField()
-    is_rent = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Console
-        fields = ('id', 'name', 'image', 'barcode', 'status')
+        fields = ('id', 'name', 'image', 'barcode',)
 
-    def get_status(self,  console):
-        """Проверяем статус приставки."""
-        request = self.context.get('request')
-        return (request and request.user.is_authenticated
-                and request.user.rent_item)
 
 class AddFavoriteConsoleSerializer(serializers.ModelSerializer):
     """Сериализатор добавления приставок в избранное."""
