@@ -23,4 +23,3 @@ class RentAdmin(admin.ModelAdmin):
             f'{game["game__name"]}'
             for game in obj.game_list.values('game__name')
         ])
-
