@@ -2,30 +2,33 @@ from django.db import models
 from django.core import validators
 
 from users.models import User
+from core.models import ImageAlbum
+
 
 
 class Console(models.Model):
     """Модель игровых консолей."""
 
-    name = models.CharField(
-        'Наименовение',
-        max_length=50,
-    )
-    image = models.ImageField(
-        'Изображение',
-        upload_to='consoles/',
-        blank=False,
-    )
+    lessor = models.ForeignKey(User, verbose_name='Арендодатель',
+                               on_delete=models.CASCADE,)
+    name = models.CharField('Наименовение', max_length=50,)
+    album = models.OneToOneField(ImageAlbum,
+                                 verbose_name='Изображения',
+                                 related_name='model',
+                                 on_delete=models.CASCADE)
     description = models.TextField('Описание')
-    slug = models.SlugField('URL', unique=True, validators=[validators.validate_slug],)
+    slug = models.SlugField('URL', unique=True,
+                            validators=[validators.validate_slug],)
     barcode = models.TextField('Штрих-код')
+    pub_date = models.DateTimeField(verbose_name='Дата размещения',
+                                    auto_now_add=True, editable=False,)
 
     class Meta:
         verbose_name_plural = 'Игровые приставки'
         verbose_name = 'Игровая приставка'
         constraints = [
             models.UniqueConstraint(
-                fields=['name', 'barcode'],
+                fields=['name', 'barcode', 'lessor'],
                 name='unique_name_barcode',
             )
         ]
@@ -33,6 +36,12 @@ class Console(models.Model):
     def __str__(self):
         return self.name
 
+
+class Image(models.Model):
+    name = models.CharField(max_length=255)
+    product = models.ForeignKey(Console, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='consoles/')
+    default = models.BooleanField(default=False)
 
 class FavoriteAndShoppingCartModel(models.Model):
     """Абстрактная модель. Добавляет юзера и консоль."""

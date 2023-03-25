@@ -44,6 +44,11 @@ def add_and_del_game(add_serializer, model, request, game_id):
     ).delete()
     return response.Response(status=status.HTTP_204_NO_CONTENT)
 
+
+
+
+
+
 # @receiver(post_delete, sender=Recipe)
 # def delete_image(sender, instance, *a, **kw):
 #     """Удаляет картинку при удаление рецепта."""

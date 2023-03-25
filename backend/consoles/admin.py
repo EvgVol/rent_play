@@ -2,12 +2,12 @@ from django.contrib import admin
 
 from .models import Console, Favorite, ShoppingCart
 
-
 @admin.register(Console)
 class ConsoleAdmin(admin.ModelAdmin):
-    list_display = ('name', 'image', 'description', 'slug', 'barcode', 'count_favorites', 'status')
-    list_filter = ('name', )
+    list_display = ('lessor', 'name', 'album', 'description', 'slug', 'barcode', 'count_favorites', 'status')
+    list_filter = ('lessor', 'name', )
     search_fields = ('name__startswith', )
+    
 
     @admin.display(description='Количество в избранных')
     def count_favorites(self, obj):
