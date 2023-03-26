@@ -99,13 +99,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
-STATIC_ROOT = BASE_DIR / 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 
-MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 CORS_ORIGIN_ALLOW_ALL = True
 

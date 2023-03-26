@@ -1,9 +1,9 @@
 from django.db import models
 from django.core import validators
+from django.utils.safestring import mark_safe
 
 from users.models import User
-from core.models import ImageAlbum
-
+from core.models import Image
 
 
 class Console(models.Model):
@@ -12,10 +12,7 @@ class Console(models.Model):
     lessor = models.ForeignKey(User, verbose_name='Арендодатель',
                                on_delete=models.CASCADE,)
     name = models.CharField('Наименовение', max_length=50,)
-    album = models.OneToOneField(ImageAlbum,
-                                 verbose_name='Изображения',
-                                 related_name='model',
-                                 on_delete=models.CASCADE)
+    images = models.ManyToManyField(Image, through='ImagesInConsole', verbose_name='Изображения')
     description = models.TextField('Описание')
     slug = models.SlugField('URL', unique=True,
                             validators=[validators.validate_slug],)
@@ -37,11 +34,36 @@ class Console(models.Model):
         return self.name
 
 
-class Image(models.Model):
-    name = models.CharField(max_length=255)
-    product = models.ForeignKey(Console, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='consoles/')
-    default = models.BooleanField(default=False)
+class ImagesInConsole(models.Model):
+    console = models.ForeignKey(
+        Console,
+        verbose_name='Приставка',
+        on_delete=models.CASCADE,
+        related_name='console_images'
+    )
+    image = models.ForeignKey(
+        Image,
+        verbose_name='Изображение',
+        on_delete=models.CASCADE,
+        related_name='console_images'
+    )
+
+    class Meta:
+        ordering = ('-id',)
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения '
+        constraints = [
+            models.UniqueConstraint(
+                fields=['console', 'image'],
+                name='unique_console_image'
+            )
+        ]
+
+    def __str__(self):
+        return (
+            f'В {self.console.name} добавлена {self.image.name}'
+        )
+
 
 class FavoriteAndShoppingCartModel(models.Model):
     """Абстрактная модель. Добавляет юзера и консоль."""
