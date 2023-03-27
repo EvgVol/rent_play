@@ -1,9 +1,22 @@
 from django.db import models
 from django.core import validators
-from django.utils.safestring import mark_safe
+
 
 from users.models import User
-from core.models import Image
+from core import texts
+from core.enum import Limits, Regex
+from core.models import Image, Tags
+
+
+
+class Category(Tags):
+    """Модель категорий к консолям."""
+
+    class Meta(Tags.Meta):
+        verbose_name_plural = 'Категории'
+        verbose_name = 'Категория'
+        default_related_name = 'categories'
+
 
 
 class Console(models.Model):
@@ -11,11 +24,10 @@ class Console(models.Model):
 
     lessor = models.ForeignKey(User, verbose_name='Арендодатель',
                                on_delete=models.CASCADE,)
-    name = models.CharField('Наименовение', max_length=50,)
+    name = models.CharField('Наименовение', max_length=Limits.MAX_LEN_TAG.value,)
     images = models.ManyToManyField(Image, through='ImagesInConsole', verbose_name='Изображения')
     description = models.TextField('Описание')
-    slug = models.SlugField('URL', unique=True,
-                            validators=[validators.validate_slug],)
+    category = models.ManyToManyField(Category, verbose_name='Категории')
     barcode = models.TextField('Штрих-код')
     pub_date = models.DateTimeField(verbose_name='Дата размещения',
                                     auto_now_add=True, editable=False,)
@@ -23,6 +35,7 @@ class Console(models.Model):
     class Meta:
         verbose_name_plural = 'Игровые приставки'
         verbose_name = 'Игровая приставка'
+        ordering = ('-pub_date',)
         constraints = [
             models.UniqueConstraint(
                 fields=['name', 'barcode', 'lessor'],

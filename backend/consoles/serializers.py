@@ -2,17 +2,27 @@ from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers, validators, fields
 
 from core import texts
-from .models import Console, Favorite, ShoppingCart
+from .models import Console, Favorite, ShoppingCart, Category
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    """Сериализхатор для категорий."""
+
+    class Meta:
+        model = Category
+        fields = '__all__'
 
 
 class ConsoleSerializer(serializers.ModelSerializer):
     """Сериализатор для консолей."""
 
+    categories = CategorySerializer(many=True, read_only=True)
     is_rent = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Console
-        fields = ('id', 'name', 'image', 'description', 'slug', 'barcode', 'is_rent')
+        fields = ('id', 'categories', 'name', 'images', 'description', 'barcode', 'is_rent')
+
 
     def get_is_rent(self,  obj):
         """Проверка - находится ли консоль в списке аренды."""

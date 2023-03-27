@@ -1,6 +1,13 @@
 from django.contrib import admin
 
-from .models import Console, Favorite, ShoppingCart, ImagesInConsole
+from .models import Console, Favorite, ShoppingCart, ImagesInConsole, Category
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'color')
+    search_fields = ('name', 'slug',)
+    ordering = ('name',)
 
 
 class ImagesInConsoleInline(admin.TabularInline):
@@ -11,8 +18,8 @@ class ImagesInConsoleInline(admin.TabularInline):
 
 @admin.register(Console)
 class ConsoleAdmin(admin.ModelAdmin):
-    list_display = ('lessor', 'name', 'get_images', 'description', 'slug', 'barcode', 'count_favorites', 'status')
-    list_filter = ('lessor', 'name', )
+    list_display = ('lessor', 'categories', 'name', 'get_images', 'description', 'barcode', 'count_favorites', 'status')
+    list_filter = ('lessor', 'name')
     search_fields = ('name__startswith', )
     inlines = (ImagesInConsoleInline,)
     
@@ -35,6 +42,11 @@ class ConsoleAdmin(admin.ModelAdmin):
         return '\n '.join([
             f'{img["image__name"]}'
             for img in obj.console_images.all()])
+
+    @admin.display(description='Категории')
+    def categories(self, obj):
+        """Получаем категории."""
+        return ', '.join(_.name for _ in obj.categories.all())
         
 
 @admin.register(Favorite)

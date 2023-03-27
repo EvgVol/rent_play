@@ -1,9 +1,7 @@
 from pathlib import Path
 from datetime import datetime as dt
+from django.core.paginator import Paginator
 
-from django.db.models.signals import post_delete
-from django.dispatch import receiver
-from django.shortcuts import HttpResponse
 from rest_framework import response, status
 from rest_framework.generics import get_object_or_404
 
@@ -45,7 +43,11 @@ def add_and_del_game(add_serializer, model, request, game_id):
     return response.Response(status=status.HTTP_204_NO_CONTENT)
 
 
-
+def paginator_page(request, queryset):
+    """Описывает работу пагинатора."""
+    paginator = Paginator(queryset, 8)
+    page_number = request.GET.get('page')
+    return paginator.get_page(page_number)
 
 
 

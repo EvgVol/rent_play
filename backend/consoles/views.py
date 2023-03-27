@@ -1,8 +1,17 @@
 from rest_framework import permissions, viewsets, decorators
 
-from .serializers import ConsoleSerializer, AddShoppingListConsoleSerializer, AddFavoriteConsoleSerializer
+from .serializers import ConsoleSerializer, AddShoppingListConsoleSerializer, AddFavoriteConsoleSerializer, CategorySerializer
 from core.utils import add_and_del_console
-from .models import Console, Favorite, ShoppingCart
+from .models import Console, Favorite, ShoppingCart, Category
+
+
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
+    """Вьюсет для отображения тегов."""
+
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = (permissions.AllowAny,)
+    pagination_class = None
 
 
 class ConsoleViewSet(viewsets.ReadOnlyModelViewSet):
