@@ -22,12 +22,10 @@ class Category(Tags):
 class Console(models.Model):
     """Модель игровых консолей."""
 
-    lessor = models.ForeignKey(User, verbose_name='Арендодатель',
-                               on_delete=models.CASCADE,)
     name = models.CharField('Наименовение', max_length=Limits.MAX_LEN_TAG.value,)
     images = models.ManyToManyField(Image, through='ImagesInConsole', verbose_name='Изображения')
     description = models.TextField('Описание')
-    category = models.ManyToManyField(Category, verbose_name='Категории')
+    categories = models.ManyToManyField(Category, verbose_name='Категории')
     barcode = models.TextField('Штрих-код')
     pub_date = models.DateTimeField(verbose_name='Дата размещения',
                                     auto_now_add=True, editable=False,)
@@ -38,7 +36,7 @@ class Console(models.Model):
         ordering = ('-pub_date',)
         constraints = [
             models.UniqueConstraint(
-                fields=['name', 'barcode', 'lessor'],
+                fields=['name', 'barcode'],
                 name='unique_name_barcode',
             )
         ]

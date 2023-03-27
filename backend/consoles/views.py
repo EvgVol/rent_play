@@ -1,6 +1,7 @@
 from rest_framework import permissions, viewsets, decorators
 
-from .serializers import ConsoleSerializer, AddShoppingListConsoleSerializer, AddFavoriteConsoleSerializer, CategorySerializer
+from api.pagination import LimitPageNumberPagination
+from .serializers import ConsoleCreateSerializer, ConsoleReadSerializer, AddShoppingListConsoleSerializer, AddFavoriteConsoleSerializer, CategorySerializer
 from core.utils import add_and_del_console
 from .models import Console, Favorite, ShoppingCart, Category
 
@@ -14,13 +15,21 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     pagination_class = None
 
 
-class ConsoleViewSet(viewsets.ReadOnlyModelViewSet):
-    """Вьюсет для отображения приставок."""
+class ConsoleViewSet(viewsets.ModelViewSet):
+    """Вьюсет для отображения приставок.
+    Для запросов на чтение используется ConsoleReadSerializer
+    Для запросов на изменение используется ConsoleCreateSerializer
+    """
 
     queryset = Console.objects.all()
-    serializer_class = ConsoleSerializer
+    serializer_class = ConsoleReadSerializer
     permission_classes = (permissions.AllowAny,)
-    pagination_class = None
+    pagination_class = LimitPageNumberPagination
+
+    def get_serializer_class(self):
+        if self.request.method in ('POST', 'PUT', 'PATCH'):
+            return ConsoleCreateSerializer
+        return ConsoleReadSerializer
 
     @decorators.action(
         detail=True,

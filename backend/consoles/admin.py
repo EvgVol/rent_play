@@ -18,8 +18,8 @@ class ImagesInConsoleInline(admin.TabularInline):
 
 @admin.register(Console)
 class ConsoleAdmin(admin.ModelAdmin):
-    list_display = ('lessor', 'categories', 'name', 'get_images', 'description', 'barcode', 'count_favorites', 'status')
-    list_filter = ('lessor', 'name')
+    list_display = ('categories', 'name', 'get_images', 'description', 'barcode', 'count_favorites', 'status')
+    list_filter = ('name',)
     search_fields = ('name__startswith', )
     inlines = (ImagesInConsoleInline,)
     
@@ -38,7 +38,7 @@ class ConsoleAdmin(admin.ModelAdmin):
 
     @admin.display(description='Изображения')
     def get_images(self, obj):
-        """Получаем ингредиенты."""
+        """Получаем изображения."""
         return '\n '.join([
             f'{img["image__name"]}'
             for img in obj.console_images.all()])
@@ -60,8 +60,3 @@ class FavoriteAdmin(admin.ModelAdmin):
 class ShoppingCartAdmin(admin.ModelAdmin):
     list_display = ('user', 'console', )
     empty_value_display = '-пусто-'
-
-
-@admin.register(ImagesInConsole)
-class ImagesInConsoleAdmin(admin.ModelAdmin):
-    pass
