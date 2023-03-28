@@ -4,7 +4,12 @@ from rest_framework.generics import get_object_or_404
 
 from api.pagination import LimitPageNumberPagination
 from api.permissions import IsAuthorOrAdminOrReadOnly
-from .serializers import ConsoleCreateSerializer, ConsoleReadSerializer, AddShoppingListConsoleSerializer, AddFavoriteConsoleSerializer, CategorySerializer, ReviewCreateSerializer
+from .serializers import (ConsoleCreateSerializer,
+                          ConsoleReadSerializer,
+                          AddShoppingListConsoleSerializer,
+                          AddFavoriteConsoleSerializer,
+                          CategorySerializer,
+                          ReviewCreateSerializer)
 from core.utils import add_and_del_console
 from .models import Console, Favorite, ShoppingCart, Category
 
