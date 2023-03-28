@@ -53,12 +53,9 @@ class Product(models.Model):
     name = models.CharField('Наименовение', max_length=Limits.MAX_LEN_TAG.value,)
     image = models.ImageField('Изображение', upload_to=get_upload_path,)
     description = models.TextField('Описание')
-    pub_date = models.DateTimeField(verbose_name='Дата размещения',
-                                    auto_now_add=True, editable=False,)
 
     class Meta:
         abstract = True
-        ordering = ('-pub_date',)
 
     def __str__(self):
         return self.name

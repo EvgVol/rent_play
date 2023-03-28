@@ -14,7 +14,7 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = ('id', 'name', 'image', 'description',
-                  'slug', 'tags', 'rating')
+                  'tags', 'rating')
 
 
 class ShowGameAddedSerializer(serializers.ModelSerializer):

@@ -21,11 +21,14 @@ class Console(Product):
                                on_delete=models.SET_NULL, null=True,)
     categories = models.ManyToManyField(Category, verbose_name='Категории')
     barcode = models.TextField('Штрих-код')
+    pub_date = models.DateTimeField(verbose_name='Дата размещения',
+                                    auto_now_add=True, editable=False,)
 
     class Meta(Product.Meta):
         verbose_name_plural = 'Игровые приставки'
         verbose_name = 'Игровая приставка'
         default_related_name = 'console'
+        ordering = ('-pub_date',)
         constraints = [
             models.UniqueConstraint(
                 fields=['name', 'barcode'],

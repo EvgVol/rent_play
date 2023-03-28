@@ -21,7 +21,6 @@ class GameAdmin(admin.ModelAdmin):
         'name',
         'image',
         'description',
-        'slug',
         'get_tags'
     )
     list_filter = ('name', 'tags',)
