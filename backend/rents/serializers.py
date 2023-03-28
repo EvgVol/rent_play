@@ -4,6 +4,7 @@ from django.db import models, transaction
 from rest_framework import serializers, exceptions, status
 
 from core import texts
+from core.validators import DateValidator
 from users.serializers import UsersSerializer
 from .models import Rent
 
@@ -44,33 +45,13 @@ class RentCreateSerializers(serializers.ModelSerializer):
     """Сериализатор для создание заказов."""
 
     user = UsersSerializer(read_only=True)
-    # start_date = serializers.DataField()
-    # end_date = serializers.DateField()
 
     class Meta:
         model = Rent
         fields = ('id', 'user', 'console', 'start_date', 'end_date')
         read_only_fields = ('user',)
+        validators = [DateValidator()]
 
-    # def validate(self, data):
-    #     super().validate(data)
-    #     # check if data is in either the request or instance
-    #     start_date, end_date = None, None
-    #     if 'start_date' in data:
-    #         start_date = data['start_date']
-    #     elif self.instance:
-    #         start_date = self.instance.start_date
-
-    #     if 'end_date' in data:
-    #         end_date = data['end_date']
-    #     elif self.instance:
-    #         end_date = self.instance.end_date
-
-    #     # this error isn't raised
-    #     if not (start_date or end_date):
-    #         raise serializers.ValidationError({"date": _('This field is required.')})
-
-    #     return data
     
     # def validate(self, data):
     #     """Проверяем, чтобы приставка была свободна, и невозможно было '

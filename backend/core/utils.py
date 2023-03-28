@@ -2,6 +2,7 @@ from pathlib import Path
 from datetime import datetime as dt
 from django.core.paginator import Paginator
 
+
 from rest_framework import response, status
 from rest_framework.generics import get_object_or_404
 
@@ -48,6 +49,8 @@ def paginator_page(request, queryset):
     paginator = Paginator(queryset, 8)
     page_number = request.GET.get('page')
     return paginator.get_page(page_number)
+
+
 
 
 
