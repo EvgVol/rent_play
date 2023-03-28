@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.core import validators
 
@@ -29,11 +31,13 @@ class Rent(models.Model):
 
     start_date = models.DateField(
         'Начало аренды',
+        default=datetime.date.today(),
         help_text='Укажите дату начала аренды',
     )
 
     end_date = models.DateField(
         'Конец аренды',
+        default=datetime.date.today() + datetime.timedelta(days=1),
         help_text='Укажите дату окончание аренды',
     )
 
@@ -49,10 +53,7 @@ class Rent(models.Model):
         ordering = [models.F('user').asc(nulls_last=True)]
 
     def time_rent(self):
-        if self.end_date == self.start_date:
-            return 1
-        else:
-            return self.end_date - self.start_date
+        return (self.end_date - self.start_date).days
 
     def __str__(self):
         return f'Пользователь {self.user.username} забронировал {self.console} на {self.time_rent()} дней.'
