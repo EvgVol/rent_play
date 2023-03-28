@@ -27,21 +27,14 @@ class Rent(models.Model):
         related_name='rent_item'
     )
 
-    games = models.ManyToManyField(
-        Game,
-        through='GameInRent',
-        verbose_name='Игры',
+    start_date = models.DateField(
+        'Начало аренды',
+        help_text='Укажите дату начала аренды',
     )
 
-    time = models.PositiveSmallIntegerField(
-        'Время аренды в днях',
-        default=Limits.TIME_MIN_AMOUNT.value,
-        validators=[
-            validators.MinValueValidator(
-                Limits.TIME_MIN_AMOUNT.value,
-                message=texts.TIME_MIN_AMOUNT_ERROR
-            ),
-        ],
+    end_date = models.DateField(
+        'Конец аренды',
+        help_text='Укажите дату окончание аренды',
     )
 
     pub_date = models.DateTimeField(
@@ -55,36 +48,11 @@ class Rent(models.Model):
         verbose_name_plural = 'Заказы'
         ordering = [models.F('user').asc(nulls_last=True)]
 
-    def __str__(self):
-        return f'Пользователь {self.user.username} забронировал {self.console} на {self.time} дней.'
-    
-    
-class GameInRent(models.Model):
-    """Игры в заказе."""
-
-    rent = models.ForeignKey(
-        Rent,
-        verbose_name='Заказ',
-        on_delete=models.CASCADE,
-        related_name='game_list'
-    )
-    game = models.ForeignKey(
-        Game,
-        verbose_name='Игра',
-        on_delete=models.CASCADE,
-        related_name='game_list'
-    )
-
-    class Meta:
-        ordering = ('-id',)
-        verbose_name = 'Игра'
-        verbose_name_plural = 'Игры'
-        constraints = [
-            models.UniqueConstraint(
-                fields=['game', 'rent'],
-                name='unique_game_rent'
-            )
-        ]
+    def time_rent(self):
+        if self.end_date == self.start_date:
+            return 1
+        else:
+            return self.end_date - self.start_date
 
     def __str__(self):
-        return self.game.name
+        return f'Пользователь {self.user.username} забронировал {self.console} на {self.time_rent()} дней.'

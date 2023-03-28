@@ -84,3 +84,20 @@ class ReviewAndCommentModel(models.Model):
 
     def __str__(self):
         return self.text[:Limits.LENG_CUT.value]
+
+
+class Period(models.Model):
+
+    start_date = models.DateField(
+        'Начало аренды',
+        auto_now_add=True,
+        help_text='Укажите дату начала аренды',
+    )
+    end_date = models.DateField(
+        'Конец аренды',
+        auto_now_add=True,
+        help_text='Укажите дату окончание аренды',
+    )
+
+    def __str__(self):
+        return f'Аренда с {self.end_date} по {self.start_date}'

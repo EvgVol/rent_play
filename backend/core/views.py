@@ -3,6 +3,7 @@ from django.shortcuts import render
 from consoles.models import Console
 from .utils import paginator_page
 
+
 # Главная страница -------------------------------------------------
 def index(request):
     """Описывает работу главной страницы."""
