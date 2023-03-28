@@ -1,12 +1,8 @@
 from django.db import models
 from django.core import validators
 
-
 from users.models import User
-from core import texts
-from core.enum import Limits, Regex
-from core.models import Image, Tags
-
+from core.models import Tags, Product, ReviewAndCommentModel
 
 
 class Category(Tags):
@@ -18,62 +14,57 @@ class Category(Tags):
         default_related_name = 'categories'
 
 
-
-class Console(models.Model):
+class Console(Product):
     """Модель игровых консолей."""
 
-    name = models.CharField('Наименовение', max_length=Limits.MAX_LEN_TAG.value,)
-    images = models.ManyToManyField(Image, through='ImagesInConsole', verbose_name='Изображения')
-    description = models.TextField('Описание')
+    author = models.ForeignKey(User, verbose_name='Арендодатель',
+                               on_delete=models.SET_NULL, null=True,)
     categories = models.ManyToManyField(Category, verbose_name='Категории')
     barcode = models.TextField('Штрих-код')
-    pub_date = models.DateTimeField(verbose_name='Дата размещения',
-                                    auto_now_add=True, editable=False,)
 
-    class Meta:
+    class Meta(Product.Meta):
         verbose_name_plural = 'Игровые приставки'
         verbose_name = 'Игровая приставка'
-        ordering = ('-pub_date',)
+        default_related_name = 'console'
         constraints = [
             models.UniqueConstraint(
                 fields=['name', 'barcode'],
-                name='unique_name_barcode',
+                name='unique_name_console',
             )
         ]
 
-    def __str__(self):
-        return self.name
 
+class Review(ReviewAndCommentModel):
+    """Модель отзыва к игровой приставке."""
 
-class ImagesInConsole(models.Model):
     console = models.ForeignKey(
         Console,
-        verbose_name='Приставка',
         on_delete=models.CASCADE,
-        related_name='console_images'
+        verbose_name='Игровая приставка'
     )
-    image = models.ForeignKey(
-        Image,
-        verbose_name='Изображение',
-        on_delete=models.CASCADE,
-        related_name='console_images'
+    score = models.PositiveSmallIntegerField(
+        'Оценка',
+        db_index=True,
+        validators=(
+            validators.MinValueValidator(1),
+            validators.MaxValueValidator(10)
+        ),
+        error_messages={
+            'validators': 'Оценка от 1 до 10!'
+        },
+        default=1
     )
 
-    class Meta:
-        ordering = ('-id',)
-        verbose_name = 'Изображение'
-        verbose_name_plural = 'Изображения '
+    class Meta(ReviewAndCommentModel.Meta):
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+        default_related_name = 'reviews_console'
         constraints = [
             models.UniqueConstraint(
-                fields=['console', 'image'],
-                name='unique_console_image'
+                fields=('console', 'author',),
+                name='unique_review_console',
             )
         ]
-
-    def __str__(self):
-        return (
-            f'В {self.console.name} добавлена {self.image.name}'
-        )
 
 
 class FavoriteAndShoppingCartModel(models.Model):

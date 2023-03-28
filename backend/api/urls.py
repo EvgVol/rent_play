@@ -2,13 +2,15 @@ from django.urls import include, path
 from rest_framework import routers
 
 from users.views import CustomUserViewSet
-from consoles.views import ConsoleViewSet, CategoryViewSet
+from consoles.views import ConsoleViewSet, CategoryViewSet, ReviewConsoleViewSet
 from games.views import GameViewSet, TagViewSet, ReviewViewSet, CommentViewSet
 from rents.views import RentViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename='users')
 router.register(r'consoles', ConsoleViewSet, basename='consoles')
+router.register(r'consoles/(?P<console_id>\d+)/reviews',
+                ReviewConsoleViewSet, basename='reviewsconsole')
 router.register(r'games', GameViewSet, basename='games')
 router.register(r'games/(?P<game_id>\d+)/reviews',
                 ReviewViewSet, basename='reviews')

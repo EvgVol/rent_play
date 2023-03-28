@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django.db.models import Avg
 
-from .models import Console, Favorite, ShoppingCart, ImagesInConsole, Category
+from .models import Console, Favorite, ShoppingCart, Category, Review
 
 
 @admin.register(Category)
@@ -10,19 +11,11 @@ class CategoryAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 
-class ImagesInConsoleInline(admin.TabularInline):
-    model = ImagesInConsole
-    extra = 2
-    min_num = 1
-
-
 @admin.register(Console)
 class ConsoleAdmin(admin.ModelAdmin):
-    list_display = ('categories', 'name', 'get_images', 'description', 'barcode', 'count_favorites', 'status')
+    list_display = ('id', 'categories', 'name', 'image', 'description', 'barcode', 'count_favorites', 'status', 'rating')
     list_filter = ('name',)
     search_fields = ('name__startswith', )
-    inlines = (ImagesInConsoleInline,)
-    
 
     @admin.display(description='Количество в избранных')
     def count_favorites(self, obj):
@@ -36,18 +29,28 @@ class ConsoleAdmin(admin.ModelAdmin):
             return 'Занята'
         return 'Свободна'
 
-    @admin.display(description='Изображения')
-    def get_images(self, obj):
-        """Получаем изображения."""
-        return '\n '.join([
-            f'{img["image__name"]}'
-            for img in obj.console_images.all()])
-
     @admin.display(description='Категории')
     def categories(self, obj):
         """Получаем категории."""
         return ', '.join(_.name for _ in obj.categories.all())
+
+    @admin.display(description='Рейтинг')
+    def rating(self, obj):
+        return obj.reviews_console.all().aggregate(Avg('score'))['score__avg']
         
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    """Админка страницы отзывов."""
+
+    list_display = (
+        'pk', 'console', 'text',
+        'author', 'score', 'pub_date',
+    )
+    search_fields = ('console', 'author', 'pub_date',)
+    list_filter = ('pub_date',)
+    empty_value_display = '-пусто-'
+
 
 @admin.register(Favorite)
 class FavoriteAdmin(admin.ModelAdmin):

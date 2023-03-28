@@ -1,7 +1,10 @@
+from django.db.models import Avg
 from rest_framework import permissions, viewsets, decorators
+from rest_framework.generics import get_object_or_404
 
 from api.pagination import LimitPageNumberPagination
-from .serializers import ConsoleCreateSerializer, ConsoleReadSerializer, AddShoppingListConsoleSerializer, AddFavoriteConsoleSerializer, CategorySerializer
+from api.permissions import IsAuthorOrAdminOrReadOnly
+from .serializers import ConsoleCreateSerializer, ConsoleReadSerializer, AddShoppingListConsoleSerializer, AddFavoriteConsoleSerializer, CategorySerializer, ReviewCreateSerializer
 from core.utils import add_and_del_console
 from .models import Console, Favorite, ShoppingCart, Category
 
@@ -21,9 +24,11 @@ class ConsoleViewSet(viewsets.ModelViewSet):
     Для запросов на изменение используется ConsoleCreateSerializer
     """
 
-    queryset = Console.objects.all()
+    queryset = Console.objects.all().order_by('name').annotate(
+        rating=Avg('reviews_console__score')
+    )
     serializer_class = ConsoleReadSerializer
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (IsAuthorOrAdminOrReadOnly,)
     pagination_class = LimitPageNumberPagination
 
     def get_serializer_class(self):
@@ -51,4 +56,25 @@ class ConsoleViewSet(viewsets.ModelViewSet):
         """Добавляем/удаляем консоль в 'список покупок'"""
         return add_and_del_console(
             AddShoppingListConsoleSerializer, ShoppingCart, request, pk
+        )
+
+
+class ReviewConsoleViewSet(viewsets.ModelViewSet):
+    """Отображение действий с отзывами."""
+
+    serializer_class = ReviewCreateSerializer
+    permission_classes = (IsAuthorOrAdminOrReadOnly,)
+
+    def get_console(self):
+        return get_object_or_404(
+            Console,
+            id=self.kwargs.get('console_id')
+        )
+
+    def get_queryset(self):
+        return self.get_console().reviews_console.all()
+
+    def perform_create(self, serializer):
+        serializer.save(
+            author=self.request.user, console=self.get_console()
         )

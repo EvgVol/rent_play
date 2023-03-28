@@ -9,7 +9,7 @@ from .filters import GameFilter
 from .serializers import (GameSerializer, TagSerializer,
                           ReviewCreateSerializer, CommentSerializer,
                           AddFavoriteGameSerializer, AddShoppingListGameSerializer)
-from .permissions import IsAuthorOrAdminOrReadOnly
+from api.permissions import IsAuthorOrAdminOrReadOnly
 from .models import Game, Tag, Review, FavoriteGame, ShoppingList
 from core.enum import Regex
 from core.utils import add_and_del_game

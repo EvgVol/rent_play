@@ -4,6 +4,7 @@ from colorfield.fields import ColorField
 
 from core import texts
 from core.enum import Limits, Regex
+from users.models import User
 
 
 class Tags(models.Model):
@@ -46,20 +47,43 @@ def get_upload_path(instance, filename):
     return f'{name}/images/{filename}'
 
 
-class Image(models.Model):
-    """Абстрактная модель изображений."""
+class Product(models.Model):
+    """Абстрактная модель товара."""
 
-    name = models.CharField(max_length=255, blank=False)
-    image = models.ImageField('Изображение', upload_to=get_upload_path, blank=False)
+    name = models.CharField('Наименовение', max_length=Limits.MAX_LEN_TAG.value,)
+    image = models.ImageField('Изображение', upload_to=get_upload_path,)
+    description = models.TextField('Описание')
+    pub_date = models.DateTimeField(verbose_name='Дата размещения',
+                                    auto_now_add=True, editable=False,)
 
     class Meta:
-        verbose_name = 'Изображение'
-        verbose_name_plural = 'Изображения'
-        constraints = [
-            models.UniqueConstraint(
-                fields=['name', 'image'],
-                name='unique_name_image',
-            )
-        ]
+        abstract = True
+        ordering = ('-pub_date',)
+
+    def __str__(self):
+        return self.name
 
 
+class ReviewAndCommentModel(models.Model):
+    """Абстрактная модель. Добавляет текст, автора и дату публикации."""
+
+    text = models.CharField(
+        'Текст отзыва',
+        max_length=Limits.LENG_MAX_REVIEW.value,
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='Пользователь'
+    )
+    pub_date = models.DateTimeField(
+        'Дата публикации отзыва',
+        auto_now_add=True,
+    )
+
+    class Meta:
+        abstract = True
+        ordering = ('-pub_date',)
+
+    def __str__(self):
+        return self.text[:Limits.LENG_CUT.value]

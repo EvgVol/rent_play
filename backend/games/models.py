@@ -4,6 +4,7 @@ from colorfield.fields import ColorField
 
 from core.enum import Limits, Regex
 from core import texts
+from core.models import ReviewAndCommentModel
 from users.models import User
 
 
@@ -115,29 +116,7 @@ class ShoppingList(FavoriteAndShoppingListModel):
         return f'Пользователь:{self.user} добавил {self.game} в бронь.'
 
 
-class ReviewAndCommentModel(models.Model):
-    """Абстрактная модель. Добавляет текст, автора и дату публикации."""
 
-    text = models.CharField(
-        'Текст отзыва',
-        max_length=Limits.LENG_MAX_REVIEW.value,
-    )
-    author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        verbose_name='Пользователь'
-    )
-    pub_date = models.DateTimeField(
-        'Дата публикации отзыва',
-        auto_now_add=True,
-    )
-
-    class Meta:
-        abstract = True
-        ordering = ('-pub_date',)
-
-    def __str__(self):
-        return self.text[:Limits.LENG_CUT.value]
 
 
 class Review(ReviewAndCommentModel):

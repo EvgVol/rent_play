@@ -1,10 +1,10 @@
-from django.db import models, transaction
+from django.db import transaction
+from django.shortcuts import get_object_or_404
 from drf_extra_fields.fields import Base64ImageField
-from rest_framework import serializers, validators, fields, relations
+from rest_framework import serializers, validators, exceptions, relations
 
 from core import texts
-from core.models import Image
-from .models import Console, Favorite, ShoppingCart, Category, ImagesInConsole
+from .models import Console, Favorite, ShoppingCart, Category, Review
 from users.serializers import UsersSerializer
 
 
@@ -16,78 +16,53 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ImagesInConsolSerializer(serializers.ModelSerializer):
-    """Сериализатор для изображений в консоли"""
-
-    id = serializers.PrimaryKeyRelatedField(
-        read_only=True, source='ingredient'
-    )
-    name = serializers.SlugRelatedField(
-        source='console',
-        read_only=True,
-        slug_field='name'
-    )
-
-    class Meta:
-        model = ImagesInConsole
-        fields = ('id',)
-
-
-class ImagesInConsoleCreatedSerializer(serializers.ModelSerializer):
-    """Сериализатор для изображений в консоли"""
-
-    id = serializers.PrimaryKeyRelatedField(queryset=Image.objects.all())
-
-    class Meta:
-        model = ImagesInConsole
-        fields = ('id',)
-
-
 class ConsoleReadSerializer(serializers.ModelSerializer):
     """Сериализатор для вывода консолей."""
 
     categories = CategorySerializer(many=True, read_only=True)
-    images = ImagesInConsolSerializer(many=True, required=True,
-                                      source='console_images')
+    author = UsersSerializer(read_only=True)
+    image = Base64ImageField()
     is_rent = serializers.SerializerMethodField(read_only=True)
+    rating = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = Console
+        fields = (
+            'id', 'categories', 'author', 'name', 'image', 'is_rent',
+            'description', 'pub_date', 'rating',
+        )
 
     def get_is_rent(self,  obj):
         """Проверка - находится ли консоль в списке аренды."""
         return obj.rent_item.exists()
 
-    def get_images(self, console):
-        """Получает список изображений для рецепта."""
-        return console.images.filter(console=console)
-
 
 class ConsoleCreateSerializer(serializers.ModelSerializer):
     """Сериализатор для размещения консолей."""
 
+    author = UsersSerializer(read_only=True)
     categories = relations.PrimaryKeyRelatedField(
         queryset=Category.objects.all(), many=True)
-    images = Base64ImageField(max_length=None, use_url=True)
+    image = Base64ImageField(max_length=None, use_url=True)
 
     class Meta:
         model = Console
-        fields = ('id', 'categories', 'name', 'images', 'description', 'barcode',)
-
+        fields = ('id', 'categories', 'name', 'image', 'description', 'barcode', 'author',)
 
     @transaction.atomic
-    def create_bulk_images(self, images, console):
-        for image in images:
-            ImagesInConsole.objects.get_or_create(
-                console=console,
-                image=image['id']
-            )
+    def create(self, validated_data):
+        categories = validated_data.pop('tags')
+        author = self.context.get('request').user
+        console = Console.objects.create(author=author, **validated_data)
+        console.save()
+        console.categories.set(categories)
+        return console
 
     @transaction.atomic
     def update(self, instance, validated_data):
         categories = validated_data.pop('categories')
-        images = validated_data.pop('images')
         instance.categories.clear()
         instance.categories.set(categories)
-        instance.images.clear()
-        self.create_bulk_images(console=instance, images=images)
         return super().update(instance, validated_data)
 
     def to_representation(self, instance):
@@ -96,10 +71,59 @@ class ConsoleCreateSerializer(serializers.ModelSerializer):
         return ConsoleReadSerializer(instance,
                                     context=context).data
 
+    def validate_categories(self, value):
+        """Проверяем на наличие уникального тега."""
+        categories = value
+        if not categories:
+            raise exceptions.ValidationError(
+                {'categories': texts.TAG_ERROR}
+            )
+        categories_list = []
+        for tag in categories:
+            if tag in categories_list:
+                raise exceptions.ValidationError(
+                    {'categories': texts.TAG_UNIQUE_ERROR}
+                )
+            categories_list.append(tag)
+        return value
+
+    def to_representation(self, instance):
+        request = self.context.get('request')
+        context = {'request': request}
+        return ConsoleReadSerializer(instance,
+                                     context=context).data
+
+
+class ReviewCreateSerializer(serializers.ModelSerializer):
+    """Сериализатор для создания отзывов."""
+
+    author = serializers.SlugRelatedField(
+        slug_field='username', read_only=True, many=False, )
+    score = serializers.IntegerField(max_value=10, min_value=1)
+
+    class Meta:
+        model = Review
+        fields = ('id', 'text', 'author', 'score', 'pub_date')
+        read_only = ('id',)
+
+    def validate(self, data):
+        request = self.context.get('request')
+
+        if request.method == 'POST':
+            console_id = self.context['view'].kwargs.get('console_id')
+            console = get_object_or_404(Console, pk=console_id)
+            if Review.objects.filter(
+                    author=request.user, console=console
+            ).exists():
+                raise serializers.ValidationError(
+                    'Вы уже оставили отзыв!')
+        return data
+
 
 class ShowConsoleAddedSerializer(serializers.ModelSerializer):
     """Сериализатор для модели Console.
-    Определён укороченный набор полей для некоторых эндпоинтов."""
+    Необходим для отражения приставки в избранном и списке покупок.
+    """
 
     image = Base64ImageField()
 
