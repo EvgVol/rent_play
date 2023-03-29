@@ -2,8 +2,10 @@ from django.urls import include, path
 from rest_framework import routers
 
 from users.views import CustomUserViewSet
-from consoles.views import ConsoleViewSet, CategoryViewSet, ReviewConsoleViewSet
-from games.views import GameViewSet, TagViewSet, ReviewViewSet, CommentViewSet
+from consoles.views import (ConsoleViewSet, CategoryViewSet,
+                            ReviewConsoleViewSet)
+from games.views import (GameViewSet, TagViewSet, ReviewViewSet,
+                         CommentViewSet)
 from rents.views import RentViewSet
 
 router = routers.DefaultRouter()

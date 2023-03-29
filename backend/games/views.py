@@ -8,7 +8,8 @@ from api.pagination import LimitPageNumberPagination
 from .filters import GameFilter
 from .serializers import (GameSerializer, TagSerializer,
                           ReviewCreateSerializer, CommentSerializer,
-                          AddFavoriteGameSerializer, AddShoppingListGameSerializer)
+                          AddFavoriteGameSerializer,
+                          AddShoppingListGameSerializer)
 from api.permissions import IsAuthorOrAdminOrReadOnly
 from .models import Game, Tag, Review, FavoriteGame, ShoppingList
 from core.enum import Regex

@@ -47,7 +47,8 @@ class ConsoleCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Console
-        fields = ('id', 'categories', 'name', 'image', 'description', 'barcode', 'author',)
+        fields = ('id', 'categories', 'name', 'image', 'description',
+                  'barcode', 'author',)
 
     @transaction.atomic
     def create(self, validated_data):

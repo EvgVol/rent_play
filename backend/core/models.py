@@ -50,7 +50,8 @@ def get_upload_path(instance, filename):
 class Product(models.Model):
     """Абстрактная модель товара."""
 
-    name = models.CharField('Наименовение', max_length=Limits.MAX_LEN_TAG.value,)
+    name = models.CharField('Наименовение',
+                            max_length=Limits.MAX_LEN_TAG.value,)
     image = models.ImageField('Изображение', upload_to=get_upload_path,)
     description = models.TextField('Описание')
 

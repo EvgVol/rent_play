@@ -13,8 +13,9 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Console)
 class ConsoleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author', 'categories', 'name', 'image', 'description',
-                    'barcode', 'count_favorites', 'status', 'rating')
+    list_display = ('id', 'author', 'categories', 'name', 'image', 
+                    'description', 'barcode', 'count_favorites', 'status',
+                    'rating')
     list_filter = ('name',)
     search_fields = ('name__startswith', )
 

@@ -48,8 +48,8 @@ class Rent(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Заказ'
-        verbose_name_plural = 'Заказы'
+        verbose_name = 'Активный'
+        verbose_name_plural = 'Активные'
         ordering = [models.F('user').asc(nulls_last=True)]
 
     def time_rent(self):

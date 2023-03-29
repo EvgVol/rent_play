@@ -3,7 +3,8 @@ from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers, validators
 
 from core import texts
-from games.models import Game, Tag, Review, Comment, FavoriteGame, ShoppingList
+from games.models import (Game, Tag, Review, Comment, FavoriteGame,
+                          ShoppingList)
 
 
 class GameSerializer(serializers.ModelSerializer):
