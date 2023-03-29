@@ -13,7 +13,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Console)
 class ConsoleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author', 'categories', 'name', 'image', 
+    list_display = ('id', 'author', 'get_categories', 'name', 'image', 
                     'description', 'barcode', 'count_favorites', 'status',
                     'rating')
     list_filter = ('name',)
@@ -31,8 +31,8 @@ class ConsoleAdmin(admin.ModelAdmin):
             return 'Занята'
         return 'Свободна'
 
-    @admin.display(description='Категории')
-    def categories(self, obj):
+    @admin.display(description='Категория')
+    def get_categories(self, obj):
         """Получаем категории."""
         return ', '.join(_.name for _ in obj.categories.all())
 
