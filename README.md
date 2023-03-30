@@ -22,41 +22,41 @@ ____
 ##  Базовые модели проекта
 
 ### Пользователь
-    - :heavy_check_mark: Логин
-    - :heavy_check_mark: Имя пользователя
-    - :heavy_check_mark: Фамилия
-    - :heavy_check_mark: Email
-    - :white_large_square: Номер телефона
-    - :white_large_square: Изображение
-    - :white_large_square: Роль (арендатель, арендодатель, администратор)
+- :heavy_check_mark: Логин
+- :heavy_check_mark: Имя пользователя
+- :heavy_check_mark: Фамилия
+- :heavy_check_mark: Email
+- :white_large_square: Номер телефона
+- :white_large_square: Изображение
+- :white_large_square: Роль (арендатель, арендодатель, администратор)
 
 ### Игровая консоль
-    - :white_large_square: Владелец консоли(арендодатель)
-    - :heavy_check_mark: Наименовение
-    - :heavy_check_mark: Изображение
-    - :heavy_check_mark: Описание
-    - :heavy_check_mark: Статус (свободна, занята)
-    - :heavy_check_mark: Категория(slim, pro, xbox и пр.)
-    - :heavy_check_mark: Штрих-код
-    - :heavy_check_mark: Рейтинг
-    - :heavy_check_mark: Стоимость аренды
+- :white_large_square: Владелец консоли(арендодатель)
+- :heavy_check_mark: Наименовение
+- :heavy_check_mark: Изображение
+- :heavy_check_mark: Описание
+- :heavy_check_mark: Статус (свободна, занята)
+- :heavy_check_mark: Категория(slim, pro, xbox и пр.)
+- :heavy_check_mark: Штрих-код
+- :heavy_check_mark: Рейтинг
+- :heavy_check_mark: Стоимость аренды
 
 ### Игра
-    - :white_large_square: Название
-    - :white_large_square: Изображение
-    - :white_large_square: Описание
-    - :white_large_square: Тег(одиночная, многопользователькая и др.)
+- :white_large_square: Название
+- :white_large_square: Изображение
+- :white_large_square: Описание
+- :white_large_square: Тег(одиночная, многопользователькая и др.)
 
 ### Тег, категория
-    - :white_large_square: Название
-    - :white_large_square: Цветовой HEX-код
-    - :white_large_square: Slug
+- :white_large_square: Название
+- :white_large_square: Цветовой HEX-код
+- :white_large_square: Slug
 
 ### Заказ
-    - :white_large_square: Арендатель
-    - :white_large_square: Игровая приставка
-    - :white_large_square: Дата начала аренды
-    - :white_large_square: Дата окончание аренды
+- :white_large_square: Арендатель
+- :white_large_square: Игровая приставка
+- :white_large_square: Дата начала аренды
+- :white_large_square: Дата окончание аренды
 
 [:arrow_up:Оглавление](#Оглавление)
 ____
@@ -129,7 +129,7 @@ ____
 
 ##  Статус работы
 
-| CENTER | LEFT | 
+| Иконка | Статус | 
 |----------------|:---------:|
 | :ballot_box_with_check: | Реализовано и проверено |
 | :white_check_mark: | Реализовано полностью |
