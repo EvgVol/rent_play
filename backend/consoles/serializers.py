@@ -4,7 +4,7 @@ from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers, validators, exceptions, relations
 
 from core import texts
-from .models import Console, Favorite, ShoppingCart, Category, Review
+from .models import Console, Favorite, ShoppingCart, Category, Review, RentalPrice
 from users.serializers import UsersSerializer
 
 
@@ -13,6 +13,25 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
+        fields = '__all__'
+
+
+
+class RentalPriceCreateSerializers(serializers.ModelSerializer):
+    """Сериализатор для указания стоимости за период."""
+
+    id = serializers.PrimaryKeyRelatedField(
+        read_only=True,
+        source='period'
+    )
+    name = serializers.SlugRelatedField(
+        source='period',
+        read_only=True,
+        slug_field='name'
+    )
+
+    class Meta:
+        model = RentalPrice
         fields = '__all__'
 
 

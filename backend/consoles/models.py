@@ -2,7 +2,9 @@ from django.db import models
 from django.core import validators
 
 from users.models import User
-from core.models import Tags, Product, ReviewAndCommentModel
+from core.models import Tags, Product, ReviewAndCommentModel, Period
+from core.enum import Limits
+from core import texts
 
 
 class Category(Tags):
@@ -23,11 +25,15 @@ class Console(Product):
     barcode = models.TextField('Штрих-код')
     pub_date = models.DateTimeField(verbose_name='Дата размещения',
                                     auto_now_add=True, editable=False,)
+    timeframe = models.ManyToManyField(
+        Period, through='RentalPrice', verbose_name='Стоимость аренды'
+    )
+
 
     class Meta(Product.Meta):
         verbose_name_plural = 'Игровые приставки'
         verbose_name = 'Игровая приставка'
-        default_related_name = 'console'
+        default_related_name = 'consoles'
         ordering = ('-pub_date',)
         constraints = [
             models.UniqueConstraint(
@@ -35,6 +41,52 @@ class Console(Product):
                 name='unique_name_console',
             )
         ]
+
+
+class RentalPrice(models.Model):
+    """Модель стоимости аренды."""
+
+    console = models.ForeignKey(
+        Console,
+        verbose_name='Игровая консколь',
+        on_delete=models.CASCADE,
+        related_name='rental_price'
+    )
+
+    period = models.ForeignKey(
+        Period,
+        on_delete=models.CASCADE,
+        verbose_name='Период',
+        related_name='rental_price'
+    )
+
+    price = models.PositiveSmallIntegerField(
+        default=Limits.MIN_RENT.value,
+        validators=(
+            validators.MinValueValidator(
+                Limits.MIN_RENT.value,
+                message=texts.LOW_COST
+            ),
+        ),
+        verbose_name='Стоимость аренды',
+    )
+
+    class Meta:
+        ordering = ('-id',)
+        verbose_name = 'Стоимость'
+        verbose_name_plural = 'Стоимость'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['period', 'console'],
+                name='unique_period_console'
+            )
+        ]
+
+    def __str__(self):
+        return (
+            f'{self.console.name} ({self.period.name}) - {self.price}'
+        )
+
 
 
 class Review(ReviewAndCommentModel):

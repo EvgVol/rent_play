@@ -88,17 +88,29 @@ class ReviewAndCommentModel(models.Model):
 
 
 class Period(models.Model):
+    """Модель периода аренды."""
 
-    start_date = models.DateField(
-        'Начало аренды',
-        auto_now_add=True,
-        help_text='Укажите дату начала аренды',
+    name = models.CharField(
+        'Название',
+        help_text='Укажите название периода',
+        max_length=Limits.MAX_LEN_TAG.value,
+        blank=False,
+        unique=True,
     )
-    end_date = models.DateField(
-        'Конец аренды',
-        auto_now_add=True,
-        help_text='Укажите дату окончание аренды',
+
+    value = models.PositiveSmallIntegerField(
+        'Количество дней',
+        help_text='Задайте количество дней',
     )
+
+    class Meta:
+        verbose_name = 'Период аренды'
+        verbose_name_plural = 'Периоды аренды'
+        ordering = ('name',)
+        constraints = [
+            models.UniqueConstraint(fields=['name', 'value'],
+                                    name='unique_period')
+        ]
 
     def __str__(self):
-        return f'Аренда с {self.end_date} по {self.start_date}'
+        return self.name

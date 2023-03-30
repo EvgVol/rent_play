@@ -7,6 +7,7 @@ from consoles.views import (ConsoleViewSet, CategoryViewSet,
 from games.views import (GameViewSet, TagViewSet, ReviewViewSet,
                          CommentViewSet)
 from rents.views import RentViewSet
+from core.views import PeriodViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename='users')
@@ -21,6 +22,7 @@ router.register(r'games/(?P<game_id>\d+)/reviews/(?P<review_id>\d+)/comments',
 router.register(r'tags', TagViewSet, basename='tags')
 router.register(r'categories', CategoryViewSet, basename='categories')
 router.register(r'rents', RentViewSet, basename='rents')
+router.register(r'periods', PeriodViewSet, basename='periods')
 
 urlpatterns = [
     path('', include(router.urls)),

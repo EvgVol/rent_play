@@ -1,11 +1,6 @@
 from django.contrib import admin
 
-from .models import Rent, Period
-
-
-@admin.register(Period)
-class PeriodAdmin(admin.ModelAdmin):
-    list_display = ('name', 'value')
+from .models import Rent
 
 
 @admin.register(Rent)

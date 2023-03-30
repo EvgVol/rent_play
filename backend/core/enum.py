@@ -20,6 +20,8 @@ class Limits(IntEnum):
     TIME_MIN_AMOUNT = 1
     # Максимальная длина наименование категории
     LENG_CATEGORY = 100
+    # Минимальная стоимость аренды
+    MIN_RENT = 500
 
 class Regex:
     # Регулярное выражение для цвета тэга
