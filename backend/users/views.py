@@ -14,7 +14,6 @@ class CustomUserViewSet(UserViewSet):
     
     queryset = User.objects.all()
     serializer_class = UsersSerializer
-    permission_classes = (IsAdmin,) 
 
     @action(
         methods=['GET', 'PATCH'],

@@ -27,8 +27,8 @@ ____
 - :heavy_check_mark: Фамилия
 - :heavy_check_mark: Email
 - :white_large_square: Номер телефона
-- :white_large_square: Изображение
-- :white_large_square: Роль (арендатель, арендодатель, администратор)
+- :heavy_check_mark: Изображение
+- :interrobang: Роль (арендатель, арендодатель, администратор)
 
 ### Игровая консоль
 - :white_large_square: Владелец консоли(арендодатель)

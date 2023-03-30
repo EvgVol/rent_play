@@ -13,14 +13,14 @@ from core import texts, validators
 class User(AbstractUser):
     """Модель пользователя."""
 
-    USER = 'Пользователь'
-    RENTOR = 'Арендодатель'
-    ADMIN = 'Администратор'
-    MODERATOR = 'Модератор'
+    USER = 'user'
+    RENTOR = 'rentor'
+    ADMIN = 'admin'
+    MODERATOR = 'moderator'
 
     ROLE_CHOICES = (
-        (USER, 'Пользователь'),
-        (RENTOR, 'Арендодатель'),
+        (USER, 'user'),
+        (RENTOR, 'rentor'),
     )
 
     username = models.CharField(
@@ -64,7 +64,6 @@ class User(AbstractUser):
         max_length=max(len(role) for role, _ in ROLE_CHOICES),
         choices=ROLE_CHOICES,
         default=USER,
-        blank=True
     )
 
     birthdate = models.DateField(
@@ -74,12 +73,6 @@ class User(AbstractUser):
     )
 
     avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR,)
-
-    phone_number = models.PositiveSmallIntegerField(
-        'Номер телефона',
-        blank=False,
-        help_text=texts.USERS_HELP_PNUMBER,
-        error_messages={'error': 'Количество символов не более 11'},)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ('username', 'first_name', 'last_name',)
