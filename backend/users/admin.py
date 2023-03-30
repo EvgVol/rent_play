@@ -11,3 +11,4 @@ class UserAdmin(admin.ModelAdmin):
                     'avatar', 'phone_number', 'role', 'birthdate')
     list_filter = ('username', 'email', 'role')
     search_fields = ('username', 'email', 'role')
+    list_editable = ('role',)

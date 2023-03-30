@@ -21,8 +21,6 @@ class User(AbstractUser):
     ROLE_CHOICES = (
         (USER, 'Пользователь'),
         (RENTOR, 'Арендодатель'),
-        (ADMIN, 'Администратор'),
-        (MODERATOR, 'Модератор'),
     )
 
     username = models.CharField(
@@ -60,6 +58,7 @@ class User(AbstractUser):
         null=False,
         help_text=texts.USERS_HELP_EMAIL
     )
+
     role = models.CharField(
         'Роль',
         max_length=max(len(role) for role, _ in ROLE_CHOICES),
@@ -67,6 +66,7 @@ class User(AbstractUser):
         default=USER,
         blank=True
     )
+
     birthdate = models.DateField(
         'Дата рождения',
         blank=True,
@@ -75,9 +75,11 @@ class User(AbstractUser):
 
     avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR,)
 
-    phone_number = models.CharField('Номер телефона', max_length=11,
-                                    blank=False,
-                                    help_text=texts.USERS_HELP_PNUMBER)
+    phone_number = models.PositiveSmallIntegerField(
+        'Номер телефона',
+        blank=False,
+        help_text=texts.USERS_HELP_PNUMBER,
+        error_messages={'error': 'Количество символов не более 11'},)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ('username', 'first_name', 'last_name',)
