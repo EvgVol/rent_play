@@ -67,6 +67,11 @@ class User(AbstractUser):
         default=USER,
         blank=True
     )
+    birthdate = models.DateField(
+        'Дата рождения',
+        blank=True,
+        null=True,
+    )
 
     avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR,)
 
