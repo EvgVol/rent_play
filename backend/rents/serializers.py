@@ -6,8 +6,15 @@ from rest_framework import serializers, exceptions, status, relations
 from core import texts
 from consoles.models import Console
 from users.serializers import UsersSerializer
-from .models import Rent
+from .models import Rent, Period
 
+
+class PeriodSerializers(serializers.ModelSerializer):
+    """Сериализатор для возврата периода аренды."""
+
+    class Meta:
+        model = Period
+        fields = '__all__'
 
 
 class RentReadSerializers(serializers.ModelSerializer):

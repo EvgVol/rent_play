@@ -1,8 +1,17 @@
 from rest_framework import permissions, viewsets
 
-from .serializers import RentCreateSerializers, RentReadSerializers
+from .serializers import (RentCreateSerializers, RentReadSerializers,
+                          PeriodSerializers,) 
 
-from .models import Rent
+from .models import Rent, Period
+
+
+class PeriodViewSet(viewsets.ReadOnlyModelViewSet):
+    """Вьюсет для отображения периода аренды."""
+
+    queryset = Period.objects.all()
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = RentReadSerializers
 
 
 class RentViewSet(viewsets.ModelViewSet):
@@ -11,7 +20,7 @@ class RentViewSet(viewsets.ModelViewSet):
     Для запросов на изменение используется RentCreateSerializers"""
 
     queryset = Rent.objects.all()
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,) 
     serializer_class = RentReadSerializers
 
     def get_serializer_class(self):

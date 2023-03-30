@@ -10,6 +10,30 @@ from core.enum import Limits
 from core import texts
 
 
+class Period(models.Model):
+    """Модель периода аренды."""
+
+    name = models.CharField(
+        'Название',
+        help_text='Укажите название периода',
+        blank=False,
+        unique=True,
+    )
+
+    value = models.PositiveSmallIntegerField(
+        'Значение',
+        help_text='Задайте значение периода',
+    )
+
+    class Meta:
+        verbose_name = 'Период'
+        verbose_name_plural = 'Периоды'
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+
 class Rent(models.Model):
     """Модель аренды."""
 
