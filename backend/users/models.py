@@ -12,7 +12,19 @@ from core import texts, validators
 
 class User(AbstractUser):
     """Модель пользователя."""
-  
+
+    USER = 'Пользователь'
+    RENTOR = 'Арендодатель'
+    ADMIN = 'Администратор'
+    MODERATOR = 'Модератор'
+
+    ROLE_CHOICES = (
+        (USER, 'Пользователь'),
+        (RENTOR, 'Арендодатель'),
+        (ADMIN, 'Администратор'),
+        (MODERATOR, 'Модератор'),
+    )
+
     username = models.CharField(
         'Уникальный юзернейм',
         validators=(validators.validate_username,),
@@ -48,6 +60,19 @@ class User(AbstractUser):
         null=False,
         help_text=texts.USERS_HELP_EMAIL
     )
+    role = models.CharField(
+        'Роль',
+        max_length=max(len(role) for role, _ in ROLE_CHOICES),
+        choices=ROLE_CHOICES,
+        default=USER,
+        blank=True
+    )
+
+    avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR,)
+
+    phone_number = models.CharField('Номер телефона', max_length=11,
+                                    blank=False,
+                                    help_text=texts.USERS_HELP_PNUMBER)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ('username', 'first_name', 'last_name',)
@@ -62,6 +87,18 @@ class User(AbstractUser):
                 name='unique_username_email',
             )
         ]
+
+    @property
+    def is_rentor(self):
+        return self.role == self.RENTOR
+
+    @property
+    def is_moderator(self):
+        return self.role == self.MODERATOR
+
+    @property
+    def is_admin(self):
+        return self.role == self.ADMIN
 
     def __str__(self):
         return f'{self.username}: {self.email}'

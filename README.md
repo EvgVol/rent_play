@@ -42,21 +42,21 @@ ____
 - :heavy_check_mark: Стоимость аренды
 
 ### Игра
-- :white_large_square: Название
-- :white_large_square: Изображение
-- :white_large_square: Описание
-- :white_large_square: Тег(одиночная, многопользователькая и др.)
+- :heavy_check_mark: Название
+- :heavy_check_mark: Изображение
+- :heavy_check_mark: Описание
+- :heavy_check_mark: Тег(одиночная, многопользователькая и др.)
 
 ### Тег, категория
-- :white_large_square: Название
-- :white_large_square: Цветовой HEX-код
-- :white_large_square: Slug
+- :heavy_check_mark: Название
+- :heavy_check_mark: Цветовой HEX-код
+- :heavy_check_mark: Slug
 
 ### Заказ
-- :white_large_square: Арендатель
-- :white_large_square: Игровая приставка
-- :white_large_square: Дата начала аренды
-- :white_large_square: Дата окончание аренды
+- :heavy_check_mark: Арендатель
+- :heavy_check_mark: Игровая приставка
+- :heavy_check_mark: Дата начала аренды
+- :heavy_check_mark: Дата окончание аренды
 
 [:arrow_up:Оглавление](#Оглавление)
 ____

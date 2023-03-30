@@ -10,8 +10,6 @@ from core.enum import Limits
 from core import texts
 
 
-
-
 class Rent(models.Model):
     """Модель аренды."""
 
@@ -59,5 +57,3 @@ class Rent(models.Model):
 
     def __str__(self):
         return f'Пользователь {self.user.username} забронировал {self.console} на {self.time_rent()} дней.'
-
-
