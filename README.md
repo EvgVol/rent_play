@@ -22,22 +22,24 @@ ____
 ##  Базовые модели проекта
 
 ### Пользователь
-    - :white_large_square: Логин
-    - :white_large_square: Имя пользователя
-    - :white_large_square: Фамилия
-    - :white_large_square: Email
+    - :heavy_check_mark: Логин
+    - :heavy_check_mark: Имя пользователя
+    - :heavy_check_mark: Фамилия
+    - :heavy_check_mark: Email
     - :white_large_square: Номер телефона
     - :white_large_square: Изображение
     - :white_large_square: Роль (арендатель, арендодатель, администратор)
 
 ### Игровая консоль
     - :white_large_square: Владелец консоли(арендодатель)
-    - :white_large_square: Наименовение
-    - :white_large_square: Изображение
-    - :white_large_square: Описание
-    - :white_large_square: Статус (свободна, занята)
-    - :white_large_square: Категория(slim, pro, xbox и пр.)
-    - :white_large_square: Штрих-код
+    - :heavy_check_mark: Наименовение
+    - :heavy_check_mark: Изображение
+    - :heavy_check_mark: Описание
+    - :heavy_check_mark: Статус (свободна, занята)
+    - :heavy_check_mark: Категория(slim, pro, xbox и пр.)
+    - :heavy_check_mark: Штрих-код
+    - :heavy_check_mark: Рейтинг
+    - :heavy_check_mark: Стоимость аренды
 
 ### Игра
     - :white_large_square: Название
@@ -71,14 +73,14 @@ ____
 
 ### Авторизованный пользователь
 - :white_large_square: Обладает правами неавторизованного пользователя 
-- :white_large_square: Входить в систему под своим логином и паролем
+- :heavy_check_mark: Входить в систему под своим логином и паролем
 - :white_large_square: Выходить из системы (разлогиниваться)
 - :white_large_square: Менять свой пароль
 - :heavy_check_mark: Создавать заказы
 - :white_large_square: Отслеживать статус заказов
 - :white_large_square: Добавлять/удалять в избранное 
 - :heavy_check_mark: Оставлять отзывы
-- :white_large_square: Оставлять комментария к отзывам
+- :heavy_check_mark: Оставлять комментария к отзывам
 - :white_large_square: Подписываться на арендодателей
 - :white_large_square: Оценивать арендодателей
 
