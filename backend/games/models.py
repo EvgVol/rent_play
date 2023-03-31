@@ -21,6 +21,7 @@ class Game(Product):
     """Модель игр."""
 
     tags = models.ManyToManyField(Tag, verbose_name='Теги')
+    
 
     class Meta:
         verbose_name_plural = 'Игры'

@@ -4,15 +4,21 @@ from drf_extra_fields.fields import Base64ImageField
 from .models import User, Follow
 from core import texts
 
+
 class UsersSerializer(serializers.ModelSerializer):
     """Сериализатор для всех пользователей."""
 
     avatar = Base64ImageField()
+    count_subscriptions = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = User
         fields = ('id', 'email', 'username', 'first_name', 'last_name',
-                  'avatar', 'birthdate', 'role',)
+                  'avatar', 'birthdate', 'role', 'count_subscriptions')
+
+    def get_count_subscriptions(self, obj):
+        """Проверка подписки пользователей."""
+        return obj.follower.count()
 
 
 class FollowSerializer(UsersSerializer):
@@ -30,7 +36,13 @@ class FollowSerializer(UsersSerializer):
     def validate(self, data):
         author = self.instance
         user = self.context.get('request').user
-        if not author.is_rentor:
+
+        if user.is_rentor:
+            raise exceptions.ValidationError(
+                detail=texts.NO_USER,
+                code=status.HTTP_400_BAD_REQUEST
+            )
+        elif not author.is_rentor:
             raise exceptions.ValidationError(
                 detail=texts.NO_RENTOR,
                 code=status.HTTP_400_BAD_REQUEST
@@ -50,3 +62,5 @@ class FollowSerializer(UsersSerializer):
     def get_consoles(self, obj):
         """Достаем приставки."""
         return obj.consoles.all()
+
+

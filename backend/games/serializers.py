@@ -5,6 +5,7 @@ from rest_framework import serializers, validators
 from core import texts
 from games.models import (Game, Tag, Review, Comment, FavoriteGame,
                           ShoppingList)
+from core.likedislike import LikeDislike
 
 
 class GameSerializer(serializers.ModelSerializer):
@@ -117,3 +118,10 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = ('id', 'text', 'author', 'pub_date')
         read_only = ('review',)
+
+
+class LikeConsole(serializers.ModelSerializer):
+
+    class Meta:
+        model = LikeDislike
+        fields = '__all__'

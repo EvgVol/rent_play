@@ -1,10 +1,11 @@
 from django.db import models
 from django.core import validators
+from django.contrib.contenttypes.fields import GenericRelation
 
 from users.models import User
 from core.models import Tags, Product, ReviewAndCommentModel, Period
 from core.enum import Limits
-from core import texts
+from core import texts, likedislike
 
 
 class Category(Tags):
@@ -28,6 +29,7 @@ class Console(Product):
     timeframe = models.ManyToManyField(
         Period, through='RentalPrice', verbose_name='Стоимость аренды'
     )
+    votes = GenericRelation(likedislike.LikeDislike, related_query_name='consoles')
 
 
     class Meta(Product.Meta):
@@ -86,7 +88,6 @@ class RentalPrice(models.Model):
         return (
             f'{self.console.name} ({self.period.name}) - {self.price}'
         )
-
 
 
 class Review(ReviewAndCommentModel):

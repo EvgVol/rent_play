@@ -10,17 +10,6 @@ class IsAdmin(permissions.IsAdminUser):
             and request.user.is_staff
         )
 
-# class IsModeratorOrAdminOrReadOnly(
-#     permissions.IsAuthenticatedOrReadOnly
-# ):
-#     """Права для работы с играми."""
-
-#     def has_object_permission(self, request, view, obj):
-#         return (
-#             request.method in permissions.SAFE_METHODS
-#             or request.user.is_moderator
-#             or request.user.is_admin
-#         )
 
 class IsModeratorOrAdminOrReadOnly(permissions.IsAdminUser):
     """Права для работы с игровыми приставками."""
@@ -32,16 +21,3 @@ class IsModeratorOrAdminOrReadOnly(permissions.IsAdminUser):
             or request.user.is_staff
         )
 
-
-# class IsAuthorOrModeratorOrAdminOrReadOnly(
-#     permissions.IsAuthenticatedOrReadOnly
-# ):
-#     """Права для работы с отзывами и комментариями."""
-
-#     def has_object_permission(self, request, view, obj):
-#         return (
-#             request.method in permissions.SAFE_METHODS
-#             or obj.author == request.user
-#             or request.user.is_moderator
-#             or request.user.is_admin
-#         )

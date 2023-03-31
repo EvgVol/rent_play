@@ -2,7 +2,6 @@ from pathlib import Path
 from datetime import datetime as dt
 from django.core.paginator import Paginator
 
-
 from rest_framework import response, status
 from rest_framework.generics import get_object_or_404
 

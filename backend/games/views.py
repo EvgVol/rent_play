@@ -68,6 +68,14 @@ class GameViewSet(viewsets.ReadOnlyModelViewSet):
             AddShoppingListGameSerializer, ShoppingList, request, pk
         )
 
+    @decorators.action(
+        detail=True,
+        methods=['POST', 'DELETE'],
+        permission_classes=[permissions.IsAuthenticated]
+    )
+    def like(self, request, pk):
+        """Добавляем лайк на произведение"""
+
 
 class TagViewSet(viewsets.ReadOnlyModelViewSet):
     """Вьюсет для отображения тегов."""
