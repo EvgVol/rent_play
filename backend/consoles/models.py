@@ -20,7 +20,7 @@ class Console(Product):
     """Модель игровых консолей."""
 
     author = models.ForeignKey(User, verbose_name='Арендодатель',
-                               on_delete=models.SET_NULL, null=True,)
+                               on_delete=models.CASCADE, null=True,)
     categories = models.ManyToManyField(Category, verbose_name='Категории')
     barcode = models.TextField('Штрих-код')
     pub_date = models.DateTimeField(verbose_name='Дата размещения',

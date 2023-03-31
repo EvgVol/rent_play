@@ -28,10 +28,10 @@ ____
 - :heavy_check_mark: Email
 - :white_large_square: Номер телефона
 - :heavy_check_mark: Изображение
-- :interrobang: Роль (арендатель, арендодатель, администратор)
+- :heavy_check_mark: Роль (арендатель, арендодатель)
 
 ### Игровая консоль
-- :white_large_square: Владелец консоли(арендодатель)
+- :heavy_check_mark: Владелец консоли(арендодатель)
 - :heavy_check_mark: Наименовение
 - :heavy_check_mark: Изображение
 - :heavy_check_mark: Описание
@@ -73,9 +73,9 @@ ____
 
 ### Авторизованный пользователь
 - :white_large_square: Обладает правами неавторизованного пользователя 
-- :heavy_check_mark: Входить в систему под своим логином и паролем
+- :white_check_mark: Входить в систему под своим логином и паролем
 - :white_large_square: Выходить из системы (разлогиниваться)
-- :white_large_square: Менять свой пароль
+- :white_check_mark: Менять свой пароль
 - :heavy_check_mark: Создавать заказы
 - :white_large_square: Отслеживать статус заказов
 - :white_large_square: Добавлять/удалять в избранное 

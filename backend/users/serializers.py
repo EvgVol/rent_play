@@ -13,10 +13,3 @@ class UsersSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'email', 'username', 'first_name', 'last_name',
                   'avatar', 'birthdate', 'role',)
-
-
-class PersSerializer(UsersSerializer):
-    """Сериализатор для пользователя."""
-
-    class Meta(UsersSerializer.Meta):
-        read_only_fields = ('role',)

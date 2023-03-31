@@ -15,13 +15,11 @@ class User(AbstractUser):
 
     USER = 'user'
     RENTOR = 'rentor'
-    ADMIN = 'admin'
-    MODERATOR = 'moderator'
 
-    ROLE_CHOICES = (
-        (USER, 'user'),
-        (RENTOR, 'rentor'),
-    )
+    ROLE_CHOICES = [
+        (USER, 'Пользователь'),
+        (RENTOR, 'Арендодатель'),
+    ]
 
     username = models.CharField(
         'Уникальный юзернейм',
@@ -61,9 +59,10 @@ class User(AbstractUser):
 
     role = models.CharField(
         'Роль',
-        max_length=max(len(role) for role, _ in ROLE_CHOICES),
+        max_length=Limits.MAX_LEN_ROLE.value,
         choices=ROLE_CHOICES,
         default=USER,
+        blank=True
     )
 
     birthdate = models.DateField(
@@ -75,7 +74,7 @@ class User(AbstractUser):
     avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR,)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ('username', 'first_name', 'last_name',)
+    REQUIRED_FIELDS = ('username', 'role')
 
     class Meta:
         ordering = ('username',)
@@ -92,13 +91,6 @@ class User(AbstractUser):
     def is_rentor(self):
         return self.role == self.RENTOR
 
-    @property
-    def is_moderator(self):
-        return self.role == self.MODERATOR
-
-    @property
-    def is_admin(self):
-        return self.role == self.ADMIN
 
     def __str__(self):
         return f'{self.username}: {self.email}'

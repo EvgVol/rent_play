@@ -8,7 +8,7 @@ class UserAdmin(admin.ModelAdmin):
     """Админка Пользователей."""
 
     list_display = ('id', 'username', 'email', 'first_name', 'last_name',
-                    'avatar', 'role', 'birthdate')
-    list_filter = ('username', 'email', 'role')
-    search_fields = ('username', 'email', 'role')
-    # list_editable = ('role',)
+                    'avatar', 'role', 'birthdate', 'is_staff')
+    list_editable = ('role', 'is_staff')
+    list_filter = ('username', 'role')
+    search_fields = ('username', 'role')

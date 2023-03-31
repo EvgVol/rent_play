@@ -6,6 +6,8 @@ class Limits(IntEnum):
     MAX_LEN_EMAIL_FIELD = 256
     # Максимальная длина строковых полей моделей в приложении "users"
     MAX_LEN_USERS_CHARFIELD = 32
+    # Максимальная длина навазвание роли
+    MAX_LEN_ROLE = 30
     # Минимальная длина юзернейма (User)
     MIN_LEN_USERNAME = 3
     # Максимальная длина тега
