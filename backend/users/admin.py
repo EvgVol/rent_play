@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import User
+from .models import User, Follow
 
 
 @admin.register(User)
@@ -12,3 +12,12 @@ class UserAdmin(admin.ModelAdmin):
     list_editable = ('role', 'is_staff')
     list_filter = ('username', 'role')
     search_fields = ('username', 'role')
+
+
+@admin.register(Follow)
+class FollowAdmin(admin.ModelAdmin):
+    """Админка подписчика."""
+
+    list_display = ('user', 'author')
+    list_filter = ('user', 'author')
+    search_fields = ('user', 'author')

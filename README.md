@@ -29,6 +29,7 @@ ____
 - :white_large_square: Номер телефона
 - :heavy_check_mark: Изображение
 - :heavy_check_mark: Роль (арендатель, арендодатель)
+- :white_large_square: Рейтинг
 
 ### Игровая консоль
 - :heavy_check_mark: Владелец консоли(арендодатель)

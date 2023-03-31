@@ -75,7 +75,7 @@ class ReviewAndCommentModel(models.Model):
         verbose_name='Пользователь'
     )
     pub_date = models.DateTimeField(
-        'Дата публикации отзыва',
+        'Дата публикации',
         auto_now_add=True,
     )
 

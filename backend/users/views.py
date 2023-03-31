@@ -3,8 +3,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework import (filters, permissions, response, status, views,
                             viewsets, decorators)
 
-from .serializers import UsersSerializer
-from .models import User
+from .serializers import UsersSerializer, FollowSerializer
+from .models import User, Follow
 
 
 class CustomUserViewSet(UserViewSet):
@@ -13,6 +13,47 @@ class CustomUserViewSet(UserViewSet):
     queryset = User.objects.all()
     serializer_class = UsersSerializer
 
+    @decorators.action(
+        detail=True,
+        methods=['POST', 'DELETE'],
+        permission_classes=[permissions.IsAuthenticated]
+    )
+    def subscribe(self, request, **kwargs):
+        """Подписываем / отписываемся на арендодателя.
+        Доступно только арендателям.
+        """
+        user = request.user
+        author_id = self.kwargs.get('id')
+        author = get_object_or_404(User, id=author_id)
+        if request.method == 'POST':
+            serializer = FollowSerializer(author,
+                                          data=request.data,
+                                          context={'request': request})
+            serializer.is_valid(raise_exception=True)
+            Follow.objects.create(user=user, author=author)
+            return response.Response(serializer.data,
+                                     status=status.HTTP_201_CREATED)
+        get_object_or_404(Follow, user=user, author=author).delete()
+        return response.Response(status=status.HTTP_204_NO_CONTENT)
+
+    @decorators.action(
+        detail=False,
+        methods=['GET'],
+        permission_classes=(permissions.IsAuthenticated,)
+    )
+    def subscriptions(self, request):
+        """Возвращает пользователей, на которых подписан текущий пользователь.
+        В выдачу добавляются рецепты.
+        """
+        return self.get_paginated_response(
+            FollowSerializer(
+                self.paginate_queryset(
+                    User.objects.filter(following__user=request.user)
+                ),
+                many=True,
+                context={'request': request},
+            ).data
+        )
 
     # @decorators.action(
     #     detail=False,
