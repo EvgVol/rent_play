@@ -18,4 +18,12 @@ class RentAdmin(admin.ModelAdmin):
 
     @admin.display(description='Цена')
     def get_price(self, obj):
-        return obj.console.rental_price.values('period__value') 
+        # time_rent = (obj.end_date - obj.start_date).days
+        # price = obj.console.timeframe['price']
+        start_date = obj.console.rent_item.values_list('start_date')[0][0]
+        and_date = 
+        return start_date
+        # return obj.console.rental_price.filter(period=time_rent).values_list('price')
+        
+        
+        # return obj.console.timeframe.values('name', 'value', 'rental_price')
