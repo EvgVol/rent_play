@@ -4,4 +4,4 @@ from .models import Period
 
 @admin.register(Period)
 class PeriodAdmin(admin.ModelAdmin):
-    list_display = ('name', 'value')
+    list_display = ('id', 'name', 'value')

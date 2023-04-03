@@ -1,37 +1,30 @@
-from django.db import transaction
+from django.db import models, transaction
 from django.shortcuts import get_object_or_404
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers, validators, exceptions, relations
 
 from core import texts
+from core.models import Period
 from .models import Console, Favorite, ShoppingCart, Category, Review, RentalPrice
 from users.serializers import UsersSerializer
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    """Сериализхатор для категорий."""
+    """Сериализатор для категорий."""
 
     class Meta:
         model = Category
         fields = '__all__'
 
 
-class RentalPriceCreateSerializers(serializers.ModelSerializer):
-    """Сериализатор для указания стоимости за период."""
-
-    id = serializers.PrimaryKeyRelatedField(
-        read_only=True,
-        source='period'
-    )
-    name = serializers.SlugRelatedField(
-        source='period',
-        read_only=True,
-        slug_field='name'
-    )
+class RentalPriceSerializers(serializers.ModelSerializer):
+    """Сериализатор для вывода стоимости аренды."""
+    
+    id = serializers.PrimaryKeyRelatedField(queryset=Period.objects.all())
 
     class Meta:
         model = RentalPrice
-        fields = '__all__'
+        fields = ('id', 'price')
 
 
 class ConsoleReadSerializer(serializers.ModelSerializer):
@@ -42,17 +35,28 @@ class ConsoleReadSerializer(serializers.ModelSerializer):
     image = Base64ImageField()
     is_rent = serializers.SerializerMethodField(read_only=True)
     rating = serializers.IntegerField(read_only=True)
+    timeframe = RentalPriceSerializers(many=True,
+                                       required=True,
+                                       source='rental_price')
 
     class Meta:
         model = Console
         fields = (
             'id', 'categories', 'author', 'name', 'image', 'is_rent',
-            'description', 'pub_date', 'rating',
+            'description', 'pub_date', 'rating', 'timeframe'
         )
 
     def get_is_rent(self,  obj):
         """Проверка - находится ли консоль в списке аренды."""
         return obj.rent_item.exists()
+
+    def get_timeframe(self, console):
+        """Получает список стоимости аренды."""
+        return console.timeframe.values(
+            'id',
+            'name',
+            price=models.F('consoles__rental_price')
+        )
 
 
 class ConsoleCreateSerializer(serializers.ModelSerializer):
@@ -62,26 +66,42 @@ class ConsoleCreateSerializer(serializers.ModelSerializer):
     categories = relations.PrimaryKeyRelatedField(
         queryset=Category.objects.all(), many=True)
     image = Base64ImageField(max_length=None, use_url=True)
+    timeframe = RentalPriceSerializers(many=True)
 
     class Meta:
         model = Console
         fields = ('id', 'categories', 'name', 'image', 'description',
-                  'barcode', 'author',)
+                  'barcode', 'author', 'timeframe')
+
+    @transaction.atomic
+    def create_bulk_timeframe(self, timeframe, console):
+        for period in timeframe:
+            RentalPrice.objects.get_or_create(
+                console=console,
+                period=period['id'],
+                price=period['price']
+            )
 
     @transaction.atomic
     def create(self, validated_data):
+        timeframe_list = validated_data.pop('timeframe')
         categories = validated_data.pop('categories')
         author = self.context.get('request').user
         console = Console.objects.create(author=author, **validated_data)
         console.save()
         console.categories.set(categories)
+        self.create_bulk_timeframe(timeframe_list, console)
         return console
 
     @transaction.atomic
     def update(self, instance, validated_data):
         categories = validated_data.pop('categories')
+        timeframe = validated_data.pop('timeframe')
         instance.categories.clear()
         instance.categories.set(categories)
+        instance.timeframe.clear()
+        self.create_bulk_timeframe(console=instance,
+                                   timeframe=timeframe)
         return super().update(instance, validated_data)
 
     def to_representation(self, instance):
