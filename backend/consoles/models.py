@@ -45,19 +45,15 @@ class Console(Product):
 class RentalPrice(models.Model):
     """Модель стоимости аренды."""
 
-    console = models.ForeignKey(
-        Console,
-        verbose_name='Игровая консколь',
-        on_delete=models.CASCADE,
-        related_name='rental_price'
-    )
+    console = models.ForeignKey(Console,
+                                verbose_name='Игровая консколь',
+                                on_delete=models.CASCADE,
+                                related_name='rental_price')
 
-    period = models.ForeignKey(
-        Period,
-        on_delete=models.CASCADE,
-        verbose_name='Период',
-        related_name='rental_price'
-    )
+    period = models.ForeignKey(Period,
+                               on_delete=models.CASCADE,
+                               verbose_name='Период',
+                               related_name='rental_price')
 
     price = models.PositiveSmallIntegerField(
         default=Limits.MIN_RENT.value,
@@ -90,11 +86,8 @@ class RentalPrice(models.Model):
 class Review(ReviewAndCommentModel):
     """Модель отзыва к игровой приставке."""
 
-    console = models.ForeignKey(
-        Console,
-        on_delete=models.CASCADE,
-        verbose_name='Игровая приставка'
-    )
+    console = models.ForeignKey(Console, on_delete=models.CASCADE,
+                                verbose_name='Игровая приставка')
     score = models.PositiveSmallIntegerField(
         'Оценка',
         db_index=True,

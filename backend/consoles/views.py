@@ -71,10 +71,7 @@ class ReviewConsoleViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthorOrAdminOrReadOnly,)
 
     def get_console(self):
-        return get_object_or_404(
-            Console,
-            id=self.kwargs.get('console_id')
-        )
+        return get_object_or_404(Console, id=self.kwargs.get('console_id'))
 
     def get_queryset(self):
         return self.get_console().reviews_console.all()
