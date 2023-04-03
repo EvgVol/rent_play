@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.db.models import Avg
+from django.utils.safestring import SafeString, mark_safe
+
 
 from .models import Console, Favorite, ShoppingCart, Category, Review, RentalPrice
 
@@ -18,7 +20,7 @@ class RentalPriceInline(admin.TabularInline):
 
 @admin.register(Console)
 class ConsoleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author', 'get_categories', 'name', 'image', 
+    list_display = ('id', 'author', 'get_categories', 'name', 'get_image', 
                     'description', 'barcode', 'count_favorites', 'status',
                     'rating', 'get_timeframe' )
     list_filter = ('name',)
@@ -54,6 +56,11 @@ class ConsoleAdmin(admin.ModelAdmin):
             for item in obj.rental_price.values(
                 'period__name', 'price',)
         ])
+
+    def get_image(self, obj: Console) -> SafeString:
+        return mark_safe(f'<img src={obj.image.url} width="80" hieght="30"')
+
+    get_image.short_description = 'Изображение'
         
 
 @admin.register(Review)
