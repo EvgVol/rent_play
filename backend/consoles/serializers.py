@@ -16,7 +16,6 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class RentalPriceCreateSerializers(serializers.ModelSerializer):
     """Сериализатор для указания стоимости за период."""
 
@@ -71,7 +70,7 @@ class ConsoleCreateSerializer(serializers.ModelSerializer):
 
     @transaction.atomic
     def create(self, validated_data):
-        categories = validated_data.pop('tags')
+        categories = validated_data.pop('categories')
         author = self.context.get('request').user
         console = Console.objects.create(author=author, **validated_data)
         console.save()
@@ -91,13 +90,11 @@ class ConsoleCreateSerializer(serializers.ModelSerializer):
         return ConsoleReadSerializer(instance,
                                     context=context).data
 
-    def validate_categories(self, value):
-        """Проверяем на наличие уникального тега."""
-        categories = value
-        if not categories:
-            raise exceptions.ValidationError(
-                {'categories': texts.TAG_ERROR}
-            )
+    def validate(self, data):
+        timeframe = self.initial_data.get('timeframe')
+        categories = self.initial_data.get('categories')
+        if not timeframe or not categories:
+            raise serializers.ValidationError('Недостаточно данных')
         categories_list = []
         for tag in categories:
             if tag in categories_list:
@@ -105,7 +102,7 @@ class ConsoleCreateSerializer(serializers.ModelSerializer):
                     {'categories': texts.TAG_UNIQUE_ERROR}
                 )
             categories_list.append(tag)
-        return value
+        return data
 
     def to_representation(self, instance):
         request = self.context.get('request')

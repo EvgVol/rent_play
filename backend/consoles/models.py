@@ -26,11 +26,8 @@ class Console(Product):
     barcode = models.TextField('Штрих-код')
     pub_date = models.DateTimeField(verbose_name='Дата размещения',
                                     auto_now_add=True, editable=False,)
-    timeframe = models.ManyToManyField(
-        Period, through='RentalPrice', verbose_name='Стоимость аренды'
-    )
-    votes = GenericRelation(likedislike.LikeDislike, related_query_name='consoles')
-
+    timeframe = models.ManyToManyField(Period, through='RentalPrice',
+                                       verbose_name='Стоимость аренды')
 
     class Meta(Product.Meta):
         verbose_name_plural = 'Игровые приставки'

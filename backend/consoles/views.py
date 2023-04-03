@@ -3,7 +3,7 @@ from rest_framework import permissions, viewsets, decorators
 from rest_framework.generics import get_object_or_404
 
 from api.pagination import LimitPageNumberPagination
-from api.permissions import IsAuthorOrAdminOrReadOnly
+from api.permissions import IsAuthorOrAdminOrReadOnly, IsRentorOrAdminOrReadOnly
 from .serializers import (ConsoleCreateSerializer,
                           ConsoleReadSerializer,
                           AddShoppingListConsoleSerializer,
@@ -33,7 +33,7 @@ class ConsoleViewSet(viewsets.ModelViewSet):
         rating=Avg('reviews_console__score')
     )
     serializer_class = ConsoleReadSerializer
-    permission_classes = (IsAuthorOrAdminOrReadOnly,)
+    permission_classes = (IsRentorOrAdminOrReadOnly,)
     pagination_class = LimitPageNumberPagination
 
     def get_serializer_class(self):

@@ -62,5 +62,3 @@ class FollowSerializer(UsersSerializer):
     def get_consoles(self, obj):
         """Достаем приставки."""
         return obj.consoles.all()
-
-
