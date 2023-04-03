@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'core',
     'consoles',
     'colorfield',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -138,4 +139,14 @@ EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 
-DEFAULT_FROM_EMAIL = 'admin@foodgram.cook'
+DEFAULT_FROM_EMAIL = 'admin@rentplay.cook'
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+} 

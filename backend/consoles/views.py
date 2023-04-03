@@ -9,7 +9,7 @@ from .serializers import (ConsoleCreateSerializer,
                           AddShoppingListConsoleSerializer,
                           AddFavoriteConsoleSerializer,
                           CategorySerializer,
-                          ReviewCreateSerializer)
+                          ReviewPostSerializer)
 from core.utils import add_and_del_console
 from .models import Console, Favorite, ShoppingCart, Category
 
@@ -67,7 +67,7 @@ class ConsoleViewSet(viewsets.ModelViewSet):
 class ReviewConsoleViewSet(viewsets.ModelViewSet):
     """Отображение действий с отзывами."""
 
-    serializer_class = ReviewCreateSerializer
+    serializer_class = ReviewPostSerializer
     permission_classes = (IsAuthorOrAdminOrReadOnly,)
 
     def get_console(self):

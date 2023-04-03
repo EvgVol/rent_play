@@ -111,7 +111,7 @@ class ConsoleCreateSerializer(serializers.ModelSerializer):
                                      context=context).data
 
 
-class ReviewCreateSerializer(serializers.ModelSerializer):
+class ReviewPostSerializer(serializers.ModelSerializer):
     """Сериализатор для создания отзывов."""
 
     author = serializers.SlugRelatedField(
