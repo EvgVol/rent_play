@@ -6,8 +6,6 @@ from .serializers import (RentCreateSerializers, RentReadSerializers,
 from .models import Rent
 
 
-
-
 class RentViewSet(viewsets.ModelViewSet):
     """Вьюсет для отображения заказов.
     Для запросов на чтение используется RentReadSerializer
