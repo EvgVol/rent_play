@@ -21,10 +21,11 @@ class RentalPriceSerializers(serializers.ModelSerializer):
     """Сериализатор для вывода стоимости аренды."""
     
     id = serializers.PrimaryKeyRelatedField(queryset=Period.objects.all())
+    name = serializers.SlugRelatedField(source='period', read_only=True, slug_field='name')
 
     class Meta:
         model = RentalPrice
-        fields = ('id', 'price')
+        fields = ('id', 'name', 'price')
 
 
 class ConsoleReadSerializer(serializers.ModelSerializer):
