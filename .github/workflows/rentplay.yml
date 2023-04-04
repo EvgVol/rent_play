@@ -1,4 +1,4 @@
-name: Foodgram workflow
+name: RentPlay Workflows
 
 on:
   push:
