@@ -8,7 +8,8 @@ def user_1(django_user_model):
         password='TestPassword1',
         email='test1@foodgram.cook',
         first_name='TestUser1',
-        last_name='TestUser1'
+        last_name='TestUser1',
+        role='rentor'
     )
 
 
@@ -19,7 +20,8 @@ def user_2(django_user_model):
         password='TestPassword2',
         email='test2@foodgram.cook',
         first_name='TestUser2',
-        last_name='TestUser2'
+        last_name='TestUser2',
+        role='user'
     )
 
 
@@ -30,7 +32,20 @@ def user_3(django_user_model):
         password='TestPassword3',
         email='test3@foodgram.cook',
         first_name='TestUser3',
-        last_name='TestUser3'
+        last_name='TestUser3',
+        role='user'
+    )
+
+
+@pytest.fixture
+def user_4(django_user_model):
+    return django_user_model.objects.create_user(
+        username='TestUser4',
+        password='TestPassword4',
+        email='test3@foodgram.cook',
+        first_name='TestUser4',
+        last_name='TestUser4',
+        role='rentor'
     )
 
 

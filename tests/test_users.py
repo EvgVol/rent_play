@@ -137,7 +137,9 @@ class Test03UserAPI:
             'email': user_1.email,
             'first_name': user_1.first_name,
             'last_name': user_1.last_name,
-            # 'is_subscribed': False,
+            'role': user_1.role,
+            'bithdate': user_1.bithdate,
+            'count_subscriptions': user_1.count_subscriptions
         }
         assert reponse_json['results'] == [user_1_as_dict], (
             'Проверьте, что при GET запросе `/api/users/?search={id}` '
@@ -214,7 +216,7 @@ class Test03UserAPI:
             'Проверьте, что при POST запросе `/api/users/` без email, '
             'возвращаетe статус 400'
         )
-        valid_email = 'valid_email@foodgram.cook'
+        valid_email = 'valid_email@example.com'
         no_username_data = {
             'email': valid_email,
             'password': 'testPass1'
@@ -254,7 +256,7 @@ class Test03UserAPI:
             'first_name': 'First Name',
             'last_name': 'Last Name',
             'password': 'qwerty1123zxc',
-            'email': 'new_NEW_user@foodgram.cook'
+            'email': 'new_NEW_user@example.com'
         }
         response = client.post('/api/users/', data=unvalid_data_username)
         assert response.status_code == 400, (
@@ -266,7 +268,7 @@ class Test03UserAPI:
             'first_name': 'First Name',
             'last_name': 'Last Name',
             'password': 'qwerty1123zxc',
-            'email': 'new_NEW_user@foodgram.cook'
+            'email': 'new_NEW_user@example.com'
         }
         response = client.post('/api/users/', data=unvalid_data_username_me)
         assert response.status_code == 400, (
@@ -283,7 +285,7 @@ class Test03UserAPI:
             ),
             'last_name': 'Last',
             'password': 'qwerty1123zxc',
-            'email': 'new_NEW_user@foodgram.cook'
+            'email': 'new_NEW_user@example.com'
         }
         response = client.post('/api/users/', data=unvalid_data_first_name)
         assert response.status_code == 400, (
@@ -300,7 +302,7 @@ class Test03UserAPI:
                 'ooooooooooooooooooooooooooooooooooooooooooooooooooooooooong '
             ),
             'password': 'qwerty1123zxc',
-            'email': 'new_NEW_user@foodgram.cook'
+            'email': 'new_NEW_user@example.com'
         }
         response = client.post('/api/users/', data=unvalid_data_last_name)
         assert response.status_code == 400, (
@@ -329,7 +331,7 @@ class Test03UserAPI:
             'last_name': 'Last Name',
             'username': 'test_username',
             'password': 'qwerty1123zxc',
-            'email': 'new_user@foodgram.cook'
+            'email': 'new_user@example.com'
         }
         response = client.post('/api/users/', data=data)
         assert response.status_code == 201, (
@@ -376,7 +378,7 @@ class Test03UserAPI:
             'last_name': 'Last Name',
             'username': 'test_username',
             'password': 'qwerty1123zxc',
-            'email': 'new_user@foodgram.cook'
+            'email': 'new_user@example.com'
         }
         response = auth_client_super.post('/api/users/', data=valid_data)
         assert response.status_code == 201, (
@@ -400,7 +402,7 @@ class Test03UserAPI:
             'first_name': 'First Name',
             'last_name': 'Last Name',
             'password': 'qwerty1123zxc',
-            'email': 'new_NEW_user@foodgram.cook'
+            'email': 'new_NEW_user@example.com'
         }
         response = auth_client_super.post(
             '/api/users/', data=unvalid_data_username
@@ -419,7 +421,7 @@ class Test03UserAPI:
             ),
             'last_name': 'Last',
             'password': 'qwerty1123zxc',
-            'email': 'new_NEW_user@foodgram.cook'
+            'email': 'new_NEW_user@example.com'
         }
         response = auth_client_super.post(
             '/api/users/', data=unvalid_data_first_name
@@ -438,7 +440,7 @@ class Test03UserAPI:
                 'ooooooooooooooooooooooooooooooooooooooooooooooooooooooooong '
             ),
             'password': 'qwerty1123zxc',
-            'email': 'new_NEW_user@foodgram.cook'
+            'email': 'new_NEW_user@example.com'
         }
         response = auth_client_super.post(
             '/api/users/', data=unvalid_data_last_name
