@@ -33,7 +33,7 @@ ____
 - :heavy_check_mark: Имя пользователя
 - :heavy_check_mark: Фамилия
 - :heavy_check_mark: Email
-- :white_large_square: Номер телефона
+- :heavy_check_mark: Номер телефона
 - :heavy_check_mark: Изображение
 - :heavy_check_mark: Роль (арендатель, арендодатель)
 - :white_large_square: Рейтинг

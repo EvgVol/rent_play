@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from phonenumber_field.modelfields import PhoneNumberField
+
 from core import texts, validators
 from core.enum import Limits
 
@@ -67,9 +69,10 @@ class User(AbstractUser):
     )
 
     avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR,)
+    phone_number = PhoneNumberField(blank=False, null=False, region="RU")
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ('username', 'role', 'first_name', 'last_name')
+    REQUIRED_FIELDS = ('username', 'role', 'first_name', 'last_name', 'phone_number')
 
     class Meta:
         ordering = ('username',)

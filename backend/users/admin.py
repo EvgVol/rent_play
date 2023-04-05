@@ -9,7 +9,7 @@ class UserAdmin(admin.ModelAdmin):
 
     list_display = ('id', 'username', 'email', 'first_name', 'last_name',
                     'avatar', 'role', 'birthdate', 'is_staff',
-                    'count_followers',)
+                    'count_followers', 'phone_number')
     list_editable = ('role', 'is_staff')
     list_filter = ('username', 'role')
     search_fields = ('username', 'role')

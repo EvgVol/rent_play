@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'consoles',
     'colorfield',
     'drf_yasg',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [

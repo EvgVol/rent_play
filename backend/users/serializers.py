@@ -1,5 +1,6 @@
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import exceptions, serializers, status
+from phonenumber_field.serializerfields import PhoneNumberField
 
 from core import texts
 from .models import Follow, User
@@ -10,11 +11,12 @@ class UsersSerializer(serializers.ModelSerializer):
 
     avatar = Base64ImageField()
     count_subscriptions = serializers.SerializerMethodField(read_only=True)
+    number = PhoneNumberField(region="RU")
 
     class Meta:
         model = User
         fields = ('id', 'email', 'username', 'first_name', 'last_name',
-                  'avatar', 'birthdate', 'role', 'count_subscriptions')
+                  'avatar', 'birthdate', 'role', 'count_subscriptions', 'number')
 
     def get_count_subscriptions(self, obj):
         """Проверка подписки пользователей."""
