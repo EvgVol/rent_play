@@ -64,22 +64,16 @@ class ConsoleViewSet(viewsets.ModelViewSet):
             AddShoppingListConsoleSerializer, ShoppingCart, request, pk
         )
 
-    @decorators.action(
-        detail=True,
-        methods=['POST', 'DELETE'],
-        permission_classes=[permissions.IsAuthenticated]
-    )
+    @decorators.action(detail=True, methods=['POST', 'DELETE'],
+                       permission_classes=[permissions.IsAuthenticated])
     def like(self, request, pk):
         """Добавляем/удаляем отметку `Нравится`"""
         return add_and_del_console(
             AddLikeConsoleSerializer, Like, request, pk
         )
 
-    @decorators.action(
-    detail=True,
-    methods=['POST', 'DELETE'],
-    permission_classes=[permissions.IsAuthenticated]
-    )
+    @decorators.action(detail=True, methods=['POST', 'DELETE'],
+                       permission_classes=[permissions.IsAuthenticated])
     def dislike(self, request, pk):
         """Добавляем/удаляем отметку `Не нравится`"""
         return add_and_del_console(
