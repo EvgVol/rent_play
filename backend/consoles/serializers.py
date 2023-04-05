@@ -8,7 +8,7 @@ from core.models import Period
 from users.serializers import UsersSerializer
 
 from .models import (Category, Console, Favorite, RentalPrice, Review,
-                     ShoppingCart)
+                     ShoppingCart, Like, Dislike)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -206,6 +206,48 @@ class AddShoppingListConsoleSerializer(AddFavoriteConsoleSerializer):
                 queryset=ShoppingCart.objects.all(),
                 fields=['user', 'console'],
                 message=texts.ALREADY_BUY
+            )
+        ]
+
+    def to_representation(self, instance):
+        request = self.context.get('request')
+        return ShowConsoleAddedSerializer(
+            instance.console,
+            context={'request': request}
+        ).data
+
+
+class AddLikeConsoleSerializer(AddFavoriteConsoleSerializer):
+    """Сериализатор добавления добавление отметки `Нравится`."""
+
+    class Meta(AddFavoriteConsoleSerializer.Meta):
+        model = Like
+        validators = [
+            validators.UniqueTogetherValidator(
+                queryset=Like.objects.all(),
+                fields=['user', 'console'],
+                message=texts.ALREADY_ACTION
+            )
+        ]
+
+    def to_representation(self, instance):
+        request = self.context.get('request')
+        return ShowConsoleAddedSerializer(
+            instance.console,
+            context={'request': request}
+        ).data
+
+
+class AddDislikeConsoleSerializer(AddFavoriteConsoleSerializer):
+    """Сериализатор добавления добавление отметки `Не нравится`."""
+
+    class Meta(AddFavoriteConsoleSerializer.Meta):
+        model = Dislike
+        validators = [
+            validators.UniqueTogetherValidator(
+                queryset=Dislike.objects.all(),
+                fields=['user', 'console'],
+                message=texts.ALREADY_ACTION
             )
         ]
 

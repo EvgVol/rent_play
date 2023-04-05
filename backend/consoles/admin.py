@@ -3,7 +3,7 @@ from django.db.models import Avg
 from django.utils.safestring import SafeString, mark_safe
 
 from .models import (Category, Console, Favorite, RentalPrice, Review,
-                     ShoppingCart)
+                     ShoppingCart, Like, Dislike)
 
 
 @admin.register(Category)
@@ -86,4 +86,18 @@ class FavoriteAdmin(admin.ModelAdmin):
 @admin.register(ShoppingCart)
 class ShoppingCartAdmin(admin.ModelAdmin):
     list_display = ('user', 'console', )
+    empty_value_display = '-пусто-'
+
+
+@admin.register(Like)
+class LikeAdmin(admin.ModelAdmin):
+    list_display = ('user', 'console',)
+    list_filter = ('user', 'console',)
+    empty_value_display = '-пусто-'
+
+
+@admin.register(Dislike)
+class DislikeAdmin(admin.ModelAdmin):
+    list_display = ('user', 'console',)
+    list_filter = ('user', 'console',)
     empty_value_display = '-пусто-'

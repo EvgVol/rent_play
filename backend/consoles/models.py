@@ -191,7 +191,7 @@ class Dislike(AbstractModelUserAndConsole):
         default_related_name = 'console_dislike'
         constraints = [
             models.UniqueConstraint(fields=['user', 'console'],
-                                    name='unique_like')
+                                    name='unique_dislike')
         ]
 
     def __str__(self):
