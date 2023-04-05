@@ -74,7 +74,7 @@ class User(AbstractUser):
     avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR,)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ('username', 'role')
+    REQUIRED_FIELDS = ('username', 'role', 'first_name', 'last_name')
 
     class Meta:
         ordering = ('username',)

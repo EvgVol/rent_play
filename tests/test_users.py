@@ -102,12 +102,15 @@ class Test03UserAPI:
             'email': user_1.email,
             'first_name': user_1.first_name,
             'last_name': user_1.last_name,
-            # 'is_subscribed': False,
+            'role': user_1.role,
+            'birthdate': user_1.birthdate,
+            'count_subscriptions': 0,
+            'avatar': user_1.avatar,
         }
         assert response.json()['results'] == [user_1_as_dict], (
             'Проверьте, что при GET запросе `/api/users/me/` '
             'возвращается искомый пользователь со всеми необходимыми полями, '
-            'включая `is_subscribed`'
+            'включая `count_subscriptions`'
         )
 
     @pytest.mark.django_db(transaction=True)
@@ -138,8 +141,9 @@ class Test03UserAPI:
             'first_name': user_1.first_name,
             'last_name': user_1.last_name,
             'role': user_1.role,
-            'bithdate': user_1.bithdate,
-            'count_subscriptions': user_1.count_subscriptions
+            'birthdate': user_1.birthdate,
+            'count_subscriptions': 0,
+            'avatar': user_1.avatar,
         }
         assert reponse_json['results'] == [user_1_as_dict], (
             'Проверьте, что при GET запросе `/api/users/?search={id}` '
@@ -179,7 +183,7 @@ class Test03UserAPI:
             'суперпользователя возвращаете данные с пагинацией. '
             'Не найден параметр `results`'
         )
-        assert data['count'] == 4, (
+        assert data['count'] == 5, (
             'Проверьте, что при GET запросе `/api/users/` от '
             'суперпользователя возвращаете данные с пагинацией. '
             'Значение параметра `count` не правильное'
@@ -190,7 +194,7 @@ class Test03UserAPI:
             'Тип параметра `results` должен быть список'
         )
         assert (
-            len(data['results']) == 4
+            len(data['results']) == 5
         ), (
             'Проверьте, что при GET запросе `/api/users/` от '
             'суперпользователя возвращаете данные с пагинацией. '
@@ -363,7 +367,7 @@ class Test03UserAPI:
         )
         response = auth_client_super.get('/api/users/')
         data = response.json()
-        assert len(data['results']) == 5, (
+        assert len(data['results']) == 6, (
             'Проверьте, что при GET запросе `/api/users/` возвращаете '
             'данные с пагинацией. '
             'Значение параметра `results` не правильное'

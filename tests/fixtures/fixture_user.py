@@ -6,10 +6,12 @@ def user_1(django_user_model):
     return django_user_model.objects.create_user(
         username='TestUser1',
         password='TestPassword1',
-        email='test1@foodgram.cook',
+        email='test1@example.com',
         first_name='TestUser1',
         last_name='TestUser1',
-        role='rentor'
+        role='rentor',
+        birthdate='2000-01-01',
+        avatar=None,
     )
 
 
@@ -18,10 +20,12 @@ def user_2(django_user_model):
     return django_user_model.objects.create_user(
         username='TestUser2',
         password='TestPassword2',
-        email='test2@foodgram.cook',
+        email='test2@example.com',
         first_name='TestUser2',
         last_name='TestUser2',
-        role='user'
+        role='user',
+        birthdate='2000-01-02',
+        avatar=None,
     )
 
 
@@ -30,10 +34,12 @@ def user_3(django_user_model):
     return django_user_model.objects.create_user(
         username='TestUser3',
         password='TestPassword3',
-        email='test3@foodgram.cook',
+        email='test3@example.com',
         first_name='TestUser3',
         last_name='TestUser3',
-        role='user'
+        role='user',
+        birthdate='2000-01-03',
+        avatar=None,
     )
 
 
@@ -42,10 +48,12 @@ def user_4(django_user_model):
     return django_user_model.objects.create_user(
         username='TestUser4',
         password='TestPassword4',
-        email='test3@foodgram.cook',
+        email='test4@example.com',
         first_name='TestUser4',
         last_name='TestUser4',
-        role='rentor'
+        role='rentor',
+        birthdate='2000-01-04',
+        avatar=None,
     )
 
 
@@ -54,7 +62,10 @@ def superuser(django_user_model):
     return django_user_model.objects.create_superuser(
         username='admin',
         password='TestPassword4',
-        email='admin@foodgram.cook',
+        email='admin@example.com',
         first_name='TestAdmin-fn',
-        last_name='TestAdmin_ln'
+        last_name='TestAdmin_ln',
+        role='user',
+        birthdate='2000-01-05',
+        avatar=None
     )

@@ -1,5 +1,6 @@
-# :wrench: RENT&PLAY
-Сервис по аренде игровых приставок. В проекте имеется возможность подобрать игры для себя или кампании. 
+# :wrench: RENT&PLAY   [![RentPlay Workflows](https://github.com/EvgVol/rent_play/actions/workflows/rentplay.yml/badge.svg?branch=main)](https://github.com/EvgVol/rent_play/actions/workflows/rentplay.yml)
+
+Сервис по аренде игровых приставок. В проекте имеется возможность подобрать игры для себя или кампании.
 
 ## Оглавление
 Более подробно с проектом можно ознакомиться в диначеской документацией, сформиронной при помощи модуля [drf-yasg](https://drf-yasg.readthedocs.io/en/stable/).
