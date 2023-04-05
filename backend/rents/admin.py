@@ -47,9 +47,9 @@ class RentAdmin(admin.ModelAdmin):
             return (
                 obj.console.rental_price.filter(period=one_day)
                 .values('price')[0]['price']
-                ) * timerent
-        
-        elif (
+            ) * timerent
+
+        if (
             obj.console.rental_price.filter(period=three_day).exists()
             and 3 < timerent > 7
         ):
@@ -57,8 +57,8 @@ class RentAdmin(admin.ModelAdmin):
                 (obj.console.rental_price.filter(period=three_day)
                  .values('price')[0]['price']) / 3
             ) * timerent
-        
-        elif (
+
+        if (
             obj.console.rental_price.filter(period=seven_day).exists()
             and 7 < timerent > 14
         ):
@@ -66,8 +66,8 @@ class RentAdmin(admin.ModelAdmin):
                 (obj.console.rental_price.filter(period=seven_day)
                  .values('price')[0]['price']) / 7
             ) * timerent
-        
-        elif (
+
+        if (
             obj.console.rental_price.filter(period=two_week).exists()
             and timerent > 14
         ):

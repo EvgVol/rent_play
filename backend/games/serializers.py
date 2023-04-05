@@ -1,12 +1,11 @@
+from core import texts
+from core.likedislike import LikeDislike
 from django.shortcuts import get_object_or_404
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
 
-from core import texts
-from core.likedislike import LikeDislike
-from games.models import (Comment, FavoriteGame, Game,
-                          Review, ShoppingList, Tag)
+from games.models import Comment, FavoriteGame, Game, Review, ShoppingList, Tag
 
 
 class GameSerializer(serializers.ModelSerializer):
