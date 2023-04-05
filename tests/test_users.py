@@ -106,6 +106,8 @@ class Test03UserAPI:
             'birthdate': user_1.birthdate,
             'count_subscriptions': 0,
             'avatar': user_1.avatar,
+            'phone_number': user_1.phone_number,
+            
         }
         assert response.json()['results'] == [user_1_as_dict], (
             'Проверьте, что при GET запросе `/api/users/me/` '
@@ -144,6 +146,7 @@ class Test03UserAPI:
             'birthdate': user_1.birthdate,
             'count_subscriptions': 0,
             'avatar': user_1.avatar,
+            'phone_number': user_1.phone_number,
         }
         assert reponse_json['results'] == [user_1_as_dict], (
             'Проверьте, что при GET запросе `/api/users/?search={id}` '
@@ -335,7 +338,8 @@ class Test03UserAPI:
             'last_name': 'Last Name',
             'username': 'test_username',
             'password': 'qwerty1123zxc',
-            'email': 'new_user@example.com'
+            'email': 'new_user@example.com',
+            'phone_number': '+79876543210',
         }
         response = client.post('/api/users/', data=data)
         assert response.status_code == 201, (
@@ -382,7 +386,8 @@ class Test03UserAPI:
             'last_name': 'Last Name',
             'username': 'test_username',
             'password': 'qwerty1123zxc',
-            'email': 'new_user@example.com'
+            'email': 'new_user@example.com',
+            'phone_number': '+79876543210',
         }
         response = auth_client_super.post('/api/users/', data=valid_data)
         assert response.status_code == 201, (

@@ -72,7 +72,8 @@ class User(AbstractUser):
     phone_number = PhoneNumberField(blank=False, null=False, region="RU")
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ('username', 'role', 'first_name', 'last_name', 'phone_number')
+    REQUIRED_FIELDS = ('username', 'role', 'first_name',
+                       'last_name', 'phone_number')
 
     class Meta:
         ordering = ('username',)

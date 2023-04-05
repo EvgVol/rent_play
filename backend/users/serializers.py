@@ -16,7 +16,8 @@ class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'email', 'username', 'first_name', 'last_name',
-                  'avatar', 'birthdate', 'role', 'count_subscriptions', 'number')
+                  'avatar', 'birthdate', 'role', 'count_subscriptions',
+                  'number')
 
     def get_count_subscriptions(self, obj):
         """Проверка подписки пользователей."""
