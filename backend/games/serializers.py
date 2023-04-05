@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from drf_extra_fields.fields import Base64ImageField
-from rest_framework import serializers, validators
+from rest_framework import serializers
+from rest_framework.validators import UniqueTogetherValidator
 
 from core import texts
 from core.likedislike import LikeDislike
@@ -37,7 +38,7 @@ class AddFavoriteGameSerializer(serializers.ModelSerializer):
         model = FavoriteGame
         fields = ('user', 'game')
         validators = [
-            validators.UniqueTogetherValidator(
+            UniqueTogetherValidator(
                 queryset=FavoriteGame.objects.all(),
                 fields=['user', 'game'],
                 message=texts.CONSOLE_IN_FAVORITE
@@ -58,7 +59,7 @@ class AddShoppingListGameSerializer(AddFavoriteGameSerializer):
     class Meta(AddFavoriteGameSerializer.Meta):
         model = ShoppingList
         validators = [
-            validators.UniqueTogetherValidator(
+            UniqueTogetherValidator(
                 queryset=ShoppingList.objects.all(),
                 fields=['user', 'game'],
                 message=texts.ALREADY_BUY

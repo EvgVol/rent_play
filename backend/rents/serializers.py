@@ -43,10 +43,14 @@ class RentCreateSerializers(serializers.ModelSerializer):
     def validate(self, data):
         author = self.instance
         user = self.context.get('request').user
-        if (data['start_date'] > data['end_date']
+
+        if (
+            data['start_date'] > data['end_date']
             or data['start_date'] == data['end_date']
-            or data['start_date'] < datetime.date.today()):
+            or data['start_date'] < datetime.date.today()
+        ):
             raise serializers.ValidationError(texts.ERROR_TIME)
+
         if user == author:
             raise exceptions.ValidationError(texts.ERROR_TIME)
         return data

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from djoser.views import UserViewSet
-from rest_framework import (decorators, permissions, response, status)
+from rest_framework import decorators, permissions, response, status
 
 from .models import Follow, User
 from .serializers import FollowSerializer, UsersSerializer
@@ -53,29 +53,3 @@ class CustomUserViewSet(UserViewSet):
                 context={'request': request},
             ).data
         )
-
-    # @decorators.action(
-    #     detail=False,
-    #     methods=['GET', 'PATCH',],
-    #     permission_classes=[permissions.IsAuthenticated]
-    # )
-    # def me(self, request):
-    #     user = request.user
-
-    #     if request.method == 'GET':
-    #         serializer = UsersSerializer(user)
-    #         return UsersSerializer(user)
-
-    #     if request.method == 'PATCH':
-    #         serializer = PersSerializer(
-    #             user, data=request.data, partial=True
-    #         )
-    #         serializer.is_valid(raise_exception=True)
-    #         serializer.save()
-    #         return response.Response(
-    #             serializer.data, status=status.HTTP_200_OK
-    #         )
-    #     serializer = PersSerializer(user)
-    #     return response.Response(
-    #         serializer.data, status=status.HTTP_200_OK
-        # )

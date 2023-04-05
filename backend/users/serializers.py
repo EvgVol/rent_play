@@ -42,17 +42,17 @@ class FollowSerializer(UsersSerializer):
                 detail=texts.NO_USER,
                 code=status.HTTP_400_BAD_REQUEST
             )
-        elif not author.is_rentor:
+        if not author.is_rentor:
             raise exceptions.ValidationError(
                 detail=texts.NO_RENTOR,
                 code=status.HTTP_400_BAD_REQUEST
             )
-        elif Follow.objects.filter(user=user, author=author).exists():
+        if Follow.objects.filter(user=user, author=author).exists():
             raise exceptions.ValidationError(
                 detail=texts.DUBLICAT_USER,
                 code=status.HTTP_400_BAD_REQUEST
             )
-        elif user == author:
+        if user == author:
             raise exceptions.ValidationError(
                 detail=texts.SELF_FOLLOW,
                 code=status.HTTP_400_BAD_REQUEST
