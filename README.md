@@ -1,4 +1,6 @@
-# :wrench: RENT&PLAY   [![RentPlay Workflows](https://github.com/EvgVol/rent_play/actions/workflows/rentplay.yml/badge.svg?branch=main)](https://github.com/EvgVol/rent_play/actions/workflows/rentplay.yml)
+# :wrench: RENT&PLAY 
+[![RentPlay Workflows](https://github.com/EvgVol/rent_play/actions/workflows/rentplay_worflow.yml/badge.svg)](https://github.com/EvgVol/rent_play/actions/workflows/rentplay_worflow.yml)
+[![codecov](https://codecov.io/gh/EvgVol/rent_play/branch/main/graph/badge.svg?token=YB05m6VK4R)](https://codecov.io/gh/EvgVol/rent_play)
 
 Сервис по аренде игровых приставок. В проекте имеется возможность подобрать игры для себя или кампании.
 
