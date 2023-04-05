@@ -52,4 +52,5 @@ class Rent(models.Model):
         return (self.end_date - self.start_date).days
 
     def __str__(self):
-        return f'Пользователь {self.user.username} забронировал {self.console} на {self.time_rent()} дней.'
+        return (f'Пользователь {self.user.username} забронировал '
+                '{self.console} на {self.time_rent()} дней.')

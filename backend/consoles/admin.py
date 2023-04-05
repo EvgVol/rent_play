@@ -20,9 +20,9 @@ class RentalPriceInline(admin.TabularInline):
 
 @admin.register(Console)
 class ConsoleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author', 'get_categories', 'name', 'get_image', 
+    list_display = ('id', 'author', 'get_categories', 'name', 'get_image',
                     'description', 'barcode', 'count_favorites', 'status',
-                    'rating', 'get_timeframe' )
+                    'rating', 'get_timeframe')
     list_filter = ('name',)
     search_fields = ('name__startswith', )
     inlines = (RentalPriceInline,)
@@ -33,7 +33,7 @@ class ConsoleAdmin(admin.ModelAdmin):
         return obj.favorites.count()
 
     @admin.display(description='Статус')
-    def status(self,  obj):
+    def status(self, obj):
         """Получаем статус игровых консолей."""
         if obj.rent_item.exists():
             return 'Занята'
@@ -61,7 +61,7 @@ class ConsoleAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src={obj.image.url} width="80" hieght="30"')
 
     get_image.short_description = 'Изображение'
-        
+
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):

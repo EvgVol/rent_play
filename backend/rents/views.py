@@ -10,7 +10,7 @@ class RentViewSet(viewsets.ModelViewSet):
     Для запросов на изменение используется RentCreateSerializers"""
 
     queryset = Rent.objects.all()
-    permission_classes = (permissions.IsAuthenticated,) 
+    permission_classes = (permissions.IsAuthenticated,)
     serializer_class = RentReadSerializers
 
     def get_serializer_class(self):

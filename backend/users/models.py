@@ -4,6 +4,7 @@ from django.db import models
 from core import texts, validators
 from core.enum import Limits
 
+
 class User(AbstractUser):
     """Модель пользователя."""
 
@@ -84,7 +85,6 @@ class User(AbstractUser):
     @property
     def is_rentor(self):
         return self.role == self.RENTOR
-
 
     def __str__(self):
         return f'{self.username}: {self.email}'

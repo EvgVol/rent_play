@@ -21,9 +21,11 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class RentalPriceSerializers(serializers.ModelSerializer):
     """Сериализатор для вывода стоимости аренды."""
-    
+
     id = serializers.PrimaryKeyRelatedField(queryset=Period.objects.all())
-    name = serializers.SlugRelatedField(source='period', read_only=True, slug_field='name')
+    name = serializers.SlugRelatedField(
+        source='period', read_only=True, slug_field='name'
+    )
 
     class Meta:
         model = RentalPrice
@@ -49,7 +51,7 @@ class ConsoleReadSerializer(serializers.ModelSerializer):
             'description', 'pub_date', 'rating', 'timeframe'
         )
 
-    def get_is_rent(self,  obj):
+    def get_is_rent(self, obj):
         """Проверка - находится ли консоль в списке аренды."""
         return obj.rent_item.exists()
 
@@ -111,7 +113,7 @@ class ConsoleCreateSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         context = {'request': request}
         return ConsoleReadSerializer(instance,
-                                    context=context).data
+                                     context=context).data
 
     def validate(self, data):
         timeframe = self.initial_data.get('timeframe')

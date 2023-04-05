@@ -40,28 +40,25 @@ class RentAdmin(admin.ModelAdmin):
         )
         timerent = (obj.end_date - obj.start_date).days
 
-        if (obj.console.rental_price.filter(
-            period=one_day
-        ).exists()and timerent < 3):
+        if (obj.console.rental_price.filter(period=one_day).exists()
+            and timerent < 3):
             return (
-                obj.console.rental_price.filter(
-                    period=one_day
-                ).values('price')[0]['price']) * timerent
+                obj.console.rental_price.filter(period=one_day)
+                .values('price')[0]['price']
+                ) * timerent
         
         elif (obj.console.rental_price.filter(period=three_day).exists()
               and 3 < timerent > 7):
             return (
-                (obj.console.rental_price.filter(
-                    period=three_day
-                ).values('price')[0]['price'])/3
+                (obj.console.rental_price.filter(period=three_day)
+                 .values('price')[0]['price']) / 3
             ) * timerent
         
         elif (obj.console.rental_price.filter(period=seven_day).exists()
               and 7 < timerent > 14):
             return (
-                (obj.console.rental_price.filter(
-                    period=seven_day
-                ).values('price')[0]['price'])/7
+                (obj.console.rental_price.filter(period=seven_day)
+                 .values('price')[0]['price']) / 7
             ) * timerent
         
         elif (obj.console.rental_price.filter(period=two_week).exists()
@@ -69,7 +66,7 @@ class RentAdmin(admin.ModelAdmin):
             return (
                 (obj.console.rental_price.filter(
                     period=two_week
-                ).values('price')[0]['price'])/14
+                ).values('price')[0]['price']) / 14
             ) * timerent
 
         return (

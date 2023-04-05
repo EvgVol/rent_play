@@ -23,21 +23,6 @@ class RentReadSerializers(serializers.ModelSerializer):
     def get_tental_time(self, obj):
         """Достаем количество дней аренды."""
         return (obj.end_date - obj.start_date).days
-    
-    # def validate(self, data):
-    #     start_date = self.instance
-    #     end_date = self.instance
-    #     if (
-    #         start_date < datetime.date.today() 
-    #         or start_date == end_date 
-    #         or end_date < start_date
-    #     ):
-    #         raise exceptions.ValidationError(
-    #             detail='Проверьте правильно ли вы указали период аренды',
-    #             code=status.HTTP_400_BAD_REQUEST
-    #         )
-    #     return data
-    
 
 
 class RentCreateSerializers(serializers.ModelSerializer):

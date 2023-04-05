@@ -46,11 +46,9 @@ class GameViewSet(viewsets.ReadOnlyModelViewSet):
             queryset = start_queryset
         return queryset
 
-    @decorators.action(
-    detail=True,
-    methods=['POST', 'DELETE'],
-    permission_classes=[permissions.IsAuthenticated]
-    )
+    @decorators.action(detail=True,
+                       methods=['POST', 'DELETE'],
+                       permission_classes=[permissions.IsAuthenticated])
     def favorite(self, request, pk):
         """Добавляем/удаляем игру в 'избранное'"""
         return add_and_del_game(

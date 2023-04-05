@@ -25,11 +25,14 @@ class Limits(IntEnum):
     # Минимальная стоимость аренды
     MIN_RENT = 500
 
+
 class Regex:
     # Регулярное выражение для цвета тэга
     COLOR_REGEX = r'^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'
+    # Регулярное выражение для username
+    USERNAME_REGEX = r'[\w\.@+-]+'
     # Словарь для сопостановления латинской и русской стандартных раскладок.
     INCORRECT_LAYOUT = str.maketrans(
-    'qwertyuiop[]asdfghjkl;\'zxcvbnm,./',
-    'йцукенгшщзхъфывапролджэячсмитьбю.'
-)
+        'qwertyuiop[]asdfghjkl;\'zxcvbnm,./',
+        'йцукенгшщзхъфывапролджэячсмитьбю.'
+    )

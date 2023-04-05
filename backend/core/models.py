@@ -6,6 +6,7 @@ from core import texts
 from core.enum import Limits, Regex
 from users.models import User
 
+
 class Tags(models.Model):
     """Абстрактная модель тегов."""
 
@@ -113,4 +114,3 @@ class Period(models.Model):
 
     def __str__(self):
         return self.name
-

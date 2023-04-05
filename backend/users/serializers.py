@@ -30,8 +30,8 @@ class FollowSerializer(UsersSerializer):
     class Meta(UsersSerializer.Meta):
         fields = ('id', 'email', 'username', 'first_name', 'last_name',
                   'birthdate', 'role', 'consoles')
-        read_only_fields = ('id', 'email', 'username', 'first_name', 'last_name',
-                            'birthdate', 'role', 'consoles')
+        read_only_fields = ('id', 'email', 'username', 'first_name',
+                            'last_name', 'birthdate', 'role', 'consoles')
 
     def validate(self, data):
         author = self.instance
