@@ -1,12 +1,14 @@
 from django.db import models, transaction
 from django.shortcuts import get_object_or_404
 from drf_extra_fields.fields import Base64ImageField
-from rest_framework import serializers, validators, exceptions, relations
+from rest_framework import exceptions, relations, serializers, validators
 
 from core import texts
 from core.models import Period
-from .models import Console, Favorite, ShoppingCart, Category, Review, RentalPrice
 from users.serializers import UsersSerializer
+
+from .models import (Category, Console, Favorite, RentalPrice, Review,
+                     ShoppingCart)
 
 
 class CategorySerializer(serializers.ModelSerializer):

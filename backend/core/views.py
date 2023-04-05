@@ -1,8 +1,7 @@
 from rest_framework import permissions, viewsets
 
-from .serializers import PeriodSerializers
-
 from .models import Period
+from .serializers import PeriodSerializers
 
 
 class PeriodViewSet(viewsets.ReadOnlyModelViewSet):

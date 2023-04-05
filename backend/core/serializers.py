@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-
 from .models import Period
 
 
@@ -10,4 +9,3 @@ class PeriodSerializers(serializers.ModelSerializer):
     class Meta:
         model = Period
         fields = '__all__'
-

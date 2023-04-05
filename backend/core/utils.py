@@ -1,13 +1,9 @@
-from pathlib import Path
-from datetime import datetime as dt
 from django.core.paginator import Paginator
-
 from rest_framework import response, status
 from rest_framework.generics import get_object_or_404
 
 from consoles.models import Console
 from games.models import Game
-
 
 def add_and_del_console(add_serializer, model, request, console_id):
     """Опция добавления и удаления консоли."""

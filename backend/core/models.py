@@ -1,11 +1,10 @@
-from django.db import models
-from django.core import validators
 from colorfield.fields import ColorField
+from django.core import validators
+from django.db import models
 
 from core import texts
 from core.enum import Limits, Regex
 from users.models import User
-
 
 class Tags(models.Model):
     """Абстрактная модель тегов."""

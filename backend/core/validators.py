@@ -2,7 +2,6 @@ import re
 
 from django.core.exceptions import ValidationError
 
-
 from core.texts import NOT_ALLOWED_CHAR_MSG, NOT_ALLOWED_ME
 
 

@@ -1,14 +1,8 @@
-"""Модуль для создания, настройки и управления моделью пользователей.
-Задаёт модели и методы для настроийки и управления пользователями
-приложения `Rent_play`. Модель пользователя основана на модели
-AbstractUser из Django для переопределения полей обязательных для заполнения.
-"""
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
-from core.enum import Limits
 from core import texts, validators
-
+from core.enum import Limits
 
 class User(AbstractUser):
     """Модель пользователя."""

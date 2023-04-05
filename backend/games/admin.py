@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Game, Tag, Comment, Review, FavoriteGame, ShoppingList
+from .models import Comment, FavoriteGame, Game, Review, ShoppingList, Tag
 
 
 @admin.register(Tag)

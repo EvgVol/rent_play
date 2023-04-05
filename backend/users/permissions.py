@@ -9,5 +9,3 @@ class IsAdmin(permissions.IsAdminUser):
             request.user.is_authenticated
             and request.user.is_staff
         )
-
-

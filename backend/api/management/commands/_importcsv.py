@@ -1,11 +1,9 @@
 import csv
 import os
 
-from django.conf import settings
-
-from games.models import Tag
 from consoles.models import Console
-
+from django.conf import settings
+from games.models import Tag
 
 FILE_DIR = os.path.join(settings.BASE_DIR, 'data')
 

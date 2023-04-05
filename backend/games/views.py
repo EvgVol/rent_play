@@ -1,19 +1,19 @@
 from urllib.parse import unquote
 
 from django.db.models import Avg
-from rest_framework import permissions, viewsets, decorators
+from rest_framework import decorators, permissions, viewsets
 from rest_framework.generics import get_object_or_404
 
 from api.pagination import LimitPageNumberPagination
-from .filters import GameFilter
-from .serializers import (GameSerializer, TagSerializer,
-                          ReviewCreateSerializer, CommentSerializer,
-                          AddFavoriteGameSerializer,
-                          AddShoppingListGameSerializer)
 from api.permissions import IsAuthorOrAdminOrReadOnly
-from .models import Game, Tag, Review, FavoriteGame, ShoppingList
 from core.enum import Regex
 from core.utils import add_and_del_game
+from .filters import GameFilter
+from .models import FavoriteGame, Game, Review, ShoppingList, Tag
+from .serializers import (AddFavoriteGameSerializer,
+                          AddShoppingListGameSerializer, CommentSerializer,
+                          GameSerializer, ReviewCreateSerializer,
+                          TagSerializer)
 
 
 class GameViewSet(viewsets.ReadOnlyModelViewSet):

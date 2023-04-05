@@ -1,12 +1,12 @@
 import datetime
 
-from django.db import models, transaction
-from rest_framework import serializers, exceptions, status, relations
+from django.db import transaction
+from rest_framework import exceptions, relations, serializers
 
-from core import texts
 from consoles.models import Console
-from users.serializers import UsersSerializer
+from core import texts
 from .models import Rent
+from users.serializers import UsersSerializer
 
 
 class RentReadSerializers(serializers.ModelSerializer):

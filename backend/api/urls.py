@@ -1,13 +1,14 @@
 from django.urls import include, path
+
 from rest_framework import routers
 
-from users.views import CustomUserViewSet
-from consoles.views import (ConsoleViewSet, CategoryViewSet,
+from consoles.views import (CategoryViewSet, ConsoleViewSet,
                             ReviewConsoleViewSet)
-from games.views import (GameViewSet, TagViewSet, ReviewViewSet,
-                         CommentViewSet)
-from rents.views import RentViewSet
 from core.views import PeriodViewSet
+from games.views import CommentViewSet, GameViewSet, ReviewViewSet, TagViewSet
+from rents.views import RentViewSet
+from users.views import CustomUserViewSet
+
 
 router = routers.DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename='users')

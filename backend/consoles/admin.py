@@ -2,8 +2,8 @@ from django.contrib import admin
 from django.db.models import Avg
 from django.utils.safestring import SafeString, mark_safe
 
-
-from .models import Console, Favorite, ShoppingCart, Category, Review, RentalPrice
+from .models import (Category, Console, Favorite, RentalPrice, Review,
+                     ShoppingCart)
 
 
 @admin.register(Category)

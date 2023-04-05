@@ -1,11 +1,10 @@
-from django.db import models
 from django.core import validators
-from django.contrib.contenttypes.fields import GenericRelation
+from django.db import models
 
-from users.models import User
-from core.models import Tags, Product, ReviewAndCommentModel, Period
+from core import texts
 from core.enum import Limits
-from core import texts, likedislike
+from core.models import Period, Product, ReviewAndCommentModel, Tags
+from users.models import User
 
 
 class Category(Tags):

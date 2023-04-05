@@ -1,17 +1,16 @@
 from django.db.models import Avg
-from rest_framework import permissions, viewsets, decorators
+from rest_framework import decorators, permissions, viewsets
 from rest_framework.generics import get_object_or_404
 
 from api.pagination import LimitPageNumberPagination
-from api.permissions import IsAuthorOrAdminOrReadOnly, IsRentorOrAdminOrReadOnly
-from .serializers import (ConsoleCreateSerializer,
-                          ConsoleReadSerializer,
-                          AddShoppingListConsoleSerializer,
-                          AddFavoriteConsoleSerializer,
-                          CategorySerializer,
-                          ReviewPostSerializer)
+from api.permissions import (IsAuthorOrAdminOrReadOnly,
+                             IsRentorOrAdminOrReadOnly)
 from core.utils import add_and_del_console
-from .models import Console, Favorite, ShoppingCart, Category
+from .models import Category, Console, Favorite, ShoppingCart
+from .serializers import (AddFavoriteConsoleSerializer,
+                          AddShoppingListConsoleSerializer, CategorySerializer,
+                          ConsoleCreateSerializer, ConsoleReadSerializer,
+                          ReviewPostSerializer)
 
 
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):

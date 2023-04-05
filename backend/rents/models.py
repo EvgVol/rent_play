@@ -1,13 +1,9 @@
 import datetime
 
 from django.db import models
-from django.core import validators
 
-from users.models import User
-from games.models import Game
 from consoles.models import Console
-from core.enum import Limits
-from core import texts
+from users.models import User
 
 
 class Rent(models.Model):

@@ -1,8 +1,8 @@
-from rest_framework import serializers, exceptions, status
 from drf_extra_fields.fields import Base64ImageField
+from rest_framework import exceptions, serializers, status
 
-from .models import User, Follow
 from core import texts
+from .models import Follow, User
 
 
 class UsersSerializer(serializers.ModelSerializer):
