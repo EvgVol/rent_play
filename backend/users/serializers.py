@@ -11,13 +11,13 @@ class UsersSerializer(serializers.ModelSerializer):
 
     avatar = Base64ImageField()
     count_subscriptions = serializers.SerializerMethodField(read_only=True)
-    number = PhoneNumberField(region="RU")
+    phone_number = PhoneNumberField(region="RU")
 
     class Meta:
         model = User
         fields = ('id', 'email', 'username', 'first_name', 'last_name',
                   'avatar', 'birthdate', 'role', 'count_subscriptions',
-                  'number')
+                  'phone_number')
 
     def get_count_subscriptions(self, obj):
         """Проверка подписки пользователей."""
