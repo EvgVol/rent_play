@@ -112,7 +112,7 @@ class Review(ReviewAndCommentModel):
         ]
 
 
-class FavoriteAndShoppingCartModel(models.Model):
+class AbstractModelUserAndConsole(models.Model):
     """Абстрактная модель. Добавляет юзера и консоль."""
     user = models.ForeignKey(
         User,
@@ -131,10 +131,10 @@ class FavoriteAndShoppingCartModel(models.Model):
         abstract = True
 
 
-class Favorite(FavoriteAndShoppingCartModel):
+class Favorite(AbstractModelUserAndConsole):
     """Модель приставки в избранном."""
 
-    class Meta(FavoriteAndShoppingCartModel.Meta):
+    class Meta(AbstractModelUserAndConsole.Meta):
         verbose_name = 'Избранная консоль'
         verbose_name_plural = 'Избранные консоли'
         default_related_name = 'favorites'
@@ -149,10 +149,10 @@ class Favorite(FavoriteAndShoppingCartModel):
         return f'Пользователь:{self.user} добавил {self.console} в избранное'
 
 
-class ShoppingCart(FavoriteAndShoppingCartModel):
+class ShoppingCart(AbstractModelUserAndConsole):
     """Модель приставки в корзине."""
 
-    class Meta(FavoriteAndShoppingCartModel.Meta):
+    class Meta(AbstractModelUserAndConsole.Meta):
         verbose_name = 'Бронь'
         verbose_name_plural = 'Бронь'
         default_related_name = 'shopping_list'
@@ -163,3 +163,37 @@ class ShoppingCart(FavoriteAndShoppingCartModel):
 
     def __str__(self):
         return f'Пользователь:{self.user} добавил {self.console} в бронь'
+
+
+class Like(AbstractModelUserAndConsole):
+    """Модель лайка приставки."""
+
+    class Meta(AbstractModelUserAndConsole.Meta):
+        verbose_name = 'Нравится'
+        verbose_name_plural = 'Нравится'
+        default_related_name = 'console_like'
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'console'],
+                                    name='unique_like')
+        ]
+
+    def __str__(self):
+        return (f'Пользователь:{self.user} поставил {self.console} отметку '
+                '`Нравится`')
+
+
+class Dislike(AbstractModelUserAndConsole):
+    """Модель дизлайка приставки."""
+
+    class Meta(AbstractModelUserAndConsole.Meta):
+        verbose_name = 'Не нравится'
+        verbose_name_plural = 'Не нравится'
+        default_related_name = 'console_dislike'
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'console'],
+                                    name='unique_like')
+        ]
+
+    def __str__(self):
+        return (f'Пользователь:{self.user} поставил {self.console} отметку '
+                '`Не нравится`')
