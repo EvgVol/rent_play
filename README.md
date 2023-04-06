@@ -1,9 +1,11 @@
-# :wrench: RENT&PLAY 
+# :wrench: Home-Business
 [![CI](https://github.com/EvgVol/rent_play/actions/workflows/rentplay_worflow.yml/badge.svg)](https://github.com/EvgVol/rent_play/actions/workflows/rentplay_worflow.yml)
 ![Tests](https://raw.githubusercontent.com/EvgVol/rent_play/main/badges/tests.svg)
 [![codecov](https://codecov.io/gh/EvgVol/rent_play/branch/main/graph/badge.svg?token=YB05m6VK4R)](https://codecov.io/gh/EvgVol/rent_play)
 
-Сервис по аренде игровых приставок. В проекте имеется возможность подобрать игры для себя или кампании.
+Arranging the rental of game consoles – the idea of a business... 
+
+Today there are a lot of people – gamers who love to play a variety of computer games, not to mention children. Although not everyone can afford to purchase a modern game console due to its price. Entrepreneurs who rent out consoles come to the rescue. It's projects for them.
 
 ## Оглавление
 Более подробно с проектом можно ознакомиться в диначеской документацией, сформиронной при помощи модуля [drf-yasg](https://drf-yasg.readthedocs.io/en/stable/).
