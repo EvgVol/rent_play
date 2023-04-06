@@ -1,7 +1,7 @@
 import pytest
 
 
-class Test02FollowingAPI:
+class Test05ConsolesAPI:
 
     @pytest.mark.django_db(transaction=True)
     def test_01_follow_get_users(self, client, auth_client_1):
