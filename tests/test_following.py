@@ -92,8 +92,8 @@ class Test02FollowingAPI:
         response = auth_client_2.get(f'/api/users/subscriptions/')
         assert response.status_code == 200, (
             'Проверьте, что обычный пользователь может подписываться '
-            'на арендодателей страница `/api/users/{id}/subscribe/` возвращает '
-            'статус 200'
+            'на арендодателей страница `/api/users/{id}/subscribe/` '
+            'возвращает статус 200'
         )
         data = response.json()
         assert 'count' in data, (
