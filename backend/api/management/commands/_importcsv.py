@@ -5,6 +5,8 @@ from django.conf import settings
 
 from consoles.models import Category
 from games.models import Tag
+from core.models import Period
+
 
 FILE_DIR = os.path.join(settings.BASE_DIR, 'data')
 
@@ -31,4 +33,14 @@ def import_csv():
             Tag.objects.get_or_create(name=name,
                                       color=color,
                                       slug=slug)
+        print(f'Файл {csvfile.name} загружен.')
+
+    with open(
+        os.path.join(FILE_DIR, 'periods.csv'), 'r', encoding='utf-8'
+    ) as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            name, value = row
+            Period.objects.get_or_create(name=name,
+                                         value=value)
         print(f'Файл {csvfile.name} загружен.')
