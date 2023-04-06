@@ -19,6 +19,7 @@ class Test02FollowingAPI:
             'Проверьте, что при GET запросе от авторизованного пользователя'
             ' страница `/api/users/subscriptions/` возвращает статус 200'
         )
+        
         assert response.status_code != 404, (
             'Страница `/api/users/subscriptions/` не найдена, проверьте'
             'этот адрес в *urls.py*'
@@ -75,7 +76,7 @@ class Test02FollowingAPI:
         )
 
     @pytest.mark.django_db(transaction=True)
-    def test_06_follow_users_to_rentor(self, auth_client_2, user_1):
+    def test_06_follow_users_to_rentor(self, auth_client_1, auth_client_2, user_1):
         response = auth_client_2.post(f'/api/users/{user_1.id}/subscribe/')
         assert response.status_code == 201, (
             'Проверьте, что обычный пользователь может подписываться '
@@ -87,6 +88,13 @@ class Test02FollowingAPI:
         assert response.status_code == 400, (
             'Проверьте, что при наличии подписки'
             ' страница `/api/users/{id}/subscribe/` возвращает статус 400'
+        )
+
+        response = auth_client_1.get(f'/api/users/me/')
+        data = response.json()
+        assert data.get('count_subscriptions') == 1, (
+            'Проверьте, что при GET запросе `/api/users/me/` '
+            'Значение параметра `count_subscriptions` правильное'
         )
 
         response = auth_client_2.get(f'/api/users/subscriptions/')
@@ -159,7 +167,7 @@ class Test02FollowingAPI:
         )
 
     @pytest.mark.django_db(transaction=True)
-    def test_03_follow_del_guest_users(self, client):
+    def test_07_follow_del_guest_users(self, client):
         response = client.delete(f'/api/users/subscriptions/')
         assert response.status_code != 404, (
             'Страница `/api/users/subscriptions/` не найдена, проверьте'
@@ -171,7 +179,7 @@ class Test02FollowingAPI:
         )
 
     @pytest.mark.django_db(transaction=True)
-    def test_04_follow_del_auth_users(self, auth_client_1, user_2):
+    def test_08_follow_del_auth_users(self, auth_client_1, user_2):
         response = auth_client_1.delete(f'/api/users/{user_2.id}/subscribe/')
         assert response.status_code == 404, (
             'Проверьте, что при DELETE запросе от авторизованного '

@@ -112,7 +112,7 @@ class Test03UserAPI:
         assert response.json()['results'] == [user_1_as_dict], (
             'Проверьте, что при GET запросе `/api/users/me/` '
             'возвращается искомый пользователь со всеми необходимыми полями, '
-            'включая `count_subscriptions`'
+            'включая `count_subscriptions`, `is_subscribed`'
         )
 
     @pytest.mark.django_db(transaction=True)
@@ -569,4 +569,23 @@ class Test03UserAPI:
         assert get_user_model().objects.count() == users_before - 1, (
             'Проверьте, что при DELETE запросе `/api/users/{id}/` '
             'от суперпользователя, пользователь удаляется.'
+        )
+
+    @pytest.mark.django_db(transaction=True)
+    def test_08_users_no_change_role(self, auth_client_2, auth_client_1,):
+        response = auth_client_2.put(f'/api/users/me/',
+            data={'role': 'rentor'}
+        )
+        assert response.status_code == 400, (
+            'Проверьте, что при PUT запросе `/api/users/me/`, '
+            'пользователь не может изменить свою роль, и возвращается'
+            ' статус 400'
+        )
+        response = auth_client_1.put(f'/api/users/me/',
+            data={'role': 'user'}
+        )
+        assert response.status_code == 400, (
+            'Проверьте, что при PUT запросе `/api/users/me/`, '
+            'арендодатель не может изменить свою роль, и возвращается'
+            ' статус 400'
         )
