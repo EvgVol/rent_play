@@ -5,7 +5,7 @@
 
 Arranging the rental of game consoles – the idea of a business... 
 
-Today there are a lot of people – gamers who love to play a variety of computer games, not to mention children. Although not everyone can afford to purchase a modern game console due to its price. Entrepreneurs who rent out consoles come to the rescue. It's projects for them.
+Today there are a lot of people – gamers who love to play a variety of computer games, not to mention children. Although not everyone can afford to purchase a modern game console due to its price. Entrepreneurs who rent out consoles come to the rescue. It's project for them.
 
 ## Оглавление
 Более подробно с проектом можно ознакомиться в диначеской документацией, сформиронной при помощи модуля [drf-yasg](https://drf-yasg.readthedocs.io/en/stable/).
