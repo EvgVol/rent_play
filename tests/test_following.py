@@ -152,22 +152,11 @@ class Test02FollowingAPI:
             'возвращается искомый пользователь со всеми необходимыми полями, '
             'включая `is_subscribed`, `consoles`'
         )
-    #     response = auth_client_1.post(f'/api/users/{user_2.id}/subscribe/')
-    #     assert response.status_code == 400, (
-    #         'Проверьте, что при наличии подписки'
-    #         ' страница `/api/users/{id}/subscribe/` возвращает статус 400'
-    #     )
-    #     response = auth_client_1.delete(f'/api/users/{user_2.id}/subscribe/')
-    #     assert response.status_code == 204, (
-    #         'Проверьте, что при DELETE запросе и при наличии подписки'
-    #         ' страница `/api/users/{id}/subscribe/` возвращает статус 204'
-    #     )
-    #     response = auth_client_1.post(f'/api/users/{user_1.id}/subscribe/')
-    #     assert response.status_code == 400, (
-    #         'Проверьте, что при авторизованный пользователь не может'
-    #         'подписаться на самого себя и страница '
-    #         '`/api/users/{id}/subscribe/` возвращает статус 400'
-    #     )
+        response = auth_client_2.delete(f'/api/users/{user_1.id}/subscribe/')
+        assert response.status_code == 204, (
+            'Проверьте, что при DELETE запросе и при наличии подписки'
+            ' страница `/api/users/{id}/subscribe/` возвращает статус 204'
+        )
 
     # @pytest.mark.django_db(transaction=True)
     # def test_03_follow_del_guest_users(self, client, user_2):
