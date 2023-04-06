@@ -33,7 +33,8 @@ jobs:
   
     - name: Run tests with pytest
       run: |
-        pytest --cov=./backend/ --cov-report=xml
+        pip install pytest-local-badge
+        pytest --local-badge-output-dir badges/ --cov=./backend/ --cov-report=xml 
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
