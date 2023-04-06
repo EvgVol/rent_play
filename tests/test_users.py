@@ -107,7 +107,7 @@ class Test03UserAPI:
             'count_subscriptions': 0,
             'avatar': user_1.avatar,
             'phone_number': user_1.phone_number,
-            
+            'is_subscribed': False,
         }
         assert response.json()['results'] == [user_1_as_dict], (
             'Проверьте, что при GET запросе `/api/users/me/` '
@@ -147,6 +147,7 @@ class Test03UserAPI:
             'count_subscriptions': 0,
             'avatar': user_1.avatar,
             'phone_number': user_1.phone_number,
+            'is_subscribed': False,
         }
         assert reponse_json['results'] == [user_1_as_dict], (
             'Проверьте, что при GET запросе `/api/users/?search={id}` '

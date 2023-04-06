@@ -12,16 +12,23 @@ class UsersSerializer(serializers.ModelSerializer):
     avatar = Base64ImageField()
     count_subscriptions = serializers.SerializerMethodField(read_only=True)
     phone_number = PhoneNumberField(region="RU")
+    is_subscribed = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = User
         fields = ('id', 'email', 'username', 'first_name', 'last_name',
                   'avatar', 'birthdate', 'role', 'count_subscriptions',
-                  'phone_number')
+                  'phone_number', 'is_subscribed',)
 
     def get_count_subscriptions(self, obj):
-        """Проверка подписки пользователей."""
+        """Достаем количество подписчиков."""
         return obj.follower.count()
+
+    def get_is_subscribed(self, author):
+        """Достаем булевое значение - наличие подписки"""
+        request = self.context.get('request')
+        return (request and request.user.is_authenticated
+                and request.user.follower.filter(author=author).exists())
 
 
 class FollowSerializer(UsersSerializer):
@@ -32,7 +39,7 @@ class FollowSerializer(UsersSerializer):
 
     class Meta(UsersSerializer.Meta):
         fields = ('id', 'email', 'username', 'first_name', 'last_name',
-                  'birthdate', 'role', 'consoles')
+                  'birthdate', 'role', 'consoles', 'is_subscribed')
         read_only_fields = ('id', 'email', 'username', 'first_name',
                             'last_name', 'birthdate', 'role', 'consoles')
 
