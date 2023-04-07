@@ -2,7 +2,7 @@ import pytest
 import json
 
 from games.models import Tag, Game
-from consoles.models import Category
+from consoles.models import Category, Console
 from core.models import Period
 
 
@@ -38,32 +38,6 @@ def category_1():
 def category_2():
     return Category.objects.create(
         name='PS4 PRO', color='#002137', slug='pro'
-    )
-
-
-@pytest.fixture
-def game_single():
-    return Game.objects.create(
-        name="string1",
-        description="string1",
-        tags=[tag_one.id,],
-        image=('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA'
-               'EAAAABAgMAAABieywaAAAACVBMVEUAAAD///9fX1/S0ecCAA'
-               'AACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNoAAAAgg'
-               'CByxOyYQAAAABJRU5ErkJggg=='),
-    )
-
-
-@pytest.fixture
-def game_second():
-    return Game.objects.create(
-        name="string2",
-        description="string2",
-        tags=[tag_second.id,],
-        image=('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA'
-               'EAAAABAgMAAABieywaAAAACVBMVEUAAAD///9fX1/S0ecCAA'
-               'AACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNoAAAAgg'
-               'CByxOyYQAAAABJRU5ErkJggg=='),
     )
 
 

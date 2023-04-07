@@ -126,6 +126,8 @@ ____
 * В папке `tests` — файлы, необходимые для тестирования бэкенд приложения.
 * В папке `badges` — бейджи, необхдимые для добавления в файл README
 
+Continuous integration with GitHub Actions
+
 Для работы с Workflow добавить в Secrets GitHub переменные окружения для работы:
 ```bash
 CODECOV_TOKEN #Секретный токен сервиса: https://codecov.io
