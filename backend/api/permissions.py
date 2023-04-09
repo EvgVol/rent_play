@@ -14,7 +14,7 @@ class IsAuthorOrAdminOrReadOnly(
         )
 
 
-class IsRentorOrAdminOrReadOnly(permissions.IsAuthenticatedOrReadOnly):
+class IsRentorOrAdminOrReadOnly(permissions.BasePermission):
     """Права для работы с игровыми приставками."""
 
     def has_permission(self, request, view):
@@ -23,3 +23,8 @@ class IsRentorOrAdminOrReadOnly(permissions.IsAuthenticatedOrReadOnly):
             and request.user.is_rentor
             or request.user.is_staff
         )
+
+    def has_object_permission(self, request, view, obj):
+        return (request.method in permissions.SAFE_METHODS
+                or obj.author == request.user.is_rentor
+                or request.user.is_staff)

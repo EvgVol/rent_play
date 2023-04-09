@@ -6,7 +6,7 @@ from rest_framework.test import APIClient
 @pytest.fixture
 def unauth_client(
         db, tag_one, tag_second, tag_third, category_1, category_2, 
-        user_1, user_2, user_3, user_4, day, three_days,
+        user_1, user_2, user_3, user_4, day, three_days
 ):
     client = APIClient()
     return client

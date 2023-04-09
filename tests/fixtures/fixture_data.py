@@ -1,8 +1,8 @@
 import pytest
 import json
 
-from games.models import Tag, Game
-from consoles.models import Category, Console
+from games.models import Tag
+from consoles.models import Category
 from core.models import Period
 
 
@@ -53,6 +53,29 @@ def three_days():
     return Period.objects.create(
         name='Трое суток', value='3'
     )
+
+
+# @pytest.fixture
+# def console():
+#     return Console.objects.create(
+#         name="string",
+#         image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAgMAAABieywaAAAACVBMVEUAAAD///9fX1/S0ecCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNoAAAAggCByxOyYQAAAABJRU5ErkJggg==",
+#         description="string",
+#         barcode="15dsfsdfsfs2-511126825-24464288",
+#         categories=[
+#             1,
+#         ],
+#         timeframe=[
+#             {
+#                 "id": 1,
+#                 "price": 600,
+#             },
+#             {
+#                 "id": 2,
+#                 "price": 1800,
+#             }
+#         ]
+#     )
 
 
 @pytest.fixture
