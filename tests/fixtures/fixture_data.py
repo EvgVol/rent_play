@@ -55,27 +55,22 @@ def three_days():
     )
 
 
-# @pytest.fixture
-# def console():
-#     return Console.objects.create(
-#         name="string",
-#         image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAgMAAABieywaAAAACVBMVEUAAAD///9fX1/S0ecCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNoAAAAggCByxOyYQAAAABJRU5ErkJggg==",
-#         description="string",
-#         barcode="15dsfsdfsfs2-511126825-24464288",
-#         categories=[
-#             1,
-#         ],
-#         timeframe=[
-#             {
-#                 "id": 1,
-#                 "price": 600,
-#             },
-#             {
-#                 "id": 2,
-#                 "price": 1800,
-#             }
-#         ]
-#     )
+@pytest.fixture
+def console():
+    console = {
+        "name": "string",
+        "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAgMAAABieywaAAAACVBMVEUAAAD///9fX1/S0ecCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNoAAAAggCByxOyYQAAAABJRU5ErkJggg==",
+        "description": "string",
+        "barcode": "152-5825-22545885645",
+        "categories": [1],
+        "timeframe": [json.dumps(
+            {
+                "id": 1,
+                "price": 600
+            },
+        ),]
+    }
+    return console
 
 
 @pytest.fixture
