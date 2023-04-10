@@ -6,4 +6,6 @@ app_name = 'core'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('consoles/', views.consoles, name='consoles'),
+    path('games/', views.games, name='games'),
 ]

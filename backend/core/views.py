@@ -8,7 +8,16 @@ from .serializers import PeriodSerializers
 
 def index(request):
     template = 'core/index.html'
-    return render(request, template) 
+    return render(request, template)
+
+def games(request):
+    template = 'games/index.html'
+    return render(request, template)
+
+def consoles(request):
+    template = 'consoles/index.html'
+    return render(request, template)
+
 
 class PeriodViewSet(viewsets.ReadOnlyModelViewSet):
     """Вьюсет для отображения периода аренды."""
