@@ -1,5 +1,5 @@
 from django.db.models import Avg
-from django.shortcuts import render
+
 from rest_framework import decorators, permissions, viewsets
 from rest_framework.generics import get_object_or_404
 
@@ -16,9 +16,6 @@ from .serializers import (AddFavoriteConsoleSerializer,
                           AddDislikeConsoleSerializer)
 
 
-def index(request):
-    template = 'base.html'
-    return render(request, template) 
 
 
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
