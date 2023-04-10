@@ -17,7 +17,7 @@ from .serializers import (AddFavoriteConsoleSerializer,
 
 
 def index(request):
-    template = 'consoles/index.html'
+    template = 'base.html'
     return render(request, template) 
 
 
