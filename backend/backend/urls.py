@@ -3,6 +3,7 @@ from django.urls import include, path
 from drf_yasg import openapi, views
 from rest_framework import permissions
 
+
 schema_view = views.get_schema_view(
     openapi.Info(
         title="RentPlay API",
@@ -20,4 +21,5 @@ urlpatterns = [
     path('api/', include('api.urls',)),
     path(r'redoc/', schema_view.with_ui('redoc', cache_timeout=0),
          name='schema-redoc'),
+    path('', include('consoles.urls'), name='consoles')
 ]
