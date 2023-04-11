@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,35 +15,27 @@
   <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   <link rel="icon" href="{% static 'img/fav/fav.ico' %}" type="image" />
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="{% static 'img/fav/apple-touch-icon.png' %}"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="32x32"
-    href="{% static 'img/fav/favicon-32x32.png' %}"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="16x16"
-    href="{% static 'img/fav/favicon-16x16.png' %}"
-  />
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/fav/apple-touch-icon.png' %}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/fav/favicon-32x32.png' %}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/fav/favicon-16x16.png' %}" />
   <meta name="msapplication-TileColor" content="#000" />
   <meta name="theme-color" content="#ffffff" />
   <title>{% block title %}{% endblock %}</title>
 </head>
+
 <body>
-  <header>{% include 'includes/header.html' %}</header>
-  <main>
-    <h1>
-      {% block header %}{% endblock %}
-    </h1>
-    {% block content %}{% endblock content %}
-  </main>
+  <div id="preloder"><div class="loader"></div></div>
+  {% include 'includes/header.html' %}
+  {% block content %}{% endblock content %}
+  {% include 'core/subscribe.html' %}
   {% include 'includes/footer.html' %}
+
+  <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'js/jquery.sticky-sidebar.min.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

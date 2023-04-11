@@ -11,11 +11,11 @@ def index(request):
     return render(request, template)
 
 def games(request):
-    template = 'games/index.html'
+    template = 'games/games.html'
     return render(request, template)
 
 def consoles(request):
-    template = 'consoles/index.html'
+    template = 'consoles/consoles.html'
     return render(request, template)
 
 
