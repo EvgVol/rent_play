@@ -14,9 +14,14 @@ def games(request):
     template = 'games/games.html'
     return render(request, template)
 
+def game_id(request):
+    template = 'games/game_id.html'
+    return render(request, template)
+
 def consoles(request):
     template = 'consoles/consoles.html'
     return render(request, template)
+
 
 
 class PeriodViewSet(viewsets.ReadOnlyModelViewSet):
