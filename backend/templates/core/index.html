@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Сервис по прокату игровых приставок{% endblock %}
-
+{% load static %}
 {% block content %}
 <!-- Hero section -->
-{% load static %}
+
 <section class="hero-section overflow-hidden">
   <div class="hero-slider owl-carousel">
     <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="{% static 'img/slider-bg-1.jpg' %}">
@@ -204,5 +204,4 @@
   </div>
 </section>
 <!-- Featured section end-->
-
 {% endblock %}
