@@ -1,45 +1,44 @@
 {% load static %}
-<header class="p-3 bg-dark text-white">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-        <img src= {% static 'img/logo.png' %} width="25" height="25"
-        class="d-inline-block align-top" alt="Логотип проекта" />
-        <span style="color: gray">Rent</span>play
+<header class="header-section">
+  <div class="header-warp">
+    <div class="header-social d-flex justify-content-end">
+      <p>Мы на связи:</p>
+      <a href="#"><i class="fa fa-pinterest"></i></a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-dribbble"></i></a>
+      <a href="#"><i class="fa fa-behance"></i></a>
+    </div>
+    <div class="header-bar-warp d-flex">
+      <a href={% url 'core:index' %} class="site-logo">
+        <img src={% static 'img/logo.png' %} alt="">
       </a>
-
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="{% url 'core:index' %}" class="nav-link px-2 text-secondary">Главная</a></li>
-        <li><a href="{% url 'core:consoles' %}" class="nav-link px-2 text-white">Игровые приставки</a></li>
-        {% if user.is_authenticated %}
-        <li><a href="#" class="nav-link px-2 text-white">Избранное</a></li>
-        {% endif %}
-        <li><a href="{% url 'core:games' %}" class="nav-link px-2 text-white">Игры</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">О сервисе</a></li>
-      </ul>
-
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" class="form-control form-control-dark" placeholder="Найти..." aria-label="Search">
-      </form>
-      {% if user.is_authenticated %}
-      <div class="flex-shrink-0 dropdown">
-        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-        </a>
-        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-          <li><a class="dropdown-item" href="#">Мои операции</a></li>
-          <li><a class="dropdown-item" href="#">Бонусы и скидки</a></li>
-          <li><a class="dropdown-item" href="#">Настройки</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Выйти</a></li>
+      <nav class="top-nav-area w-100">
+        <div class="user-panel">
+          <a href="#">Войти</a> / <a href="#">Регистрация</a>
+        </div>
+        <ul class="main-menu primary-menu">
+          <li><a href={% url 'core:index' %}>Главная</a></li>
+          <li><a href={% url 'core:consoles' %}>Игровые консоли</a>
+            <ul class="sub-menu">
+              <li><a href="#">Playstation 4 Slim</a></li>
+              <li><a href="#">Playstation 4 Pro</a></li>
+              <li><a href="#">Playstation 5</a></li>
+              <li><a href="#">XBOX Series S|X</a></li>
+              <li><a href="#">XBOX 360</a></li>
+            </ul>
+          </li>
+          <li><a href="review.html">Игры</a>
+            <ul class="sub-menu">
+              <li><a href="#">Одиночные</a></li>
+              <li><a href="#">Для кампании</a></li>
+              <li><a href="#">Онлайн</a></li>
+            </ul>
+          </li>
+          <li><a href="#">О сервисе</a></li>
+          <li><a href="#">Контакты</a></li>
         </ul>
-      </div>
-      {% else %}
-      <div class="text-end">
-        <button type="button" class="btn btn-outline-light me-2">Войти</button>
-        <button type="button" class="btn btn-success">Регистрация</button>
-      </div>
-      {% endif %}
+      </nav>
     </div>
   </div>
 </header>
