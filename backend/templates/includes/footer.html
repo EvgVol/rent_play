@@ -1,47 +1,29 @@
-<div class="container">
-    <footer class="py-3">
-      <div class="row">
-        <div class="col-6 col-md-2 mb-3">
-          <h5>Арендаторам</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Как арендовать</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Вопросы и ответы</a></li>
-          </ul>
-        </div>
-  
-        <div class="col-6 col-md-2 mb-3">
-          <h5>Арендодателям</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Как сдавать в аренду</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Правила публикации</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Предложения прокатом</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Система управления прокатом</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Вопросы и ответы</a></li>
-          </ul>
-        </div>
-  
-        <div class="col-6 col-md-2 mb-3">
-          <h5>О сервисе</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Документы</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Отзывы</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Контакты</a></li>
-          </ul>
-        </div>
-  
-        <div class="col-md-5 offset-md-1 mb-3">
-          <form>
-            <h5>Подпишись на нашу рассылку новостей </h5>
-            <p>Ежемесячный дайджест того, что у нас нового и интересного </p>
-            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-              <label for="newsletter1" class="visually-hidden">Email address</label>
-              <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-              <button class="btn btn-secondary" type="button">Подписаться</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      
-      <p class="text-center text-muted">&copy; 2023 <span style="color: gray">Rent</span>play</p>
-    </footer>
+{% load static %}
+<footer class="footer-section">
+  <div class="container">
+    <div class="footer-left-pic">
+      <img src="{% static 'img/footer-left-pic.png' %}" alt="">
+    </div>
+    <div class="footer-right-pic">
+      <img src="{% static 'img/footer-right-pic.png' %}" alt="">
+    </div>
+    <a href="#" class="footer-logo">
+      <img src={% static 'img/logo.png' %} alt="">
+    </a>
+    <ul class="main-menu footer-menu">
+      <li><a href="#">Главная</a></li>
+      <li><a href="#">Приставки</a></li>
+      <li><a href="#">Игры</a></li>
+      <li><a href="#">О сервисе</a></li>
+      <li><a href="#">Контакты</a></li>
+    </ul>
+    <div class="footer-social d-flex justify-content-center">
+      <a href="#"><i class="fa fa-pinterest"></i></a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-dribbble"></i></a>
+      <a href="#"><i class="fa fa-behance"></i></a>
+    </div>
+    <div class="copyright"><a href="">Colorlib</a> 2023 @ All rights reserved</div>
   </div>
+</footer>
