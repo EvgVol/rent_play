@@ -10,4 +10,5 @@ urlpatterns = [
     path('consoles/1/', views.console_id, name='console_id'),
     path('games/', views.games, name='games'),
     path('games/1/', views.game_id, name='game_id'),
+    path('blog/', views.blog, name='blog'),
 ]

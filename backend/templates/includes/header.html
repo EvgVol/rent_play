@@ -3,11 +3,7 @@
   <div class="header-warp">
     <div class="header-social d-flex justify-content-end">
       <p>Мы на связи:</p>
-      <a href="#"><i class="fa fa-pinterest"></i></a>
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-dribbble"></i></a>
-      <a href="#"><i class="fa fa-behance"></i></a>
+      {% include 'includes/social_contacts.html' %}
     </div>
     <div class="header-bar-warp d-flex">
       <a href={% url 'core:index' %} class="site-logo">
@@ -20,22 +16,12 @@
         <ul class="main-menu primary-menu">
           <li><a href={% url 'core:index' %}>Главная</a></li>
           <li><a href={% url 'core:consoles' %}>Приставки</a>
-            <ul class="sub-menu">
-              <li><a href="#">Playstation 4 Slim</a></li>
-              <li><a href="#">Playstation 4 Pro</a></li>
-              <li><a href="#">Playstation 5</a></li>
-              <li><a href="#">XBOX Series S|X</a></li>
-              <li><a href="#">XBOX 360</a></li>
-            </ul>
+            {% include 'includes/categories.html' %}
           </li>
           <li><a href={% url 'core:games' %}>Игры</a>
-            <ul class="sub-menu">
-              <li><a href="#">Одиночные</a></li>
-              <li><a href="#">Для кампании</a></li>
-              <li><a href="#">Онлайн</a></li>
-            </ul>
+            {% include 'includes/tags.html' %}
           </li>
-          <li><a href="#">Блог</a></li>
+          <li><a href="{% url 'core:blog' %}">Блог</a></li>
           <li><a href="#">Контакты</a></li>
         </ul>
       </nav>

@@ -26,7 +26,9 @@ def console_id(request):
     template = 'consoles/console_id.html'
     return render(request, template)
 
-
+def blog(request):
+    template = 'blog/blog.html'
+    return render(request, template)
 
 class PeriodViewSet(viewsets.ReadOnlyModelViewSet):
     """Вьюсет для отображения периода аренды."""

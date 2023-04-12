@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Блог{% endblock %}
+{% block content %}
+
+<section class="blog-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 col-lg-8 col-md-7">
+        {% include 'blog/blog_filter.html' %}
+        {% include 'blog/articles.html' %}
+        {% include 'includes/paginator.html' %}
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-5 sidebar">
+        <div id="stickySidebar">
+          {% include 'includes/search.html' %}
+          {% include 'blog/news.html' %}
+          {% include 'blog/blog_categories.html' %}
+          {% include 'blog/latest_comments.html' %}
+          {% include 'blog/commercial.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Blog page end-->
+{% endblock %}
