@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}Игры{% endblock %}
+{% load static %}
 {% block content %}
-{% include 'games/game_header.html' %}
+
+<section class="page-top-section set-bg" data-setbg="{% static 'img/page-top-bg/3.jpg' %}">
+	<div class="page-info">
+		<h2>Игры</h2>
+		<div class="site-breadcrumb">
+			<a href="">Главная</a>  /
+			<span>Игры</span>
+		</div>
+	</div>
+</section>
+
 <section class="games-section">
 	<div class="container">
 		{% include 'games/game_filter.html' %}

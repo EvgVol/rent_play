@@ -22,6 +22,10 @@ def consoles(request):
     template = 'consoles/consoles.html'
     return render(request, template)
 
+def console_id(request):
+    template = 'consoles/console_id.html'
+    return render(request, template)
+
 
 
 class PeriodViewSet(viewsets.ReadOnlyModelViewSet):
