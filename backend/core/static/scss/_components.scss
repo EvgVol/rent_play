@@ -1,0 +1,66 @@
+// 
+// components.scss
+// 
+
+// Buttons
+
+.btn {
+    padding: 10px 18px;
+    font-weight: $font-weight-medium;
+    transition: all 0.3s ease-in-out;
+    border-radius: 4px;    
+    font-size: 14px;
+    outline: none !important;
+    &:hover,
+    &:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        text-decoration: none;
+    }
+}
+
+.btn-sm {
+    padding: 8px 14px;
+    font-size: 13px;
+}
+
+@each $name,
+$value in $theme-colors {
+    .btn-#{$name} {
+        color: $white;
+        background: #{$value};
+        border-color: #{$value};
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+            background: darken($value, 4%);
+            border-color: darken($value, 4%);
+            color: $white;
+        }
+    }
+}
+@each $name,
+$value in $theme-colors {
+    .btn-outline-#{$name} {
+        color: #{$value};
+        background: #{transparent};
+        border-color: #{$value};
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+            background: darken($value, 4%);
+            border-color: darken($value, 4%);
+            color: $white;
+        }
+    }
+}
+
+// Dropdowns
+.dropdown-menu {
+    font-size: 14.4px;
+    border: 1px solid $gray-200 !important; 
+    min-width: 12rem;
+    box-shadow: 1px 1px 10px rgba(115,128,157,0.1);
+}

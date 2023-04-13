@@ -1,0 +1,60 @@
+// 
+// general.scss
+// 
+body {
+    background-color: $body-bg;
+    font-family: $font-family-primary;
+    overflow-x: hidden;
+    padding: 30px 0;
+    max-width: 1300px;
+    margin: 0 auto;
+    font-size: 14px;
+    box-shadow: $box-shadow;
+}
+
+
+html {
+    background-color: $content-bg;
+    // background: url("../images/pattern.png");
+}
+
+::selection{
+    background: rgba(151, 160, 175, 0.3);
+}
+
+::-moz-selection {
+    background: rgba(151, 160, 175, 0.3);
+}
+  
+a,a:hover {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $dark;
+    font-family: $font-family-primary;
+    font-weight: $font-weight-semibold;
+}
+    
+.row > * {
+    position: relative;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    body {
+        padding: 0 0;
+    };
+}

@@ -1,30 +1,79 @@
 {% load static %}
-<header class="header-section">
-  <div class="header-warp">
-    <div class="header-social d-flex justify-content-end">
-      <p>Мы на связи:</p>
-      {% include 'includes/social_contacts.html' %}
-    </div>
-    <div class="header-bar-warp d-flex">
-      <a href={% url 'core:index' %} class="site-logo">
-        <img src={% static 'img/logo.png' %} alt="">
+<nav class="navbar navbar-expand-lg fixed-top sticky mx-auto" id="navbar">
+  <div class="container">
+      <a href="index.html" class="navbar-brand me-4">
+          <img src="{% static 'images/logo-light.png' %}" class="logo-light" alt="" height="22" />
+          <img src="{% static 'images/logo-dark.png' %}" class="logo-dark" alt="" height="22" />
       </a>
-      <nav class="top-nav-area w-100">
-        <div class="user-panel">
-          <a href="#">Войти</a> / <a href="#">Регистрация</a>
-        </div>
-        <ul class="main-menu primary-menu">
-          <li><a href={% url 'core:index' %}>Главная</a></li>
-          <li><a href={% url 'core:consoles' %}>Приставки</a>
-            {% include 'includes/categories.html' %}
-          </li>
-          <li><a href={% url 'core:games' %}>Игры</a>
-            {% include 'includes/tags.html' %}
-          </li>
-          <li><a href="{% url 'core:blog' %}">Блог</a></li>
-          <li><a href="#">Контакты</a></li>
-        </ul>
-      </nav>
-    </div>
+
+      <div class="navbar-header">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-menu"></span>
+          </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link sub-menu-item" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link sub-menu-item" href="about.html">About</a></li>
+              <li class="nav-item"><a class="nav-link sub-menu-item" href="services.html">Services</a></li>
+              <li class="nav-item dropdown parent-menu-item">
+                  <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                      href="javascript:void(0)" role="button" aria-expanded="false">Shop</a>
+                  <ul class="dropdown-menu border-0">
+                      <li class="nav-item">
+                          <a class="nav-link sub-menu-item" href="#">Products</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link sub-menu-item" href="#">Product List</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link sub-menu-item" href="#">Product Details</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link sub-menu-item" href="#">Cart</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link sub-menu-item" href="#">Checkout</a>
+                      </li>
+
+                  </ul>
+              </li>
+
+              <li class="nav-item dropdown parent-menu-item">
+                  <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                      href="javascript:void(0)" role="button" aria-expanded="false">Portfolio</a>
+                  <ul class="dropdown-menu border-0">
+                      <li class="nav-item">
+                          <a class="nav-link sub-menu-item" href="#">Work</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link sub-menu-item" href="#">Work Detail</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="nav-item dropdown parent-menu-item">
+                  <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                      href="javascript:void(0)" role="button" aria-expanded="false">Blog</a>
+                  <ul class="dropdown-menu border-0">
+                      <li class="nav-item">
+                          <a class="nav-link sub-menu-item" href="#">Blog Listing</a>
+                      </li>
+
+                      <li class="nav-item">
+                          <a class="nav-link sub-menu-item" href="#">Blog Grid</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link sub-menu-item" href="#">Single Post</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link sub-menu-item" href="#">Contact</a>
+              </li>
+          </ul><!-- end ul -->
+      </div>
   </div>
-</header>
+  <!-- end container -->
+</nav>

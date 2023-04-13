@@ -9,8 +9,8 @@ function showSection(section) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll('button').forEach(button => {
-        button.onclick = function() {
+    document.querySelectorAll('a').forEach(a => {
+        a.onclick = function() {
             showSection(this.dataset.section)
         }
     })

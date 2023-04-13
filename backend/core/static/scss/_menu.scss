@@ -1,0 +1,134 @@
+.navbar {
+    padding: 18px 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+
+    .navbar-nav {
+        .nav-item {
+            .nav-link {
+                font-size: 14px;
+                font-weight: 500;
+                padding: 10px 15px;
+                color: rgba($dark, 0.75);
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                line-height: 40px;
+
+                &.dropdown-toggle {
+                    &::after {
+                        content: "\F0140" !important;
+                        font-family: "Material Design Icons" !important;
+                        color: rgba($dark, 0.75);
+                        font-size: 18px;
+                        border: none;
+                        vertical-align: middle;
+                    }
+                }
+
+                &:hover,
+                &.active,
+                &:focus,
+                &:active {
+                    color: $primary;
+                    transition: all 0.3s;
+
+                    &.dropdown-toggle {
+                        &::after {
+                            color: $primary;
+                            transition: all 0.3s;
+                        }
+                    }
+                }
+            }
+            &.dropdown {
+                .dropdown-menu {
+                    background-color: $body-bg;
+                    padding-left: 20px;
+                    .nav-item {
+                        .nav-link {
+                            padding-left: 0 ;
+                            line-height: 20px;
+                            text-transform: none;
+                            letter-spacing: inherit;
+                        }
+                    }
+                }
+                &:hover,
+                &:active {
+                    .dropdown-menu {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    .navbar-toggler {
+        padding: 0px;
+        border: none;
+        color: $dark;
+
+        &:focus {
+            box-shadow: none !important;
+            outline: none;
+        }
+    }
+
+    .navbar-brand {
+        .logo-dark {
+            display: $display-light;
+        }
+
+        .logo-light {
+            display: $display-dark;
+        }
+    }
+    
+}
+
+/*--- navbar sticky ---*/
+.nav-sticky {
+    &.navbar {
+        margin-top: 0px;
+        padding: 8px 0px;
+        background-color: $body-bg;
+        box-shadow: $box-shadow;
+        max-width: 1300px;
+        position: fixed;
+
+        .navbar-nav {
+            .nav-item {
+                .nav-link {
+                    color: rgba($dark, 0.75);
+                    &:hover,
+                    &:active,
+                    &:focus,
+                    &.active {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// responsive
+@media (max-width: 991.98px) { 
+    .navbar {
+        background-color: $body-bg;
+        box-shadow: 0px 4px 20px rgba($gray-800, 0.08);
+        padding: 14px;
+        .navbar-nav {
+            .nav-item {
+                &.dropdown {
+                    .dropdown-menu {
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+}

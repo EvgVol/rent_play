@@ -1,0 +1,40 @@
+// form.scss
+
+.form-select {
+    background-color: $form-control-bg;
+    color: $dark;
+    &:focus {
+        box-shadow: none;
+        border-color: rgba($primary, 0.4);
+    }
+}
+
+.form-check-input {
+    background-color: $form-control-bg;
+    border-color: $muted;
+    &:checked {
+        background-color: $primary;
+        border-color: $primary;
+    }
+}
+
+.form-control {
+    color: $dark;
+    box-shadow: none;
+    border-radius: 4px;
+    padding: 12px 15px;
+    font-size: 14px;
+    border-color: $gray-300;
+    background-color: $form-control-bg;
+    &:focus {
+        border-color: form-control-bgen($primary, 30%);
+        box-shadow: none;
+        background-color: $form-control-bg;
+        color: $dark;
+
+    }    
+}
+
+.form-check-input:focus {
+    box-shadow: none !important;
+}

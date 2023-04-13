@@ -1,0 +1,60 @@
+.post {
+    .date-box {
+        z-index: 1;
+    }
+    .post-preview {
+        transition: all .3s ease-out;    
+        &:hover {            
+            opacity: 0.7;
+         }    
+    }
+   
+    .post-title {
+        a {
+            color: $dark;            
+            -webkit-transition: all .3s ease-out;
+            transition: all .3s ease-out;
+            &:hover {
+                color: $primary;
+            }
+        }
+    } 
+}
+
+.sidebar {
+    .sd-title {
+        position: relative;
+        &:after {
+            content: "";
+            width: 40px;
+            height: 1px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: $primary;
+        }
+    }
+    .tagcloud {
+       a {
+           background-color: $gray-300;
+           color: lighten($dark, 30%);
+           &:hover {
+               background-color: $primary;
+               color: $white;
+           }
+       } 
+    }    
+}
+
+.share-link {
+    li {
+        a {
+            color: $dark;
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+}
+
+

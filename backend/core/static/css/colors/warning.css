@@ -1,0 +1,85 @@
+/* default.css */
+
+
+/* color */
+.text-primary,
+.btn-outline-primary,
+.bg-soft-primary,
+.navbar .navbar-nav .nav-item .nav-link:hover,
+.navbar .navbar-nav .nav-item .nav-link:focus,
+.navbar .navbar-nav .nav-item .nav-link.active,
+.navbar .navbar-nav .nav-item .nav-link:hover.dropdown-toggle::after,
+.navbar .navbar-nav .nav-item .nav-link.active.dropdown-toggle::after,
+.navbar .navbar-nav .nav-item .nav-link:focus.dropdown-toggle::after,
+.navbar .navbar-nav .nav-item .nav-link:active.dropdown-toggle::after,
+.nav-sticky .navbar-nav .nav-item .nav-link:hover,
+.nav-sticky .navbar-nav .nav-item .nav-link:active,
+.nav-sticky .navbar-nav .nav-item .nav-link:focus,
+.nav-sticky .navbar-nav .nav-item .nav-link.active,
+.nav-sticky .navbar-nav .nav-item .nav-link.active .dropdown-toggle:after,
+.post .post-title a:hover,
+.share-link li a:hover,
+.product-item .hover-content .pro-icon.active,
+.product-item .hover-content .pro-icon:hover, 
+.product-item .hover-content .pro-icon:active,
+.pro-list-content .hover-content .pro-icon.active,
+.pro-list-content .hover-content .pro-icon:hover, 
+.pro-list-content .hover-content .pro-icon:active,
+.service-box .service-icon:hover{
+    color: #f9c74f !important;
+}
+
+
+/* background-color */
+.bg-primary,
+.btn-primary,
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active,
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active,
+.nav-sticky .nav-btn,
+.sidebar .sd-title:after,
+.sidebar .tag-cloud a:hover,
+.social-circle li:hover a,
+.form-check-input:checked,
+.pagination .page-item .page-link.active,
+.pagination .page-item .page-link:focus,
+.pagination .page-item .page-link:hover,
+.filter-options li:hover a,
+.filter-options li.active a,
+.filter-options li:active a,
+.filter-options li:focus a,
+.pro-detail-area .detail-title.nav-tabs .nav-link.active,
+.pro-detail-area .detail-title.nav-tabs .nav-item.show .nav-link,
+.mode-btn {
+    background-color: #f9c74f !important;
+}
+
+/* border */
+.btn-primary,
+.btn-outline-primary,
+.nav-sticky .nav-btn,
+.mode-btn {
+    border: 1px solid #f9c74f !important;
+}
+
+/* border-color */
+.form-control:focus,
+.form-check-input:checked,
+.border-primary,
+.pagination .page-item .page-link.active,
+.pagination .page-item .page-link:focus,
+.pagination .page-item .page-link:hover {
+    border-color: #f9c74f !important;    
+}
+
+/* rgba */
+.bg-soft-primary,
+.form-select:focus  {
+    background-color: rgba(249, 199, 79, 0.1);
+}
+
+/* lighten */
+.form-control:focus {
+    border-color: lighten(#f9c74f, 36%);
+}
+
+

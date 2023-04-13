@@ -1,0 +1,43 @@
+
+/*
+Template Name: Sozia - Minimal Portfolio & Shop Template
+Author: Themesdesign
+File: Main scss file
+*/
+
+/*******************************
+1.General
+2.Helper
+3.Components
+4.Menu
+5.Hero
+6.Portfolio
+7.Client
+8.About
+9.Services
+10.Product
+11.Blog
+12.Pagination
+13.Form
+14.Footer
+********************************/
+
+
+@import "variables-dark";
+@import "general";
+@import "helper";
+@import "components";
+@import "menu";
+@import "portfolio";
+@import "client";
+@import "service";
+@import "product";
+@import "blog";
+@import "pagination";
+@import "form";
+@import "footer";
+@import "switcher";
+
+
+
+
