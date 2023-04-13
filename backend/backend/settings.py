@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-51ydgsn!flww^)=p+m5rkp=bpan@q*em8#u^40s^4ug94l6_j(
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -101,8 +101,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'static/'
-
-# STATICFILES_DIRS = BASE_DIR / 'static'
 
 MEDIA_URL = 'media/'
 
