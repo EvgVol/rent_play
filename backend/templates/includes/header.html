@@ -7,7 +7,7 @@
 <!-- Start Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky mx-auto" id="navbar">
     <div class="container">
-        <a href="index.html" class="navbar-brand me-4">
+        <a href="{% url 'core:index' %}" class="navbar-brand me-4">
             <img src="{% static 'images/logo-light.png' %}" class="logo-light" alt="" height="22" />
             <img src="{% static 'images/logo-dark.png' %}" class="logo-dark" alt="" height="22" />
         </a>
@@ -21,8 +21,8 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link sub-menu-item" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link sub-menu-item" href="#">About</a></li>
+                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:index' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:about' %}">About</a></li>
                 <li class="nav-item"><a class="nav-link sub-menu-item" href="#">Services</a></li>
                 <li class="nav-item dropdown parent-menu-item">
                     <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"

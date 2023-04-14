@@ -10,6 +10,11 @@ def index(request):
     template = 'core/index.html'
     return render(request, template)
 
+def about(request):
+    template = 'core/about.html'
+    return render(request, template)
+
+
 # def games(request):
 #     template = 'games/games.html'
 #     return render(request, template)
