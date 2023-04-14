@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Sozia - Responsive Minimal Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="bootstrap 5, premium, marketing, multipurpose" />
+    <meta name="author" content="Themesdesign" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
+    <!-- Pe 7 icon Css-->
+    <link rel="stylesheet" type="text/css" href="css/pe-icon-7-stroke.css" />
+
+    <!-- custom Css -->
+    <link rel="stylesheet" id="app-css" type="text/css" href="css/style.css" />
+
+    <!-- colors -->
+    <link href="css/colors/default.css" rel="stylesheet" type="text/css" id="color-opt" />
+</head>
+
+<body data-bs-target=".navbar" data-bs-offset="110">
+    <!-- light-dark mode button -->
+    <a href="javascript: void(0);" id="mode" data-class="light" class="text-white rounded-end mode-btn"
+        onclick="changeMode(event)">
+        <i class="mode-dark mx-auto" data-feather="moon"></i>
+        <i class="bx-spin mode-light" data-feather="sun"></i>
+    </a>
+    <!-- Start Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top sticky mx-auto" id="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand me-4">
+                <img src="images/logo-light.png" class="logo-light" alt="" height="22" />
+                <img src="images/logo-dark.png" class="logo-dark" alt="" height="22" />
+            </a>
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link sub-menu-item" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link sub-menu-item" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link sub-menu-item" href="services.html">Services</a></li>
+                    <li class="nav-item dropdown parent-menu-item">
+                        <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                            href="javascript:void(0)" role="button" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu border-0">
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="products.html">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="product-list.html">Product List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="product-detail.html">Product Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="cart.html">Cart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="checkout.html">Checkout</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown parent-menu-item">
+                        <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                            href="javascript:void(0)" role="button" aria-expanded="false">Portfolio</a>
+                        <ul class="dropdown-menu border-0">
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="work.html">Work</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="work-detail.html">Work Detail</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown parent-menu-item">
+                        <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                            href="javascript:void(0)" role="button" aria-expanded="false">Blog</a>
+                        <ul class="dropdown-menu border-0">
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="blog-listing.html">Blog Listing</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="blog-grid.html">Blog Grid</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="single-post.html">Single Post</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link sub-menu-item" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAVBAR -->
+
+
+    <!-- Start Title -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h2 class="text-dark fw-light lh-base mt-5">Blog, Stories &<span class="fw-medium title"> latest
+                            news.</span></h2>
+                    <p class="fs-16 text-muted mb-0">Aenean sollicitudin, lorem quis bibendum auctor, nisi elit
+                        consequat ipsum, nec sagittis sem nibh id elit. Proin gravida nibh vel velit auctor Aenean
+                        sollicitudin, adipisicing elit sed lorem quis bibendum auctor.</p>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- End Title -->
+
+    <section class="sm-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-6">
+                    <!-- Post-->
+                    <article class="post position-relative pb-5">
+                        <div
+                            class="date-box rounded-3 shadow text-center bg-light position-absolute top-0 start-0 p-2 ms-3 mt-3">
+                            <h6 class="fs-14 fw-medium mb-0">25-3-2021</h6>
+                        </div>
+                        <div class="post-preview mb-4">
+                            <a href="single-post.html"><img src="images/blog/blog-1.jpg" alt=""
+                                    class="img-fluid rounded-3" /></a>
+                        </div>
+                        <div class="post">
+                            <div class="d-flex align-items-center gap-3">
+                                <p class="fs-15 text-muted mb-0"><i data-feather="message-square"
+                                        class="icon-xs me-1"></i> <a href="javascript:void(0)"
+                                        class="text-muted">364</a></p>
+                                <p class="fs-15 text-muted mb-0"><i data-feather="eye" class="icon-xs me-1"></i> <a
+                                        href="javascript:void(0)" class="text-muted">56.8 K</a></p>
+                            </div>
+                            <h6 class="fs-22 fw-semibold my-3 post-title"><a href="single-post.html">Beautiful day with
+                                    friends in paris</a></h6>
+                            <p class="text-muted">
+                                Whether an identity or campaign, we make your brand visible, relevant and effective by
+                                placing the digital at the center of its ecosystem, without underestimating the power of
+                                traditional media. Whether
+                                an identity or campaign, we make your brand visible.
+                            </p>
+                            <a href="javascript:void(0)" class="fw-medium text-dark">Read More <i
+                                    data-feather="arrow-right" class="icon-xs icon"></i></a>
+                        </div>
+                    </article>
+                    <!-- Post end-->
+                    <!-- Post-->
+                    <article class="post position-relative pb-5">
+                        <div
+                            class="date-box rounded-3 shadow text-center bg-light position-absolute top-0 start-0 p-2 ms-3 mt-3">
+                            <h6 class="fs-14 fw-medium mb-0">16-11-2021</h6>
+                        </div>
+                        <div class="post-preview mb-4">
+                            <a href="single-post.html"><img src="images/blog/blog-2.jpg" alt=""
+                                    class="img-fluid rounded-3" /></a>
+                        </div>
+                        <div class="post">
+                            <div class="d-flex align-items-center gap-3">
+                                <p class="fs-15 text-muted mb-0"><i data-feather="message-square"
+                                        class="icon-xs me-1"></i> <a href="javascript:void(0)"
+                                        class="text-muted">897</a></p>
+                                <p class="fs-15 text-muted mb-0"><i data-feather="eye" class="icon-xs me-1"></i> <a
+                                        href="javascript:void(0)" class="text-muted">99.2 K</a></p>
+                            </div>
+                            <h6 class="fs-22 fw-semibold my-3 post-title"><a href="single-post.html">What makes the best
+                                    co-working space?</a></h6>
+                            <p class="text-muted">
+                                Whether an identity or campaign, we make your brand visible, relevant and effective by
+                                placing the digital at the center of its ecosystem, without underestimating the power of
+                                traditional media. Whether
+                                an identity or campaign, we make your brand visible.
+                            </p>
+                            <a href="javascript:void(0)" class="fw-medium text-dark">Read More <i
+                                    data-feather="arrow-right" class="icon-xs icon"></i></a>
+                        </div>
+                    </article>
+                    <!-- Post end-->
+                    <!-- Post-->
+                    <article class="post position-relative pb-5">
+                        <div
+                            class="date-box rounded-3 shadow text-center bg-light position-absolute top-0 start-0 p-2 ms-3 mt-3">
+                            <h6 class="fs-14 fw-medium mb-0">05-08-2021</h6>
+                        </div>
+                        <div class="post-preview mb-4">
+                            <a href="single-post.html"><img src="images/blog/blog-3.jpg" alt=""
+                                    class="img-fluid rounded-3" /></a>
+                        </div>
+                        <div class="post">
+                            <div class="d-flex align-items-center gap-3">
+                                <p class="fs-15 text-muted mb-0"><i data-feather="message-square"
+                                        class="icon-xs me-1"></i> <a href="javascript:void(0)"
+                                        class="text-muted">447</a></p>
+                                <p class="fs-15 text-muted mb-0"><i data-feather="eye" class="icon-xs me-1"></i> <a
+                                        href="javascript:void(0)" class="text-muted">68.1 K</a></p>
+                            </div>
+                            <h6 class="fs-22 fw-semibold my-3 post-title"><a href="single-post.html">Co-Working Spaces
+                                    and Their Benefits</a></h6>
+                            <p class="text-muted">
+                                Whether an identity or campaign, we make your brand visible, relevant and effective by
+                                placing the digital at the center of its ecosystem, without underestimating the power of
+                                traditional media. Whether
+                                an identity or campaign, we make your brand visible.
+                            </p>
+                            <a href="javascript:void(0)" class="fw-medium text-dark">Read More <i
+                                    data-feather="arrow-right" class="icon-xs icon"></i></a>
+                        </div>
+                    </article>
+                    <!-- Post end-->
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="sidebar ms-3">
+                        <!-- Search widget-->
+                        <aside class="widget widget_search">
+                            <form class="position-relative">
+                                <input class="form-control" type="search" placeholder="Search...">
+                                <button
+                                    class="bg-transparent border-0 position-absolute top-50 end-0 translate-middle-y me-2"
+                                    type="submit"><span class="icon-xs icon text-dark"
+                                        data-feather="search"></span></button>
+                            </form>
+                        </aside>
+                        <div>
+                            <div class="sd-title mt-4">
+                                <h6 class="border-bottom pb-3 mb-0">Categories</h6>
+                            </div>
+                            <div class="ms-3 my-3">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckDefault" />
+                                    <label class="form-check-label text-dark ms-2"
+                                        for="flexCheckDefault">Accessories</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked1" checked />
+                                    <label class="form-check-label text-dark ms-2" for="flexCheckChecked1">Bag</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked2" />
+                                    <label class="form-check-label text-dark ms-2"
+                                        for="flexCheckChecked2">Clothing</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked3" />
+                                    <label class="form-check-label text-dark ms-2"
+                                        for="flexCheckChecked3">Decore</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked4" />
+                                    <label class="form-check-label text-dark ms-2" for="flexCheckChecked4">Coffee
+                                        Pots</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <div class="sd-title mt-4">
+                                <h6 class="border-bottom pb-3 mb-0">Polular Post</h6>
+                            </div>
+                            <ul class="list-unstyled my-4">
+                                <li class="d-flex mb-3 pb-3 border-bottom">
+                                    <a class="w-25 me-3" href="javascript:void(0)"><img src="images/works/img4.jpg"
+                                            alt="" class="img-fluid rounded" /></a>
+                                    <div class="flex-1"><a href="javascript:void(0)" class="text-dark">Beautiful Day
+                                            With Friends..</a>
+                                        <span class="d-block text-muted">Jun 15, 2021</span>
+                                    </div>
+                                </li>
+                                <li class="d-flex mb-3 pb-3 border-bottom">
+                                    <a class="w-25 me-3" href="javascript:void(0)"><img src="images/works/img2.jpg"
+                                            alt="" class="img-fluid rounded" /></a>
+                                    <div class="flex-1"><a href="javascript:void(0)" class="text-dark">Nature valley
+                                            with cooling..</a>
+                                        <span class="d-block text-muted">Jun 10, 2021</span>
+                                    </div>
+                                </li>
+                                <li class="d-flex mb-3">
+                                    <a class="w-25 me-3" href="javascript:void(0)"><img src="images/works/img10.jpg"
+                                            alt="" class="img-fluid rounded" /></a>
+                                    <div class="flex-1"><a href="javascript:void(0)" class="text-dark">Beautiful Day
+                                            With Friends..</a>
+                                        <span class="d-block text-muted">Jun 8, 2021</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-5">
+                            <div class="sd-title mt-4">
+                                <h6 class="border-bottom pb-3 mb-0">Text Widget</h6>
+                            </div>
+                            <p class="mx-3 my-3 text-muted">
+                                Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft
+                                beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v
+                                laborum. Aliquip veniam
+                                delectus, Marfa eiusmod Pinterest in do umami readymade swag.
+                            </p>
+                        </div>
+
+                        <div class="mt-5">
+                            <div class="sd-title mt-4">
+                                <h6 class="border-bottom pb-3 mb-0">Archives</h6>
+                            </div>
+                            <ul class="list-unstyled my-4">
+                                <li class="py-1 text-dark"><a class="me-2 text-muted" href="javascript:void(0)">March
+                                        2021</a> (40)
+                                </li>
+                                <li class="py-1 text-dark"><a class="me-2 text-muted" href="javascript:void(0)">April
+                                        2021</a> (08)
+                                </li>
+                                <li class="py-1 text-dark"><a class="me-2 text-muted" href="javascript:void(0)">May
+                                        2021</a> (11)</li>
+                                <li class="py-1 text-dark"><a class="me-2 text-muted" href="javascript:void(0)">Jun
+                                        2021</a> (21)</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-5">
+                            <div class="sd-title mt-4">
+                                <h6 class="border-bottom pb-3 mb-0">Tags</h6>
+                            </div>
+                            <div class="tagcloud py-4">
+                                <a class="rounded d-inline-block fs-13 fw-medium mx-1 my-1 px-2 py-1"
+                                    href="javascript:void(0)">logo</a>
+                                <a class="rounded d-inline-block fs-13 fw-medium mx-1 my-1 px-2 py-1"
+                                    href="javascript:void(0)">business</a>
+                                <a class="rounded d-inline-block fs-13 fw-medium mx-1 my-1 px-2 py-1"
+                                    href="javascript:void(0)">corporate</a>
+                                <a class="rounded d-inline-block fs-13 fw-medium mx-1 my-1 px-2 py-1"
+                                    href="javascript:void(0)">e-commerce</a>
+                                <a class="rounded d-inline-block fs-13 fw-medium mx-1 my-1 px-2 py-1"
+                                    href="javascript:void(0)">agency</a>
+                                <a class="rounded d-inline-block fs-13 fw-medium mx-1 my-1 px-2 py-1"
+                                    href="javascript:void(0)">responsive</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+            <div class="row">
+                <div class="col-lg-12 mt-sm-0 mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link active" href="javascript:void(0)">1</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- start brand-logo -->
+    <section class="client-section section">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-1.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-2.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-3.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-4.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-5.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- end brand-logo -->
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <a href="index.html" class="footer-logo d-inline-block py-4">
+                            <img src="images/logo-light.png" class="mx-auto logo-dark" alt="" height="24" />
+                        </a>
+
+                        <ul class="list-inline social-circle mt-3">
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-facebook"></i>
+                                </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-twitter"></i>
+                                </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i
+                                        class="mdi mdi-google-plus"></i> </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-apple"></i>
+                                </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-instagram"></i>
+                                </a></li>
+                        </ul>
+
+                        <div class="text-white-50 pb-4">
+                            <script>document.write(new Date().getFullYear())</script> &copy; Sozia by <a
+                                class="text-white-50 text-decoration-underline" target="_blank"
+                                href="https://themesdesign.in">Themesdesign</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+    </footer>
+    <!-- END FOOTER -->
+
+    <!-- Style switcher -->
+    <div id="style-switcher" onclick="toggleSwitcher()">
+        <div>
+            <h3>Select Your Color</h3>
+            <ul class="pattern">
+                <li>
+                    <a class="color1" href="javascript: void(0);" onclick="setColor('default')"></a>
+                </li>
+                <li>
+                    <a class="color2" href="javascript: void(0);" onclick="setColor('success')"></a>
+                </li>
+                <li>
+                    <a class="color3" href="javascript: void(0);" onclick="setColor('warning')"></a>
+                </li>
+                <li>
+                    <a class="color4" href="javascript: void(0);" onclick="setColor('danger')"></a>
+                </li>
+                <li>
+                    <a class="color5" href="javascript: void(0);" onclick="setColor('info')"></a>
+                </li>
+                <li>
+                    <a class="color6" href="javascript: void(0);" onclick="setColor('amber')"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <a href="javascript: void(0);" class="settings rounded-end text-light"><i data-feather="droplet"></i></a>
+        </div>
+    </div>
+    <!-- end Style switcher -->
+
+    <!-- Javascript -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon -->
+    <script src="js/feather.js"></script>
+
+    <!-- app js -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>

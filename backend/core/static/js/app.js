@@ -132,7 +132,7 @@ function validateForm() {
             document.forms["myForm"]["comments"].value = "";
         }
     };
-    xhttp.open("POST", "php/contact.php", true);
+    xhttp.open("POST", "static/php/contact.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("name=" + name + "&email=" + email + "&subject=" + subject + "&comments=" + comments);
     return false;
@@ -158,10 +158,10 @@ function changeMode(event) {
     var y = document.getElementById("mode");
 
     if (currentMode === "light") {
-        x.setAttribute('href', 'css/style-dark.css')
+        x.setAttribute('href', 'static/css/style-dark.css')
         y.setAttribute('data-class', 'dark')
     } else {
-        x.setAttribute('href', 'css/style.css')
+        x.setAttribute('href', 'static/css/style.css')
         y.setAttribute('data-class', 'light')
     }
 }

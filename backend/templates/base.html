@@ -1,38 +1,63 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'css/materialdesignicons.min.css' %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'css/pe-icon-7-stroke.css' %}" />
-  <link rel="stylesheet" type="text/css" id="app-css" href="{% static 'css/style.css' %}"  />
-  <link rel="stylesheet" type="text/css" id="color-opt" href="{% static 'css/colors/default.css' %}" />
-  <link rel="icon" href="{% static 'img/fav/fav.ico' %}" type="image" />
-  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/fav/apple-touch-icon.png' %}" />
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/fav/favicon-32x32.png' %}" />
-  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/fav/favicon-16x16.png' %}" />
-  <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8" />
+    <title>{% block title %}{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="bootstrap 5, premium, marketing, multipurpose" />
+    <meta name="author" content="Themesdesign" />
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/materialdesignicons.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pe-icon-7-stroke.css' %}" />
+    <link rel="stylesheet" id="app-css" type="text/css" href="{% static 'css/style.css' %}" />
+    <link href="{% static 'css/colors/default.css' %}" rel="stylesheet" type="text/css" id="color-opt" />
 </head>
-<body data-bs-target=".navbar" data-bs-offset="110">
-  <a href="javascript: void(0);" id="mode" data-class="light" class="text-white rounded-end mode-btn" onclick="changeMode(event)">
-    <i class="mode-dark mx-auto" data-feather="moon"></i>
-    <i class="bx-spin mode-light" data-feather="sun"></i>
-  </a>
+  <body data-bs-target=".navbar" data-bs-offset="110">
+    <header>
+      {% include 'includes/header.html' %}
+    </header>
+    <main>
+      {% block content %}{% endblock content %}
+      <div id="style-switcher" onclick="toggleSwitcher()">
+        <div>
+            <h3>Select Your Color</h3>
+            <ul class="pattern">
+                <li>
+                    <a class="color1" href="javascript: void(0);" onclick="setColor('default')"></a>
+                </li>
+                <li>
+                    <a class="color2" href="javascript: void(0);" onclick="setColor('success')"></a>
+                </li>
+                <li>
+                    <a class="color3" href="javascript: void(0);" onclick="setColor('warning')"></a>
+                </li>
+                <li>
+                    <a class="color4" href="javascript: void(0);" onclick="setColor('danger')"></a>
+                </li>
+                <li>
+                    <a class="color5" href="javascript: void(0);" onclick="setColor('info')"></a>
+                </li>
+                <li>
+                    <a class="color6" href="javascript: void(0);" onclick="setColor('amber')"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <a href="javascript: void(0);" class="settings rounded-end text-light"><i data-feather="droplet"></i></a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      {% include 'includes/footer.html' %}
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="{% static 'js/shuffle.min.js' %}"></script>
+    <script src="{% static 'js/gallery.init.js' %}"></script>
+    <script src="{% static 'js/feather.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
 
-  {% include 'includes/header.html' %}
-  {% block content %}{% endblock content %}
-  {% include 'includes/footer.html' %}
-  {% load static %}
-  
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-	<script src="{% static 'js/shuffle.min.js' %}"></script>
-	<script src="{% static 'js/gallery.init.js' %}"></script>
-	<script src="{% static 'js/feather.js' %}"></script>
-	<script src="{% static 'js/app.js' %}"></script>
-	{% comment %} <script src="{% static 'scripts/script.js' %}"></script> {% endcomment %}
-</body>
+  </body>
 </html>

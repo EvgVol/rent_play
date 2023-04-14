@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Sozia - Responsive Minimal Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="bootstrap 5, premium, marketing, multipurpose" />
+    <meta name="author" content="Themesdesign" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/pe-icon-7-stroke.css" />
+
+    <!-- custom Css -->
+    <link rel="stylesheet" id="app-css" type="text/css" href="css/style.css" />
+
+    <!-- colors -->
+    <link href="css/colors/default.css" rel="stylesheet" type="text/css" id="color-opt" />
+
+</head>
+
+<body data-bs-target=".navbar" data-bs-offset="110">
+    <!-- light-dark mode button -->
+    <a href="javascript: void(0);" id="mode" data-class="light" class="text-white rounded-end mode-btn"
+        onclick="changeMode(event)">
+        <i class="mode-dark mx-auto" data-feather="moon"></i>
+        <i class="bx-spin mode-light" data-feather="sun"></i>
+    </a>
+    <!-- Start Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top sticky mx-auto" id="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand me-4">
+                <img src="images/logo-light.png" class="logo-light" alt="" height="22" />
+                <img src="images/logo-dark.png" class="logo-dark" alt="" height="22" />
+            </a>
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link sub-menu-item" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link sub-menu-item" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link sub-menu-item" href="services.html">Services</a></li>
+                    <li class="nav-item dropdown parent-menu-item">
+                        <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                            href="javascript:void(0)" role="button" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu border-0">
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="products.html">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="product-list.html">Product List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="product-detail.html">Product Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="cart.html">Cart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="checkout.html">Checkout</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown parent-menu-item">
+                        <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                            href="javascript:void(0)" role="button" aria-expanded="false">Portfolio</a>
+                        <ul class="dropdown-menu border-0">
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="work.html">Work</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="work-detail.html">Work Detail</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown parent-menu-item">
+                        <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                            href="javascript:void(0)" role="button" aria-expanded="false">Blog</a>
+                        <ul class="dropdown-menu border-0">
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="blog-listing.html">Blog Listing</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="blog-grid.html">Blog Grid</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="single-post.html">Single Post</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link sub-menu-item" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAVBAR -->
+
+
+    <!-- Start Title -->
+    <section class="hero position-relative overflow-hidden align-items-center" id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 text-center">
+
+                    <h2 class="text-dark fw-light lh-base mt-5">Sozia Is One Of Best <span class="fw-medium title">Web
+                            Design</span> & <span class="fw-medium title">Development</span> Company.</h2>
+
+                    <p class="text-muted fs-16">We create digital assets and we're focused on Web Technologies and
+                        Design, based on London, United Kingdom. We
+                        build creative & professional themes.</p>
+                    <h5 class="mt-4 fw-normal"> A digital studio crafting <span class="title">beautiful</span>
+                        experiences.</h5>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- End Title -->
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img src="images/bg.jpg" alt="about-img" class="img-fluid img-thumbnail mt-5">
+                </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+                <div class="col-lg-8 mt-5">
+                    <h4 class="fw-semibold border-bottom d-inline-block text-dark pb-3">What is our clients say?</h4>
+                    <div class="testimonial-box">
+                        <i class="icon-sm sw-1 my-3" data-feather="message-square"></i>
+                        <p class="text-muted fst-italic fs-18"> "It is a long established fact that a reader will be
+                            distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less."</p>
+                        <img src="images/user-1.png" class="testi-user rounded-circle img-thumbnail"
+                            alt="testimonials-user" style="width: 64px; height: 64px;">
+                        <p class="text-muted fs-16 mt-3">Template User - Sozia Template</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-12 mt-5">
+                    <h4 class="fw-semibold border-bottom d-inline-block text-dark pb-3">Meet Our Team</h4>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3 mt-4">
+                    <div class="team-box">
+                        <a href="work-detail.html">
+                            <img src="images/team/team-1.jpg" class="img-fluid rounded" alt="">
+                        </a>
+                        <h5 class="text-dark mt-3 fs-16">Hubert Brandt</h5>
+                        <p class="text-muted">CEO/Founder</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 mt-4">
+                    <div class="team-box">                        
+                        <a href="work-detail.html">
+                            <img src="images/team/team-2.jpg" class="img-fluid rounded" alt="">
+                        </a>
+                        <h5 class="text-dark mt-3 fs-16">Andrew Sparks</h5>
+                        <p class="text-muted">CTO/Co-Founder</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 mt-4">
+                    <div class="team-box">
+                        <a href="work-detail.html">
+                            <img src="images/team/team-3.jpg" class="img-fluid rounded" alt="">
+                        </a>
+                        <h5 class="text-dark mt-3 fs-16">David Downs</h5>
+                        <p class="text-muted">Web Designer</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 mt-4">
+                    <div class="team-box">
+                        <a href="work-detail.html">
+                            <img src="images/team/team-4.jpg" class="img-fluid rounded" alt="">
+                        </a>
+                        <h5 class="text-dark mt-3 fs-16">Jennifer Pak</h5>
+                        <p class="text-muted">Manager</p>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- end container -->
+    </section>
+
+
+
+
+    <!-- start brand-logo -->
+    <section class="client-section section mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h4 class="fw-semibold border-bottom d-inline-block text-dark pb-3">Trusted by Thousands</h4>
+                </div>
+            </div>
+
+            <div class="row justify-content-between">
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-1.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-2.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-3.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-4.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-5.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- end brand-logo -->
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <a href="index.html" class="footer-logo d-inline-block py-4">
+                            <img src="images/logo-light.png" class="mx-auto logo-dark" alt="" height="24" />
+                        </a>
+
+                        <ul class="list-inline social-circle mt-3">
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-facebook"></i>
+                                </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-twitter"></i>
+                                </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i
+                                        class="mdi mdi-google-plus"></i> </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-apple"></i>
+                                </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-instagram"></i>
+                                </a></li>
+                        </ul>
+
+                        <div class="text-white-50 pb-4">
+                            <script>document.write(new Date().getFullYear())</script> &copy; Sozia by <a
+                                class="text-white-50 text-decoration-underline" target="_blank"
+                                href="https://themesdesign.in">Themesdesign</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+    </footer>
+    <!-- END FOOTER -->
+
+    <!-- Style switcher -->
+    <div id="style-switcher" onclick="toggleSwitcher()">
+        <div>
+            <h3>Select Your Color</h3>
+            <ul class="pattern">
+                <li>
+                    <a class="color1" href="javascript: void(0);" onclick="setColor('default')"></a>
+                </li>
+                <li>
+                    <a class="color2" href="javascript: void(0);" onclick="setColor('success')"></a>
+                </li>
+                <li>
+                    <a class="color3" href="javascript: void(0);" onclick="setColor('warning')"></a>
+                </li>
+                <li>
+                    <a class="color4" href="javascript: void(0);" onclick="setColor('danger')"></a>
+                </li>
+                <li>
+                    <a class="color5" href="javascript: void(0);" onclick="setColor('info')"></a>
+                </li>
+                <li>
+                    <a class="color6" href="javascript: void(0);" onclick="setColor('amber')"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <a href="javascript: void(0);" class="settings rounded-end text-light"><i data-feather="droplet"></i></a>
+        </div>
+    </div>
+    <!-- end Style switcher -->
+
+
+
+
+    <!-- JAVASCRIPTS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon -->
+    <script src="js/feather.js"></script>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

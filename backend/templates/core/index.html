@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
-{% block title %}Сервис по прокату игровых приставок{% endblock %}
-{% load static %}
+{% block title %}Главная страница{% endblock title %}
 {% block content %}
-<section class="hero position-relative overflow-hidden align-items-center" id="home">
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-9">
-              <h2 class="text-dark fw-light lh-base mt-5">Founded and based in <span
-                      class="fw-medium title">New York</span>, We are Sozia, a design and branding agency with partners
-                  worldwide.</h2>
-          </div>
-      </div>
-  </div>
-  <!-- end container -->
+
+{% include 'core/second_header.html' %}
+<section class="section">
+    <div class="container">
+        {% include 'games/tags.html' %}
+        {% include 'games/game_list.html' %}
+        <!--end row-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center mt-5">
+                    <a href="#" class="btn btn-primary me-2">More Works <i class="mdi mdi-arrow-right ms-1"></i></a>
+                    <a href="#" class="btn btn-primary">Get In Touch <i class="mdi mdi-lifebuoy ms-1"></i></a>
+                </div>
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div>
 </section>
-{% include 'consoles/consoles.html' %}
-{% endblock %}
+{% endblock content %}

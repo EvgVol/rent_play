@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Sozia - Responsive Minimal Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="bootstrap 5, premium, marketing, multipurpose" />
+    <meta name="author" content="Themesdesign" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
+    <!-- Pe 7 icon Css-->
+    <link rel="stylesheet" type="text/css" href="css/pe-icon-7-stroke.css" />
+
+    <!-- custom Css -->
+    <link rel="stylesheet" id="app-css" type="text/css" href="css/style.css" />
+
+    <!-- colors -->
+    <link href="css/colors/default.css" rel="stylesheet" type="text/css" id="color-opt" />
+</head>
+
+<body data-bs-target=".navbar" data-bs-offset="110">
+    <!-- light-dark mode button -->
+    <a href="javascript: void(0);" id="mode" data-class="light" class="text-white rounded-end mode-btn"
+        onclick="changeMode(event)">
+        <i class="mode-dark mx-auto" data-feather="moon"></i>
+        <i class="bx-spin mode-light" data-feather="sun"></i>
+    </a>
+    <!-- Start Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top sticky mx-auto" id="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand me-4">
+                <img src="images/logo-light.png" class="logo-light" alt="" height="22" />
+                <img src="images/logo-dark.png" class="logo-dark" alt="" height="22" />
+            </a>
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link sub-menu-item" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link sub-menu-item" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link sub-menu-item" href="services.html">Services</a></li>
+                    <li class="nav-item dropdown parent-menu-item">
+                        <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                            href="javascript:void(0)" role="button" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu border-0">
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="products.html">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="product-list.html">Product List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="product-detail.html">Product Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="cart.html">Cart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="checkout.html">Checkout</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown parent-menu-item">
+                        <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                            href="javascript:void(0)" role="button" aria-expanded="false">Portfolio</a>
+                        <ul class="dropdown-menu border-0">
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="work.html">Work</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="work-detail.html">Work Detail</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown parent-menu-item">
+                        <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
+                            href="javascript:void(0)" role="button" aria-expanded="false">Blog</a>
+                        <ul class="dropdown-menu border-0">
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="blog-listing.html">Blog Listing</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="blog-grid.html">Blog Grid</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link sub-menu-item" href="single-post.html">Single Post</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link sub-menu-item" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAVBAR -->
+
+
+    <!-- Start Title -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="page-title">
+                        <h2 class="text-dark fw-light lh-base mt-5">Launching Spring <span
+                                class="fw-medium title">Summer'21</span></h2>
+                        <p class="fs-16 text-muted mb-0">Aenean sollicitudin, lorem quis bibendum auctor, nisi elit
+                            consequat ipsum, nec sagittis sem nibh id elit. Proin gravida nibh vel velit auctor Aenean
+                            sollicitudin, adipisicing elit sed lorem quis bibendum auctor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- End Title -->
+
+    <section class="sm-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="border-bottom">
+                        <div class="row align-items-center pb-sm-3 pb-4">
+                            <div class="col-lg-8 col-md-6 my-md-0 my-2">
+                                <p class="text-muted mb-0 py-sm-0 py-2">Showing 1–9 of 15 results</p>
+                            </div>
+                            <div class="col-lg-4 col-md-6 my-md-0 my-2">
+                                <form>
+                                    <div class="row mb-0 mt-md-4 mt-lg-0">
+                                        <h5 class="col-sm-3 col-form-label">Sort By :</h5>
+                                        <div class="col-sm-9 ps-0">
+                                            <select
+                                                class="form-select bg-light text-muted border fs-14 py-2 ms-sm-0 ms-1"
+                                                aria-label="Default select example">
+                                                <option selected>Most Popular </option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END ROW -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="sidebar shadow rounded-3 py-4 mt-4">
+                        <div class="mb-4 ms-4">
+                            <a href="products.html"><i data-feather="grid" class="text-primary me-2"></i></a>
+                            <a href="product-list.html"><i data-feather="list" class="text-muted"></i></a>
+                        </div>
+                        <!-- categories -->
+                        <div>
+                            <div class="p-3 bg-light">
+                                <h6 class="mb-0">Categories</h6>
+                            </div>
+                            <div class="ms-3 my-3">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckDefaulta1" />
+                                    <label class="form-check-label text-dark ms-2"
+                                        for="flexCheckDefaulta1">Accessories</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked11" checked />
+                                    <label class="form-check-label text-dark ms-2" for="flexCheckChecked11">Bag</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked22" />
+                                    <label class="form-check-label text-dark ms-2"
+                                        for="flexCheckChecked22">Clothing</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked33" />
+                                    <label class="form-check-label text-dark ms-2"
+                                        for="flexCheckChecked33">Decore</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked44" />
+                                    <label class="form-check-label text-dark ms-2" for="flexCheckChecked44">Coffee
+                                        Pots</label>
+                                </div>
+                                <a class="fw-normal text-primary" href="javascript:void(0)">& More Products</a>
+                            </div>
+                        </div>
+                        <!-- end categories -->
+
+                        <!-- color -->
+                        <div class="mt-4">
+                            <div class="p-3 bg-light">
+                                <h6 class="mb-0">Choose Color</h6>
+                            </div>
+                            <div class="ms-3 my-3">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckDefaulta2" />
+                                    <label class="form-check-label text-dark" for="flexCheckDefaulta2"><i
+                                            class="mdi mdi-circle ms-2 fs-16"></i> Red</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked55" checked />
+                                    <label class="form-check-label text-dark" for="flexCheckChecked55"><i
+                                            class="mdi mdi-circle text-primary ms-2 fs-16"></i> Blue</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked66" />
+                                    <label class="form-check-label text-dark" for="flexCheckChecked66"><i
+                                            class="mdi mdi-circle text-dark ms-2 fs-16"></i> Black</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked77" />
+                                    <label class="form-check-label text-dark" for="flexCheckChecked77"><i
+                                            class="mdi mdi-circle text-info ms-2 fs-16"></i> Cyan</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked88" />
+                                    <label class="form-check-label text-dark" for="flexCheckChecked88"><i
+                                            class="mdi mdi-circle text-warning ms-2 fs-16"></i> Yellow</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckChecked99" />
+                                    <label class="form-check-label text-dark" for="flexCheckChecked99"><i
+                                            class="mdi mdi-circle text-success ms-2 fs-16"></i> Green</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end color -->
+
+                        <!-- items -->
+                        <div class="mt-4">
+                            <div class="p-3 bg-light">
+                                <h6 class="mb-0">Items</h6>
+                            </div>
+                            <div class="ms-3 my-3">
+                                <p class="d-inline-block text-dark fs-16">Select Items</p>
+                                <select class="form-select d-inline-block border w-50 ms-5 ms-md-2"
+                                    id="autoSizingSelect">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- end item -->
+
+                        <!-- start price -->
+                        <div class="mt-4">
+                            <div class="p-3 bg-light mb-3">
+                                <h6 class="mb-0">Price</h6>
+                            </div>
+                            <div class="ms-3 my-3">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckDefaulta7" />
+                                    <label class="form-check-label text-dark ms-2" for="flexCheckDefaulta7">$50 -
+                                        $99</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value="" id="flexCheckChecke"
+                                        checked />
+                                    <label class="form-check-label text-dark ms-2" for="flexCheckChecke">$100 -
+                                        $199</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value=""
+                                        id="flexCheckCheck" />
+                                    <label class="form-check-label text-dark ms-2" for="flexCheckCheck">$200 -
+                                        $299</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value="" id="flexCheckChec" />
+                                    <label class="form-check-label text-dark ms-2" for="flexCheckChec">$300 -
+                                        $399</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input fs-16" type="checkbox" value="" id="flexCheckChe" />
+                                    <label class="form-check-label text-dark ms-2" for="flexCheckChe">$400 -
+                                        $499</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-item mt-4">
+                                <div class="product-img rounded position-relative">
+                                    <img class="img-fluid" src="images/products/pro-1.jpg" alt="" />
+                                    <span
+                                        class="text-dark badge bg-light rounded-3 fs-14 fw-bold position-absolute top-0 start-0 mt-2 ms-2 py-2">-20%</span>
+
+                                    <div
+                                        class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-cart-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end"></i></a>
+                                        <a href="product-detail.html"><i
+                                                class="mdi mdi-eye-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end active"></i></a>
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-heart-outline fs-22 fw-bolder pro-icon"></i></a>
+                                    </div>
+                                </div>
+                                <div class="pro-content my-3">
+                                    <div class="d-flex align-items-center">
+                                        <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">$29.00</ins>
+                                        <del class="text-muted fs-15">$30.00</del>
+                                        <div class="rating ms-auto">
+                                            <i class="mdi mdi-star fs-18 text-warning d-inline-block"></i>
+                                            <h5 class="d-inline-block fs-15">5.0</h5>
+                                        </div>
+                                    </div>
+                                    <a href="product-detail.html">
+                                        <p class="text-muted fw-normal lh-base my-1">Maxbell USB Rechargeable Electronic
+                                            Flameless</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-item mt-4">
+                                <div class="product-img rounded position-relative">
+                                    <img class="img-fluid" src="images/products/pro-2.jpg" alt="" />
+                                    <div
+                                        class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-cart-outline fs-22 me-3 pe-3 fw-bolder pro-icon text-dark border-end"></i></a>
+                                        <a href="product-detail.html"><i
+                                                class="mdi mdi-eye-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end active"></i></a>
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-heart-outline text-dark fs-22 fw-bolder pro-icon"></i></a>
+                                    </div>
+                                </div>
+                                <div class="pro-content my-3">
+                                    <div class="d-flex align-items-center">
+                                        <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">$35.00</ins>
+                                        <del class="text-muted fs-15">$45.00</del>
+                                        <div class="rating ms-auto">
+                                            <i class="mdi mdi-star fs-18 text-warning d-inline-block"></i>
+                                            <h5 class="d-inline-block fs-15">4.8</h5>
+                                        </div>
+                                    </div>
+                                    <a href="product-detail.html">
+                                        <p class="text-muted fw-normal lh-base my-1">PRd PU Tan Casual regular
+                                            Walletious</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-item mt-4">
+                                <div class="product-img rounded position-relative">
+                                    <img class="img-fluid" src="images/products/pro-3.jpg" alt="" />
+                                    <span
+                                        class="text-dark badge bg-light rounded-3 fs-14 fw-bold position-absolute top-0 start-0 mt-2 ms-2 py-2">-18%</span>
+                                    <div
+                                        class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-cart-outline fs-22 me-3 pe-3 fw-bolder pro-icon text-dark border-end"></i></a>
+                                        <a href="product-detail.html"><i
+                                                class="mdi mdi-eye-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end active"></i></a>
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-heart-outline text-dark fs-22 fw-bolder pro-icon"></i></a>
+                                    </div>
+                                </div>
+                                <div class="pro-content my-3">
+                                    <div class="d-flex align-items-center">
+                                        <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">$20.00</ins>
+                                        <del class="text-muted fs-15">$30.00</del>
+                                        <div class="rating ms-auto">
+                                            <i class="mdi mdi-star fs-18 text-warning d-inline-block"></i>
+                                            <h5 class="d-inline-block fs-15">4.9</h5>
+                                        </div>
+                                    </div>
+                                    <a href="product-detail.html">
+                                        <p class="text-muted fw-normal lh-base my-1">Children Decorated Shoes Cotton
+                                            Green</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-item mt-4">
+                                <div class="product-img rounded position-relative">
+                                    <img class="img-fluid" src="images/products/pro-4.jpg" alt="" />
+                                    <div
+                                        class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-cart-outline fs-22 me-3 pe-3 fw-bolder pro-icon text-dark border-end"></i></a>
+                                        <a href="product-detail.html"><i
+                                                class="mdi mdi-eye-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end active"></i></a>
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-heart-outline text-dark fs-22 fw-bolder pro-icon"></i></a>
+                                    </div>
+                                </div>
+                                <div class="pro-content my-3">
+                                    <div class="d-flex align-items-center">
+                                        <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">$39.00</ins>
+                                        <del class="text-muted fs-15">$59.00</del>
+                                        <div class="rating ms-auto">
+                                            <i class="mdi mdi-star fs-18 text-warning d-inline-block"></i>
+                                            <h5 class="d-inline-block fs-15">5.0</h5>
+                                        </div>
+                                    </div>
+                                    <a href="product-detail.html">
+                                        <p class="text-muted fw-normal lh-base my-1">Maxbell USB Rechargeable Electronic
+                                            Flameless</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-item mt-4">
+                                <div class="product-img rounded position-relative">
+                                    <img class="img-fluid" src="images/products/pro-5.jpg" alt="" />
+                                    <div
+                                        class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-cart-outline fs-22 me-3 pe-3 fw-bolder pro-icon text-dark border-end"></i></a>
+                                        <a href="product-detail.html"><i
+                                                class="mdi mdi-eye-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end active"></i></a>
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-heart-outline text-dark fs-22 fw-bolder pro-icon"></i></a>
+                                    </div>
+                                </div>
+                                <div class="pro-content my-3">
+                                    <div class="d-flex align-items-center">
+                                        <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">$35.00</ins>
+                                        <del class="text-muted fs-15">$45.00</del>
+                                        <div class="rating ms-auto">
+                                            <i class="mdi mdi-star fs-18 text-warning d-inline-block"></i>
+                                            <h5 class="d-inline-block fs-15">4.8</h5>
+                                        </div>
+                                    </div>
+                                    <a href="product-detail.html">
+                                        <p class="text-muted fw-normal lh-base my-1">PRd PU Tan Casual regular
+                                            Walletious</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-item mt-4">
+                                <div class="product-img rounded position-relative">
+                                    <img class="img-fluid" src="images/products/pro-6.jpg" alt="" />
+                                    <div
+                                        class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-cart-outline fs-22 me-3 pe-3 fw-bolder pro-icon text-dark border-end"></i></a>
+                                        <a href="product-detail.html"><i
+                                                class="mdi mdi-eye-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end active"></i></a>
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-heart-outline text-dark fs-22 fw-bolder pro-icon"></i></a>
+                                    </div>
+                                </div>
+                                <div class="pro-content my-3">
+                                    <div class="d-flex align-items-center">
+                                        <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">$20.00</ins>
+                                        <del class="text-muted fs-15">$30.00</del>
+                                        <div class="rating ms-auto">
+                                            <i class="mdi mdi-star fs-18 text-warning d-inline-block"></i>
+                                            <h5 class="d-inline-block fs-15">4.9</h5>
+                                        </div>
+                                    </div>
+                                    <a href="product-detail.html">
+                                        <p class="text-muted fw-normal lh-base my-1">Children Decorated Shoes Cotton
+                                            Green</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-item mt-4">
+                                <div class="product-img rounded position-relative">
+                                    <img class="img-fluid" src="images/products/pro-7.jpg" alt="" />
+                                    <div
+                                        class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-cart-outline fs-22 me-3 pe-3 fw-bolder pro-icon text-dark border-end"></i></a>
+                                        <a href="product-detail.html"><i
+                                                class="mdi mdi-eye-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end active"></i></a>
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-heart-outline text-dark fs-22 fw-bolder pro-icon"></i></a>
+                                    </div>
+                                </div>
+                                <div class="pro-content my-3">
+                                    <div class="d-flex align-items-center">
+                                        <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">$99.00</ins>
+                                        <del class="text-muted fs-15">$95.00</del>
+                                        <div class="rating ms-auto">
+                                            <i class="mdi mdi-star fs-18 text-warning d-inline-block"></i>
+                                            <h5 class="d-inline-block fs-15">5.0</h5>
+                                        </div>
+                                    </div>
+                                    <a href="product-detail.html">
+                                        <p class="text-muted fw-normal lh-base my-1">Maxbell USB Rechargeable Electronic
+                                            Flameless</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-item mt-4">
+                                <div class="product-img rounded position-relative">
+                                    <img class="img-fluid" src="images/products/pro-8.jpg" alt="" />
+                                    <span
+                                        class="text-dark badge bg-light rounded-3 fs-14 fw-bold position-absolute top-0 start-0 mt-2 ms-2 py-2">-26%</span>
+                                    <div
+                                        class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-cart-outline fs-22 me-3 pe-3 fw-bolder pro-icon text-dark border-end"></i></a>
+                                        <a href="product-detail.html"><i
+                                                class="mdi mdi-eye-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end active"></i></a>
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-heart-outline text-dark fs-22 fw-bolder pro-icon"></i></a>
+                                    </div>
+                                </div>
+                                <div class="pro-content my-3">
+                                    <div class="d-flex align-items-center">
+                                        <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">$35.00</ins>
+                                        <del class="text-muted fs-15">$45.00</del>
+                                        <div class="rating ms-auto">
+                                            <i class="mdi mdi-star fs-18 text-warning d-inline-block"></i>
+                                            <h5 class="d-inline-block fs-15">4.8</h5>
+                                        </div>
+                                    </div>
+                                    <a href="product-detail.html">
+                                        <p class="text-muted fw-normal lh-base my-1">PRd PU Tan Casual regular
+                                            Walletious</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-item mt-4">
+                                <div class="product-img rounded position-relative">
+                                    <img class="img-fluid" src="images/products/pro-9.jpg" alt="" />
+                                    <span
+                                        class="text-dark badge bg-light rounded-3 fs-14 fw-bold position-absolute top-0 start-0 mt-2 ms-2 py-2">-15%</span>
+                                    <div
+                                        class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-cart-outline fs-22 me-3 pe-3 fw-bolder pro-icon text-dark border-end"></i></a>
+                                        <a href="product-detail.html"><i
+                                                class="mdi mdi-eye-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end active"></i></a>
+                                        <a href="cart.html"><i
+                                                class="mdi mdi-heart-outline text-dark fs-22 fw-bolder pro-icon"></i></a>
+                                    </div>
+                                </div>
+                                <div class="pro-content my-3">
+                                    <div class="d-flex align-items-center">
+                                        <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">$20.00</ins>
+                                        <del class="text-muted fs-15">$30.00</del>
+                                        <div class="rating ms-auto">
+                                            <i class="mdi mdi-star fs-18 text-warning d-inline-block"></i>
+                                            <h5 class="d-inline-block fs-15">4.9</h5>
+                                        </div>
+                                    </div>
+                                    <a href="product-detail.html">
+                                        <p class="text-muted fw-normal lh-base my-1">Children Decorated Shoes Cotton
+                                            Green</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                    <div class="row">
+                        <div class="col-lg-12 mt-5">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link" href="javascript:void(0)" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link active" href="javascript:void(0)">1</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="javascript:void(0)" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END ROW -->
+        </div>
+    </section>
+
+    <!-- start brand-logo -->
+    <section class="client-section sm-section">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-1.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-2.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-3.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-4.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+                <div class="col-md-auto col-12 mt-3 py-lg-0 py-3">
+                    <div class="client-box">
+                        <img src="images/brand/brand-5.png" class="mx-auto d-block img-fluid" alt="client-logo" />
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- end brand-logo -->
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <a href="index.html" class="footer-logo d-inline-block py-4">
+                            <img src="images/logo-light.png" class="mx-auto logo-dark" alt="" height="24" />
+                        </a>
+
+                        <ul class="list-inline social-circle mt-3">
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-facebook"></i>
+                                </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-twitter"></i>
+                                </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i
+                                        class="mdi mdi-google-plus"></i> </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-apple"></i>
+                                </a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)"> <i class="mdi mdi-instagram"></i>
+                                </a></li>
+                        </ul>
+
+                        <div class="text-white-50 pb-4">
+                            <script>document.write(new Date().getFullYear())</script> &copy; Sozia by <a
+                                class="text-white-50 text-decoration-underline" target="_blank"
+                                href="https://themesdesign.in">Themesdesign</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+    </footer>
+    <!-- END FOOTER -->
+
+    <!-- Style switcher -->
+    <div id="style-switcher" onclick="toggleSwitcher()">
+        <div>
+            <h3>Select Your Color</h3>
+            <ul class="pattern">
+                <li>
+                    <a class="color1" href="javascript: void(0);" onclick="setColor('default')"></a>
+                </li>
+                <li>
+                    <a class="color2" href="javascript: void(0);" onclick="setColor('success')"></a>
+                </li>
+                <li>
+                    <a class="color3" href="javascript: void(0);" onclick="setColor('warning')"></a>
+                </li>
+                <li>
+                    <a class="color4" href="javascript: void(0);" onclick="setColor('danger')"></a>
+                </li>
+                <li>
+                    <a class="color5" href="javascript: void(0);" onclick="setColor('info')"></a>
+                </li>
+                <li>
+                    <a class="color6" href="javascript: void(0);" onclick="setColor('amber')"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <a href="javascript: void(0);" class="settings rounded-end text-light"><i data-feather="droplet"></i></a>
+        </div>
+    </div>
+    <!-- end Style switcher -->
+
+    <!-- Javascript -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon -->
+    <script src="js/feather.js"></script>
+
+    <!-- app js -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>
