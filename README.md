@@ -10,73 +10,73 @@
 [![NGINX](https://img.shields.io/badge/-NGINX-464646??style=flat-square&logo=NGINX)](https://nginx.org/ru/)
 [![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-464646??style=flat-square&logo=PostgreSQL)](https://www.postgresql.org/)
 
-Arranging the rental of game consoles – the idea of a business... 
+Arranging the rental of game consoles – a lucrative business idea...
 
-Today there are a lot of people – gamers who love to play a variety of computer games, not to mention children. Although not everyone can afford to purchase a modern game console due to its price. Entrepreneurs who rent out consoles come to the rescue. It's project for them.
+Today, there are numerous gamers who enjoy playing a variety of computer games, including children. However, not everyone can afford to purchase a modern game console due to its high cost. This is where entrepreneurs who rent out consoles come to the rescue. It's a profitable venture for them.
 
-## Оглавление
-Более подробно с проектом можно ознакомиться в диначеской документацией, сформиронной при помощи модуля [drf-yasg](https://drf-yasg.readthedocs.io/en/stable/).
-Документация доступна по адресу `http://127.0.0.1:8000/redoc/`.
+## Structure
+More information about the project can be found in the dynamic documentation generated using the module: [drf-yasg](https://drf-yasg.readthedocs.io/en/stable/).
+The documentation is available at: `http://127.0.0.1:8000/redoc/`.
 
-Статическая документация, будет сформирована после завершение разработки приложения `backend`
+Static documentation will be generated upon completion of the application development `backend`
 ____
-1. [Базовые модели проекта](#Базовые-модели-проекта)
-2. [Права пользователей](#Права-пользователей)
-    - [Неаторизованный пользователь](#Неаторизованный-пользователь)
-    - [Авторизованный пользователь](#Авторизованный-пользователь)
-    - [Арендодатель](#Арендодатель)
-    - [Администратор](#Администратор)
-3. [Страница администратора](#Страница-администратора)
-4. [Инфраструктура](#Инфраструктура)
-5. [Сервисы и страницы проекта](#Сервисы-и-страницы-проекта)
-6. [Запуск проекта](#Запуск-проекта)
-7. [Оформление кода](#Оформление-кода)
-8. [Покрытие тестами](#Покрытие-тестами)
-9. [Статус работы](#Статус-работы)
+1. [Basic project models](#Basic-project-models)
+2. [User-permissions](#User-permissions)
+    - [Unauthorized user](#Unauthorized-user)
+    - [Authorized-user](#Authorized-user)
+    - [Rentor](#Rentor)
+    - [Administrator](#Administrator)
+3. [Administrator page](#Administrator-page)
+4. [Infrastructure](#Infrastructure)
+5. [Project services and pages](#Project-services-and-pages)
+6. [Project launch](#Project-launch)
+7. [Code styling](#Code-styling)
+8. [Test coverage](#Test-coverage)
+9. [Status update](#Status-update)
 
 ____
 
-##  Базовые модели проекта
+##  Basic project models
 
-### Пользователь
-- :heavy_check_mark: Логин
-- :heavy_check_mark: Имя пользователя
-- :heavy_check_mark: Фамилия
+### User
+- :heavy_check_mark: Username
+- :heavy_check_mark: First name
+- :heavy_check_mark: Last name
 - :heavy_check_mark: Email
-- :heavy_check_mark: Номер телефона
-- :heavy_check_mark: Изображение
-- :heavy_check_mark: Роль (арендатель, арендодатель)
-- :white_large_square: Рейтинг
+- :heavy_check_mark: Phone number
+- :heavy_check_mark: Image
+- :heavy_check_mark: Role (rentor, user)
+- :white_large_square: Rating
 
-### Игровая консоль
-- :heavy_check_mark: Владелец консоли(арендодатель)
-- :heavy_check_mark: Наименовение
-- :heavy_check_mark: Изображение
-- :heavy_check_mark: Описание
-- :heavy_check_mark: Статус (свободна, занята)
-- :heavy_check_mark: Категория(slim, pro, xbox и пр.)
-- :heavy_check_mark: Штрих-код
-- :heavy_check_mark: Рейтинг
-- :heavy_check_mark: Стоимость аренды
+### Game console
+- :heavy_check_mark: Author(rentor)
+- :heavy_check_mark: Name
+- :heavy_check_mark: Image
+- :heavy_check_mark: Description
+- :heavy_check_mark: Status (free, busy)
+- :heavy_check_mark: Categories(slim, pro, xbox и пр.)
+- :heavy_check_mark: Barcode
+- :heavy_check_mark: Rating
+- :heavy_check_mark: Rental price
 
-### Игра
-- :heavy_check_mark: Название
-- :heavy_check_mark: Изображение
-- :heavy_check_mark: Описание
-- :heavy_check_mark: Тег(одиночная, многопользователькая и др.)
+### Game
+- :heavy_check_mark: Name
+- :heavy_check_mark: Image
+- :heavy_check_mark: Description
+- :heavy_check_mark: Tags(single, multi - user, etc.)
 
-### Тег, категория
-- :heavy_check_mark: Название
-- :heavy_check_mark: Цветовой HEX-код
+### Tag, Category
+- :heavy_check_mark: Name
+- :heavy_check_mark: HEX-color
 - :heavy_check_mark: Slug
 
-### Заказ
-- :heavy_check_mark: Арендатель
-- :heavy_check_mark: Игровая приставка
-- :heavy_check_mark: Дата начала аренды
-- :heavy_check_mark: Дата окончание аренды
+### Order
+- :heavy_check_mark: User
+- :heavy_check_mark: Game console
+- :heavy_check_mark: Date start 
+- :heavy_check_mark: Date end
 
-[:arrow_up:Оглавление](#Оглавление)
+[:arrow_up:Structure](#Structure)
 ____
 
 ## Права пользователей
@@ -118,12 +118,12 @@ ____
     - :ballot_box_with_check: Подписываться на кого-либо
 
 
-[:arrow_up:Оглавление](#Оглавление)
+[:arrow_up:Structure](#Structure)
 ____
 
 ## Страница администратора
 
-[:arrow_up:Оглавление](#Оглавление)
+[:arrow_up:Structure](#Structure)
 ____
 
 ## Инфраструктура
@@ -143,13 +143,13 @@ Workflow состоит из следующих этапов:
 -   Проверка кода на соответствие PEP8
 -   Тестирование приложения `backend` посредством pytest
 
-[:arrow_up:Оглавление](#Оглавление)
+[:arrow_up:Structure](#Structure)
 
 ____
 
 ## Сервисы и страницы проекта
 
-[:arrow_up:Оглавление](#Оглавление)
+[:arrow_up:Structure](#Structure)
 ____
 
 ## Запуск проекта
@@ -189,7 +189,7 @@ python manage.py importcsv
 python manage.py runserver
 ```
 
-[:arrow_up:Оглавление](#Оглавление)
+[:arrow_up:Structure](#Structure)
 ____
 
 ## Оформление кода
@@ -201,7 +201,7 @@ ____
 ## Покрытие тестами
 ![codecov](https://codecov.io/gh/EvgVol/rent_play/branch/main/graphs/tree.svg?token=YB05m6VK4R)
 
-[:arrow_up:Оглавление](#Оглавление)
+[:arrow_up:Structure](#Structure)
 ____
 
 
@@ -223,5 +223,5 @@ ____
 | :sos: | Нужна помощь |
 
 
-[:arrow_up:Оглавление](#Оглавление)
+[:arrow_up:Structure](#Structure)
 ____
