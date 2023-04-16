@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
     path('services/', views.services, name='services'),
+    path('contacts/', views.contacts, name='contacts'),
     # path('sections/<int:num>', views.section, name='section'),
     # path('consoles/', views.consoles, name='consoles'),
     # path('consoles/1/', views.console_id, name='console_id'),

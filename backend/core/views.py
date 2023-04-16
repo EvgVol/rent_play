@@ -19,6 +19,12 @@ def services(request):
     template = 'core/services.html'
     return render(request, template)
 
+
+def contacts(request):
+    template = 'core/contact.html'
+    return render(request, template)
+
+
 # def game_id(request):
 #     template = 'games/game_id.html'
 #     return render(request, template)
