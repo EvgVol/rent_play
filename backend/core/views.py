@@ -15,9 +15,9 @@ def about(request):
     return render(request, template)
 
 
-# def games(request):
-#     template = 'games/games.html'
-#     return render(request, template)
+def services(request):
+    template = 'core/services.html'
+    return render(request, template)
 
 # def game_id(request):
 #     template = 'games/game_id.html'
