@@ -25,6 +25,27 @@ def contacts(request):
     return render(request, template)
 
 
+def products(request):
+    template = 'consoles/products.html'
+    return render(request, template)
+
+def product_list(request):
+    template = 'consoles/product-list.html'
+    return render(request, template)
+
+def product_detail(request):
+    template = 'consoles/product-detail.html'
+    return render(request, template)
+
+def cart(request):
+    template = 'consoles/cart.html'
+    return render(request, template)
+
+def checkout(request):
+    template = 'consoles/product-detail.html'
+    return render(request, template)
+
+
 # def game_id(request):
 #     template = 'games/game_id.html'
 #     return render(request, template)
