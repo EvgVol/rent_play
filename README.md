@@ -79,37 +79,37 @@ ____
 [:arrow_up:Structure](#Structure)
 ____
 
-## Права пользователей
+## User-permissions
 
-### Неаторизованный пользователь
-- :eye: Разрешено:
-    - :heavy_check_mark: Создать аккаунт
-    - :heavy_check_mark: Просматривать приставки
-    - :heavy_check_mark: Просматривать игры
-    - :white_large_square: Просматривать страницы арендодателей
-    - :white_large_square: Фильтровать игры по тегам
-    - :white_large_square: Фильтровать игровые приставки по категориям
+### Unauthorized user
+- :eye: Allowed:
+    - :heavy_check_mark: Create an account
+    - :heavy_check_mark: View consoles
+    - :heavy_check_mark: View games
+    - :white_large_square: View rental pages
+    - :white_large_square: Filter games by tags
+    - :white_large_square: Filter consoles by categories
 - :construction: Запрещено:
 
 
-### Авторизованный пользователь
-- :eye: Разрешено:
-    - :white_large_square: Обладает правами неавторизованного пользователя
-    - :heavy_check_mark: Входить в систему под своим логином и паролем
-    - :heavy_check_mark: Выходить из системы (разлогиниваться)
-    - :heavy_check_mark: Менять свой пароль
-    - :heavy_check_mark: Создавать заказы
-    - :white_large_square: Отслеживать статус заказов
-    - :heavy_check_mark: Добавлять/удалять в избранное 
-    - :heavy_check_mark: Оставлять отзывы
-    - :heavy_check_mark: Оставлять комментария к отзывам
-    - :ballot_box_with_check: Подписываться на арендодателей
-    - :white_large_square: Оценивать арендодателей
+### Authorized-user
+- :eye: Allowed:
+    - :white_large_square: Has the rights of an unauthorized user
+    - :heavy_check_mark: Logging into the system with their own login and password
+    - :heavy_check_mark: Logging out of the system (logging out)
+    - :heavy_check_mark: Changing password
+    - :heavy_check_mark: Creating orders
+    - :white_large_square: Tracking the status of orders
+    - :heavy_check_mark: Adding / removing to favorites
+    - :heavy_check_mark: Leaving reviews
+    - :heavy_check_mark: Leaving comments on reviews
+    - :ballot_box_with_check: Subscribing to lessors
+    - :white_large_square: Evaluating lessors
 - :construction: Запрещено:
     - :ballot_box_with_check: Подписываться на себя и других пользователей
 
-### Арендодатель
-- :eye: Разрешено:
+### Rentor
+- :eye: Allowed:
     - :white_large_square: Обладает правами авторизованного пользователя
     - :heavy_check_mark: Размещать игровые приставки
     - :white_large_square: Управлять заказами (отменять, редактировать дату, отмечать как завершенный)
@@ -121,12 +121,12 @@ ____
 [:arrow_up:Structure](#Structure)
 ____
 
-## Страница администратора
+## Administrator page
 
 [:arrow_up:Structure](#Structure)
 ____
 
-## Инфраструктура
+## Infrastructure
 
 В репозитории есть папки backend, badges, tests:
 * В папке `backend` — файлы, необходимые для сборки бэкенд приложения.
@@ -147,12 +147,12 @@ Workflow состоит из следующих этапов:
 
 ____
 
-## Сервисы и страницы проекта
+## Project services and pages
 
 [:arrow_up:Structure](#Structure)
 ____
 
-## Запуск проекта
+## Project launch
 
 1. Клонирование репозитория
 ```
@@ -192,26 +192,26 @@ python manage.py runserver
 [:arrow_up:Structure](#Structure)
 ____
 
-## Оформление кода
+## Code styling
 Код соответствует [PEP 8](https://pep8.org/)
 
 [:arrow_up:Оглавление](#Оглавление)
 ____
 
-## Покрытие тестами
+## Test coverage
 ![codecov](https://codecov.io/gh/EvgVol/rent_play/branch/main/graphs/tree.svg?token=YB05m6VK4R)
 
 [:arrow_up:Structure](#Structure)
 ____
 
 
-## Команда разработки
+## Team developers
 
 - **BACKEND** - [EvgVol](https://github.com/EvgVol)
 
 ____
 
-##  Статус работы
+##  Status update
 
 | Иконка | Статус | 
 |----------------|:---------:|
