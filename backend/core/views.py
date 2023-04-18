@@ -42,9 +42,18 @@ def cart(request):
     return render(request, template)
 
 def checkout(request):
-    template = 'consoles/product-detail.html'
+    template = 'consoles/checkout.html'
     return render(request, template)
 
+
+def work(request):
+    template = 'games/work.html'
+    return render(request, template)
+
+
+def work_detail(request):
+    template = 'games/work-detail.html'
+    return render(request, template)
 
 # def game_id(request):
 #     template = 'games/game_id.html'

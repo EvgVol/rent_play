@@ -158,10 +158,10 @@ function changeMode(event) {
     var y = document.getElementById("mode");
 
     if (currentMode === "light") {
-        x.setAttribute('href', 'static/css/style-dark.css')
+        x.setAttribute('href', 'css/style-dark.css')
         y.setAttribute('data-class', 'dark')
     } else {
-        x.setAttribute('href', 'static/css/style.css')
+        x.setAttribute('href', 'css/style.css')
         y.setAttribute('data-class', 'light')
     }
 }
@@ -177,7 +177,7 @@ function toggleSwitcher() {
 };
 
 function setColor(theme) {
-    document.getElementById('color-opt').href = 'static/css/colors/' + theme + '.css';
+    document.getElementById('color-opt').href = 'css/colors/' + theme + '.css';
     toggleSwitcher(false);
 };
 

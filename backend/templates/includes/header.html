@@ -1,9 +1,6 @@
 {% load static %}
 <!-- light-dark mode button -->
-<a href="javascript: void(0);" id="mode" data-class="light" class="text-white rounded-end mode-btn" onclick="changeMode(event)">
-    <i class="mode-dark mx-auto" data-feather="moon"></i>
-    <i class="bx-spin mode-light" data-feather="sun"></i>
-</a>
+
 <!-- Start Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky mx-auto" id="navbar">
     <div class="container">
@@ -52,10 +49,10 @@
                         href="javascript:void(0)" role="button" aria-expanded="false">Portfolio</a>
                     <ul class="dropdown-menu border-0">
                         <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="#">Work</a>
+                            <a class="nav-link sub-menu-item" href="{% url 'core:work' %}">Work</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="#">Work Detail</a>
+                            <a class="nav-link sub-menu-item" href="{% url 'core:work_detail' %}">Work Detail</a>
                         </li>
                     </ul>
                 </li>

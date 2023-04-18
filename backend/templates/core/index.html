@@ -18,14 +18,7 @@
     <div class="container">
         {% include 'games/tags.html' %}
         {% include 'games/game_list.html' %}
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="text-center mt-5">
-                    <a href="#" class="btn btn-primary me-2">More Works <i class="mdi mdi-arrow-right ms-1"></i></a>
-                    <a href="#" class="btn btn-primary">Get In Touch <i class="mdi mdi-lifebuoy ms-1"></i></a>
-                </div>
-            </div>
-        </div>
+        {% include 'games/includes/menu.html' %}
     </div>
 </section>
 {% endblock content %}

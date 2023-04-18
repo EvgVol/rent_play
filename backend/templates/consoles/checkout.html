@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Checkout{% endblock title %}
-{% load static %}
-{% block content %}
 
+{% block content %}
+{% load static %}
 <section>
     <div class="container">
         <div class="row">
@@ -51,7 +51,7 @@
                     <h5 class="fw-semibold fs-18">Order Summary</h5>
                     <div class="row align-items-center">
                         <div class="col-md-3 mt-4">
-                            <img class="img-fluid rounded-3" src="images/products/pro-1.jpg" alt="" />
+                            <img class="img-fluid rounded-3" src="{% static 'images/products/pro-1.jpg' %}" alt="" />
                         </div>
                         <div class="col-md-4 mt-4">
                             <h5 class="fs-16 fw-semibold">Smart 720p</h5>
@@ -73,7 +73,7 @@
                     <!-- end row -->
                     <div class="row align-items-center">
                         <div class="col-md-3 mt-4">
-                            <img class="img-fluid rounded-3" src="images/products/pro-3.jpg" alt="" />
+                            <img class="img-fluid rounded-3" src="{% static 'images/products/pro-3.jpg' %}" alt="" />
                         </div>
                         <div class="col-md-4 mt-4">
                             <h5 class="fs-16 fw-semibold">Lenovo - ceneral due core</h5>
@@ -102,7 +102,7 @@
                         style="background: url(images/visa-bg.png) center center;">
                         <div class="card-body">
                             <i class="mdi mdi-contactless-payment text-white fs-3"></i>
-                            <img class="img-fluid float-end mt-2" src="images/visa.png" width="60" alt="" />
+                            <img class="img-fluid float-end mt-2" src="{% static 'images/visa.png' %}" width="60" alt="" />
                             <p class="text-white-50 text-uppercase fs-13 mt-4 mb-2">Card Holder Name</p>
                             <h6 class="text-white fw-medium">John Smith</h6>
                             <div class="d-flex align-items-center">

@@ -20,6 +20,10 @@
       {% include 'includes/header.html' %}
     </header>
     <main>
+      <a href="javascript: void(0);" id="mode" data-class="light" class="text-white rounded-end mode-btn" onclick="changeMode(event)">
+        <i class="mode-dark mx-auto" data-feather="moon"></i>
+        <i class="bx-spin mode-light" data-feather="sun"></i>
+    </a>
       {% block content %}{% endblock content %}
       <div id="style-switcher" onclick="toggleSwitcher()">
         <div>
