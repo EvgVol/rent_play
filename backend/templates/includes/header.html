@@ -1,7 +1,4 @@
 {% load static %}
-<!-- light-dark mode button -->
-
-<!-- Start Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky mx-auto" id="navbar">
     <div class="container">
         <a href="{% url 'core:index' %}" class="navbar-brand me-4">
@@ -18,62 +15,13 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:index' %}">Home</a></li>
-                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:about' %}">About</a></li>
-                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:services' %}">Services</a></li>
-                <li class="nav-item dropdown parent-menu-item">
-                    <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
-                        href="javascript:void(0)" role="button" aria-expanded="false">Shop</a>
-                    <ul class="dropdown-menu border-0">
-                        <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="{% url 'core:products' %}">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="{% url 'core:product_list' %}">Product List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="{% url 'core:product_detail' %}">Product Details</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="{% url 'core:cart' %}">Cart</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="{% url 'core:checkout' %}">Checkout</a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown parent-menu-item">
-                    <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
-                        href="javascript:void(0)" role="button" aria-expanded="false">Portfolio</a>
-                    <ul class="dropdown-menu border-0">
-                        <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="{% url 'core:work' %}">Work</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="{% url 'core:work_detail' %}">Work Detail</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown parent-menu-item">
-                    <a class="nav-link menu-item dropdown-toggle" data-bs-toggle="dropdown"
-                        href="javascript:void(0)" role="button" aria-expanded="false">Blog</a>
-                    <ul class="dropdown-menu border-0">
-                        <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="{% url 'core:blog' %}">Blog Grid</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="{% url 'core:sing_post' %}">Single Post</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link sub-menu-item" href="{% url 'core:contacts' %}">Contact</a>
-                </li>
-            </ul><!-- end ul -->
+                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:index' %}">Главная</a></li>
+                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:about' %}">О сервисе</a></li>
+                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:products' %}">Консоли</a></li>
+                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:work' %}">Игры</a></li>
+                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:blog' %}">Блог</a></li>
+                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:contacts' %}">Связаться</a></li>
+            </ul>
         </div>
     </div>
-    <!-- end container -->
 </nav>
-<!-- END NAVBAR -->
