@@ -16,6 +16,8 @@ urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),
     path('work/', views.work, name='work'),
     path('work-detail/', views.work_detail, name='work_detail'),
+    path('blog/', views.blog, name='blog'),
+    path('blog/1/', views.post, name='sing_post'),
     
     # path('sections/<int:num>', views.section, name='section'),
     # path('consoles/', views.consoles, name='consoles'),

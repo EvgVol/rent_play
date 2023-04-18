@@ -55,6 +55,14 @@ def work_detail(request):
     template = 'games/work-detail.html'
     return render(request, template)
 
+def blog(request):
+    template = 'blog/blog.html'
+    return render(request, template)
+
+def post(request):
+    template = 'blog/single-post.html'
+    return render(request, template)
+
 # def game_id(request):
 #     template = 'games/game_id.html'
 #     return render(request, template)

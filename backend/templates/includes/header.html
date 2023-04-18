@@ -61,14 +61,10 @@
                         href="javascript:void(0)" role="button" aria-expanded="false">Blog</a>
                     <ul class="dropdown-menu border-0">
                         <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="#">Blog Listing</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="#">Blog Grid</a>
+                            <a class="nav-link sub-menu-item" href="{% url 'core:blog' %}">Blog Grid</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link sub-menu-item" href="#">Single Post</a>
+                            <a class="nav-link sub-menu-item" href="{% url 'core:sing_post' %}">Single Post</a>
                         </li>
                     </ul>
                 </li>

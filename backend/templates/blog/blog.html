@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Block{% endblock title %}
+{% block content %}
+{% load static %}
+{% include 'blog/includes/header.html' %}
+<section class="mt-4 pt-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="row">
+					{% include 'blog/includes/post.html' %}
+				</div>
+				{% include 'blog/includes/paginator.html' %}
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="sidebar ms-3">
+					{% include 'blog/includes/search.html' %}
+					<div>
+						<div class="sd-title mt-4">
+							<h6 class="border-bottom pb-3 mb-0">Categories</h6>
+						</div>
+						<div class="ms-3 my-3">
+							{% include 'blog/includes/category.html' %}
+						</div>
+					</div>
+
+					<div class="mt-5">
+						<div class="sd-title mt-4">
+							<h6 class="border-bottom pb-3 mb-0">Polular Post</h6>
+						</div>
+						<ul class="list-unstyled my-4">
+							{% include 'blog/includes/popular_post.html' %}
+						</ul>
+					</div>
+
+					<div class="mt-5">
+						<div class="sd-title mt-4">
+							<h6 class="border-bottom pb-3 mb-0">Text Widget</h6>
+						</div>
+						<p class="mx-3 my-3 text-muted">
+							Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft
+							beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v
+							laborum. Aliquip veniam
+							delectus, Marfa eiusmod Pinterest in do umami readymade swag.
+						</p>
+					</div>
+
+					<div class="mt-5">
+						<div class="sd-title mt-4">
+							<h6 class="border-bottom pb-3 mb-0">Archives</h6>
+						</div>
+						<ul class="list-unstyled my-4">
+							{% include 'blog/includes/archive.html' %}
+
+						</ul>
+					</div>
+
+					<div class="mt-5">
+						<div class="sd-title mt-4">
+							<h6 class="border-bottom pb-3 mb-0">Tags</h6>
+						</div>
+						<div class="tagcloud py-4">
+							{% include 'blog/includes/tag.html' %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Sidebar end-->
+		</div>
+	</div>
+	<!-- end container -->
+</section>
+
+{% include 'core/includes/trust_us.html' %}
+{% endblock content %}
