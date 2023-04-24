@@ -4,7 +4,9 @@ from rest_framework import permissions
 class IsAuthorOrAdminOrReadOnly(
     permissions.IsAuthenticatedOrReadOnly
 ):
-    """Права для работы с отзывами и комментариями."""
+    """Разрешено на изменение автору, админу.
+    Всем остальным только просмотр.
+    """
 
     def has_object_permission(self, request, view, obj):
         return (
@@ -28,3 +30,10 @@ class IsRentorOrAdminOrReadOnly(permissions.BasePermission):
         return (request.method in permissions.SAFE_METHODS
                 or obj.author == request.user.is_rentor
                 or request.user.is_staff)
+
+
+class AuthorOrReadOnly(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        return (request.method in permissions.SAFE_METHODS
+                or obj.author == request.user)

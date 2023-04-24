@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import (Comment, FavoriteGame, Game, 
+from .models import (Comment, FavoriteGame, Game,
                      Genre, Review, ShoppingList, Tag)
 
 
