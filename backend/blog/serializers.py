@@ -20,7 +20,7 @@ class PostReadSerializer(serializers.ModelSerializer):
         model = Post
         fields = ('id', 'name', 'image', 'description', 'pub_date',
                   'game', 'author')
-    
+
 
 # class PostCreatedSerializer(serializers.ModelSerializer):
 #     """Сериализатор для добавления постов."""
