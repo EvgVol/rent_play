@@ -86,11 +86,11 @@ class Review(ReviewAndCommentModel):
     class Meta(ReviewAndCommentModel.Meta):
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
-        default_related_name = 'reviews'
+        default_related_name = 'reviews_to_post'
         constraints = [
             models.UniqueConstraint(
                 fields=('post', 'author',),
-                name='unique_review',
+                name='unique_review_blog',
             )
         ]
 
@@ -107,4 +107,4 @@ class Comment(ReviewAndCommentModel):
     class Meta(ReviewAndCommentModel.Meta):
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
-        default_related_name = 'comments'
+        default_related_name = 'comments_to_reviews'
