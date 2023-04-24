@@ -16,8 +16,6 @@ from .serializers import (AddFavoriteConsoleSerializer,
                           AddDislikeConsoleSerializer)
 
 
-
-
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     """Вьюсет для отображения тегов."""
 
