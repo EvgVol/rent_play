@@ -66,8 +66,9 @@ class ReviewAndCommentModel(models.Model):
     """Абстрактная модель. Добавляет текст, автора и дату публикации."""
 
     text = models.CharField(
-        'Текст отзыва',
+        'Текст',
         max_length=Limits.LENG_MAX_REVIEW.value,
+        help_text='Введите текст'
     )
     author = models.ForeignKey(
         User,
