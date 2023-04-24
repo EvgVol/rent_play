@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8" />
     <title>{% block title %}{% endblock title %}</title>
@@ -20,39 +20,7 @@
       {% include 'includes/header.html' %}
     </header>
     <main>
-      <a href="javascript: void(0);" id="mode" data-class="light" class="text-white rounded-end mode-btn" onclick="changeMode(event)">
-        <i class="mode-dark mx-auto" data-feather="moon"></i>
-        <i class="bx-spin mode-light" data-feather="sun"></i>
-    </a>
       {% block content %}{% endblock content %}
-      <div id="style-switcher" onclick="toggleSwitcher()">
-        <div>
-            <h3>Select Your Color</h3>
-            <ul class="pattern">
-                <li>
-                    <a class="color1" href="javascript: void(0);" onclick="setColor('default')"></a>
-                </li>
-                <li>
-                    <a class="color2" href="javascript: void(0);" onclick="setColor('success')"></a>
-                </li>
-                <li>
-                    <a class="color3" href="javascript: void(0);" onclick="setColor('warning')"></a>
-                </li>
-                <li>
-                    <a class="color4" href="javascript: void(0);" onclick="setColor('danger')"></a>
-                </li>
-                <li>
-                    <a class="color5" href="javascript: void(0);" onclick="setColor('info')"></a>
-                </li>
-                <li>
-                    <a class="color6" href="javascript: void(0);" onclick="setColor('amber')"></a>
-                </li>
-            </ul>
-        </div>
-        <div class="bottom">
-            <a href="javascript: void(0);" class="settings rounded-end text-light"><i data-feather="droplet"></i></a>
-        </div>
-      </div>
     </main>
     <footer>
       {% include 'includes/footer.html' %}

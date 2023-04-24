@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'rents',
     'core',
     'consoles',
+    'blog',
     'colorfield',
     'drf_yasg',
     'phonenumber_field',
