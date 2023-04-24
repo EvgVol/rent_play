@@ -76,3 +76,7 @@ def console():
 @pytest.fixture
 def games():
     return ('/api/games/')
+
+@pytest.fixture
+def games():
+    return ('/api/games/')
