@@ -4,7 +4,7 @@ import os
 from django.conf import settings
 
 from consoles.models import Category
-from games.models import Tag
+from games.models import Tag, Genre
 from core.models import Period
 
 
@@ -43,4 +43,15 @@ def import_csv():
             name, value = row
             Period.objects.get_or_create(name=name,
                                          value=value)
+        print(f'Файл {csvfile.name} загружен.')
+
+    with open(
+        os.path.join(FILE_DIR, 'genres.csv'), 'r', encoding='utf-8'
+    ) as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            name, color, slug = row
+            Genre.objects.get_or_create(name=name,
+                                        color=color,
+                                        slug=slug)
         print(f'Файл {csvfile.name} загружен.')

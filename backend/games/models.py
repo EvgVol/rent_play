@@ -14,10 +14,20 @@ class Tag(Tags):
         default_related_name = 'tags'
 
 
+class Genre(Tags):
+    """Модель жанра"""
+
+    class Meta:
+        ordering = ('-name',)
+        verbose_name = 'Жанр'
+        verbose_name_plural = 'Жанры'
+
+
 class Game(Product):
     """Модель игр."""
 
     tags = models.ManyToManyField(Tag, verbose_name='Теги')
+    genres = models.ManyToManyField(Genre, verbose_name='Жанры')
 
     class Meta:
         verbose_name_plural = 'Игры'

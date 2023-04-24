@@ -1,15 +1,6 @@
 from django.contrib import admin
 
-from .models import Post, Genre, Review, Comment
-
-
-@admin.register(Genre)
-class GenreAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'slug',)
-    search_fields = ('name',)
-    list_filter = ('name',)
-    empty_value_display = '-пусто-'
-
+from .models import Post, Review, Comment
 
 
 @admin.register(Review)
@@ -32,3 +23,23 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ('review', 'author', 'pub_date',)
     list_filter = ('pub_date',)
     empty_value_display = '-пусто-'
+
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+
+    list_display = ('pk', 'name', 'pub_date', 'author', 'description',
+                    'game', 'get_genre', 'get_tags')
+    search_fields = ('description', )
+    list_filter = ('pub_date', )
+    empty_value_display = '-пусто-'
+
+    @admin.display(description='Жанр')
+    def get_genre(self, obj):
+        """Получаем жанр."""
+        return obj.game.genres.all()[0]
+
+    @admin.display(description='Теги')
+    def get_tags(self, obj):
+        """Получаем тег."""
+        return obj.game.tags.all()[0]

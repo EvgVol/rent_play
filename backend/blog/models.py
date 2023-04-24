@@ -2,20 +2,11 @@ from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from core.models import Tags, ReviewAndCommentModel, Product
-from games.models import Game, Tag
+from core.models import ReviewAndCommentModel, Product
+from games.models import Game
 
 
 User = get_user_model()
-
-
-class Genre(Tags):
-    """Модель жанра"""
-
-    class Meta:
-        ordering = ('-name',)
-        verbose_name = 'Жанр'
-        verbose_name_plural = 'Жанры'
 
 
 class Post(Product):
@@ -32,29 +23,14 @@ class Post(Product):
         auto_now_add=True,
     )
 
-    genre = models.ForeignKey(
-        Genre,
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-        verbose_name='Жанр',
-        help_text='Укажите жанр'
-    )
-
     game = models.ForeignKey(
         Game,
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        verbose_name='Жанр',
+        verbose_name='Игра',
         help_text='Укажите игру',
     )
-
-    tags = models.ManyToManyField(
-        Tag,
-        verbose_name='Тег',
-    )
-    
 
     class Meta:
         verbose_name = 'Пост'

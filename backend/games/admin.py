@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Comment, FavoriteGame, Game, Review, ShoppingList, Tag
+from .models import Comment, FavoriteGame, Game, Genre, Review, ShoppingList, Tag
 
 
 @admin.register(Tag)
@@ -10,6 +10,14 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'color', 'slug',)
     search_fields = ('name', 'slug',)
     ordering = ('name',)
+
+
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'name', 'slug',)
+    search_fields = ('name',)
+    list_filter = ('name',)
+    empty_value_display = '-пусто-'
 
 
 @admin.register(Game)
