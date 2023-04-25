@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Block{% endblock title %}
+{% block title %}Последние обновления на сайте{% endblock title %}
 {% block content %}
 {% load static %}
 {% include 'blog/includes/header.html' %}
@@ -8,7 +8,9 @@
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="row">
-					{% include 'blog/includes/post.html' %}
+					{% for post in post_list %}
+						{% include 'blog/includes/post.html' %}
+					{% endfor %}
 				</div>
 				{% include 'blog/includes/paginator.html' %}
 			</div>
@@ -60,7 +62,9 @@
 							<h6 class="border-bottom pb-3 mb-0">Tags</h6>
 						</div>
 						<div class="tagcloud py-4">
-							{% include 'blog/includes/tag.html' %}
+							{% for tag in tag_list %}
+								{% include 'blog/includes/tag.html' %}
+							{% endfor %}
 						</div>
 					</div>
 				</div>

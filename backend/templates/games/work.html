@@ -20,7 +20,15 @@
 
 <section class="section">
     <div class="container">
-        {% include 'games/tags.html' %}
+        <div class="row justify-content-center">
+            <div class="col-lg-12 filters-group-wrap mb-3">
+                <div class="filters-group">
+                    <ul class="container-filter mb-0 categories-filter list-unstyled filter-options">
+                        {% include 'games/tags.html' %} 
+                    </ul>
+                </div>
+            </div>
+        </div>
         {% include 'games/game_list.html' %}
         {% include 'games/includes/menu.html' %}
     </div>

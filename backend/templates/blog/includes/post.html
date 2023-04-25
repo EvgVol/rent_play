@@ -1,13 +1,17 @@
 {% load static %}
+{% load thumbnail %}
 <div class="col-lg-6">
     <article class="post position-relative pb-5">
         <div
             class="date-box rounded-3 shadow text-center bg-light position-absolute top-0 start-0 py-1 px-2 ms-3 mt-3">
-            <h6 class="fs-14 fw-medium mb-0">25-3-2021</h6>
+            <h6 class="fs-14 fw-medium mb-0">{{ post.pub_date|date:"d E Y"  }}</h6>
         </div>
         <div class="post-preview mb-4">
+            {% thumbnail post.image "960x339" crop="center" upscale=True as im %}
             <a href="{% url 'core:sing_post' %}"><img src="{% static 'images/blog/blog-1.jpg' %}" alt=""
-                    class="img-fluid rounded-3" /></a>
+                    class="img-fluid rounded-3" />
+            </a>
+            {% endthumbnail %}
         </div>
         <div class="post">
             <div class="d-flex align-items-center gap-3">
@@ -18,15 +22,11 @@
                     <a href="{% url 'core:sing_post' %}" class="text-muted">56.8 K</a>
                 </p>
             </div>
-            <h6 class="fs-18 fw-semibold my-3 post-title"><a href="{% url 'core:sing_post' %}">Beautiful
-                    day with
-                    friends in paris</a></h6>
+            <h6 class="fs-18 fw-semibold my-3 post-title"><a href="{% url 'core:sing_post' %}">{{ post.name }}</a></h6>
             <p class="text-muted">
-                Whether an identity or campaign, we make your brand visible, relevant and
-                effective by
-                placing the digital at the center of its ecosystem traditional media.
+                {{ post.description|linebreaks }}
             </p>
-            <a href="{% url 'core:sing_post' %}" class="fw-medium text-dark">Read More <i
+            <a href="{% url 'core:sing_post' %}" class="fw-medium text-dark">Подробнее <i
                     data-feather="arrow-right" class="icon-xs icon"></i></a>
         </div>
     </article>

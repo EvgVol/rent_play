@@ -1,6 +1,6 @@
 from rest_framework.generics import get_object_or_404
 
-from rest_framework import decorators, permissions, viewsets
+from rest_framework import viewsets, renderers
 
 from api.pagination import LimitPageNumberPagination
 from api.permissions import IsAuthorOrAdminOrReadOnly
