@@ -1,12 +1,9 @@
-from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 from core.models import ReviewAndCommentModel, Product
 from games.models import Game
-
-
-User = get_user_model()
+from users.models import User
 
 
 class Post(Product):
@@ -15,27 +12,32 @@ class Post(Product):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        verbose_name='Автор'
+        verbose_name='Автор',
     )
 
     pub_date = models.DateTimeField(
         'Дата публикации',
         auto_now_add=True,
+        editable=False,
     )
 
     game = models.ForeignKey(
         Game,
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
+        on_delete=models.CASCADE,
         verbose_name='Игра',
         help_text='Укажите игру',
     )
 
-    class Meta:
+    class Meta(Product.Meta):
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
         default_related_name = 'posts'
+        constraints = (
+            models.UniqueConstraint(
+                fields=('name', 'author'),
+                name='unique_author_post',
+            ),
+        )
 
 
 class Review(ReviewAndCommentModel):

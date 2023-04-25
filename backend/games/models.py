@@ -21,6 +21,7 @@ class Genre(Tags):
         ordering = ('-name',)
         verbose_name = 'Жанр'
         verbose_name_plural = 'Жанры'
+        default_related_name = 'genres'
 
 
 class Game(Product):

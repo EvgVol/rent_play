@@ -3,8 +3,9 @@ from rest_framework.generics import get_object_or_404
 from rest_framework import decorators, permissions, viewsets
 
 from api.pagination import LimitPageNumberPagination
+from api.permissions import IsAuthorOrAdminOrReadOnly
 from .models import Post
-from .serializers import PostReadSerializer
+from .serializers import PostReadSerializer, PostCreatedSerializer
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -16,8 +17,8 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostReadSerializer
     pagination_class = LimitPageNumberPagination
 
-    # def get_serializer_class(self):
-    #     if self.request.method in ('POST', 'PUT', 'PATCH'):
-    #         return PostCreatedSerializer
-    #     return PostReadSerializer
+    def get_serializer_class(self):
+        if self.request.method in ('POST', 'PUT', 'PATCH'):
+            return PostCreatedSerializer
+        return PostReadSerializer
     

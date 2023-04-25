@@ -1,5 +1,5 @@
 from django.db import models, transaction
-from rest_framework import serializers
+from rest_framework import serializers, relations
 from drf_extra_fields.fields import Base64ImageField
 
 from .models import Post, Review, Comment
@@ -22,16 +22,27 @@ class PostReadSerializer(serializers.ModelSerializer):
                   'game', 'author')
 
 
-# class PostCreatedSerializer(serializers.ModelSerializer):
-#     """Сериализатор для добавления постов."""
+class PostCreatedSerializer(serializers.ModelSerializer):
+    """Сериализатор для добавления постов."""
 
-#     image = Base64ImageField(max_length=None, use_url=True)
-#     game = serializers.PrimaryKeyRelatedField(queryset=Game.objects.all())
+    author = UsersSerializer(read_only=True)
+    image = Base64ImageField(max_length=None, use_url=True)
+    game = relations.PrimaryKeyRelatedField(queryset=Game.objects.all(), many=False)
+    
+    class Meta:
+        model = Post
+        fields = ('id', 'author', 'name', 'image', 'description',
+                  'game')
+        read_only_fields = ('author',)
 
-#     class Meta:
-#         model = Post
-#         fields = ('id', 'name', 'image', 'description', 'game', 'pub_date')
-#         read_only = ('id',)
+    def to_representation(self, instance):
+        request = self.context.get('request')
+        context = {'request': request}
+        return PostReadSerializer(instance, context=context).data
 
-#     def to_representation(self, instance):
-#         return PostReadSerializer(instance).data
+    @transaction.atomic
+    def create(self, validated_data):
+        author = self.context.get('request').user
+        post = Post.objects.create(author=author, **validated_data)
+        post.save()
+        return post
