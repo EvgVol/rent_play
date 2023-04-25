@@ -7,7 +7,7 @@ from .models import Post, Review, Comment
 class ReviewAdmin(admin.ModelAdmin):
     list_display = (
         'pk', 'post', 'text',
-        'author', 'score', 'pub_date',
+        'author', 'pub_date',
     )
     search_fields = ('post', 'author', 'pub_date',)
     list_filter = ('pub_date',)

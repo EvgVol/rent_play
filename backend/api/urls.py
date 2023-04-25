@@ -8,7 +8,7 @@ from core.views import PeriodViewSet
 from games.views import CommentViewSet, GameViewSet, ReviewViewSet, TagViewSet
 from rents.views import RentViewSet
 from users.views import CustomUserViewSet
-from blog.views import PostViewSet
+from blog.views import PostViewSet, ReviewPostViewSet, CommentPostViewSet
 
 
 router = routers.DefaultRouter()
@@ -26,6 +26,12 @@ router.register(r'categories', CategoryViewSet, basename='categories')
 router.register(r'rents', RentViewSet, basename='rents')
 router.register(r'periods', PeriodViewSet, basename='periods')
 router.register(r'posts', PostViewSet, basename='posts')
+router.register(r'posts/(?P<post_id>\d+)/reviews',
+                ReviewPostViewSet,
+                basename='reviewspost')
+router.register(r'posts/(?P<post_id>\d+)/reviews/(?P<review_id>\d+)/comments',
+                CommentPostViewSet,
+                basename='commentspost')
 
 
 urlpatterns = [

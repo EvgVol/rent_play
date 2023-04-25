@@ -1,4 +1,5 @@
-from django.db import models, transaction
+from django.db import transaction
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers, relations
 from drf_extra_fields.fields import Base64ImageField
 
@@ -46,3 +47,47 @@ class PostCreatedSerializer(serializers.ModelSerializer):
         post = Post.objects.create(author=author, **validated_data)
         post.save()
         return post
+
+    def validate(self, data):
+        game = self.initial_data.get('game')
+        if not game:
+            raise serializers.ValidationError('Недостаточно данных')
+        return data
+
+
+class ReviewPostSerializer(serializers.ModelSerializer):
+    """Сериализатор для создания отзывов."""
+
+    author = serializers.SlugRelatedField(
+        slug_field='username', read_only=True, many=False,)
+
+    class Meta:
+        model = Review
+        fields = ('id', 'text', 'author', 'pub_date')
+        read_only = ('id',)
+
+    def validate(self, data):
+        request = self.context.get('request')
+
+        if request.method == 'POST':
+            post_id = self.context['view'].kwargs.get('post_id')
+            post = get_object_or_404(Post, pk=post_id)
+            if Review.objects.filter(
+                    author=request.user, post=post
+            ).exists():
+                raise serializers.ValidationError(
+                    'Вы уже оставили отзыв!')
+        return data
+
+
+class CommentPostSerializer(serializers.ModelSerializer):
+    """Сериализатор для работы с комментариями."""
+
+    author = serializers.SlugRelatedField(
+        read_only=True, slug_field='username'
+    )
+
+    class Meta:
+        model = Comment
+        fields = ('id', 'text', 'author', 'pub_date')
+        read_only = ('review',)

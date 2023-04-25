@@ -48,18 +48,6 @@ class Review(ReviewAndCommentModel):
         on_delete=models.CASCADE,
         verbose_name='Пост'
     )
-    score = models.PositiveSmallIntegerField(
-        'Оценка',
-        db_index=True,
-        validators=(
-            MinValueValidator(1),
-            MaxValueValidator(10)
-        ),
-        error_messages={
-            'validators': 'Оценка от 1 до 10!'
-        },
-        default=1
-    )
 
     class Meta(ReviewAndCommentModel.Meta):
         verbose_name = 'Отзыв'
