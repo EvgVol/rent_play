@@ -1,72 +1,17 @@
-from django.shortcuts import render
-
-from blog.models import Post
-from games.models import Tag
+from django.views.generic import TemplateView
 
 
-def index(request):
-    template = 'core/index.html'
-    return render(request, template)
+class HomeView(TemplateView):
+    template_name = "core/index.html"
 
 
-def about(request):
-    template = 'core/about.html'
-    return render(request, template)
+class AboutView(TemplateView):
+    template_name = "core/about.html"
 
 
-def services(request):
-    template = 'core/services.html'
-    return render(request, template)
+class ServiceView(TemplateView):
+    template_name = "core/services.html"
 
 
-def contacts(request):
-    template = 'core/contact.html'
-    return render(request, template)
-
-
-def products(request):
-    template = 'consoles/products.html'
-    return render(request, template)
-
-
-def product_list(request):
-    template = 'consoles/product-list.html'
-    return render(request, template)
-
-
-def product_detail(request):
-    template = 'consoles/product-detail.html'
-    return render(request, template)
-
-
-def cart(request):
-    template = 'consoles/cart.html'
-    return render(request, template)
-
-
-def checkout(request):
-    template = 'consoles/checkout.html'
-    return render(request, template)
-
-
-def work(request):
-    template = 'games/work.html'
-    return render(request, template)
-
-
-def work_detail(request):
-    template = 'games/work-detail.html'
-    return render(request, template)
-
-
-def blog(request):
-    post_list = Post.objects.all()
-    tags = Tag.objects.all()
-    context = {'post_list': post_list}
-    template = 'blog/blog.html'
-    return render(request, template, context)
-
-
-def post(request):
-    template = 'blog/single-post.html'
-    return render(request, template)
+class ContactView(TemplateView):
+    template_name = "core/contact.html"
