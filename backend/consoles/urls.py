@@ -1,11 +1,11 @@
 from django.urls import path
 
-from . import views
+from . import viewset
 
 app_name = 'consoles'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', viewset.index, name='index'),
     # path(
     #     'group/<slug:slug>/',
     #     views.group_posts,

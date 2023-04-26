@@ -1,5 +1,4 @@
 {% load static %}
-{% load thumbnail %}
 <div class="col-lg-6">
     <article class="post position-relative pb-5">
         <div
@@ -7,11 +6,9 @@
             <h6 class="fs-14 fw-medium mb-0">{{ post.pub_date|date:"d E Y"  }}</h6>
         </div>
         <div class="post-preview mb-4">
-            {% thumbnail post.image "960x339" crop="center" upscale=True as im %}
             <a href="{% url 'core:sing_post' %}"><img src="{% static 'images/blog/blog-1.jpg' %}" alt=""
                     class="img-fluid rounded-3" />
             </a>
-            {% endthumbnail %}
         </div>
         <div class="post">
             <div class="d-flex align-items-center gap-3">

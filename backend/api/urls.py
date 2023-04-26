@@ -2,13 +2,13 @@ from django.urls import include, path
 
 from rest_framework import routers
 
-from consoles.views import (CategoryViewSet, ConsoleViewSet,
-                            ReviewConsoleViewSet)
-from core.views import PeriodViewSet
-from games.views import CommentViewSet, GameViewSet, ReviewViewSet, TagViewSet
-from rents.views import RentViewSet
-from users.views import CustomUserViewSet
-from blog.views import PostViewSet, ReviewPostViewSet, CommentPostViewSet
+from consoles.viewset import (CategoryViewSet, ConsoleViewSet,
+                              ReviewConsoleViewSet)
+from core.viewset import PeriodViewSet
+from games.viewset import CommentViewSet, GameViewSet, ReviewViewSet, TagViewSet
+from rents.viewset import RentViewSet
+from users.viewset import CustomUserViewSet
+from blog.viewset import PostViewSet, ReviewPostViewSet, CommentPostViewSet
 
 
 router = routers.DefaultRouter()

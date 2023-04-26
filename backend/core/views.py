@@ -1,12 +1,7 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
-from rest_framework import permissions, viewsets
 
-from .models import Period
-from .serializers import PeriodSerializers
 from blog.models import Post
 from games.models import Tag
-from consoles.forms import ConsoleForm
 
 
 def index(request):
@@ -59,14 +54,6 @@ def work(request):
     return render(request, template)
 
 
-class ConsoleView(CreateView):
-    """Вывод формы добавления консоли."""
-
-    form_class = ConsoleForm
-    template_name = 'consoles/new_console.html'
-    success_url = '/thankyou/'
-
-
 def work_detail(request):
     template = 'games/work-detail.html'
     return render(request, template)
@@ -83,11 +70,3 @@ def blog(request):
 def post(request):
     template = 'blog/single-post.html'
     return render(request, template)
-
-
-class PeriodViewSet(viewsets.ReadOnlyModelViewSet):
-    """Вьюсет для отображения периода аренды."""
-
-    queryset = Period.objects.all()
-    permission_classes = (permissions.AllowAny,)
-    serializer_class = PeriodSerializers
