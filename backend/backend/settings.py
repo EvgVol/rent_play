@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'sorl.thumbnail',
+    # 'sorl.thumbnail',
     'api',
     'users',
     'games',

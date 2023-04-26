@@ -1,0 +1,29 @@
+{% csrf_token %}
+<form method="post" action="{% url 'core:new_console' %}">
+  <label>Укажите название:</label>
+  <input type="text" name="name" required>
+  <br><br>
+  <label>Введите описание:</label>
+  <input type="text" name="description" >
+  <br><br>
+  <label>Укажите штрихкод:</label>
+  <input type="text" name="barcode">
+  <br><br>
+  Укажите модель консоли:<br>
+  <input type="radio" name="categories" value="1"> PlayStation 4 Slim<br>
+  <input type="radio" name="categories" value="2"> PlayStation 4 PRO<br>
+  <input type="radio" name="categories" value="3"> XBOX
+  <br><br>
+  <label>Выберите фото:</label>
+  <input type="file" name="image" accept="image/png, image/jpeg">
+  <br><br>
+  <fieldset>
+  <legend>Укажите стоимость аренды:</legend>
+  <small>За сутки </small><input type="number" name="timeframe" min="500">
+  <small>За трое суток </small><input type="number" name="timeframe">
+  <small>За неделю </small><input type="number" name="timeframe">
+  <small>За 2 недели </small><input type="number" name="timeframe">
+  </fieldset>
+  <br><br>
+  <input type="submit" value="Отправить">
+</form> 
