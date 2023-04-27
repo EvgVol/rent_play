@@ -26,9 +26,6 @@ class SignUp(CreateView):
 def validate_username(request):
     """Проверка доступности логина"""
     username = request.GET.get('username', None)
-    invalid_symbols = ''.join(
-        set(re.sub(Regex.USERNAME_REGEX, '', username))
-    )
     response = {
         'is_taken': User.objects.filter(username__iexact=username).exists()
     }
