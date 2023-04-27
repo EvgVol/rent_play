@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // отслеживаем событие отправки формы
-    $('#id_username').keyup(function () {
+    $('#id_username').blur(function () {
         // создаем AJAX-вызов
         $.ajax({
             data: $(this).serialize(), // получаяем данные формы
