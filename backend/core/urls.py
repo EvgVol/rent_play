@@ -13,4 +13,5 @@ urlpatterns = [
     path('consoles', include('consoles.urls')),
     path('games', include('games.urls')),
     path('blog', include('blog.urls')),
+    path('auth', include('users.urls')),
 ]

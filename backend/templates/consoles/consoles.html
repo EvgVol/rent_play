@@ -198,38 +198,25 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="product-item mt-4">
                             <div class="product-img rounded position-relative">
-                                <img class="img-fluid" src="{% static 'images/products/pro-1.jpg' %}" alt="" />
-                                <span
-                                    class="text-dark badge bg-light rounded-3 fs-14 fw-bold position-absolute top-0 start-0 mt-2 ms-2 py-2">-20%</span>
-
+                                <img class="img-fluid" src="{% static 'images/add.jpg' %}" alt="" />
                                 <div
                                     class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
-                                    <a href="cart.html"><i
-                                            class="mdi mdi-cart-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end"></i></a>
+                                    <a href="{% url 'core:new_console' %}"><i
+                                            class="mdi mdi-plus-thick fs-22 me-3 pe-3 fw-bolder pro-icon border-end"></i></a>
                                     <a href="product-detail.html"><i
                                             class="mdi mdi-eye-outline fs-22 me-3 pe-3 fw-bolder pro-icon border-end active"></i></a>
                                     <a href="cart.html"><i
+                                            class="mdi mdi-delete fs-22 me-3 pe-3 fw-bolder pro-icon border-end"></i></a>
+                                    <a href="cart.html"><i
                                             class="mdi mdi-heart-outline fs-22 fw-bolder pro-icon"></i></a>
+                                    
                                 </div>
-                            </div>
-                            <div class="pro-content my-3">
-                                <div class="d-flex align-items-center">
-                                    <ins class="pe-2 fs-15 fw-semibold text-decoration-none text-dark">$29.00</ins>
-                                    <del class="text-muted fs-15">$30.00</del>
-                                    <div class="rating ms-auto">
-                                        <i class="mdi mdi-star fs-18 text-warning d-inline-block"></i>
-                                        <h5 class="d-inline-block fs-15">5.0</h5>
-                                    </div>
-                                </div>
-                                <a href="product-detail.html">
-                                    <p class="text-muted fw-normal lh-base my-1">Maxbell USB Rechargeable Electronic
-                                        Flameless</p>
-                                </a>
                             </div>
                         </div>
                     </div>
