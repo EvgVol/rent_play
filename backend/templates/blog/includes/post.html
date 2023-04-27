@@ -3,7 +3,7 @@
     <article class="post position-relative pb-5">
         <div
             class="date-box rounded-3 shadow text-center bg-light position-absolute top-0 start-0 py-1 px-2 ms-3 mt-3">
-            <h6 class="fs-14 fw-medium mb-0">{{ post.pub_date|date:"d E Y"  }}</h6>
+            <h6 class="fs-14 fw-medium mb-0">{{ post.pub_date|date:"d.m"  }}</h6>
         </div>
         <div class="post-preview mb-4">
             <a href="{% url 'core:sing_post' %}"><img src="{% static 'images/blog/blog-1.jpg' %}" alt=""

@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     # 'sorl.thumbnail',
+    'crispy_forms', # https://django-crispy-forms.readthedocs.io/en/latest/index.html
+    "crispy_bootstrap5", #https://github.com/django-crispy-forms/crispy-bootstrap5
     'api',
     'users',
     'games',
@@ -145,6 +147,10 @@ EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 
 DEFAULT_FROM_EMAIL = 'admin@rentplay.cook'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
