@@ -1,33 +1,42 @@
 {% extends "base.html" %}
 {% block title %}Добавить консоль{% endblock %}
 {% block content %}
-<form method="post" action="{% url 'core:new_console' %}">
-  {% csrf_token %}
-  <label>Укажите название:</label>
-  <input type="text" name="name" required>
-  <br><br>
-  <label>Введите описание:</label>
-  <input type="text" name="description" >
-  <br><br>
-  <label>Укажите штрихкод:</label>
-  <input type="text" name="barcode">
-  <br><br>
-  Укажите модель консоли:<br>
-  <input type="radio" name="categories" value="1"> PlayStation 4 Slim<br>
-  <input type="radio" name="categories" value="2"> PlayStation 4 PRO<br>
-  <input type="radio" name="categories" value="3"> XBOX
-  <br><br>
-  <label>Выберите фото:</label>
-  <input type="file" name="image" accept="image/png, image/jpeg">
-  <br><br>
-  <fieldset>
-  <legend>Укажите стоимость аренды:</legend>
-  <small>За сутки </small><input type="number" name="timeframe" min="500">
-  <small>За трое суток </small><input type="number" name="timeframe">
-  <small>За неделю </small><input type="number" name="timeframe">
-  <small>За 2 недели </small><input type="number" name="timeframe">
-  </fieldset>
-  <br><br>
-  <input type="submit" value="Отправить">
-</form>
+<div class="row justify-content-center">
+  <div class="col-md-8 p-5">
+    <div class="card">
+
+      <div class="card-header">
+        Добавить консоль
+      </div>
+
+      <div class="card-body">
+        {% include 'includes/check_error.html' %}
+
+        <form method="post" action="{% url 'core:signup' %}">
+          {% csrf_token %}
+          {% for field in form %}
+          <div class="form-group row my-3 p-3">
+            <label for="{{ field.id_for_label }}">
+              {{ field.label }}
+              {% if field.field.required %}
+                <span class="required text-danger">*</span>
+              {% endif %}
+            </label>    
+            {{ field }}
+            {% if field.help_text %}
+              <small id="{{ field.id_for_label }}-help" class="form-text text-muted">
+                {{ field.help_text|safe }}
+              </small>
+            {% endif %}
+          </div>
+          {% endfor %}
+          <div class="col-md-6 offset-md-4">
+            <button type="submit" class="btn btn-primary">
+              Добавить
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
 {% endblock %}
