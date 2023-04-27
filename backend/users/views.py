@@ -1,8 +1,11 @@
+import re
+
 from django.contrib.auth import login, get_user_model
 from django.http import JsonResponse
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
+from core.enum import Regex
 from .forms import UserForm
 
 User = get_user_model()
@@ -23,6 +26,9 @@ class SignUp(CreateView):
 def validate_username(request):
     """Проверка доступности логина"""
     username = request.GET.get('username', None)
+    invalid_symbols = ''.join(
+        set(re.sub(Regex.USERNAME_REGEX, '', username))
+    )
     response = {
         'is_taken': User.objects.filter(username__iexact=username).exists()
     }

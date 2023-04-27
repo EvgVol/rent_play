@@ -4,12 +4,12 @@ $(document).ready(function () {
         // создаем AJAX-вызов
         $.ajax({
             data: $(this).serialize(), // получаяем данные формы
-            url: "{% url 'core:validate_username' %}",
+            url: "validate_username",
             // если успешно, то
             success: function (response) {
                 if (response.is_taken == true) {
                     $('#id_username').removeClass('is-valid').addClass('is-invalid');
-                    $('#id_username').after('<div class="invalid-feedback d-block" id="usernameError">This username is not available!</div>')
+                    $('#id_username').after('<div class="invalid-feedback d-block" id="usernameError">К сожалению это имя уже занято!</div>')
                 }
                 else {
                     $('#id_username').removeClass('is-invalid').addClass('is-valid');

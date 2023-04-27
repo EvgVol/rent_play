@@ -2,13 +2,14 @@
 {% block title %}Зарегистрироваться{% endblock %}
 {% block content %}
 {% include 'users/includes/header_signup.html' %}
+{% load crispy_forms_tags %}
 <section class="sm-section">
   <div class="container">
 		<div class="row">
       {% comment %} Левая часть страницы {% endcomment %}
 			<div class="col-lg-8">
         {% include 'includes/check_error.html' %}
-        <form method="post" action="{% url 'core:signup' %}">
+        <form id="signupForm" method="POST" action="{% url 'core:signup' %}">
           {% csrf_token %}
           {% include 'includes/cycle_forms.html' %}
           <div class="col-md-6 offset-md-4">
