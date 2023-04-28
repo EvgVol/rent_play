@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Выход{% endblock %}
+{% block content %}
+<section>
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="row justify-content-md-center w-300 m-auto">
+          <div class="alert alert-success text-center" role="alert">
+            <h4 class="alert-heading text-start">Выход</h4>
+            <p>Вы вышли из своей учётной записи. Ждём вас снова!</p>
+            <hr>
+            <div class="d-flex justify-content-end">
+              <a href="{% url 'core:login' %}" class="fw-medium text-dark text-end">Войти <i data-feather="arrow-right" class="icon-xs icon"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+{% include 'includes/marketing.html' %}
+{% endblock %}

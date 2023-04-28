@@ -157,3 +157,9 @@ SWAGGER_SETTINGS = {
         'Token': {'type': 'apiKey', 'name': 'Authorization', 'in': 'header'}
     }
 }
+
+LOGIN_URL = 'core:login'
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = ''

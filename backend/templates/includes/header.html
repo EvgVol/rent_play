@@ -22,8 +22,27 @@
                 <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:blog' %}">Блог</a></li>
                 <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:contacts' %}">Связаться</a></li>
                 <li class="nav-item"><a class="nav-link sub-menu-item "> </a></li>
+                {% if user.is_authenticated %}
+                <div class="dropdown d-inline">
+                    <button class="btn btn-primary rounded-circle dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{% static 'images/user-1.png' %}" class="testi-user rounded-circle img-thumbnail" alt="testimonials-user" style="width: 50px; height: 50px;">
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Профиль</a></li>
+                        <li><a class="dropdown-item" href="#">Избранное</a></li>
+                        <li><a class="dropdown-item" href="#">Мои подписки</a></li>
+                        <li><a class="dropdown-item" href="#">Мои заказы</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Настройки</a></li>
+                        <li><a class="dropdown-item" href="#">Справка и обратная связь</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Выйти</a></li>
+                    </ul>
+                </div>
+                {% else %}
                 <li class="nav-item"><a class="nav-link sub-menu-item fw-light" href="{% url 'core:signup' %}">Регистрация</a></li>
                 <li class="nav-item"><a class="nav-link sub-menu-item fw-lighter" href="{% url 'core:login' %}">Войти</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
