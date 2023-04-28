@@ -15,3 +15,5 @@ class ServiceView(TemplateView):
 
 class ContactView(TemplateView):
     template_name = "core/contact.html"
+
+

@@ -8,7 +8,7 @@ from django.contrib.auth.views import (PasswordChangeDoneView,
                                        PasswordResetDoneView,
                                        PasswordResetView)
 from django.http import JsonResponse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 from django.urls import reverse_lazy
 
 from core.enum import Regex
@@ -54,6 +54,10 @@ class PasswordResetDone(PasswordResetDoneView):
 class PasswordReset(PasswordResetView):
     success_url = reverse_lazy('core:password_reset_done')
     template_name = 'users/password_reset_form.html'
+
+
+class ProfileView(TemplateView):
+    template_name = "users/profile.html"
 
 
 # def validate_username(request):
