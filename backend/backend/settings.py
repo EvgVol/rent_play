@@ -146,7 +146,7 @@ EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 
-DEFAULT_FROM_EMAIL = 'admin@rentplay.cook'
+DEFAULT_FROM_EMAIL = 'admin@rentplay.com'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 

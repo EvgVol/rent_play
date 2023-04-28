@@ -10,7 +10,7 @@ urlpatterns = [
          LoginView.as_view(template_name='users/login.html'),
          name='login'), #Вход
     path('/logout/',
-         LogoutView.as_view(template_name='users/logged_out.html'),
+         LogoutView.as_view(next_page='core:index'),
          name='logout' #Выход
     ),
     path(
