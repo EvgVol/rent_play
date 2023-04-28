@@ -14,16 +14,6 @@ urlpatterns = [
          name='logout' #Выход
     ),
     path(
-        '/password_change/',
-        views.PasswordChange.as_view(), #Пароль изменён
-        name='password_change' #'users/password_change_form.html'
-    ),
-    path(
-        '/password_change/done/',
-        views.PasswordChangeDone.as_view(),
-        name='password_change_done' #'users/password_change_done.html'
-    ),
-    path(
         '/password_reset/',
         views.PasswordReset.as_view(), #Сброс пароля
         name='password_reset' #'users/password_reset_form.html'
@@ -33,6 +23,19 @@ urlpatterns = [
         views.PasswordResetDone.as_view(), #Сброс пароля прошёл успешно
         name='password_reset_done' #'users/password_reset_done.html'
     ),
+    
+    path(
+        '/password_change/',
+        views.PasswordChange.as_view(), #Пароль изменён
+        name='password_change' #'users/password_change_form.html'
+    ),
+    path(
+        '/password_change/done/',
+        views.PasswordChangeDone.as_view(),
+        name='password_change_done' #'users/password_change_done.html'
+    ),
+
+    
     path(
         '/reset/<uidb64>/<token>/',
         views.PasswordResetConfirm.as_view(), #Новый пароль

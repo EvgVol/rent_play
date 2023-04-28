@@ -52,7 +52,7 @@ class PasswordResetDone(PasswordResetDoneView):
 
 
 class PasswordReset(PasswordResetView):
-    success_url = reverse_lazy('users:password_reset_done')
+    success_url = reverse_lazy('core:password_reset_done')
     template_name = 'users/password_reset_form.html'
 
 

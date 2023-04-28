@@ -3,23 +3,21 @@
 {% block content %}
 <section>
   <div class="container">
-    <div class="row justify-content-md-center w-100 m-auto">
-      <div class="col-6">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
         <h2 class="text-dark fw-light lh-base mt-4 text-center">Авторизация</h2>
         {% include 'includes/check_error.html' %}
         <form id="loginForm" method="POST" action="{% url 'core:login' %}">
           {% csrf_token %}
           {% include 'includes/cycle_forms.html' %}
-          <div class="checkbox d-flex justify-content-between mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Запомнить меня
+          <div class="form-check d-flex justify-content-between align-items-center mb-3">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="remember-me"> Запомнить меня
             </label>
-            <a class="fs-6" href="#">Забыли свой пароль?</a>
+            <a class="fs-6" href="{% url 'core:password_reset' %}">Забыли свой пароль?</a>
           </div>
           <div class="d-flex justify-content-center">
-            <button type="submit" name="loginSubmit" class="btn btn-default btn-primary my-3 col-4">
-              Войти
-            </button>
+            <button type="submit" name="loginSubmit" class="btn btn-primary my-3 col-4"> Войти </button>
           </div>
         </form>
       </div>
