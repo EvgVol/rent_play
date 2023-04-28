@@ -38,8 +38,8 @@ urlpatterns = [
          ),
          name ='password_reset_complete'),
 
-    # Асинхронный запрос проверки имени пользователя
-    path('/signup/validate_username/',
-         views.validate_username,
-         name='validate_username')
+# #     # Асинхронный запрос проверки имени пользователя
+#     path('/signup/validate_username/',
+#          views.validate_username,
+#          name='validate_username')
 ]

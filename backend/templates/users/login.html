@@ -1,18 +1,30 @@
 {% extends "base.html" %}
 {% block title %}Войти{% endblock %}
 {% block content %}
-<section class="sm-section">
+<section>
   <div class="container">
-		<div class="row">
-			<div class="col-lg-8">
-        ...
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="sidebar ms-3">
-          ...
-        </div>
+    <div class="row justify-content-md-center w-100 m-auto">
+      <div class="col-6">
+        <h2 class="text-dark fw-light lh-base mt-4 text-center">Авторизация</h2>
+        {% include 'includes/check_error.html' %}
+        <form id="loginForm" method="POST" action="{% url 'core:login' %}">
+          {% csrf_token %}
+          {% include 'includes/cycle_forms.html' %}
+          <div class="checkbox d-flex justify-content-between mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Запомнить меня
+            </label>
+            <a class="fs-6" href="#">Забыли свой пароль?</a>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" name="signupSubmit" class="btn btn-default btn-primary my-3 col-4">
+              Войти
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </section>
+{% include 'includes/marketing.html' %}
 {% endblock %}

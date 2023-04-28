@@ -23,10 +23,10 @@ class SignUp(CreateView):
         return valid
 
 
-def validate_username(request):
-    """Проверка доступности логина"""
-    username = request.GET.get('username', None)
-    response = {
-        'is_taken': User.objects.filter(username__iexact=username).exists()
-    }
-    return JsonResponse(response)
+# def validate_username(request):
+#     """Проверка доступности логина"""
+#     username = request.GET.get('username', None)
+#     response = {
+#         'is_taken': User.objects.filter(username__iexact=username).exists()
+#     }
+#     return JsonResponse(response)

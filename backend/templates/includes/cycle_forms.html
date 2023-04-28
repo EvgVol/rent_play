@@ -1,7 +1,6 @@
 {% load add_filter %}
-{% load crispy_forms_tags %}
 {% for field in form %}
-  <div class="form-group row p-3" 
+  <div class="form-group row p-3 my-1" 
     {% if field.field.required %} 
       aria-required="true" 
     {% else %} 
