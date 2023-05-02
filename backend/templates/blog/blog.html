@@ -8,43 +8,40 @@
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="row">
-					{% for post in post_list %}
+					{% for post in page_obj %}
 						{% include 'blog/includes/post.html' %}
 					{% endfor %}
 				</div>
-				{% include 'includes/paginator.html' %}
+				{% include 'blog/includes/paginator.html' %}
 			</div>
 			<div class="col-lg-4 col-md-6">
 				<div class="sidebar ms-3">
 					{% include 'blog/includes/search.html' %}
 					<div>
 						<div class="sd-title mt-4">
-							<h6 class="border-bottom pb-3 mb-0">Categories</h6>
+							<h6 class="border-bottom pb-3 mb-0">Жанры</h6>
 						</div>
 						<div class="ms-3 my-3">
-							{% include 'blog/includes/category.html' %}
+							{% for genre in genres %}
+								{% include 'blog/includes/category.html' %}
+							{% endfor %}
+							
 						</div>
 					</div>
 
 					<div class="mt-5">
 						<div class="sd-title mt-4">
-							<h6 class="border-bottom pb-3 mb-0">Polular Post</h6>
+							<h6 class="border-bottom pb-3 mb-0">Популярные игры</h6>
 						</div>
 						<ul class="list-unstyled my-4">
+							{% include 'blog/includes/popular_post.html' %}
+							{% include 'blog/includes/popular_post.html' %}
 							{% include 'blog/includes/popular_post.html' %}
 						</ul>
 					</div>
 
 					<div class="mt-5">
-						<div class="sd-title mt-4">
-							<h6 class="border-bottom pb-3 mb-0">Text Widget</h6>
-						</div>
-						<p class="mx-3 my-3 text-muted">
-							Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft
-							beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v
-							laborum. Aliquip veniam
-							delectus, Marfa eiusmod Pinterest in do umami readymade swag.
-						</p>
+						<a href="#"><img class="img-fluid" src="{% static 'images/add.jpg' %}" alt="" /></a>
 					</div>
 
 					<div class="mt-5">
@@ -59,20 +56,18 @@
 
 					<div class="mt-5">
 						<div class="sd-title mt-4">
-							<h6 class="border-bottom pb-3 mb-0">Tags</h6>
+							<h6 class="border-bottom pb-3 mb-0">Теги</h6>
 						</div>
 						<div class="tagcloud py-4">
-							{% for tag in tag_list %}
+							{% for tag in tags %}
 								{% include 'blog/includes/tag.html' %}
 							{% endfor %}
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- Sidebar end-->
 		</div>
 	</div>
-	<!-- end container -->
 </section>
 
 {% include 'core/includes/trust_us.html' %}
