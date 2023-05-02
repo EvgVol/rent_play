@@ -43,7 +43,7 @@ class Tags(models.Model):
 
 def get_upload_path(instance, filename):
     model = instance._meta
-    name = model.verbose_name_plural.replace(' ', '_')
+    name = model.default_related_name.replace(' ', '_')
     return f'{name}/images/{filename}'
 
 

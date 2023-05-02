@@ -1,13 +1,16 @@
 {% load static %}
 <div class="col-lg-6">
     <article class="post position-relative pb-5">
+        {% load thumbnail %}
         <div
             class="date-box rounded-3 shadow text-center bg-light position-absolute top-0 start-0 py-1 px-2 ms-3 mt-3">
             <h6 class="fs-14 fw-medium mb-0">{{ post.pub_date|date:"d.m"  }}</h6>
         </div>
         <div class="post-preview mb-4">
-            <a href="{% url 'core:sing_post' %}"><img src="{% static 'images/blog/blog-1.jpg' %}" alt=""
-                    class="img-fluid rounded-3" />
+            <a href="{% url 'core:sing_post' %}">
+                {% thumbnail post.image "296x173" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                {% endthumbnail %} 
             </a>
         </div>
         <div class="post">

@@ -2,6 +2,8 @@
 {% block title %}Профиль пользователя {{ user.get_full_name }} {% endblock %}
 {% block content %}
 {% load static %}
+{% load thumbnail %}
+
 <section>
   <div class="container">
     <div class="row text-center">
@@ -13,7 +15,9 @@
       <div class="col-lg-3 mt-4">
         <div class="product-item ">
           <a href="work-detail.html">
-              <img src="{% static 'images/team/team-1.jpg' %}" class="img-fluid rounded" alt="">
+            {% thumbnail user.avatar "216x226" crop="center" upscale=True as im %}
+            <img class="card-img my-2" src="{{ im.url }}">
+            {% endthumbnail %}
           </a>
           <div class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
             <a href="cart.html"><i class="mdi mdi-account-star-outline fs-22 me-3 pe-3 fw-bolder pro-icon text-dark border-end"></i></a>

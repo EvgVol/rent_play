@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    # 'sorl.thumbnail',
+    'sorl.thumbnail',
     'crispy_forms', # https://django-crispy-forms.readthedocs.io/en/latest/index.html
     "crispy_bootstrap5", #https://github.com/django-crispy-forms/crispy-bootstrap5
     'api',
@@ -104,7 +104,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = 'media/'
 
@@ -163,3 +163,9 @@ LOGIN_URL = 'core:login'
 LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = ''
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
