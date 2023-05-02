@@ -10,7 +10,7 @@
             <a href="{% url 'core:blog-detail' pk=post.id %}">
                 {% thumbnail post.image "296x173" crop="center" as im %}
                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-                {% endthumbnail %} 
+                {% endthumbnail %}
             </a>
         </div>
         <div class="post">
