@@ -6,4 +6,4 @@ class GamesView(TemplateView):
 
 
 class GameDetailView(TemplateView):
-    template_name = "games/game-detail"
+    template_name = "games/game-detail.html"

@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -69,7 +70,10 @@ class User(AbstractUser):
     )
 
     avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR,)
-    phone_number = PhoneNumberField(blank=False, null=False, region="RU")
+    phone_number = PhoneNumberField(region="RU")
+
+    online = models.BooleanField(default=False)
+    last_seen = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ('username', 'role', 'first_name',
@@ -89,6 +93,9 @@ class User(AbstractUser):
     @property
     def is_rentor(self):
         return self.role == self.RENTOR
+
+    def is_user_online(last_seen):
+        return last_seen >= timezone.now() - timezone.timedelta(minutes=5)
 
     def __str__(self):
         return f'{self.username}: {self.email}'
