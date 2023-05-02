@@ -7,7 +7,7 @@
             <h6 class="fs-14 fw-medium mb-0">{{ post.pub_date|date:"d.m"  }}</h6>
         </div>
         <div class="post-preview mb-4">
-            <a href="{% url 'core:post_detail' post.pk %}">
+            <a href="{% url 'core:blog-detail' pk=post.id %}">
                 {% thumbnail post.image "296x173" crop="center" as im %}
                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                 {% endthumbnail %} 
@@ -16,20 +16,20 @@
         <div class="post">
             <div class="d-flex align-items-center gap-3">
                 <p class="fs-15 text-muted mb-0"><i data-feather="message-square"
-                        class="icon-xs me-1"></i> <a href="{% url 'core:post_detail' post.pk %}"
+                        class="icon-xs me-1"></i> <a href="{% url 'core:blog-detail' pk=post.id %}"
                         class="text-muted">#####</a></p>
                 <p class="fs-15 text-muted mb-0"><i data-feather="eye" class="icon-xs me-1"></i>
-                    <a href="{% url 'core:post_detail' post.pk %}" class="text-muted">#####</a>
+                    <a href="{% url 'core:blog-detail' pk=post.id %}" class="text-muted">#####</a>
                 </p>
                 <p class="fs-15 text-muted mb-0"><i data-feather="eye" class="icon-xs me-1"></i>
-                    <a href="{% url 'core:post_detail' post.pk %}" class="text-muted">#####</a>
+                    <a href="{% url 'core:blog-detail' pk=post.id %}" class="text-muted">#####</a>
                 </p>
             </div>
-            <h6 class="fs-18 fw-semibold my-3 post-title"><a href="{% url 'core:post_detail' post.pk %}">{{ post.name }}</a></h6>
+            <h6 class="fs-18 fw-semibold my-3 post-title"><a href="{% url 'core:blog-detail' pk=post.id %}">{{ post.name }}</a></h6>
             <p class="text-muted">
                 {{ post.description|linebreaks }}
             </p>
-            <a href="{% url 'core:post_detail' post.pk %}" class="fw-medium text-dark">Подробнее <i
+            <a href="{% url 'core:blog-detail' pk=post.id %}" class="fw-medium text-dark">Подробнее <i
                     data-feather="arrow-right" class="icon-xs icon"></i></a>
         </div>
     </article>

@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="row">
-					{% for post in page_obj %}
+					{% for post in object_list %}
 						{% include 'blog/includes/post.html' %}
 					{% endfor %}
 				</div>

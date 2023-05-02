@@ -75,4 +75,37 @@
     </div>
   </div>
 </section>
+
+<script>
+    $(document).ready(function() {
+      load_posts(1);
+    });
+    
+    function load_posts(page) {
+      $.ajax({
+        url: '/blog/',
+        method: 'GET',
+        data: {
+          'page': page
+        },
+        success: function(data) {
+          // Обновляем список постов и пагинацию
+          $('.posts').html('');
+          $.each(JSON.parse(data), function(i, post) {
+            $('.posts').append('<div class="post">' + post.fields.title + '</div>');
+          });
+          $('#pagination').html('');
+          var prev_url = JSON.parse(data).previous;
+          var next_url = JSON.parse(data).next;
+          if (prev_url) {
+            $('#pagination').append('<button onclick="load_posts(' + (page - 1) + ')">Prev</button>');
+          }
+          if (next_url) {
+            $('#pagination').append('<button onclick="load_posts(' + (page + 1) + ')">Next</button>');
+          }
+        }
+      });
+    }
+</script>
+
 {% endblock content %}
