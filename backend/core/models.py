@@ -6,6 +6,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.timezone import localtime
 from django.utils.translation import gettext as _
+from django.core.validators import RegexValidator
 
 from . import texts
 from .enum import Limits, Regex
@@ -128,42 +129,53 @@ class Period(models.Model):
 class Feedback(models.Model):
     """Модель обратной связи."""
 
+    user = models.ForeignKey(User, verbose_name='Пользователь',
+                             on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField('Имя', max_length=Limits.MAX_NAME.value,
                             help_text='Введите ваше имя',
                             validators=[validate_not_empty])
     email = models.EmailField('Электронный адрес (email)', 
                               help_text='Оставьте своё сообщение',
                               validators=[validate_not_empty])
-    phone = models.IntegerField('Номер телефона',
-                                help_text='Оставьте свой телефон')
-    body = models.TextField('Содержимое письма',
+    # phone = models.IntegerField('Номер телефона',
+    #                             help_text='Оставьте свой телефон',
+    #                             validators=[validate_not_empty,
+    #                                         RegexValidator(
+    #                                             regex=Regex.PHONE_REGEX,
+    #                                             message=texts.PHONE_VALIDATE
+    #                                         )])
+    subject = models.CharField('Тема письма',
+                               max_length=Limits.MAX_LENGTH.value)
+    content = models.TextField('Содержимое письма',
                             validators=[validate_not_empty])
     time_create = models.DateTimeField('Дата отправки', auto_now_add=True)
-    consent = models.BooleanField('Согласие на обработку персональных данных',
-                                  default=False)
-    is_answered = models.BooleanField(default=False)
+    ip_address = models.GenericIPAddressField(verbose_name='IP отправителя', 
+                                              blank=True, null=True)
+    # consent = models.BooleanField('Согласие на обработку персональных данных',
+    #                               default=False)
+    # is_answered = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Обратная связь'
         verbose_name_plural = 'Обратная связь'
         ordering = ['-time_create']
 
-    def send_notification_email(self):
-        now = localtime()
-        subject = _('Письмо с сайта от {name}').format(name=self.name)
-        message_body = _('Новое сообщение с сайта\n\n'
-                      'Дата отправки: {send_time}\n'
-                      'Имя: {name}\n'
-                      'Email: {email}\n'
-                      'Телефон: {phone}\n'
-                      'Сообщение: {body}\n').format(
-        send_time=now.strftime('%d.%m.%Y %H:%M'),
-        name=self.name,
-        email=self.email,
-        phone=self.phone,
-        body=self.body,
-        )
-        send_mail(subject, message_body, self.email, [settings.DEFAULT_FROM_EMAIL], fail_silently=False,)
+    # def send_notification_email(self):
+    #     now = localtime()
+    #     subject = _('Письмо с сайта от {name}').format(name=self.name)
+    #     message_body = _('Новое сообщение с сайта\n\n'
+    #                   'Дата отправки: {send_time}\n'
+    #                   'Имя: {name}\n'
+    #                   'Email: {email}\n'
+    #                 #   'Телефон: {phone}\n'
+    #                   'Сообщение: {content}\n').format(
+    #     send_time=now.strftime('%d.%m.%Y %H:%M'),
+    #     name=self.name,
+    #     email=self.email,
+    #     phone=self.phone,
+    #     body=self.body,
+    #     )
+    #     send_mail(subject, message_body, self.email, [settings.DEFAULT_FROM_EMAIL], fail_silently=False,)
 
     def __str__(self):
         return f'Вам письмо от {self.email}'

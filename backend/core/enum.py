@@ -26,6 +26,8 @@ class Limits(IntEnum):
     MIN_RENT = 500
     # Максимальная длина имени пользователя
     MAX_NAME = 100
+    # Максимальная длина
+    MAX_LENGTH = 255
 
 
 class Regex:
@@ -33,6 +35,8 @@ class Regex:
     COLOR_REGEX = r'^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'
     # Регулярное выражение для username
     USERNAME_REGEX = r'[\w\.@+-]+'
+    # Регулярное выражение для номера телефона
+    PHONE_REGEX = r'^(\+7|8)\d{10}$'
     # Словарь для сопостановления латинской и русской стандартных раскладок.
     INCORRECT_LAYOUT = str.maketrans(
         'qwertyuiop[]asdfghjkl;\'zxcvbnm,./',

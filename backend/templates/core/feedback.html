@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-  <h1>Обратная связь</h1>
-  <form method="post">
-    {% csrf_token %}
-    {% include 'includes/check_error.html' %}
-    {{ form.as_p }}
-    <button type="submit">Отправить</button>
-  </form>
+    <div class="card mb-3 border-0 nth-shadow">
+        <div class="card-body">
+            <form method="post" action="{% url 'core:feedback' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="d-grid gap-2 d-md-block mt-2">
+                <button type="submit" class="btn btn-dark">Отправить письмо</button>
+             </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
