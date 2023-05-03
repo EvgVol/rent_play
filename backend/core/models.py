@@ -153,22 +153,5 @@ class Feedback(models.Model):
         verbose_name_plural = 'Обратная связь'
         ordering = ['-time_create']
 
-    # def send_notification_email(self):
-    #     now = localtime()
-    #     subject = _('Письмо с сайта от {name}').format(name=self.name)
-    #     message_body = _('Новое сообщение с сайта\n\n'
-    #                   'Дата отправки: {send_time}\n'
-    #                   'Имя: {name}\n'
-    #                   'Email: {email}\n'
-    #                 #   'Телефон: {phone}\n'
-    #                   'Сообщение: {content}\n').format(
-    #     send_time=now.strftime('%d.%m.%Y %H:%M'),
-    #     name=self.name,
-    #     email=self.email,
-    #     phone=self.phone,
-    #     body=self.body,
-    #     )
-    #     send_mail(subject, message_body, self.email, [settings.DEFAULT_FROM_EMAIL], fail_silently=False,)
-
     def __str__(self):
         return f'Вам письмо от {self.email}'
