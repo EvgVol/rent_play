@@ -1,10 +1,18 @@
 from colorfield.fields import ColorField
 from django.core import validators
+from django.conf import settings
+from django.core.mail import send_mail
 from django.db import models
+from django.contrib.auth import get_user_model
+from django.utils.timezone import localtime
+from django.utils.translation import gettext as _
 
-from core import texts
-from core.enum import Limits, Regex
-from users.models import User
+from . import texts
+from .enum import Limits, Regex
+from .validators import validate_not_empty
+
+
+User = get_user_model()
 
 
 class Tags(models.Model):
@@ -115,3 +123,47 @@ class Period(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Feedback(models.Model):
+    """Модель обратной связи."""
+
+    name = models.CharField('Имя', max_length=Limits.MAX_NAME.value,
+                            help_text='Введите ваше имя',
+                            validators=[validate_not_empty])
+    email = models.EmailField('Электронный адрес (email)', 
+                              help_text='Оставьте своё сообщение',
+                              validators=[validate_not_empty])
+    phone = models.IntegerField('Номер телефона',
+                                help_text='Оставьте свой телефон')
+    body = models.TextField('Содержимое письма',
+                            validators=[validate_not_empty])
+    time_create = models.DateTimeField('Дата отправки', auto_now_add=True)
+    consent = models.BooleanField('Согласие на обработку персональных данных',
+                                  default=False)
+    is_answered = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Обратная связь'
+        verbose_name_plural = 'Обратная связь'
+        ordering = ['-time_create']
+
+    def send_notification_email(self):
+        now = localtime()
+        subject = _('Письмо с сайта от {name}').format(name=self.name)
+        message_body = _('Новое сообщение с сайта\n\n'
+                      'Дата отправки: {send_time}\n'
+                      'Имя: {name}\n'
+                      'Email: {email}\n'
+                      'Телефон: {phone}\n'
+                      'Сообщение: {body}\n').format(
+        send_time=now.strftime('%d.%m.%Y %H:%M'),
+        name=self.name,
+        email=self.email,
+        phone=self.phone,
+        body=self.body,
+        )
+        send_mail(subject, message_body, self.email, [settings.DEFAULT_FROM_EMAIL], fail_silently=False,)
+
+    def __str__(self):
+        return f'Вам письмо от {self.email}'

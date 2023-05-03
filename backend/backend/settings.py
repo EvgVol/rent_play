@@ -1,12 +1,22 @@
 from pathlib import Path
+from decouple import Csv, config
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-51ydgsn!flww^)=p+m5rkp=bpan@q*em8#u^40s^4ug94l6_j('
+SECRET_KEY = config(
+    'SECRET_KEY',
+)
 
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool, default=True)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = config(
+    'ALLOWED_HOSTS',
+    cast=Csv(),
+    default='127.0.0.1'
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -142,7 +152,13 @@ DJOSER = {
     },
 }
 
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_HOST = 'smtp.yandex.com'
+# EMAIL_PORT = 465
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER', cast=str, default='your-email@yandex.com')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', cast=str, default='your-password')
+
 
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 

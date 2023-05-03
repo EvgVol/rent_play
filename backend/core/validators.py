@@ -20,3 +20,12 @@ def validate_username(username):
             NOT_ALLOWED_ME.format(username=username)
         )
     return username
+
+
+def validate_not_empty(value):
+    """Валидация поля формы."""
+    if value == '':
+        raise ValidationError(
+            'Поле не может быть пустым!',
+            params={'value': value},
+        )

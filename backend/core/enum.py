@@ -24,6 +24,8 @@ class Limits(IntEnum):
     LENG_CATEGORY = 100
     # Минимальная стоимость аренды
     MIN_RENT = 500
+    # Максимальная длина имени пользователя
+    MAX_NAME = 100
 
 
 class Regex:

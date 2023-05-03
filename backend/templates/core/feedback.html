@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Обратная связь</h1>
+  <form method="post">
+    {% csrf_token %}
+    {% include 'includes/check_error.html' %}
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+  </form>
+{% endblock %}
