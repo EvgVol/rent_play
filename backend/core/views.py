@@ -4,6 +4,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.contrib import messages
 from django.core.mail import EmailMessage
+from django.shortcuts import render
+from django.http import JsonResponse
 
 from .forms import FeedbackCreateForm
 from .models import Feedback
@@ -40,6 +42,8 @@ class FeedbackCreateView(SuccessMessageMixin, CreateView):
             feedback.ip_address = get_client_ip(self.request)
             if self.request.user.is_authenticated:
                 feedback.user = self.request.user
-            send_contact_email_message(feedback.subject, feedback.email, feedback.content, feedback.ip_address, feedback.user_id)
+            send_contact_email_message(feedback.name, feedback.subject,
+                                       feedback.email, feedback.content,
+                                       feedback.ip_address, feedback.user_id)
         return super().form_valid(form)
 

@@ -137,13 +137,6 @@ class Feedback(models.Model):
     email = models.EmailField('Электронный адрес (email)', 
                               help_text='Оставьте своё сообщение',
                               validators=[validate_not_empty])
-    # phone = models.IntegerField('Номер телефона',
-    #                             help_text='Оставьте свой телефон',
-    #                             validators=[validate_not_empty,
-    #                                         RegexValidator(
-    #                                             regex=Regex.PHONE_REGEX,
-    #                                             message=texts.PHONE_VALIDATE
-    #                                         )])
     subject = models.CharField('Тема письма',
                                max_length=Limits.MAX_LENGTH.value)
     content = models.TextField('Содержимое письма',

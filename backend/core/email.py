@@ -7,13 +7,14 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-def send_contact_email_message(subject, email, content, ip, user_id):
+def send_contact_email_message(subject, name, email, content, ip, user_id):
     """
     Function to send contact form email
     """
     user = User.objects.get(id=user_id) if user_id else None
     message = render_to_string('core/includes/feedback_email_send.html', {
         'email': email,
+        'name': name,
         'content': content,
         'ip': ip,
         'user': user,
