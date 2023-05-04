@@ -1,11 +1,6 @@
 from django.views.generic import TemplateView, CreateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.shortcuts import render
-from django.contrib import messages
-from django.core.mail import EmailMessage
-from django.shortcuts import render
-from django.http import JsonResponse
 
 from .forms import FeedbackCreateForm
 from .models import Feedback
@@ -25,14 +20,9 @@ class ServiceView(TemplateView):
     template_name = "core/services.html"
 
 
-# class ContactView(TemplateView):
-#     template_name = "core/contact.html"
-
-
 class FeedbackCreateView(SuccessMessageMixin, CreateView):
     model = Feedback
     form_class = FeedbackCreateForm
-    success_message = 'Ваше письмо успешно отправлено администрации сайта'
     template_name = 'core/contact.html'
     success_url = reverse_lazy('core:index')
 

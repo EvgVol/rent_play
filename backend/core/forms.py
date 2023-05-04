@@ -9,11 +9,9 @@ class FeedbackCreateForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = ('name', 'email', 'subject', 'content')
-
-    def __init__(self, *args, **kwargs):
-        """Обновление стилей формы."""
-        super().__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs.update(
-                {'class': 'form-control', 'autocomplete': 'off'}
-            )
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'subject': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'content': forms.Textarea(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+        }

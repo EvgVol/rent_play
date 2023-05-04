@@ -72,9 +72,6 @@ class User(AbstractUser):
     avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR,)
     phone_number = PhoneNumberField(region="RU")
 
-    online = models.BooleanField(default=False)
-    last_seen = models.DateTimeField(default=timezone.now)
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ('username', 'role', 'first_name',
                        'last_name', 'phone_number')
