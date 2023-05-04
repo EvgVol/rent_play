@@ -144,9 +144,6 @@ class Feedback(models.Model):
     time_create = models.DateTimeField('Дата отправки', auto_now_add=True)
     ip_address = models.GenericIPAddressField(verbose_name='IP отправителя', 
                                               blank=True, null=True)
-    # consent = models.BooleanField('Согласие на обработку персональных данных',
-    #                               default=False)
-    # is_answered = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Обратная связь'

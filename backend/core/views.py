@@ -25,15 +25,15 @@ class ServiceView(TemplateView):
     template_name = "core/services.html"
 
 
-class ContactView(TemplateView):
-    template_name = "core/contact.html"
+# class ContactView(TemplateView):
+#     template_name = "core/contact.html"
 
 
 class FeedbackCreateView(SuccessMessageMixin, CreateView):
     model = Feedback
     form_class = FeedbackCreateForm
     success_message = 'Ваше письмо успешно отправлено администрации сайта'
-    template_name = 'core/feedback.html'
+    template_name = 'core/contact.html'
     success_url = reverse_lazy('core:index')
 
     def form_valid(self, form):
