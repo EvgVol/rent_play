@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="card mb-3 border-0 nth-shadow">
+   <div class="card-body">
+      <form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <div class="d-grid gap-2 d-md-block mt-2">
+            <button type="submit" class="btn btn-dark">Подтвердить изменение профиля</button>
+         </div>
+      </form>
+   </div>
+</div>
+{% endblock %}
