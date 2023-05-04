@@ -78,10 +78,10 @@ class ProfileUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = f'Редактирование профиля пользователя: {self.request.user.username}'
-        if self.request.POST:
-            context['user_form'] = UserUpdateForm(self.request.POST, instance=self.request.user)
-        else:
-            context['user_form'] = UserUpdateForm(instance=self.request.user)
+        form = kwargs.get('form')
+        if not form:
+            form = self.form_class(instance=self.request.user)
+        context['user_form'] = form
         return context
 
     def form_valid(self, form):
