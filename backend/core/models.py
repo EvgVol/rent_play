@@ -1,12 +1,9 @@
 from colorfield.fields import ColorField
 from django.core import validators
-from django.conf import settings
-from django.core.mail import send_mail
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.timezone import localtime
 from django.utils.translation import gettext as _
-from django.core.validators import RegexValidator
 
 from . import texts
 from .enum import Limits, Regex

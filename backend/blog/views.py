@@ -23,3 +23,4 @@ class BlogDetailView(DetailView):
 
     model = Post
     template_name = "blog/single-post.html"
+
