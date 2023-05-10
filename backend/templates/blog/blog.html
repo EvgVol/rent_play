@@ -2,6 +2,7 @@
 {% block title %}Последние обновления на сайте{% endblock title %}
 {% block content %}
 {% load static %}
+
 {% include 'blog/includes/header.html' %}
 <section class="mt-4 pt-2">
 	<div class="container">
@@ -66,6 +67,25 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div id="style-switcher" onclick="toggleSwitcher()">
+		<div>
+				<h3>Настройки</h3>
+				<ul class="pattern">
+						<li>
+							<a href="#"><i data-feather="file-plus" class="text-primary me-2"></i></a>
+						</li>
+						<li>
+							<a href="#"><i data-feather="bookmark" class="text-primary me-2"></i></a>
+						</li>
+						<li>
+							<a href="#"><i data-feather="archive" class="text-primary me-2"></i></a>
+						</li>
+				</ul>
+		</div>
+		<div class="bottom">
+				<a href="javascript: void(0);" class="settings rounded-end text-light"><i data-feather="settings"></i></a>
 		</div>
 	</div>
 </section>

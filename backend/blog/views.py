@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, UpdateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from django.shortcuts import get_object_or_404
 
 from blog.models import Post
@@ -38,5 +38,6 @@ class BlogDetailView(DetailView):
     template_name = "blog/single-post.html"
 
 
-class BlogUpdateView():
-    pass
+class PostgCreateView(CreateView):
+    model = Post
+    template_name = "blog/post_new.html"
