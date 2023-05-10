@@ -38,6 +38,13 @@ class BlogDetailView(DetailView):
     template_name = "blog/single-post.html"
 
 
-class PostgCreateView(CreateView):
+class PostCreateView(CreateView):
     model = Post
     template_name = "blog/post_new.html"
+    fields = ['name', 'description', 'game', 'image', 'author']
+
+
+class PostEditView(UpdateView):
+    model = Post
+    template_name = "blog/post_new.html"
+    fields = ['name', 'description', 'game', 'image']
