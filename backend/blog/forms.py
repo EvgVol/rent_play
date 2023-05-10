@@ -21,6 +21,14 @@ class PostForm(forms.ModelForm):
             'image': 'Выберите своё изображение которым хотите поделиться'
         }
 
+    def clean_image(self):
+        image = self.cleaned_data.get('image')
+        if not image:
+            raise forms.ValidationError('Выберите изображение')
+        if image.size > 2 * 1024 * 1024:
+            raise forms.ValidationError('Слишком большой размер изображения (более 2 МБ)')
+        return image
+
 
 class ReviewForm(forms.ModelForm):
     """Форма создание отзыва."""
