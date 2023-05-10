@@ -11,7 +11,6 @@ from django.views.generic import CreateView, DetailView, UpdateView
 from django.urls import reverse_lazy
 from django.db import transaction
 
-from core.enum import Regex
 from .forms import UserSignUpForm, UserUpdateForm
 
 
@@ -36,7 +35,7 @@ class PasswordChangeDone(PasswordChangeDoneView):
 
 
 class PasswordChange(PasswordChangeView):
-    success_url = reverse_lazy('users:password_change_done')
+    success_url = reverse_lazy('core:password_change_done')
     template_name = 'users/password_change_form.html'
 
 
@@ -45,7 +44,7 @@ class PasswordResetComplete(PasswordResetCompleteView):
 
 
 class PasswordResetConfirm(PasswordResetConfirmView):
-    success_url = reverse_lazy('users:password_reset_complete')
+    success_url = reverse_lazy('core:password_reset_complete')
     template_name = 'users/password_reset_confirm.html'
 
 

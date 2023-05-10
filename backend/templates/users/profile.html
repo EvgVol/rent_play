@@ -34,6 +34,9 @@
           <p class="text-muted text-start mb-2">Имя: {{ user.first_name }}</p>
           <p class="text-muted text-start mb-2">Email: {{ user.email }}</p>
           <p class="text-muted text-start mb-2">Дата регистрации: {{ user.date_joined|date:"d.m.Y" }}</p>
+          <p class="text-muted text-start mb-2">Телефон: {{ user.phone_number }}</p>
+          <p class="text-muted text-start mb-2">Дата рождения: {{ user.birthdate }}</p>
+          <br></br>
           <p class="text-muted text-start mb-2">Количество игровых приставок: {{ user.consoles.count }}</p>
           <p class="text-muted text-start mb-2">Количество подписок: {{ user.following.count }}</p>
           <p class="text-muted text-start mb-2">Количество подписчиков: {{ user.follower.count }}</p>
