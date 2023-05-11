@@ -5,6 +5,9 @@
 
 {% include 'blog/includes/header.html' %}
 <section class="mt-4 pt-2">
+	<a href="{% url 'core:new_post' %}" id="mode" data-class="light" class="text-white rounded-end mode-btn">
+		<i class="mode-dark mx-auto" data-feather="file-plus"></i>
+	</a>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
@@ -72,21 +75,21 @@
 	{% if user.is_authenticated %}
 	<div id="style-switcher" onclick="toggleSwitcher()">
 		<div>
-				<h3>Настройки</h3>
-				<ul class="pattern">
-						<li>
-							<a href="{% url 'core:new_post' %}"><i data-feather="file-plus" class="text-primary me-2"></i></a>
-						</li>
-						<li>
-							<a href="#"><i data-feather="bookmark" class="text-primary me-2"></i></a>
-						</li>
-						<li>
-							<a href="#"><i data-feather="archive" class="text-primary me-2"></i></a>
-						</li>
-				</ul>
+			<h3>Настройки</h3>
+			<ul class="pattern">
+					<li>
+						<a href="#"><i data-feather="users" class="text-primary me-2"></i></a>
+					</li>
+					<li>
+						<a href="#"><i data-feather="bookmark" class="text-primary me-2"></i></a>
+					</li>
+					<li>
+						<a href="#"><i data-feather="star" class="text-primary me-2"></i></a>
+					</li>
+			</ul>
 		</div>
 		<div class="bottom">
-				<a href="#" class="settings rounded-end text-light"><i data-feather="settings"></i></a>
+			<a href="#" class="settings rounded-end text-light"><i data-feather="heart"></i></a>
 		</div>
 	</div>
 	{% endif %}

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Single Post{% endblock title %}
 {% block content %}
-{% include 'blog/includes/header.html' %}
 
 <section class="sm-section">
   <div class="container">
@@ -75,37 +74,25 @@
     </div>
   </div>
 </section>
-
-<script>
-    $(document).ready(function() {
-      load_posts(1);
-    });
-    
-    function load_posts(page) {
-      $.ajax({
-        url: '/blog/',
-        method: 'GET',
-        data: {
-          'page': page
-        },
-        success: function(data) {
-          // Обновляем список постов и пагинацию
-          $('.posts').html('');
-          $.each(JSON.parse(data), function(i, post) {
-            $('.posts').append('<div class="post">' + post.fields.title + '</div>');
-          });
-          $('#pagination').html('');
-          var prev_url = JSON.parse(data).previous;
-          var next_url = JSON.parse(data).next;
-          if (prev_url) {
-            $('#pagination').append('<button onclick="load_posts(' + (page - 1) + ')">Prev</button>');
-          }
-          if (next_url) {
-            $('#pagination').append('<button onclick="load_posts(' + (page + 1) + ')">Next</button>');
-          }
-        }
-      });
-    }
-</script>
-
+{% if user.username == post.author.username %}
+	<div id="style-switcher" onclick="toggleSwitcher()">
+		<div>
+				<h3>Настройки</h3>
+				<ul class="pattern">
+						<li>
+							<a href="{% url 'core:post_edit' pk=post.id %}"><i data-feather="edit-3" class="text-primary me-2"></i></a>
+						</li>
+						<li>
+							<a href="#"><i data-feather="eye-off" class="text-primary me-2"></i></a>
+						</li>
+						<li>
+							<a href="#"><i data-feather="trash" class="text-primary me-2"></i></a>
+						</li>
+				</ul>
+		</div>
+		<div class="bottom">
+				<a href="#" class="settings rounded-end text-light"><i data-feather="settings"></i></a>
+		</div>
+	</div>
+	{% endif %}
 {% endblock content %}
