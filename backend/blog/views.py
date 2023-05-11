@@ -47,14 +47,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = "blog/post_new.html"
-    success_url = reverse_lazy('core:blog-list')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def get_success_url(self):
-        return self.success_url
  
 class PostEditView(UpdateView):
     model = Post

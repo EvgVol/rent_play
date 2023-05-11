@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from core.models import ReviewAndCommentModel, Product
 from games.models import Game
@@ -37,6 +38,9 @@ class Post(Product):
                 name='unique_author_post',
             ),
         )
+
+    def get_absolute_url(self):
+        return reverse('core:blog-detail', args=[str(self.id)])
 
 
 class Review(ReviewAndCommentModel):
