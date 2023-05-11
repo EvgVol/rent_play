@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, UpdateView, CreateView
+from django.views import generic
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -8,7 +8,7 @@ from games.models import Tag, Genre
 from .forms import PostForm
 
 
-class BlogListView(ListView):
+class BlogListView(generic.ListView):
     """Отображает страницу блога с 8 постами."""
 
     model = Post
@@ -35,14 +35,14 @@ class BlogListView(ListView):
         return context
 
 
-class BlogDetailView(DetailView):
+class BlogDetailView(generic.DetailView):
     """Отображает страницу блога с данным постом"""
 
     model = Post
     template_name = "blog/single-post.html"
 
 
-class PostCreateView(LoginRequiredMixin, CreateView):
+class PostCreateView(LoginRequiredMixin, generic.CreateView):
     login_url = '/auth/login/'
     model = Post
     form_class = PostForm
@@ -53,7 +53,13 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
  
-class PostEditView(UpdateView):
+class PostEditView(generic.UpdateView):
     model = Post
     template_name = "blog/post_new.html"
     fields = ['name', 'description', 'game', 'image']
+
+
+class PostDeleteView(generic.DeleteView):
+    model = Post
+    template_name = 'blog/includes/post_delete.html'
+    success_url = reverse_lazy('core:blog-list')

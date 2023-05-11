@@ -79,15 +79,15 @@
 		<div>
 				<h3>Настройки</h3>
 				<ul class="pattern">
-						<li>
-							<a href="{% url 'core:post_edit' pk=post.id %}"><i data-feather="edit-3" class="text-primary me-2"></i></a>
-						</li>
-						<li>
-							<a href="#"><i data-feather="eye-off" class="text-primary me-2"></i></a>
-						</li>
-						<li>
-							<a href="#"><i data-feather="trash" class="text-primary me-2"></i></a>
-						</li>
+                    <li>
+                        <a href="{% url 'core:post_edit' pk=post.id %}"><i data-feather="edit-3" class="text-primary me-2"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i data-feather="eye-off" class="text-primary me-2"></i></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'core:post_delete' pk=post.id %}"><i data-feather="trash" class="text-primary me-2" ></i></a>
+                    </li>
 				</ul>
 		</div>
 		<div class="bottom">

@@ -18,38 +18,4 @@
     </div>
   </div>
 </section>
-{% comment %} <section>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        <h2 class="text-dark fw-light lh-base mt-5">Пора <span class="fw-medium title">
-              зарегистрироваться</span></h2>
-        <p class="fs-16 text-muted mb-0">Для получения всех возможностей сервиса необходимо пройти процедуру регистрации</p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="sm-section">
-  <div class="container">
-		<div class="row">
-			<div class="col-lg-8">
-        {% include 'includes/check_error.html' %}
-        <form id="signupForm" method="POST" action="{% url 'core:signup' %}">
-          {% csrf_token %}
-          {% include 'includes/cycle_forms.html' %}
-          <div class="col-md-6 offset-md-4">
-            <button type="submit" name="signupSubmit" class="btn btn-primary">
-              Зарегистрироваться
-            </button>
-          </div>
-        </form>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="sidebar ms-3">
-          {% include 'users/includes/top_content.html' %}
-        </div>
-      </div>
-    </div>
-  </div>
-</section> {% endcomment %}
 {% endblock %}
