@@ -15,9 +15,13 @@
       <div class="col-lg-3">
         <div class="product-item ">
           <a href="work-detail.html">
-            {% thumbnail user.avatar "216x226" crop="center" upscale=True as im %}
-            <img class="card-img my-2" src="{{ im.url }}">
-            {% endthumbnail %}
+            {% if user.avatar  %}
+              {% thumbnail user.avatar "216x226" crop="center" upscale=True as im %}
+              <img class="card-img my-2" src="{{ im.url }}">
+              {% endthumbnail %}
+            {% else %}
+            <img class="card-img my-2" src="{% static 'images/default-user.jpeg' %}">
+            {% endif %}
           </a>
           <div class="hover-content text-center w-100 position-absolute bottom-0 start-50 translate-middle-x py-2 mb-3">
             <a href="cart.html"><i class="mdi mdi-account-star-outline fs-22 me-3 pe-3 fw-bolder pro-icon text-dark border-end"></i></a>

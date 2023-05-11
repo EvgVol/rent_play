@@ -69,7 +69,7 @@ class User(AbstractUser):
         null=True,
     )
 
-    avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR,)
+    avatar = models.ImageField('Аватар', help_text=texts.USER_AVATAR, upload_to='users/images/')
     phone_number = PhoneNumberField(region="RU")
 
     USERNAME_FIELD = 'email'

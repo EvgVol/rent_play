@@ -1,75 +1,58 @@
 {% extends 'base.html' %}
 {% block title %}Single Post{% endblock title %}
 {% block content %}
-
+{% load static %}
 <section class="sm-section">
   <div class="container">
     <div class="row">
-        <div class="col-lg-8">
-            <article class="post position-relative">
-                {% include 'blog/includes/post_detail.html' %}
-                <h6 class="fs-22 fw-semibold border-bottom pb-3 mt-5">Комментарии</h6>
-                {% include 'blog/includes/comment.html' %}
-                {% include 'blog/includes/comment.html' %}
+      <div class="col-lg-8">
+        <article class="post position-relative">
+          {% include 'blog/includes/post_detail.html' %}
+          <h6 class="fs-22 fw-semibold border-bottom pb-3 mt-5">Комментарии</h6>
+          {% include 'blog/includes/comment.html' %}
+          {% include 'blog/includes/comment.html' %}
 
-                <h6 class="fs-22 fw-semibold border-bottom pb-3 mt-5">Отставить комментарий</h6>
-                {% include 'blog/includes/post-comment.html' %}
-                {% include 'blog/includes/share.html' %}
-            </article>
-            <!-- Post end-->
-        </div>
+          <h6 class="fs-22 fw-semibold border-bottom pb-3 mt-5">Отставить комментарий</h6>
+          {% include 'blog/includes/post-comment.html' %}
+          
+        </article>
+
+      </div>
         <div class="col-lg-4 col-md-6">
-            <div class="sidebar ms-3">
-                {% include 'blog/includes/search.html' %}
-                <div>
-                    <div class="sd-title mt-4">
-                        <h6 class="border-bottom pb-3 mb-0">Categories</h6>
-                    </div>
-                    <div class="ms-3 my-3">
-                        {% include 'blog/includes/category.html' %}
-                    </div>
-                </div>
+          <div class="sidebar ms-3">
+              {% load thumbnail %}
+              {% thumbnail post.game.image "296x173" crop="center" as im %}
+              <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+              {% endthumbnail %}
 
-                <div class="mt-5">
-                    <div class="sd-title mt-4">
-                        <h6 class="border-bottom pb-3 mb-0">Polular Post</h6>
-                    </div>
-                    <ul class="list-unstyled my-4">
-                        {% include 'blog/includes/popular_post.html' %}
-                    </ul>
+              <div>
+                <div class="sd-title mt-4">
+                  <h6 class="border-bottom pb-3 mb-0">{{ post.game.name }}</h6>
                 </div>
+                <p class="mx-3 my-3 text-muted">
+                  {{ post.game.description }}
+                </p>
+              </div>
+              
+              <div class="mt-5">
+                <div class="sd-title mt-4">
+                      <h6 class="border-bottom pb-3 mb-0">Archives</h6>
+                  </div>
+                  <ul class="list-unstyled my-4">
+                      {% include 'blog/includes/archive.html' %}
 
-                <div class="mt-5">
-                    <div class="sd-title mt-4">
-                        <h6 class="border-bottom pb-3 mb-0">Text Widget</h6>
-                    </div>
-                    <p class="mx-3 my-3 text-muted">
-                        Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft
-                        beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v
-                        laborum. Aliquip veniam
-                        delectus, Marfa eiusmod Pinterest in do umami readymade swag.
-                    </p>
-                </div>
+                  </ul>
+              </div>
 
-                <div class="mt-5">
-                    <div class="sd-title mt-4">
-                        <h6 class="border-bottom pb-3 mb-0">Archives</h6>
-                    </div>
-                    <ul class="list-unstyled my-4">
-                        {% include 'blog/includes/archive.html' %}
-
-                    </ul>
-                </div>
-
-                <div class="mt-5">
-                    <div class="sd-title mt-4">
-                        <h6 class="border-bottom pb-3 mb-0">Tags</h6>
-                    </div>
-                    <div class="tagcloud py-4">
-                        {% include 'blog/includes/tag.html' %}
-                    </div>
-                </div>
+            <div class="mt-5">
+              <div class="sd-title mt-4">
+                <h6 class="border-bottom pb-3 mb-0">Tags</h6>
+              </div>
+              <div class="tagcloud py-4">
+                {% include 'blog/includes/tag.html' %}
+              </div>
             </div>
+          </div>
         </div>
     </div>
   </div>
@@ -77,18 +60,18 @@
 {% if user.username == post.author.username %}
 	<div id="style-switcher" onclick="toggleSwitcher()">
 		<div>
-				<h3>Настройки</h3>
-				<ul class="pattern">
-                    <li>
-                        <a href="{% url 'core:post_edit' pk=post.id %}"><i data-feather="edit-3" class="text-primary me-2"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i data-feather="eye-off" class="text-primary me-2"></i></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'core:post_delete' pk=post.id %}"><i data-feather="trash" class="text-primary me-2" ></i></a>
-                    </li>
-				</ul>
+      <h3>Настройки</h3>
+      <ul class="pattern">
+        <li>
+            <a href="{% url 'core:post_edit' pk=post.id %}"><i data-feather="edit-3" class="text-primary me-2"></i></a>
+        </li>
+        <li>
+            <a href="#"><i data-feather="eye-off" class="text-primary me-2"></i></a>
+        </li>
+        <li>
+            <a href="{% url 'core:post_delete' pk=post.id %}"><i data-feather="trash" class="text-primary me-2" ></i></a>
+        </li>
+      </ul>
 		</div>
 		<div class="bottom">
 				<a href="#" class="settings rounded-end text-light"><i data-feather="settings"></i></a>

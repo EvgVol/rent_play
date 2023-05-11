@@ -1,27 +1,37 @@
 {% load static %}
 {% load thumbnail %}
-<div
-    class="date-box rounded-3 shadow text-center bg-light position-absolute top-0 start-0 p-2 ms-3 mt-3">
+<div class="position-relative">
+  <div class="date-box rounded-3 shadow text-center bg-light position-absolute top-0 start-0 p-2 ms-3 mt-3">
     <h6 class="fs-14 fw-medium mb-0">{{ post.pub_date|date:"d.m.Y"  }}</h6>
-</div>
-
-<div class="post-preview mb-4">
-  {% thumbnail post.image "616x360" crop="center" as im %}
-  <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-  {% endthumbnail %}
-</div>
-
-<div class="post">
+  </div>
+  <div class="post-preview mb-4">
+    {% thumbnail post.image "616x360" crop="center" as im %}
+    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+    {% endthumbnail %}
+    <div
+      class="position-absolute bottom-0 end-0 p-5 me-3 mb-3">
+      {% if post.author.avatar %}
+        {% thumbnail post.author.avatar "600x500" crop="center" as im %}
+        <img src="{{ im.url }}" class="testi-user rounded-circle img-thumbnail"
+            alt="testimonials-user" style="width: 150px; height: 150px;">
+        {% endthumbnail %}
+      {% else %}
+        <img src="{% static 'images/default-user.jpeg' %}" class="testi-user rounded-circle img-thumbnail" alt="testimonials-user" style="width: 150px; height: 150px;">
+      {% endif %}
+    </div>
+  </div>
+  <div class="post">
     <div class="d-flex align-items-center gap-3">
-        <p class="fs-15 text-muted mb-0"><i data-feather="message-square"
-                class="icon-xs me-1"></i>
-            <a href="#" class="text-muted">897</a>
-        </p>
-        <p class="fs-15 text-muted mb-0"><i data-feather="eye" class="icon-xs me-1"></i> <a
-                href="#" class="text-muted">###</a></p>
+      <p class="fs-15 text-muted mb-0">
+        <i data-feather="user" class="icon-xs me-1"></i>
+          <a href="{% url 'core:profile' post.author.pk %}" class="text-muted">
+              {{ post.author.username }}
+          </a>
+      </p>
     </div>
     <h6 class="fs-22 fw-semibold my-3 post-title"><a href="single-post.html">{{ post.name }}</a></h6>
     <p class="text-muted">
       {{ post.description|linebreaks }}
     </p>
+  </div>
 </div>
