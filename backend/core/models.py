@@ -137,7 +137,7 @@ class Feedback(models.Model):
     subject = models.CharField('Тема письма',
                                max_length=Limits.MAX_LENGTH.value)
     content = models.TextField('Содержимое письма',
-                            validators=[validate_not_empty])
+                               validators=[validate_not_empty])
     time_create = models.DateTimeField('Дата отправки', auto_now_add=True)
     ip_address = models.GenericIPAddressField(verbose_name='IP отправителя', 
                                               blank=True, null=True)
