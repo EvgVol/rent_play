@@ -19,7 +19,6 @@
                 <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:index' %}">Главная</a></li>
                 <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:about' %}">О сервисе</a></li>
                 <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:consoles' %}">Консоли</a></li>
-                <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:games' %}">Игры</a></li>
                 <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:blog-list' %}">Блог</a></li>
                 <li class="nav-item"><a class="nav-link sub-menu-item" href="{% url 'core:feedback' %}">Связаться</a></li>
                 <li class="nav-item"><a class="nav-link sub-menu-item "> </a></li>
@@ -40,7 +39,7 @@
                         <li><a class="dropdown-item" href="#">Мои подписки</a></li>
                         <li><a class="dropdown-item" href="#">Мои заказы</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Настройки</a></li>
+                        <li><a class="dropdown-item" href="{% url 'core:profile_edit' %}">Настройки</a></li>
                         <li><a class="dropdown-item" href="#">Справка и обратная связь</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalLogOut">Выйти</a></li>

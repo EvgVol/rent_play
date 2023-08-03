@@ -46,7 +46,5 @@ urlpatterns = [
     path('profile/', include([
         path('<int:pk>/', views.ProfileView.as_view(), name='profile'),
         path('edit/', views.ProfileUpdateView.as_view(), name='profile_edit'),
-        # path('', views.ProfileView.as_view(), name='profile'),
-        # path('', views.ProfileView.as_view(), name='profile'),
     ]))
 ]
